@@ -1,0 +1,408 @@
+html, body {
+  position: relative;
+  height: 100%;
+  min-width: 1000px;
+  white-space: nowrap;
+}
+
+body {
+  background: #fff;
+  font-size: 14px;
+  color: #000;
+}
+
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+ul li{
+    list-style: none;
+}
+
+/* header */
+
+header{
+    border-bottom: 1px solid #dadada;
+    height: 80px;
+}
+
+div.page_header{
+    position: relative;
+    max-width: 1200px;
+    min-width: 1000px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+div.page_header>div{
+    display: inline-block;
+    margin: 5px;
+}
+
+/* logo */
+
+div#service_logo{
+    position: relative;
+    top:0;
+    text-align: left;
+}
+
+div#service_logo>ul>li>a>img{
+    width: 100px;
+}
+
+/* dropdown menu */
+
+div#service_logo>ul>li>a{
+    position: absolute;
+    top: 0;
+}
+
+/* menu - eriwa list*/
+
+div#service_logo>ul>li>ul{
+    z-index: 10;
+    position: relative;
+    top:70px;
+    float: left;
+    display: none;
+    background-color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+div#service_logo>ul>li>ul>p{
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+div#service_logo>ul>li>ul#eriwa_list>p{
+    margin-bottom: 5px;
+}
+
+div#service_logo>ul>li>ul>li{
+    padding: 5px 20px 0px 20px;
+    font-size: 12px;
+}
+
+/* mouse hover*/
+
+div#service_logo>ul>li:hover>ul{
+    display: block;
+}
+
+/* menu - region list */
+
+div#service_logo>ul>li>ul#region_list{
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+div#service_logo>ul>li>ul#region_list>ul{
+    float: left;
+    padding: 5px 20px 0px 20px;
+    font-size: 12px;
+}
+
+div#service_logo>ul>li>ul>ul>li{
+    padding: 5px 20px 0px 20px;
+}
+
+/* search */
+
+div.page_header> div.search{
+    position: absolute;
+    top: 20px;
+    right: 250px;
+
+}
+
+div.search{
+    border: 2px solid black;
+    border-radius: 20px;
+    height: 30px;
+    max-height: 30px;
+}
+
+div.search>input{
+    border: 0px;
+    border-radius: 20px;
+    outline: none;
+    width: 76%;
+    padding:5px;
+    padding-left: 10px;
+    text-align: left center;
+    font-size: 12px;
+}
+
+div.search>a{
+    position: relative;
+    top:5px;
+    right: 5px;
+}
+
+
+div.search >a> img{
+    border-radius: 20px;
+    width: 20px;
+}
+
+div#container>div.search{
+    margin: 20px 40px 20px 40px;
+}
+
+div#container>div.search>input{
+    width: 95%;
+}
+
+/* action button */
+
+a.btn_bookmark, a.btn_alarm{
+    position: absolute;
+    top: 30px;
+
+}
+
+a.btn_bookmark{
+    right: 160px;
+}
+
+a.btn_alarm{
+    right: 120px;
+}
+
+a.btn_bookmark>img, a.btn_alarm>img{
+    width: 25px;
+}
+
+div.action>a.btn_login{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: inline-block;
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 80px;
+    height: 40px;
+    text-align: center;
+    vertical-align: top;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 42px;
+}
+
+div.action > button{
+    background-color: white;
+}
+
+main {
+  position: relative;
+  margin-left: 150px;
+  margin-right: 150px;
+  z-index: 5;
+}
+
+article {
+  margin: 20px 0px;
+}
+
+.post > header, .post-content {
+  margin: 10px 0px;
+}
+
+.post-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-content > table {
+  border-spacing: 10px;
+}
+
+.cell-title {
+  font-weight: bold;
+}
+
+.post-content > p {
+  white-space: normal;
+  font-size: 16px;
+}
+
+.left-content, .left-content > a, .right-content, .right-content > a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 15px 0px 10px 0px;
+}
+
+.center {
+  grid-column: 2/3;
+  display: inline-block;
+  text-align: center;
+  place-self: center center;
+  min-width: 100px;
+}
+
+.center > a {
+  display: inline-block;
+  border: 1px solid darkgray;
+  border-radius: 5px;
+}
+
+#recommend, #share {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+}
+
+.right{
+  grid-column: 3/4;
+  display: inline-block;
+  text-align: right;
+  place-self: end end;
+}
+
+.right > a {
+  padding: 0px 5px;
+  color: gray;
+  text-decoration: underline;
+}
+
+.comment-area {
+  background: #E3EDF7;
+  padding: 20px;
+}
+
+.comment-content {
+  padding: 20px 40px;
+  border-bottom: 1px solid #dadada;
+}
+
+.comment-content > p {
+  white-space: normal;
+  font-size: 16px;
+}
+
+.comment-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: darkgray;
+}
+
+.comment-buttons > a {
+  padding: 0px 5px;
+  color: gray;
+  text-decoration: underline;
+}
+
+.comment-writing-column {
+  width: 70%;
+  padding: 20px 60px;
+  margin: 10px auto;
+  margin-top: 20px;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.profile, .profile > a {
+  display: flex;
+  align-items: center;
+}
+
+textarea {
+  resize: none;
+  width: 100%;
+  margin: 5px 0px 10px 0px;
+  border: 1px solid #cccccc;
+  border-radius: 7px;
+}
+
+#comment-submit {
+  display: block;
+  margin: 0 0 0 auto;
+}
+
+.myButton {
+	background-color: #ffffff;
+	border-radius: 28px;
+	border: 1px solid #cccccc;
+	display: block;
+	cursor: pointer;
+	color: #222;
+  margin: 0 0 0 auto;
+	padding: 5px 10px;
+	text-shadow: 0px 1px 0px #ffffff;
+}
+.myButton:hover {
+	background-color: #f6f6f6;
+}
+.myButton:active {
+	position: relative;
+	top: 1px;
+}
+
+.buttons {
+  display: block;
+  float: right;
+  text-align: center;
+  margin: 10px 0px 0px 10px
+}
+
+.buttons > a {
+  border: 1px solid darkgray;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+/* footer */
+footer{
+    position: relative;
+    min-width: 1000px;
+    max-width: 1100px;
+    margin: 0px auto;
+    padding: 60px 20px;
+    margin-top: 50px;
+    box-sizing: border-box;
+    font-size: 16px;
+    border-top: 1px solid #dadada;
+}
+
+footer>div{
+    display: inline-block;
+    padding-right: 10px;
+    margin-right: 10px;
+    border-right: 1px solid #dadada;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+footer>p{
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+footer>div>a{
+    color: rgb(145, 145, 145);
+}
