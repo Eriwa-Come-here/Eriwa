@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>이리와</title>
+    <link rel="stylesheet" href="../public/css/detail-search.css" >
+</head>
+<body>
+    <header>
+        <div class="page_header">
+            <div id="service_logo">
+                <ul>
+                    <li><a href="../views/index.html"><img id="logo" src="../public/images/logo.png" alt="Eriwa logo"></a>
+                        <ul id="eriwa_list">
+                            <p>이리와</p>
+                            <li><a href=""><p>이리와란?</p></a></li>
+                            <li><a href="../views/board.html"><p>전체</p></a></li>
+                            <li><a href="../views/board.html"><p>오늘의 이리와</p></a></li>
+                        </ul>
+                        <ul id="region_list">
+                            <p>지역별</p>
+                            <ul>
+                                <li><a href="../views/board.html"><p>강원도</p></a></li>
+                                <li><a href="../views/board.html"><p>경기도</p></a></li>
+                                <li><a href="../views/board.html"><p>경상북도</p></a></li>
+                                <li><a href="../views/board.html"><p>경상남도</p></a></li>
+                                <li><a href="../views/board.html"><p>전라북도</p></a></li>
+                                <li><a href="../views/board.html"><p>전라남도</p></a></li>
+                                <li><a href="../views/board.html"><p>충청북도</p></a></li>
+                                <li><a href="../views/board.html"><p>충청남도</p></a></li>
+                                <li><a href="../views/board.html"><p>제주도</p></a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="../views/board.html"><p>광주광역시</p></a></li>
+                                <li><a href="../views/board.html"><p>대구광역시</p></a></li>
+                                <li><a href="../views/board.html"><p>대전광역시</p></a></li>
+                                <li><a href="../views/board.html"><p>부산광역시</p></a></li>
+                                <li><a href="../views/board.html"><p>서울특별시</p></a></li>
+                                <li><a href="../views/board.html"><p>울산광역시</p></a></li>
+                                <li><a href="../views/board.html"><p>인천광역시</p></a></li>
+                                <li><a href="../views/board.html"><p>세종특별자치시</p></a></li>
+                            </ul>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="search">
+                <input type="text" placeholder="실시간 검색어" >
+                <a href="../views/detail-search.html"><img src="../public/images/search_icon.png" alt="검색"></a>
+            </div>
+            <div class="action">
+                <a href="../views/mypage-recommend.html" class="btn_bookmark"><img src="../public/images/bookmark_icon.png" alt="bookmark_icon"></a>
+                <a href="" class="btn_alarm"><img src="../public/images/alarm_icon.png" alt="alarm_icon"></a>
+                <a href="" class="btn_login">로그인</a>
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <div class="search_container">
+            <div class="search">
+                <input type="text" placeholder="검색">
+                <a href="../views/detail-search.html"><img src="../public/images/search_icon.png" alt="검색"></a>
+            </div>
+            <div class="btn_option">
+                <a href=#none id="show" 
+                onclick="if(search_option.style.display=='none')
+                {search_option.style.display='block'} else{search_option.style.display='none'}
+                "><img src="../public/images/search_detail_setting_icon.png" alt="search_detail_setting_icon">
+                </a>
+                <div id="search_option">
+                    <div class="search_text"><h2>검색 조건</h2></div>
+
+                    <div class="search_first">
+                        <div class="search_period">
+                            <p>기간</p>
+                            <select>
+                                <option>전체</option>
+                                <option>1개월</option>
+                                <option>3개월</option>
+                                <option>6개월</option>
+                            </select>
+                        </div>
+                        <div class="search_range">
+                            <p>검색 범위</p>
+                            <select>
+                                <option>제목</option>
+                                <option>본문</option>
+                                <option>제목과 본문</option>
+                                <option>작성자</option>
+                                <option>댓글</option>
+                            </select>
+                        </div>
+                    </div> 
+
+                    <div class="search_second">
+                        <div class="search_area">
+                            <p>지역</p>
+                            <select>
+                                <option>전체</option>
+                                <option>강원도</option>
+                                <option>경기도</option>
+                                <option>경상북도</option>
+                                <option>경상남도</option>
+                                <option>전라북도</option>
+                                <option>전라남도</option>
+                                <option>충청북도</option>
+                                <option>충청남도</option>
+                                <option>제주도</option>
+                                <option>광주광역시</option>
+                                <option>대구광역시</option>
+                                <option>대전광역시</option>
+                                <option>부산광역시</option>
+                                <option>서울특별시</option>
+                                <option>울산광역시</option>
+                                <option>인천광역시</option>
+                                <option>세종특별자치시</option>
+                            </select>
+                        </div>
+                        <div class="search_kind">
+                            <p>장소 종류</p>
+                            <select>
+                                <option>전체</option>
+                                <option>술집</option>
+                                <option>카페</option>
+                                <option>식당</option>
+                                <option>기타</option>
+                            </select>
+                        </div>
+                    </div> 
+
+                    <div class="search_third">
+                        <div class="search_grade">
+                            <p>별점</p>
+                            <select>
+                                <option>전체</option>
+                                <option>1점 이상</option>
+                                <option>2점 이상</option>
+                                <option>3점 이상</option>
+                                <option>4점 이상</option>
+                                <option>5점</option>
+                            </select>
+                        </div>
+                        <div class="search_ect">
+                            <p>기타</p>
+                            <select>
+                                <option>반려동물 동반 가능</option>
+                                <option>주차 가능</option>
+                            </select>
+                        </div>
+                    </div> 
+                    <button id="btn_search">검색</button>
+                </div>        
+            </div>
+        </div>
+        <div class="search_result">
+                검색 결과가 없습니다.
+        </div>
+    </div>
+
+    <footer>
+        <div><a href=""><p>서비스 소개</p></a></div>
+        <div><a href=""><p>이용약관</p></a></div>
+        <div><a href=""><p>서비스 소개</p></a></div>
+        <div><a href=""><p>신고가이드</p></a></div>
+        <br>
+        <p>Copyright © 2022 Team Eriwa. All rights deserved</p>
+    </footer>
+
+</body>
+
+
+</html>
