@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset='utf-8'>
+    <title>게시글</title>
+    <link rel="stylesheet" href="../public/css/post.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  </head>
+
+  <body>
+    <header>
+      <div class="page_header">
+        <div id="service_logo">
+          <ul>
+            <li><a href="../views/index.html"><img id="logo" src="../public/images/logo.png" alt="Eriwa logo"></a>
+              <ul id="eriwa_list">
+                <p>이리와</p>
+                <li><a href="../views/service_intro.html"><p>이리와란?</p></a></li>
+                <li><a href="../views/board.html"><p>전체</p></a></li>
+                <li><a href="../views/board.html"><p>오늘의 이리와</p></a></li>
+              </ul>
+              <ul id="region_list">
+                <p>지역별</p>
+                <ul>
+                  <li><a href="../views/board.html"><p>강원도</p></a></li>
+                  <li><a href="../views/board.html"><p>경기도</p></a></li>
+                  <li><a href="../views/board.html"><p>경상북도</p></a></li>
+                  <li><a href="../views/board.html"><p>경상남도</p></a></li>
+                  <li><a href="../views/board.html"><p>전라북도</p></a></li>
+                  <li><a href="../views/board.html"><p>전라남도</p></a></li>
+                  <li><a href="../views/board.html"><p>충청북도</p></a></li>
+                  <li><a href="../views/board.html"><p>충청남도</p></a></li>
+                  <li><a href="../views/board.html"><p>제주도</p></a></li>
+                </ul>
+                <ul>
+                  <li><a href="../views/board.html"><p>광주광역시</p></a></li>
+                  <li><a href="../views/board.html"><p>대구광역시</p></a></li>
+                  <li><a href="../views/board.html"><p>대전광역시</p></a></li>
+                  <li><a href="../views/board.html"><p>부산광역시</p></a></li>
+                  <li><a href="../views/board.html"><p>서울특별시</p></a></li>
+                  <li><a href="../views/board.html"><p>울산광역시</p></a></li>
+                  <li><a href="../views/board.html"><p>인천광역시</p></a></li>
+                  <li><a href="../views/board.html"><p>세종특별자치시</p></a></li>
+                </ul>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="search">
+          <input type="text" placeholder="실시간 검색어" >
+          <a href="../views/detail-search.html"><img src="../public/images/search_icon.png" alt="검색"></a>
+        </div>
+        <div class="action">
+          <a href="../views/mypage-recommend.html" class="btn_bookmark"><img src="../public/images/bookmark_icon.png" alt="bookmark_icon"></a>
+          <a href="../views/notice.html" class="btn_alarm"><img src="../public/images/alarm_icon.png" alt="alarm_icon"></a>
+          <a href="" class="btn_login">로그인</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <article class="post">
+        <header>
+          <a href="#">지역 이름</a>
+          <a href="#"><h1>게시글 타이틀</h1></a>
+          <div class="post-info">
+            <span class="left-content"><a href="#"><img src="../public/images/usericon.png" alt="프로필 이미지" width="20px">&nbsp;작성자</a>&nbsp;&nbsp;&nbsp;yyyy.mm.dd hh:mm</span>
+            <span class="right-content"><a href="#comment"><img src="../public/images/comment-alt.png" alt="댓글수" width="25" height="25">&nbsp;댓글 1</a>&nbsp;&nbsp;&nbsp;<a href="#"><img src="../public/images/heart.png" alt="추천" width="25" height="25">&nbsp;추천 5</a> </span>
+          </div>
+        </header>
+
+        <div class="post-content">
+          <table>
+          <thead>
+            <tr>
+              <td rowspan="6"><img src="../public/images/cafe.png" alt="장소 사진" width="400px" height="auto"></td>
+              <td><span class="cell-title">이름</span>&nbsp;&nbsp;&nbsp;&nbsp;DalDalHaru</td>
+            </tr>
+            <tr>
+              <td><span class="cell-title">종류</span>&nbsp;&nbsp;&nbsp;&nbsp;카페</td>
+            </tr>
+            <tr>
+              <td><span class="cell-title">위치</span>&nbsp;&nbsp;&nbsp;&nbsp;서울특별시 성북구 돈암동</td>
+            </tr>
+            <tr>
+              <td><span class="cell-title">별점</span>&nbsp;&nbsp;&nbsp;&nbsp;★★★★★</td>
+            </tr>
+            <tr>
+              <td><span class="cell-title">주차장</span>&nbsp;&nbsp;&nbsp;&nbsp;가능/불가능</td>
+            </tr>
+            <tr>
+              <td><span class="cell-title">반려동물 동반</span>&nbsp;&nbsp;&nbsp;&nbsp;가능/불가능</td>
+            </tr>
+          </thead>
+          </table>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <div class="post-buttons">
+            <span class="center">
+              <a href="#"><span id="recommend"><img src="../public/images/heart.png" alt="추천" width="25" height="25">&nbsp;추천</span></a>
+              &nbsp;
+              <a href="#"><span id="share"><img src="../public/images/share.png" alt="공유" width="25" height="25">&nbsp;공유</span></a>
+            </span>
+            <!-- 작성자에게만 보이게 -->
+            <span class="right">
+              <a href="#">수정</a>
+              <a href="#">삭제</a>
+            </span>
+          </div>
+        </div>
+      </article>
+      <div class="comment-area" id="comment">
+        <div class="comment-content">
+          <div class="profile">
+            <a href="#"><img src="../public/images/usericon.png" alt="작성자 프로필">&nbsp;댓글 작성자</a>
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <div class="comment-footer">
+            yyyy.mm.dd hh.mm
+            <!-- 작성자에게만 보이게 -->
+            <span class="comment-buttons">
+              <a href="#">수정</a>
+              <a href="#">삭제</a>
+            </span>
+          </div>
+        </div>
+
+        <div class="comment-writing-column">
+          <div class="profile">
+            <img src="../public/images/usericon.png" alt="내 프로필">&nbsp;내 아이디
+          </div>
+          <form class="comment-textarea" action="index.html" method="post">
+            <p><textarea placeholder="내용을 입력해 주세요" name="comment-textarea" rows="8" cols="80"></textarea></p>
+            <p><input type="submit" name="등록" value="등록" class="myButton"></p>
+          </form>
+        </div>
+      </div>
+      <div class="buttons">
+        <a href="#">목록</a>
+        <a href="../views/post.html">TOP</a>
+      </div>
+    </main>
+
+    <footer>
+      <div><a href=""><p>서비스 소개</p></a></div>
+      <div><a href=""><p>이용약관</p></a></div>
+      <div><a href=""><p>서비스 소개</p></a></div>
+      <div><a href=""><p>신고가이드</p></a></div>
+      <br>
+      <p>Copyright © 2022 Team Eriwa. All rights deserved</p>
+    </footer>
+  </body>
+</html>

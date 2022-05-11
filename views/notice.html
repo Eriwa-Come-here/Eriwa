@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset='utf-8'>
+    <title>알림함</title>
+    <link rel="stylesheet" href="../public/css/notice.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  </head>
+
+  <body>
+    <header>
+      <div class="page_header">
+        <div id="service_logo">
+          <ul>
+            <li><a href="../views/index.html"><img id="logo" src="../public/images/logo.png" alt="Eriwa logo"></a>
+              <ul id="eriwa_list">
+                <p>이리와</p>
+                <li><a href="../views/service_intro.html"><p>이리와란?</p></a></li>
+                <li><a href="../views/board.html"><p>전체</p></a></li>
+                <li><a href="../views/board.html"><p>오늘의 이리와</p></a></li>
+              </ul>
+              <ul id="region_list">
+                <p>지역별</p>
+                <ul>
+                  <li><a href="../views/board.html"><p>강원도</p></a></li>
+                  <li><a href="../views/board.html"><p>경기도</p></a></li>
+                  <li><a href="../views/board.html"><p>경상북도</p></a></li>
+                  <li><a href="../views/board.html"><p>경상남도</p></a></li>
+                  <li><a href="../views/board.html"><p>전라북도</p></a></li>
+                  <li><a href="../views/board.html"><p>전라남도</p></a></li>
+                  <li><a href="../views/board.html"><p>충청북도</p></a></li>
+                  <li><a href="../views/board.html"><p>충청남도</p></a></li>
+                  <li><a href="../views/board.html"><p>제주도</p></a></li>
+                </ul>
+                <ul>
+                  <li><a href="../views/board.html"><p>광주광역시</p></a></li>
+                  <li><a href="../views/board.html"><p>대구광역시</p></a></li>
+                  <li><a href="../views/board.html"><p>대전광역시</p></a></li>
+                  <li><a href="../views/board.html"><p>부산광역시</p></a></li>
+                  <li><a href="../views/board.html"><p>서울특별시</p></a></li>
+                  <li><a href="../views/board.html"><p>울산광역시</p></a></li>
+                  <li><a href="../views/board.html"><p>인천광역시</p></a></li>
+                  <li><a href="../views/board.html"><p>세종특별자치시</p></a></li>
+                </ul>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="search">
+          <input type="text" placeholder="실시간 검색어" >
+          <a href="../views/detail-search.html"><img src="../public/images/search_icon.png" alt="검색"></a>
+        </div>
+        <div class="action">
+          <a href="../views/mypage-recommend.html" class="btn_bookmark"><img src="../public/images/bookmark_icon.png" alt="bookmark_icon"></a>
+          <a href="../views/notice.html" class="btn_alarm"><img src="../public/images/alarm_icon.png" alt="alarm_icon"></a>
+          <a href="" class="btn_login">로그인</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="notice-category">
+        <h2>
+          <span id="all"><a href="#">전체</a></span>
+          <span id="comment"><a href="#">댓글</a></span>
+          <span id="note"><a href="#">쪽지</a></span>
+          <span id="notice"><a href="#">공지</a></span>
+        </h2>
+      </div>
+
+      <div class="notification-content">
+      <ul>
+        <li class="notification-list" OnClick="location.href ='post.html'" style="cursor:pointer; background: #FFBDC1;">
+          <div class="notification-subject">
+            <span class="notification-subject-img">
+              <img src="../public/images/commenttype.png" alt="알림 종류" width="40px" height="40px">
+            </span>
+          </div>
+          <div class="notification-maker" style="display:inline-block; text-align: center;">
+            <img src="../public/images/usericon.png" alt="프로필 이미지" width="20px"><br/>
+            <span>유저닉네임</span>
+          </div>
+          <div class="notification-text">
+            <span class="post-title">게시글 타이틀</span>
+            <div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+          </div>
+          <div class="notification-day">
+            <span class="date">yyyy.mm.dd hh:mm</span>
+          </div>
+        </li>
+        <li class="notification-list" OnClick="location.href ='#'" style="cursor:pointer;">
+          <div class="notification-subject">
+            <span class="notification-subject-img">
+              <img src="../public/images/note.png" alt="알림 종류" width="40px" height="40px">
+            </span>
+          </div>
+          <div class="notification-maker" style="display:inline-block; text-align: center;">
+            <img src="../public/images/usericon.png" alt="프로필 이미지" width="20px"><br/>
+            <span>유저닉네임</span>
+          </div>
+          <div class="notification-text">
+            <div class="comment-content">안녕하세요! 작성하신 글 보고 쪽지 드려요! OO에 대해서 물어보고 싶습니다!</div>
+          </div>
+          <div class="notification-day">
+            <span class="date">yyyy.mm.dd hh:mm</span>
+          </div>
+        </li>
+        <li class="notification-list" OnClick="location.href ='#'" style="cursor:pointer;">
+          <div class="notification-subject">
+            <span class="notification-subject-img">
+              <img src="../public/images/notice.png" alt="알림 종류" width="40px" height="40px">
+            </span>
+          </div>
+          <div class="notification-maker" style="display:inline-block; text-align: center;">
+            <img src="../public/images/usericon.png" alt="프로필 이미지" width="20px"><br/>
+            <span>운영자</span>
+          </div>
+          <div class="notification-text">
+            <div class="comment-content">mm월 dd일 03:00~07:00까지 서버 점검으로 인하여 서비스 이용이 불가능합니다.</div>
+          </div>
+          <div class="notification-day">
+            <span class="date">yyyy.mm.dd hh:mm</span>
+          </div>
+        </li>
+        <li class="notification-list" OnClick="location.href ='post.html'" style="cursor:pointer;">
+          <div class="notification-subject">
+            <span class="notification-subject-img">
+              <img src="../public/images/commenttype.png" alt="알림 종류" width="40px" height="40px">
+            </span>
+          </div>
+          <div class="notification-maker" style="display:inline-block; text-align: center;">
+            <img src="../public/images/usericon.png" alt="프로필 이미지" width="20px"><br/>
+            <span>유저닉네임</span>
+          </div>
+          <div class="notification-text">
+            <span class="post-title">게시글 타이틀</span>
+            <div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+          </div>
+          <div class="notification-day">
+            <span class="date">yyyy.mm.dd hh:mm</span>
+          </div>
+        </li>
+      </ul>
+      </div>
+
+      <div style="text-align: center; padding:10px;">알림은 30일 이후 삭제됩니다.</div>
+      <div class="buttons">
+        <a href="../views/notice.html">TOP</a>
+      </div>
+    </main>
+
+    <footer>
+      <div><a href=""><p>서비스 소개</p></a></div>
+      <div><a href=""><p>이용약관</p></a></div>
+      <div><a href=""><p>서비스 소개</p></a></div>
+      <div><a href=""><p>신고가이드</p></a></div>
+      <br>
+      <p>Copyright © 2022 Team Eriwa. All rights deserved</p>
+    </footer>
+  </body>
+</html>
