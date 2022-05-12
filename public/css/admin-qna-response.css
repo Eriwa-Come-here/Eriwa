@@ -1,0 +1,163 @@
+body{
+    margin: 0px;
+}
+
+/* nav */
+
+.nav-div{
+    height: 80px;
+    display: flex;
+    border-bottom:1px solid #EAEAEA;
+    justify-content:space-between;
+    min-width: 1000px;
+}
+.nav-logoposition{
+    position: relative;
+    left: 50px;
+}
+.nav-icon{
+    margin: 20px;
+    padding: 10px;
+}
+.search-box{
+    width:200px;
+    height: 30px;
+    border-radius: 24px;
+    border: 2px solid black;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.search-box-position{
+    position: relative;
+    bottom: 7px;
+}
+
+/* main */
+
+.main-div{
+    display: flex;
+    min-height: 100vh;
+}
+
+/* side menu */
+
+.main-sidemenu{
+    background-color: #8398D1;
+    min-width: 270px;
+}
+
+.menu-ul{
+    list-style:none;
+    display: flex;
+    flex-direction: column;
+}
+.smallmenu-ul{
+    list-style:none;
+    display: flex;
+    flex-direction: column;
+}
+.sidemenu-style{
+    text-decoration: none;
+    color: white;
+    font-size:25px;
+    font-family:Arial, Helvetica, sans-serif;
+    padding-top: 20px 10px;
+    margin: 10px;
+}
+.sidemenu-style:hover{
+    color: black;
+}
+.smallmenu{
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+}
+.smallmenu:hover{
+    color: black;
+}
+
+li{
+    padding-top: 10px;
+}
+
+/* main에서 메뉴 제외한 contents*/
+
+.main-contents{
+    width: 100%;
+}
+
+.subject{
+    font-size: 30px;
+    font-weight: 700;
+    font-family:Arial, Helvetica, sans-serif;
+    margin: 10px;
+}
+
+.pos-flex{
+    display: flex;
+}
+.user-name-id{
+    width: 200px;
+    position: relative;
+    left: 30px;
+    /* border: 1px solid red; */
+    margin-bottom: 10px;
+    text-align: end;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 700;
+}
+
+.question{
+    border: 1px solid gray;
+    background-color: #EAEAEA;
+    border-radius: 10px;
+    position: relative;
+    left: 50px;
+    width: 700px;
+    height: 200px;
+    margin-bottom: 10px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 300;
+}
+
+.admin{
+    text-align: end;
+    width: 200px;
+    position: relative;
+    left: 30px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 700;
+}
+
+.answer{
+    border: 1px solid gray;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    left: 50px;
+    width: 700px;
+    height: 200px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 300;
+}
+
+.button-style{
+    padding: 6px 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    font-size: inherit;
+    font-family:Arial, Helvetica, sans-serif;
+    background-color:#EAEAEA;
+    font-weight: 700;
+}
+
+.button-style:hover{
+    transform: scale(1.02);
+}
+.button-position{
+    position: relative;
+    left: 900px;
+    margin: 10px;
+}

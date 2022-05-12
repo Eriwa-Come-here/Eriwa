@@ -1,0 +1,172 @@
+body{
+    margin: 0px;
+}
+
+/* nav */
+
+.nav-div{
+    height: 80px;
+    display: flex;
+    border-bottom:1px solid #EAEAEA;
+    justify-content:space-between;
+    min-width: 1000px;
+}
+.nav-logoposition{
+    position: relative;
+    left: 50px;
+}
+.nav-icon{
+    margin: 20px;
+    padding: 10px;
+}
+.search-box{
+    width:200px;
+    height: 30px;
+    border-radius: 24px;
+    border: 2px solid black;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.search-box-position{
+    position: relative;
+    bottom: 7px;
+}
+
+/* main */
+
+.main-div{
+    display: flex;
+    min-height: 100vh;
+}
+
+/* side menu */
+
+.main-sidemenu{
+    background-color: #8398D1;
+    min-width: 270px;
+}
+
+.menu-ul{
+    list-style:none;
+    display: flex;
+    flex-direction: column;
+}
+.smallmenu-ul{
+    list-style:none;
+    display: flex;
+    flex-direction: column;
+}
+.sidemenu-style{
+    text-decoration: none;
+    color: white;
+    font-size:25px;
+    font-family:Arial, Helvetica, sans-serif;
+    padding-top: 20px 10px;
+    margin: 10px;
+}
+.sidemenu-style:hover{
+    color: black;
+}
+.smallmenu{
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+}
+.smallmenu:hover{
+    color: black;
+}
+
+li{
+    padding-top: 10px;
+}
+
+/* main에서 메뉴 제외한 contents*/
+
+.main-contents{
+    width: 100%;
+}
+
+.subject{
+    font-size: 30px;
+    font-weight: 700;
+    font-family:Arial, Helvetica, sans-serif;
+    margin: 10px;
+}
+
+.select-style{
+    padding: 6px 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    font-size: inherit;
+    font-family:Arial, Helvetica, sans-serif;
+    background-color:#EAEAEA;
+    font-weight: 700;
+    text-align: center;
+}
+.combobox-pos{
+    display: flex;
+    justify-content: end;
+}
+
+.li_box{
+    position: relative;
+    min-width: 154px;
+    float: left;
+    color: #b2b2b2;
+    background: #fff;
+    border: 1px solid #ddd;
+    margin: 3px;
+}
+
+.li_inner{
+    height: 350px;
+    margin: 15px auto 20px;
+    padding: 4px;
+}
+.list_img{
+    position: relative;
+    width: 160px;
+    margin: 0 auto 10px;
+    text-align: center;
+    height: 150px;
+    overflow: hidden;
+    background-color: #b2b2b2;
+}
+.article_info{
+    position: relative;
+    width: 220px;
+    font-family:Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+    text-align: left;
+}
+.title{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: large;
+    line-height: 16px;
+    color: #000;
+    height: 16px;
+}
+.list_info{
+    font-family:Arial, Helvetica, sans-serif;
+    color: #000;
+    line-height: 16px;
+    text-overflow: ellipsis;
+    max-height: 30px;
+    overflow: hidden;
+}
+
+.list_ul_style{
+    list-style: none;
+}
+
+.user_profile{
+    border-top: 1px solid #ddd;
+    padding: 12px 6px;
+    display: flex;
+    justify-content: space-between;
+}
+.icon-style{
+    padding: 1px 4px;
+}
