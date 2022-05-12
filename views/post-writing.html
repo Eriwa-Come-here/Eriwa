@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>이리와</title>
+        <link href="post-writing.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <nav>
+            <div class="nav-div">
+                <div class="nav-logoposition">
+                    <a href=".\admin-member.html"><img src=".\image\logo.png" width="132"/></a>
+                </div>
+                <div class="nav-icon">
+                    <span class="search-box-position">
+                        <input type="text" class="search-box"/>
+                    </span>
+                    <span>
+                        <a href="#"><img src=".\image\searchicon.png" width="30"/></a>
+                        <a href="#"><img src=".\image\bell.png" width="30"/></a>
+                        <a href="#"><img src=".\image\usericon.png" width="30"/></a>
+                    </span>
+                </div>
+            </div>
+        </nav>
+        <main>
+            <div class="main-div">
+                <form>
+                    <table class="table-style">
+                        <tr>
+                            <td class="td-style td_border" >제목</td>
+                            <td class="td_border"><input type="text" class="input-style"/></td>
+                        </tr>
+                        <tr>
+                            <td class="td-style td_border">상호명</td>
+                            <td class="td_border"><input type="text" class="input-style"/></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" class="td-style td_border">위치</td>
+                            <td>
+                                <input type="text" class="place-input"/>
+                                <button class="place-button">검색</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td_border"><input type="text" class="input-style"/></td>
+                        </tr>
+                        <tr>
+                            <td class="td-style td_border">장소종류</td>
+                            <td class="td_border">
+                                <span>
+                                    <input type="radio" name="place"/> 카페
+                                    <input type="radio" name="place"/> 식당
+                                    <input type="radio" name="place"/> 주점
+                                    <input type="radio" name="place"/> 관광
+                                    <input type="radio" name="place"/> 기타
+                                </span>        
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td-style">주차장 이용</td>
+                            <td>
+                                <span>
+                                    <input type="radio" name="parking"/> 가능
+                                    <input type="radio" name="parking"/> 불가능
+                                </span>        
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td-style td_border">반려동물 동반</td>
+                            <td class="td_border">
+                                <span>
+                                    <input type="radio" name="animal"/> 가능
+                                    <input type="radio" name="animal"/> 불가능
+                                </span>        
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td-style td_border">평점</td>
+                            <td class="td_border">
+                                <div class="starpoint_wrap">
+                                    <div class="starpoint_box">
+                                        <label for="starpoint_1" class="label_star" title="0.5">
+                                            <span class="blind">0.5점</span>
+                                        </label>
+                                        <label for="starpoint_2" class="label_star" title="1">
+                                            <span class="blind">1점</span>
+                                        </label>
+                                        <label for="starpoint_3" class="label_star" title="1.5">
+                                            <span class="blind">1.5점</span>
+                                        </label>
+                                        <label for="starpoint_4" class="label_star" title="2">
+                                            <span class="blind">2점</span>
+                                        </label>
+                                        <label for="starpoint_5" class="label_star" title="2.5">
+                                            <span class="blind">2.5점</span>
+                                        </label>
+                                        <label for="starpoint_6" class="label_star" title="3">
+                                            <span class="blind">3점</span>
+                                        </label>
+                                        <label for="starpoint_7" class="label_star" title="3.5">
+                                            <span class="blind">3.5점</span>
+                                        </label>
+                                        <label for="starpoint_8" class="label_star" title="4">
+                                            <span class="blind">4점</span>
+                                        </label>
+                                        <label for="starpoint_9" class="label_star" title="4.5">
+                                            <span class="blind">4.5점</span>
+                                        </label>
+                                        <label for="starpoint_10" class="label_star" title="5">
+                                            <span class="blind">5점</span>
+                                        </label>
+                                        <input type="radio" name="starpoint" id="starpoint_1" class="star_radio">
+                                        <input type="radio" name="starpoint" id="starpoint_2" class="star_radio">
+                                        <input type="radio" name="starpoint" id="starpoint_3" class="star_radio">
+                                        <input type="radio" name="starpoint" id="starpoint_4" class="star_radio">
+                                        <input type="radio" name="starpoint" id="starpoint_5" class="star_radio">
+                                        <input type="radio" name="starpoint" id="starpoint_6" class="star_radio">
+                                        <input type="radio" name="starpoint" id="starpoint_7" class="star_radio">
+                                        <input type="radio" name="starpoint" id="starpoint_8" class="star_radio">
+                                        <input type="radio" name="starpoint" id="starpoint_9" class="star_radio">
+                                        <input type="radio" name="starpoint" id="starpoint_10" class="star_radio">
+                                        <span class="starpoint_bg"></span>
+                                    </div>
+                                  </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td-style td_border">사진</td>
+                            <td class="td_border">
+                                <span>
+                                    <button class="photo-btn"><img src="#"></button>
+                                    <button class="photo-btn"><img src="#"></button>
+                                    <button class="photo-btn"><img src="#"></button>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td-style">방문 후기</td>
+                            <td><textarea cols="60" rows="15" class="textarea-style"></textarea></td>
+                        </tr>
+                    </table>
+                    <div>
+                        <span class="btn_pos">
+                            <button class="cancel-btn">취소</button>
+                            <button class="submit-btn">등록</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <footer>
+            <p>ⓒ 2022 Team Eriwa</p>
+        </footer>
+    </body>
+</html>
