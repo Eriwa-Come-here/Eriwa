@@ -1,0 +1,2 @@
+#node_modules 디렉토리에 있는 모든 파일들을 무시
+node_modules
