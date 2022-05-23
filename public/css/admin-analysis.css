@@ -1,155 +1,120 @@
-body{
-    margin: 0px;
-}
-
-/* nav */
-
-.nav-div{
-    height: 80px;
-    display: flex;
-    border-bottom:1px solid #EAEAEA;
-    justify-content:space-between;
-    min-width: 1000px;
-}
-.nav-logoposition{
-    position: relative;
-    left: 50px;
-}
-.nav-icon{
-    margin: 20px;
-    padding: 10px;
-}
-.search-box{
-    width:200px;
-    height: 30px;
-    border-radius: 24px;
-    border: 2px solid black;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-.search-box-position{
-    position: relative;
-    bottom: 7px;
-}
-
 /* main */
 
-.main-div{
-    display: flex;
-    min-height: 100vh;
+.main-div {
+  display: flex;
+  min-height: 100vh;
 }
 
 /* side menu */
 
-.main-sidemenu{
-    background-color: #8398D1;
-    min-width: 270px;
+.main-sidemenu {
+  background-color: #8398d1;
+  min-width: 270px;
 }
 
-.menu-ul{
-    list-style:none;
-    display: flex;
-    flex-direction: column;
+.menu-ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
 }
-.smallmenu-ul{
-    list-style:none;
-    display: flex;
-    flex-direction: column;
+.smallmenu-ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
 }
-.sidemenu-style{
-    text-decoration: none;
-    color: white;
-    font-size:25px;
-    font-family:Arial, Helvetica, sans-serif;
-    padding-top: 20px 10px;
-    margin: 10px;
+.sidemenu-style {
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-top: 20px 10px;
+  margin: 10px;
 }
-.sidemenu-style:hover{
-    color: black;
+.sidemenu-style:hover {
+  color: black;
 }
-.smallmenu{
-    text-decoration: none;
-    font-size: 18px;
-    color: white;
+.smallmenu {
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
 }
-.smallmenu:hover{
-    color: black;
+.smallmenu:hover {
+  color: black;
 }
 
-li{
-    padding-top: 10px;
+li {
+  padding-top: 10px;
 }
 
 /* main에서 메뉴 제외한 contents*/
 
-.main-contents{
-    width: 100%;
+.main-contents {
+  width: 100%;
 }
 
-.subject{
-    font-size: 30px;
-    font-weight: 700;
-    font-family:Arial, Helvetica, sans-serif;
-    margin: 10px;
+.subject {
+  font-size: 30px;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 10px;
 }
 
-.mini-subject{
-    font-size: 20px;
-    font-weight: 700;
-    font-family:Arial, Helvetica, sans-serif;
-    margin: 5px;
+.mini-subject {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 5px;
 }
 
-
-.post_table{
-    /* background-color: #EAEAEA; */
-    width:1100px;
-    text-align: center;
-    margin: 20px;
+.post_table {
+  /* background-color: #EAEAEA; */
+  width: 1100px;
+  text-align: center;
+  margin: 20px;
 }
-.user_table{
-    /* background-color: #EAEAEA; */
-    width:360px;
-    text-align: center;
-    margin: 20px;
+.user_table {
+  /* background-color: #EAEAEA; */
+  width: 360px;
+  text-align: center;
+  margin: 20px;
 }
 
-.table-pos{
-    display: flex;
-    justify-content: center;
+.table-pos {
+  display: flex;
+  justify-content: center;
 }
 
 .user_table thead {
-    background-color: #ccc;
-  }
+  background-color: #ccc;
+}
 
-.user_table thead tr{
-    font-size: 21px;
+.user_table thead tr {
+  font-size: 21px;
 }
 
 .user_table tbody tr td {
-    width: 300px;
-    padding: 10px;
-    vertical-align: top;
-    border-bottom: 1px solid #ccc;
-    font-size: 21px;
+  width: 300px;
+  padding: 10px;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+  font-size: 21px;
 }
 
 .post_table thead {
-    background-color: #ccc;
+  background-color: #ccc;
 }
 
-.post_table thead tr{
-    font-size: 21px;
+.post_table thead tr {
+  font-size: 21px;
 }
 
 .post_table tbody tr td {
-    width: 300px;
-    padding: 10px;
-    vertical-align: top;
-    border-bottom: 1px solid #ccc;
-    font-size: 24px;
+  width: 300px;
+  padding: 10px;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+  font-size: 24px;
 }
-.border-r{
-    border-right:1px solid #ccc;
+.border-r {
+  border-right: 1px solid #ccc;
 }
