@@ -1,3 +1,3 @@
-exports.showPostWriting = (res, req) => {
+exports.showPostWriting = (req, res) => {
   res.render("post-writing");
 };
