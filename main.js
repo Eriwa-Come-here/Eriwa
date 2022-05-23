@@ -1,32 +1,49 @@
 const port = 80,
-	express = require("express"),
-    app=express(),
-    layouts = require("express-ejs-layouts"),
-    errorController = require("./controllers/errorController");
+  express = require("express"),
+  app = express(),
+  path = require("path"),
+  layouts = require("express-ejs-layouts"),
+  errorController = require("./controllers/errorController"),
+  homeController = require("./controllers/homeController"),
+  postController = require("./controllers/postController");
 
 app.set("port", process.env.PORT || 80);
 app.set("view engine", "ejs");
 
 app.use(layouts);
-app.use(express.static("public"));
+app.use("/public", express.static("public"));
+
+//express 설정
+app.set("layout", "layout");
+app.set("layout extractScripts", true);
 
 app.use(
-    express.urlencoded({
-        extended:false
-    })
+  express.urlencoded({
+    extended: false,
+  })
 );
 app.use(express.json());
 
 //ejs 파일 렌더링 추가
-app.get("/", (req, res)=>{
-    res.render("index");
+app.get("/", (req, res) => {
+  res.render("index");
 });
+
+//homeController 추가
+app.get("/", homeController.showIndex);
+app.get("/board", homeController.showBoard);
+app.get("/search", homeController.showDetailSearch);
+app.get("/qna", homeController.showQna);
+app.get("/recommend", homeController.showRecommend);
+
+//postController추가
+app.get("/board/post-writing", postController.showPostWriting);
 
 //errorController 추가
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);
 
 //
-app.listen(app.get("port"), () =>{
-    console.log(`Server running at http://localhost:${app.get("port")}`)
+app.listen(app.get("port"), () => {
+  console.log(`Server running at http://localhost:${app.get("port")}`);
 });
