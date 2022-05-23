@@ -36,9 +36,11 @@ app.get("/board", homeController.showBoard);
 app.get("/search", homeController.showDetailSearch);
 app.get("/qna", homeController.showQna);
 app.get("/recommend", homeController.showRecommend);
+app.get("/service-intro", homeController.showServiceIntro);
 
 //postController추가
 app.get("/board/post-writing", postController.showPostWriting);
+app.get("/board/post-view", postController.showPost);
 
 //adminController추가
 app.get("/admin-member", adminController.showAdminMember);
