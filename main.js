@@ -8,6 +8,7 @@ const port = 80,
   postController = require("./controllers/postController"),
   adminController = require("./controllers/adminController");
   mypageController = require("./controllers/mypageController");
+  mypageController = require("./controllers/loginController");
 
 app.set("port", process.env.PORT || 80);
 app.set("view engine", "ejs");
@@ -55,6 +56,12 @@ app.get("/admin-qna-response", adminController.showAdminQnaResponse);
 app.get("/mypage_good_list", mypageController.mypageGood);
 app.get("/mypage_reply_list", mypageController.mypageReply);
 app.get("/mypage-write-list", mypageController.mypageWrite);
+app.get("/chat-list", mypageController.chatList);
+app.get("/chat", mypageController.chatStory);
+
+//loginController 추가
+app.get("/login", loginController.login);
+app.get("/signup", loginController.signup);
 
 //errorController 추가
 app.use(errorController.pageNotFoundError);

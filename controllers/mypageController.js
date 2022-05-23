@@ -9,3 +9,11 @@ exports.mypageReply = (req, res) => {
 exports.mypageWrite = (req, res) => {
     res.render("mypage-write-list");
 };
+
+exports.chatList = (req, res) => {
+    res.render("chat-list");
+};
+
+exports.chatStory = (req, res) => {
+    res.render("chat");
+};
