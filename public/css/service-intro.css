@@ -1,4 +1,4 @@
-html, body {
+/*html, body {
   position: relative;
   height: 100%;
   min-width: 1000px;
@@ -9,25 +9,11 @@ body {
   background: #fff;
   font-size: 14px;
   color: #000;
-}
-
-*{
-    padding: 0px;
-    margin: 0px;
-}
-
-a{
-    text-decoration: none;
-    color: black;
-}
-
-ul li{
-    list-style: none;
-}
+}*/
 
 /* banner */
 .swiper {
-  width: 100%;
+  width: 1000px;
 }
 
 .swiper-slide {
@@ -118,7 +104,7 @@ ul li{
   padding: 0px 20px 50px 0px;
 }
 
-h2 {
+/*h2 {
   font-size: 22px;
   font-weight: bold;
-}
+}*/
