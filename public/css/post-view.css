@@ -1,42 +1,28 @@
-html, body {
+.post-view-container {
   position: relative;
   height: 100%;
   min-width: 1000px;
   white-space: nowrap;
 }
 
-body {
+.post-view-container {
   background: #fff;
   font-size: 14px;
   color: #000;
 }
 
-*{
-    padding: 0px;
-    margin: 0px;
-}
-
-a{
-    text-decoration: none;
-    color: black;
-}
-
-ul li{
-    list-style: none;
-}
-
-main {
+.post-view {
   position: relative;
   margin-left: 150px;
   margin-right: 150px;
   z-index: 5;
 }
 
-article {
+.post-article {
   margin: 20px 0px;
 }
 
-.post > header, .post-content {
+.post-article > header, .post-content {
   margin: 10px 0px;
 }
 
@@ -71,7 +57,7 @@ article {
   margin: 15px 0px 10px 0px;
 }
 
-.center {
+.post-buttons > .center {
   grid-column: 2/3;
   display: inline-block;
   text-align: center;
@@ -79,7 +65,7 @@ article {
   min-width: 100px;
 }
 
-.center > a {
+.post-buttons > .center > a {
   display: inline-block;
   border: 1px solid darkgray;
   border-radius: 5px;
@@ -146,7 +132,7 @@ article {
   align-items: center;
 }
 
-textarea {
+.comment-textarea > textarea {
   resize: none;
   width: 100%;
   margin: 5px 0px 10px 0px;
@@ -159,7 +145,7 @@ textarea {
   margin: 0 0 0 auto;
 }
 
-.myButton {
+.post-view-myButton {
 	background-color: #ffffff;
 	border-radius: 28px;
 	border: 1px solid #cccccc;
@@ -170,22 +156,22 @@ textarea {
 	padding: 5px 10px;
 	text-shadow: 0px 1px 0px #ffffff;
 }
-.myButton:hover {
+.post-view-myButton:hover {
 	background-color: #f6f6f6;
 }
-.myButton:active {
+.post-view-myButton:active {
 	position: relative;
 	top: 1px;
 }
 
-.buttons {
+.post-view-buttons {
   display: block;
   float: right;
   text-align: center;
   margin: 10px 0px 0px 10px
 }
 
-.buttons > a {
+.post-view-buttons > a {
   border: 1px solid darkgray;
   border-radius: 5px;
   padding: 5px 10px;
