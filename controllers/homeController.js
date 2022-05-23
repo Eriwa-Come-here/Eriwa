@@ -28,6 +28,6 @@ exports.showNotice = (req, res) => {
 };
 
 //service-intro
-exports.showNotice = (req, res) => {
+exports.showServiceIntro = (req, res) => {
     res.render("service-intro");
 };
