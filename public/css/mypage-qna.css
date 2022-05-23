@@ -12,7 +12,6 @@ div#container{
     box-sizing: border-box;
 }
 
-
 button#btn_write{
     display: block;
     width: 70px;
@@ -26,7 +25,7 @@ button#btn_write{
     font-size: 13px;
 }
 
-select{
+.qna_kind>select{
     width: 70px;
     height: 30px;
     margin-left: 10px;
