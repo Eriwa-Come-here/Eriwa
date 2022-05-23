@@ -344,3 +344,26 @@ div.real_content1 {
     border-right: 1px solid #dadada;
 }
 
+div.board_action > h2{
+    display: inline-block;
+}
+
+div.board_action {
+    position: relative;
+}
+
+div#writingPost{
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    line-height: 30px;
+    text-align: center;
+    width: 70px;
+    height: 30px;
+    border-radius: 7px;
+    background-color: #8398D1;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+}

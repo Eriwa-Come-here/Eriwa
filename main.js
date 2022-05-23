@@ -1,14 +1,20 @@
 const port = 80,
 	express = require("express"),
-    app=express(),
+    app = express(),
+    path = require("path"), 
     layouts = require("express-ejs-layouts"),
-    errorController = require("./controllers/errorController");
+    errorController = require("./controllers/errorController"),
+    homeController = require("./controllers/homeController");
 
 app.set("port", process.env.PORT || 80);
 app.set("view engine", "ejs");
 
 app.use(layouts);
-app.use(express.static("public"));
+app.use("/public", express.static("public"));
+
+//express 설정
+app.set("layout", "layout");
+app.set("layout extractScripts", true)
 
 app.use(
     express.urlencoded({
@@ -17,10 +23,12 @@ app.use(
 );
 app.use(express.json());
 
-//ejs 파일 렌더링 추가
-app.get("/", (req, res)=>{
-    res.render("index");
-});
+//homeController 추가
+app.get("/", homeController.showIndex);
+app.get("/board", homeController.showBoard);
+app.get("/search", homeController.showDetailSearch);
+app.get("/qna", homeController.showQna);
+app.get("/recommend", homeController.showRecommend);
 
 //errorController 추가
 app.use(errorController.pageNotFoundError);
