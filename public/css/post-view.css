@@ -36,7 +36,7 @@
   border-spacing: 10px;
 }
 
-.cell-title {
+.post-view-cell-title {
   font-weight: bold;
 }
 
@@ -45,7 +45,8 @@
   font-size: 16px;
 }
 
-.left-content, .left-content > a, .right-content, .right-content > a {
+.post-info-left-content, .post-info-left-content > a
+, .post-info-right-content, .post-info-right-content > a {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,7 +58,7 @@
   margin: 15px 0px 10px 0px;
 }
 
-.post-buttons > .center {
+.post-buttons > .article-footer-center {
   grid-column: 2/3;
   display: inline-block;
   text-align: center;
@@ -65,26 +66,26 @@
   min-width: 100px;
 }
 
-.post-buttons > .center > a {
+.post-buttons > .article-footer-center > a {
   display: inline-block;
   border: 1px solid darkgray;
   border-radius: 5px;
 }
 
-#recommend, #share {
+#post-view-recommend, #post-view-share {
   display: flex;
   padding: 10px;
   align-items: center;
 }
 
-.right{
+.article-footer-right{
   grid-column: 3/4;
   display: inline-block;
   text-align: right;
   place-self: end end;
 }
 
-.right > a {
+.article-footer-right > a {
   padding: 0px 5px;
   color: gray;
   text-decoration: underline;
