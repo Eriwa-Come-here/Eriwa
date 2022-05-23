@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset='utf-8'>
+  <title>게시글</title>
+  <link rel="stylesheet" href="../public/css/post.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+  <header>
+    <%- include('../partials/nav') %> >
+  </header>
+
+  <main>
+    <article class="post">
+      <header>
+        <a href="#">
+          <%= post.address1 %>
+        </a>
+        <h1>
+          <%= post.title %>
+        </h1>
+        <div class="post-info">
+          <span class="left-content"><a href="#"><img src="../public/images/usericon.png" alt="프로필 이미지"
+                width="20px">&nbsp;<%= post.user_id %></a>&nbsp;&nbsp;&nbsp;<%= post.written_date></span>
+          <span class="right-content">
+            <a href="#comment">
+              <!-- comment 테이블에서 글번호가 post.post_id인 레코드의 개수 -->
+              <img src="../public/images/comment-alt.png" alt="댓글수" width="25" height="25">&nbsp;댓글 <%=
+                post.comment_count %>
+            </a>&nbsp;&nbsp;&nbsp;
+            <a href="#">
+              <!--  테이블에서 글번호가 post.post_id인 레코드의 개수 -->
+              <img src="../public/images/heart.png" alt="추천" width="25" height="25">&nbsp;추천 <%= post.recommend_count %>
+            </a>
+          </span>
+        </div>
+      </header>
+
+      <div class="post-content">
+        <table>
+          <thead>
+            <tr>
+              <td rowspan="6"><img src="../public/images/<%= post.image %>.png" alt="장소 사진" width="400px" height="auto">
+              </td>
+              <td><span class="cell-title">이름</span>&nbsp;&nbsp;&nbsp;&nbsp;<%= post.place_name %>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="cell-title">종류</span>&nbsp;&nbsp;&nbsp;&nbsp;<%= post.place_type %>
+              </td>
+            </tr>
+            <tr>
+              <!-- address는 address1~4를 연결한 것 -->
+              <td><span class="cell-title">위치</span>&nbsp;&nbsp;&nbsp;&nbsp;<%= post.address1 %>&nbsp;<%= post.address2
+                    %>&nbsp;<%= post.address3 %>&nbsp;<%= post.address4 %>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="cell-title">별점</span>&nbsp;&nbsp;&nbsp;&nbsp;<%= post.grade %>점
+              </td>
+            </tr>
+            <tr>
+              <td><span class="cell-title">주차장</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <% if ("<%=post.can_park %>" == 0) { %>
+                  <span>가능</span>
+                  <% } else { %>
+                    <span>불가능</span>
+                    <% } %>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="cell-title">반려동물 동반</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <% if ("<%=post.can_pet %>" == 0) { %>
+                  <span>가능</span>
+                  <% } else { %>
+                    <span>불가능</span>
+                    <% } %>
+              </td>
+            </tr>
+          </thead>
+        </table>
+        <p>
+          <%= post.content>
+        </p>
+        <div class="post-buttons">
+          <span class="center">
+            <a href="#"><span id="recommend"><img src="../public/images/heart.png" alt="추천" width="25"
+                  height="25">&nbsp;추천</span></a>
+            &nbsp;
+            <a href="#"><span id="share"><img src="../public/images/share.png" alt="공유" width="25"
+                  height="25">&nbsp;공유</span></a>
+          </span>
+          <!-- 작성자에게만 보이게 -->
+          // https://url.kr/jdze7k
+          <% if(isAuthenticated && currentUser.id==post.user_id){ %>
+            <span class="right">
+              <a href="/post/edit/<%= post.post_id %>">수정</a>
+              <form action="/post/<%= post.post_id %>?_method=delete" method="post"></form>
+              <a href="#" onclick="confirm('정말 삭제하시겠습니까?')?this.parentElement.submit():null;">삭제</a>
+            </span>
+            <% } %>
+        </div>
+      </div>
+    </article>
+    <div class="comment-area" id="comment">
+      <% if(comments.length) { %>
+        <% comments.forEach(function(comment) { %>
+          <div class="comment-content">
+            <div class="profile">
+              <a href="#">
+                <img src="../public/images/usericon.png" alt="작성자 프로필">&nbsp;<%= comment.author.username %>
+              </a>
+            </div>
+            <p><%= comment.text %</p>
+            <div class="comment-footer">
+              <%= comment.written_date %>">
+              <!-- 작성자에게만 보이게 -->
+              <% if () { %>
+                <span class="comment-buttons">
+                  <a href="/edit/<%= comment.comment_id %>">수정</a>
+                   <a href="#">삭제</a>
+                </span>
+              <% } %>
+            </div>
+          </div>
+        <% }) %>
+      <% } %>
+
+    <div class="comment-writing-column">
+      <div class="profile">
+        <img src="../public/images/usericon.png" alt="내 프로필">&nbsp;<%= my_id %>
+      </div>
+      <form class="comment-textarea" action="index.html" method="post">
+        <p><textarea placeholder="내용을 입력해 주세요" name="comment-textarea" rows="8" cols="80"></textarea></p>
+        <p><input type="submit" name="등록" value="등록" class="myButton"></p>
+      </form>
+    </div>
+  </div>
+  <div class="buttons">
+    <a href="#">목록</a>
+    <a href="../views/post.html">TOP</a>
+  </div>
+</main>
+<%- include('../partials/footer') %>
+</body>
+
+</html>
+
+<% if(isAuthenticated && comment.author && currentUser.id==comment.author.id){ %>
+  <small class="d-block">
+    <!-- 2 --> <a href="javascript:void(0)"
+      onclick="$('.comment-reply-enabled').removeClass('comment-reply-enabled'); $('.comment-edit-enabled').removeClass('comment-edit-enabled'); $('#comment-<%= comment._id %>').addClass('comment-edit-enabled')">Edit</a>
+    |
+    <!-- 6 -->
+    <form action="/comments/<%= comment._id %>?postId=<%= post._id %>&_method=delete<%= getPostQueryString(true) %>"
+      method="post" class="d-inline">
+      <a href="javascript:void(0)"
+        onclick="confirm('Do you want to delete this?')?this.parentElement.submit():null;">Delete</a>
+    </form>
+  </small>
+  <% } %>
+
+    <!-- 3 -->
+    <div class="comment-edit">
+      <%- include('./partials/comment-form', { actionUrl:'/comments/' + comment._id + '?postId=' + post._id
+        + '&_method=put' , comment: comment, commentForm: commentForm, commentError: commentError, }); %>
+    </div>

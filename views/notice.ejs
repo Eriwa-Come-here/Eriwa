@@ -1,0 +1,47 @@
+<main>
+  <div class="notice-category">
+    <h2>
+      <span id="all"><a href="#">전체</a></span>
+      <span id="comment"><a href="#">댓글</a></span>
+      <span id="note"><a href="#">쪽지</a></span>
+    </h2>
+  </div>
+
+  <div class="notification-content">
+    <ul>
+      <li class="notification-list" OnClick="location.href ='post-view.ejs'" style="cursor:pointer; background: #FFBDC1;">
+        <div class="notification-subject">
+          <span class="notification-subject-img">
+            <img src="../public/images/<%= notice.type %>.png" alt="알림 종류" width="40px" height="40px">
+          </span>
+        </div>
+        <div class="notification-maker" style="display:inline-block; text-align: center;">
+          <img src="../public/images/usericon.png" alt="프로필 이미지" width="20px"><br />
+          <span>
+            <%= notice.user_id %>
+          </span>
+        </div>
+        <div class="notification-text">
+          <% if ("notice.type" == "comment") { %>
+            <span class="post-title">
+              <%= notice.title %>
+            </span>
+          <% } %>
+          <div class="comment-content">
+            <%= notice.content>
+          </div>
+        </div>
+        <div class="notification-day">
+          <span class="date">
+            <%= notice.date %>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div style="text-align: center; padding:10px;">알림은 30일 이후 삭제됩니다.</div>
+  <div class="buttons">
+    <a href="../views/notice.html">TOP</a>
+  </div>
+</main>
