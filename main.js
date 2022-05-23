@@ -35,9 +35,11 @@ app.get("/board", homeController.showBoard);
 app.get("/search", homeController.showDetailSearch);
 app.get("/qna", homeController.showQna);
 app.get("/recommend", homeController.showRecommend);
+app.get("/service-intro", homeController.showPost);
 
 //postController추가
 app.get("/board/post-writing", postController.showPostWriting);
+app.get("/board/post-view", postController.showPost);
 
 //errorController 추가
 app.use(errorController.pageNotFoundError);

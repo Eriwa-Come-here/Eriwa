@@ -20,3 +20,14 @@ exports.showQna = (req, res) => {
 exports.showRecommend = (req, res) => {
     res.render("mypage-recommend");
 };
+
+
+//notice
+exports.showNotice = (req, res) => {
+    res.render("notice");
+};
+
+//service-intro
+exports.showNotice = (req, res) => {
+    res.render("service-intro");
+};
