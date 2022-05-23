@@ -37,6 +37,7 @@ app.get("/search", homeController.showDetailSearch);
 app.get("/qna", homeController.showQna);
 app.get("/recommend", homeController.showRecommend);
 app.get("/service-intro", homeController.showServiceIntro);
+app.get("/notice", homeController.showNotice);
 
 //postController추가
 app.get("/board/post-writing", postController.showPostWriting);
