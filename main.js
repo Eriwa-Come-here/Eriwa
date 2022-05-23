@@ -6,9 +6,9 @@ const port = 80,
   errorController = require("./controllers/errorController"),
   homeController = require("./controllers/homeController"),
   postController = require("./controllers/postController"),
-  adminController = require("./controllers/adminController");
-  mypageController = require("./controllers/mypageController");
-  mypageController = require("./controllers/loginController");
+  adminController = require("./controllers/adminController"),
+  mypageController = require("./controllers/mypageController"),
+  loginController = require("./controllers/loginController");
 
 app.set("port", process.env.PORT || 80);
 app.set("view engine", "ejs");
