@@ -57,11 +57,11 @@ div#service_logo>ul>li>a{
 
 div#service_logo>ul>li>ul{
     z-index: 1;
-    position: absolute;
-    top: -50px;
+    position: relative;
+    top:60px;
     float: left;
     display: none;
-    background-color: aqua;
+    background-color: white;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     padding-top: 10px;
