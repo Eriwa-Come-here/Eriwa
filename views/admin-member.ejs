@@ -1,145 +1,100 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>이리와</title>
-    <link
-      href="../public/css/admin-member.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-  </head>
-  <body>
-    <nav>
-      <div class="nav-div">
-        <div class="nav-logoposition">
-          <a href="../views/admin-member.html"
-            ><img src="../public/images/logo.png" width="132"
-          /></a>
-        </div>
-        <div class="nav-icon">
-          <span class="search-box-position">
-            <input type="text" class="search-box" />
-          </span>
-          <span>
-            <a href="#"><img src="../public/images/search.png" width="30" /></a>
-            <a href="#"><img src="../public/images/bell.png" width="30" /></a>
-            <a href="#"
-              ><img src="../public/images/profile_icon.png" width="30"
-            /></a>
-          </span>
-        </div>
-      </div>
-    </nav>
-    <main>
-      <div class="main-div">
-        <div class="main-sidemenu">
-          <ul class="menu-ul">
+<main>
+  <div class="main-div">
+    <div class="main-sidemenu">
+      <ul class="menu-ul">
+        <li>
+          <a href="/admin-member" class="sidemenu-style"> 회원관리</a>
+        </li>
+        <li>
+          <a href="/admin-post" class="sidemenu-style"> 게시글관리</a>
+        </li>
+        <li>
+          <a href="/admin-analysis" class="sidemenu-style"> 통계분석</a>
+          <ul class="smallmenu-ul">
             <li>
-              <a href="#" class="sidemenu-style"> 회원관리</a>
-            </li>
-            <li>
-              <a href="../views/admin-post.html" class="sidemenu-style">
-                게시글관리</a
+              <a href="/admin-analysis" class="smallmenu">
+                - 일일 게시글 분석</a
               >
             </li>
             <li>
-              <a href="../views/admin-analysis.html" class="sidemenu-style">
-                통계분석</a
-              >
-              <ul class="smallmenu-ul">
-                <li>
-                  <a href="../views/admin-analysis.html" class="smallmenu">
-                    - 일일 게시글 분석</a
-                  >
-                </li>
-                <li>
-                  <a href="../views/admin-analysis.html" class="smallmenu">
-                    - 사용자 분석</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="../views/admin-qna.html" class="sidemenu-style">
-                문의내역</a
-              >
+              <a href="/admin-analysis" class="smallmenu"> - 사용자 분석</a>
             </li>
           </ul>
-        </div>
-        <div class="main-contents">
-          <div class="subject">전체 회원</div>
-          <div class="main-searchbox-pos">
-            <form>
-              <select class="select-style">
-                <option>구분</option>
-                <option>회원아이디</option>
-                <option>회원이메일</option>
-                <option>사용자</option>
-                <option>관리자</option>
-              </select>
-            </form>
-            <input type="text" class="main-search-box" />
-            <button class="button-style">검색</button>
-          </div>
-          <div>
-            <table class="table-style">
-              <thead>
-                <tr>
-                  <th scope="cols">No.</th>
-                  <th scope="cols">회원명 / 회원아이디</th>
-                  <th scope="cols">게시글수</th>
-                  <th scope="cols">이메일</th>
-                  <th scope="cols">구분</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td scope="row">1</td>
-                  <td>
-                    <a href="#">김수정</a>
-                    <span>/</span>
-                    <a href="#">sujung1122</a>
-                  </td>
-                  <td>2</td>
-                  <td>
-                    <a href="#">sujung1122@gmail.com</a>
-                  </td>
-                  <td>사용자</td>
-                </tr>
-                <tr>
-                  <td scope="row">1</td>
-                  <td>
-                    <a href="#">김수정</a>
-                    <span>/</span>
-                    <a href="#">sujung1122</a>
-                  </td>
-                  <td>2</td>
-                  <td>
-                    <a href="#">sujung1122@gmail.com</a>
-                  </td>
-                  <td>사용자</td>
-                </tr>
-                <tr>
-                  <td scope="row">1</td>
-                  <td>
-                    <a href="#">김수정</a>
-                    <span>/</span>
-                    <a href="#">sujung1122</a>
-                  </td>
-                  <td>2</td>
-                  <td>
-                    <a href="#">sujung1122@gmail.com</a>
-                  </td>
-                  <td>사용자</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        </li>
+        <li>
+          <a href="/admin-qna" class="sidemenu-style"> 문의내역</a>
+        </li>
+      </ul>
+    </div>
+    <div class="main-contents">
+      <div class="subject">전체 회원</div>
+      <div class="main-searchbox-pos">
+        <form>
+          <select class="select-style">
+            <option>구분</option>
+            <option>회원아이디</option>
+            <option>회원이메일</option>
+            <option>사용자</option>
+            <option>관리자</option>
+          </select>
+        </form>
+        <input type="text" class="main-search-box" />
+        <button class="button-style">검색</button>
       </div>
-    </main>
-    <footer>
-      <p>ⓒ 2022 Team Eriwa</p>
-    </footer>
-  </body>
-</html>
+      <div>
+        <table class="table-style">
+          <thead>
+            <tr>
+              <th scope="cols">No.</th>
+              <th scope="cols">회원명 / 회원아이디</th>
+              <th scope="cols">게시글수</th>
+              <th scope="cols">이메일</th>
+              <th scope="cols">구분</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row">1</td>
+              <td>
+                <a href="#">김수정</a>
+                <span>/</span>
+                <a href="#">sujung1122</a>
+              </td>
+              <td>2</td>
+              <td>
+                <a href="#">sujung1122@gmail.com</a>
+              </td>
+              <td>사용자</td>
+            </tr>
+            <tr>
+              <td scope="row">1</td>
+              <td>
+                <a href="#">김수정</a>
+                <span>/</span>
+                <a href="#">sujung1122</a>
+              </td>
+              <td>2</td>
+              <td>
+                <a href="#">sujung1122@gmail.com</a>
+              </td>
+              <td>사용자</td>
+            </tr>
+            <tr>
+              <td scope="row">1</td>
+              <td>
+                <a href="#">김수정</a>
+                <span>/</span>
+                <a href="#">sujung1122</a>
+              </td>
+              <td>2</td>
+              <td>
+                <a href="#">sujung1122@gmail.com</a>
+              </td>
+              <td>사용자</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>

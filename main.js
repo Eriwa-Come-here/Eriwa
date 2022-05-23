@@ -50,6 +50,11 @@ app.get("/admin-analysis", adminController.showAdminAnalysis);
 app.get("/admin-qna", adminController.showAdminQna);
 app.get("/admin-qna-response", adminController.showAdminQnaResponse);
 
+//listController 추가
+app.get("/mypage-good", listController.mypageGood);
+app.get("/mypage-reply", listController.mypageReply);
+app.get("/mypage-good", listController.mypageWrite);
+
 //errorController 추가
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);
