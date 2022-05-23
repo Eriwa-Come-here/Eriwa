@@ -7,7 +7,6 @@ body {
     margin: 0;
     height: 100%;
     background: #f5f6f7;
-    font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
 #logo {
     width: 150px;
@@ -15,11 +14,13 @@ body {
     cursor: pointer;
 }
 
+/*
 #header {
     padding-top: 62px;
     padding-bottom: 20px;
     text-align: center;
 }
+*/
 #wrapper {
     position: relative;
     height: 100%;
@@ -70,9 +71,11 @@ h3 {
     font-size: 15px;
 }
 
+/*
 input {
     font-family: Dotum,'돋움',Helvetica,sans-serif;    
 }
+*/
 
 .box.int_id {
     padding-right: 110px;
@@ -144,14 +147,12 @@ select {
     width: 100%;
     height: 29px;
     font-size: 15px;
-    background: #fff url(https://static.nid.naver.com/images/join/pc/sel_arr_2x.gif) 100% 50% no-repeat;
     background-size: 20px 8px;
     -webkit-appearance: none;
     display: inline-block;
     text-align: start;
     border: none;
     cursor: default;
-    font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
 
 /* 에러메세지 */
@@ -187,5 +188,4 @@ select {
     background-color: #7173C9;
     font-size: 20px;
     font-weight: 400;
-    font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
