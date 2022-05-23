@@ -127,7 +127,7 @@
   border-radius: 10px;
 }
 
-.profile, .profile > a {
+.post-view-profile, .post-view-profile > a {
   display: flex;
   align-items: center;
 }
