@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <title>이리와</title>
+    <!--header & footer-->
+    <link rel="stylesheet" href="/public/css/header.css">
+    <link rel="stylesheet" href="/public/css/footer.css">
+
+    <!--other page-->
     <link rel="stylesheet" href="/public/css/index.css" />
     <link rel="stylesheet" href="/public/css/service-intro.css" />
     <link rel="stylesheet" href="/public/css/detail-search.css" />
@@ -24,8 +29,7 @@
         <div id="service_logo">
           <ul>
             <li>
-              <a href="/"
-                ><img id="logo" src="/public/images/logo.png" alt="Eriwa logo"
+              <a href="/"><img id="logo" src="/public/images/logo.png" alt="Eriwa logo"
               /></a>
               <ul id="eriwa_list">
                 <p>이리와</p>
@@ -117,7 +121,9 @@
         </div>
       </div>
     </header>
-    <div id="container"><%- body %></div>
+    <div id="container">
+      <%- body %>
+    </div>
     <footer>
       <div>
         <a href="./service_intro.ejs"><p>서비스 소개</p></a>
