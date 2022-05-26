@@ -50,7 +50,7 @@ app.get("/admin-member", adminController.showAdminMember);
 app.get("/admin-post", adminController.showAdminPost);
 app.get("/admin-analysis", adminController.showAdminAnalysis);
 app.get("/admin-qna", adminController.showAdminQna);
-app.get("/admin-qna/admin-qna-response", adminController.showAdminQnaResponse);
+app.get("/admin-qna-response", adminController.showAdminQnaResponse);
 
 //mypageController 추가
 app.get("/mypage_good_list", mypageController.mypageGood);
