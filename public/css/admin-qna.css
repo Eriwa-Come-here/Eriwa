@@ -17,11 +17,21 @@
   display: flex;
   flex-direction: column;
 }
+
+.menu-ul > li {
+  padding-top: 10px;
+}
+
 .smallmenu-ul {
   list-style: none;
   display: flex;
   flex-direction: column;
 }
+
+.smallmenu-ul > li {
+  padding-top: 10px;
+}
+
 .sidemenu-style {
   text-decoration: none;
   color: white;
@@ -42,10 +52,6 @@
   color: black;
 }
 
-li {
-  padding-top: 10px;
-}
-
 /* main에서 메뉴 제외한 contents*/
 
 .main-contents {
@@ -64,7 +70,7 @@ li {
   justify-content: end;
 }
 
-.select-style {
+.qna-select-style {
   padding: 6px 10px;
   margin-left: 5px;
   margin-right: 5px;
@@ -76,7 +82,7 @@ li {
   font-weight: 700;
   text-align: center;
 }
-.button-style {
+.qna-button-style {
   padding: 6px 10px;
   margin-left: 5px;
   margin-right: 5px;
@@ -96,7 +102,7 @@ li {
   padding-right: 20px;
 }
 
-.table-style {
+.qna-table-style {
   border-collapse: collapse;
   text-align: center;
   line-height: 1.5;
@@ -104,25 +110,25 @@ li {
   margin: 20px 30px;
   min-width: 1000px;
 }
-.table-style thead {
+.qna-table-style thead {
   border-right: 1px solid #ccc;
   border-left: 1px solid #ccc;
   background-color: #eaeaea;
 }
-.table-style thead th {
+.qna-table-style thead th {
   padding: 10px;
   font-weight: bold;
   vertical-align: top;
   color: black;
 }
-.table-style tbody th {
+.qna-table-style tbody th {
   width: 150px;
   padding: 10px;
   font-weight: bold;
   vertical-align: top;
   border-bottom: 1px solid #ccc;
 }
-.table-style td {
+.qna-table-style td {
   width: 350px;
   padding: 10px;
   vertical-align: top;
