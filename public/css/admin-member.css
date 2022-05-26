@@ -17,11 +17,21 @@
   display: flex;
   flex-direction: column;
 }
+
+.menu-ul > li {
+  padding-top: 10px;
+}
+
 .smallmenu-ul {
   list-style: none;
   display: flex;
   flex-direction: column;
 }
+
+.smallmenu-ul > li {
+  padding-top: 10px;
+}
+
 .sidemenu-style {
   text-decoration: none;
   color: white;
@@ -42,10 +52,6 @@
   color: black;
 }
 
-li {
-  padding-top: 10px;
-}
-
 /* main에서 메뉴 제외한 contents*/
 
 .main-contents {
@@ -64,7 +70,7 @@ li {
   justify-content: end;
 }
 
-.select-style {
+.member-select-style {
   padding: 6px 10px;
   margin-left: 5px;
   margin-right: 5px;
@@ -76,7 +82,7 @@ li {
   font-weight: 700;
   text-align: center;
 }
-.button-style {
+.member-button-style {
   padding: 6px 10px;
   margin-left: 5px;
   margin-right: 5px;
