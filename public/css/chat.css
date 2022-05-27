@@ -1,12 +1,12 @@
 
-/*.chat_wrap .header { 
+.chat-container > .chat_wrap .header { 
     font-size: 14px; 
     padding: 15px 0; 
     background: #FFBDC1; 
     color: white; 
     text-align: center;  
 }
-*/
+
  
 .chat_wrap .chat { padding-bottom: 80px; }
 .chat_wrap .chat ul { 
@@ -55,14 +55,14 @@
  
 .format { display: none; }
 
-.profile{
+.chat-container > .profile{
     width: 70px;
     height : 70px;
     border-radius : 70%;
     overflow: hidden;
 }
 
-.profile_user{
+.chat-container > .profile_user{
     width:100%;
     height:100%;
     object-fit: cover;

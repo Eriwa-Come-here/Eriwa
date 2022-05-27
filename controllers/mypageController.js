@@ -1,9 +1,9 @@
 exports.mypageGood = (req, res) => {
-    res.render("mypage_good_list");
+    res.render("mypage-good-list");
 };
 
 exports.mypageReply = (req, res) => {
-    res.render("mypage_reply_list");
+    res.render("mypage-reply-list");
 };
 
 exports.mypageWrite = (req, res) => {

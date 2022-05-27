@@ -1,48 +1,15 @@
-/*
-*{
+.replyList-container{
     padding: 0px;
     margin: 0px;
 }
 
-a {
+.replyList-container > a {
     text-decoration: none;
     color: inherit;
 }
 
-header {
-    width : 100%;
-    height : 100px;
-    position: relative;
-    border-bottom: 1px solid black;
-}
 
-.logo_left_side {
-    position: absolute;
-    width : 30px;
-    height : 30px;
-    top: 20px;
-    left : 610px;
-}
-*/
-
-.logo_left_side img {
-    width : 90px;
-    height: 70px;
-}
-
-.logo_right_side { 
-    position: absolute;
-    top : 20px;
-    right: 580px;
-}
-
-.logo_right_side img{
-    width: 70px;
-    height: 70px;
-}
-
-
-div#container{
+.replyList-container > div#container{
     position: relative;
     max-width: 1200px;
     min-width: 1100px;
@@ -55,14 +22,14 @@ div#container{
 
 /* menu*/
 
-.menu_list {
+.replyList-container > .menu_list {
     margin: 5px;
     text-align: center;
     float: left;
     display: flex;    
 }
 
-.write_list {
+.replyList-container > .write_list {
     width: 298px;
     height: 50px;
     border: 1px solid black;
@@ -73,10 +40,10 @@ div#container{
     margin: auto;
 }
 
-.write_list span{
+.replyList-container > .write_list span{
     margin:auto;
 }
-.reply_list {
+.replyList-container > .reply_list {
     width : 298px;
     height: 50px;
     border-top:1px solid black;
@@ -88,10 +55,10 @@ div#container{
 
     display:flex;
 }
-.reply_list span{
+.replyList-container > .reply_list span{
     margin:auto;
 }
-.good_list {
+.replyList-container > .good_list {
     width : 298px;
     height: 50px;
     border : 1px solid black;
@@ -102,13 +69,13 @@ div#container{
     background-color: white;
 
 }
-.good_list span{
+.replyList-container > .good_list span{
     margin:auto;
 }
 
 /* btn */
 
-button#btn_write{
+.replyList-container > button#btn_write{
     display: block;
     width: 70px;
     height: 30px;
@@ -121,7 +88,7 @@ button#btn_write{
     font-size: 13px;
 }
 
-button#btn-all-select{
+.replyList-container > button#btn-all-select{
     width: 80px;
     height: 30px;
     border-radius: 7px;
@@ -132,7 +99,7 @@ button#btn-all-select{
     font-size: 13px;
 }
 
-button#btn_delete{
+.replyList-container > button#btn_delete{
     width: 60px;
     height: 30px;
     border-radius: 7px;
@@ -143,7 +110,7 @@ button#btn_delete{
     font-size: 13px;
 }
 
-select{
+.replyList-container > select{
     width: 70px;
     height: 30px;
     margin-left: 10px;
@@ -153,7 +120,7 @@ select{
     border-radius: 3px;
 }
 
-div.wrapped_qna{
+.replyList-container > div.wrapped_qna{
     display:flex;
     max-width: 1200px;
     min-width: 1152px;
@@ -162,17 +129,17 @@ div.wrapped_qna{
     background-color: white;
 }
 
-img#img_profile{
+.replyList-container > img#img_profile{
     width: 100px;
     height: 100px;
 }
 
-div#img_message>a{
+.replyList-container > div#img_message>a{
     position: relative;
     padding-left: 20px;
 }
 
-div#img_message>a>img{
+.replyList-container > div#img_message>a>img{
     position: absolute;
     top: 0;
     right: 40px;
@@ -180,13 +147,13 @@ div#img_message>a>img{
     width: 20px;
 }
 
-div.user_container, div.qna_container{
+.replyList-container > div.user_container, div.qna_container{
     float: left;
     background-color: #f9faff;
 }
 
 
-div.user_info{
+.replyList-container > div.user_info{
     position: relative;
     text-align: center;
     background-color: white;
@@ -194,14 +161,14 @@ div.user_info{
     padding: 10px 25px 10px 25px;
 }
 
-div.user_info>div>a>p, div.user_info>p{
+.replyList-container > div.user_info>div>a>p, div.user_info>p{
     display: inline-block;
     margin-top: 10px;
     font-weight: bold;
     font-size: 15px;
 }
 
-div.user_detail{
+.replyList-container > div.user_detail{
     background-color: #8398D1;
     font-weight: bold;
     color: white;
@@ -209,28 +176,28 @@ div.user_detail{
     font-size: 11px;
 }
 
-div.user_detail>div{
+.replyList-container > div.user_detail>div{
     display: inline-block;
 }
 
-div.detail_variable{
+.replyList-container > div.detail_variable{
     text-align: right;
     margin-left: 50px;
 }
 
-div.user_detail>div>p, div.user_detail>div>a>p{
+.replyList-container > div.user_detail>div>p, div.user_detail>div>a>p{
     margin-top: 7px;
     line-height: 200%;
 }
 
-div.user_detail>div>a{
+.replyList-container > div.user_detail>div>a{
     font-weight: bold;
     color: white;
     font-size: 11px;
 
 }
 
-div.qna_container{
+.replyList-container > div.qna_container{
     max-width: 1050px;
     min-width: 950px;
     border-left: 0.5px solid #787878;
@@ -238,32 +205,33 @@ div.qna_container{
 }
 
 
-div.qna_container>div.qna_detail{
+.replyList-container > div.qna_container>div.qna_detail{
     background-color: white;
     border: 0.5px solid #787878;
     text-align: left;
+    
     padding: 15px 20px 15px 20px;
 }
 
-div.qna_container>div.qna_detail>div.button-container{
+.replyList-container > div.qna_container>div.qna_detail>div.button-container{
     padding-bottom: 10px;
 }
 
-div.qna_container>div.qna_detail>div.menu_list {
+.replyList-container > div.qna_container>div.qna_detail>div.menu_list {
     padding-bottom: 10px;
 }
 
-div.qna_kind{
-    /*text-align: left;*/
+.replyList-container > div.qna_kind{
+    text-align: right;
     border-bottom: 0.5px solid #787878;
     margin-bottom: 20px;
     min-height: 1000px;
 }
 
-/*div.qna_list{
+.replyList-container > div.qna_list{
     min-height: 1000px;
 }
-*/
+
 
 .board_list_wrap {
     padding: 3px;
@@ -328,38 +296,3 @@ div.qna_kind{
     width: 15%;
 }
 
-
-/* footer*/
-
-footer{
-    float: left;
-    position: relative;
-    min-width: 1150px;
-    max-width: 1200px;
-    height: 100%;
-    margin: 0px auto;
-    padding: 60px 20px;
-    margin-top: 50px;
-    box-sizing: border-box;
-    font-size: 16px;
-    border-top: 1px solid #dadada;
-}
-
-footer>div{
-    display: inline-block;
-    padding-right: 10px;
-    margin-right: 10px;
-    border-right: 1px solid #dadada;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-footer>p{
-    margin-top: 20px;
-    font-weight: bold;
-    font-size: 12px;
-}
-
-footer>div>a{
-    color: rgb(145, 145, 145);
-}
