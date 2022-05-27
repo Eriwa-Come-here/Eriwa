@@ -9,7 +9,7 @@
 }
 
 
-div#container{
+div#writeBig-container{
     position: relative;
     max-width: 1200px;
     min-width: 1100px;
@@ -110,7 +110,7 @@ button#btn_delete{
     font-size: 13px;
 }
 
-select{
+.writeList-container select{
     width: 70px;
     height: 30px;
     margin-left: 10px;
@@ -120,7 +120,7 @@ select{
     border-radius: 3px;
 }
 
-div.wrapped_qna{
+div.write-wrapped{
     display:flex;
     max-width: 1200px;
     min-width: 1152px;
@@ -147,7 +147,7 @@ div#img_message>a>img{
     width: 20px;
 }
 
-div.user_container, div.qna_container{
+div.user_container, div.write_container{
     float: left;
     border: 0.5px solid black;
     background-color: #f9faff;
@@ -198,7 +198,7 @@ div.user_detail>div>a{
 
 }
 
-div.qna_container{
+div.write_container{
     max-width: 1050px;
     min-width: 950px;
     border-left: 0.5px solid #787878;
@@ -206,32 +206,32 @@ div.qna_container{
 }
 
 
-div.qna_container>div.qna_detail{
+div.write_container>div.write_detail{
     background-color: white;
     border: 0.5px solid #787878;
     text-align: left;
     padding: 15px 20px 15px 20px;
 }
 
-div.qna_container>div.qna_detail>div.button-container{
+div.write_container>div.write_detail>div.button-container{
     padding-bottom: 10px;
 }
 
-div.qna_container>div.qna_detail>div.menu_list {
+div.write_container>div.write_detail>div.menu_list {
     padding-bottom: 10px;
 }
 
-div.qna_kind{
-    /*text-align: left;*/
+div.write_kind{
+
     border-bottom: 0.5px solid #787878;
     margin-bottom: 20px;
     min-height: 1000px;
 }
-
-/*div.qna_list{
+/*
+div.write_list{
     min-height: 1000px;
-}
-*/
+}*/
+
 
 .board_list_wrap {
     padding: 3px;

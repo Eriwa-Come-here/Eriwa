@@ -1,17 +1,17 @@
 <div class="signup-container">
         <!-- wrapper -->
-        <div id="wrapper">
+        <div id="signup-wrapper">
 
             <!-- content-->
-            <div id="content">
+            <div id="signup-content">
 
                 <!-- ID -->
                 <div>
                     <h3 class="join_title">
                         <label for="id">아이디</label>
                     </h3>
-                    <span class="box int_id">
-                        <input type="text" id="id" class="int" maxlength="20" placeholder="영소문자와 숫자만 사용 가능, 5자 이상">
+                    <span class="signup-box int_id">
+                        <input type="text" id="id" class="signup-int" maxlength="20" placeholder="영소문자와 숫자만 사용 가능, 5자 이상">
                         <span class="step_url"></span>
                     </span>
                     <span class="error_next_box"></span>
@@ -20,8 +20,8 @@
                 <!-- PW1 -->
                 <div>
                     <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
-                    <span class="box int_pass">
-                        <input type="text" id="pswd1" class="int" maxlength="20" placeholder="영소문자와 숫자 1자 이상 반드시 포함, 8자 이상">
+                    <span class="signup-box int_pass">
+                        <input type="text" id="pswd1" class="signup-int" maxlength="20" placeholder="영소문자와 숫자 1자 이상 반드시 포함, 8자 이상">
                         <span class="step_ps_url"></span>
                         <span id="alertTxt">사용불가</span>
                         
@@ -32,8 +32,8 @@
                 <!-- PW2 -->
                 <div>
                     <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
-                    <span class="box int_pass_check">
-                        <input type="text" id="pswd2" class="int" maxlength="20" >
+                    <span class="signup-box int_pass_check">
+                        <input type="text" id="pswd2" class="signup-int" maxlength="20" >
                     </span>
                     <span class="error_next_box"></span>
                 </div>
@@ -41,29 +41,29 @@
                 <!-- NAME -->
                 <div>
                     <h3 class="join_title"><label for="name">이름</label></h3>
-                    <span class="box int_name">
-                        <input type="text" id="name" class="int" maxlength="20">
+                    <span class="signup-box int_name">
+                        <input type="text" id="name" class="signup-int" maxlength="20">
                     </span>
                     <span class="error_next_box"></span>
                 </div>
                 <div>
                     <h3 class="join_title"><label for="phoneNo">닉네임</label></h3>
-                    <span class="box int_mobile">
-                        <input type="tel" id="mobile" class="int" maxlength="16" placeholder="한글은 2자 이상, 영어는 4자 이상">
+                    <span class="signup-box int_mobile">
+                        <input type="tel" id="mobile" class="signup-int" maxlength="16" placeholder="한글은 2자 이상, 영어는 4자 이상">
                     </span>
                     <span class="error_next_box"></span>    
                 </div>
                 <div>
                     <h3 class="join_title"><label for="email">이메일<span class="optional"></span></label></h3>
-                    <span class="box int_email">
-                        <input type="text" id="email" class="int" maxlength="100">
+                    <span class="signup-box int_email">
+                        <input type="text" id="email" class="signup-int" maxlength="100">
                     </span>
                     <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>    
                 </div>
 
                 <div>
                     <h3 class="join_title"><label for="gender">성별</label></h3>
-                    <span class="box gender_code">
+                    <span class="signup-box gender_code">
                         <select id="gender" class="sel">
                             <option>성별</option>
                             <option value="M">남자</option>
@@ -79,14 +79,14 @@
                     <div id="bir_wrap">
                         <!-- BIRTH_YY -->
                         <div id="bir_yy">
-                            <span class="box">
-                                <input type="text" id="yy" class="int" maxlength="4" placeholder="년(4자)">
+                            <span class="signup-box">
+                                <input type="text" id="yy" class="signup-int" maxlength="4" placeholder="년(4자)">
                             </span>
                         </div>
 
                         <!-- BIRTH_MM -->
                         <div id="bir_mm">
-                            <span class="box">
+                            <span class="signup-box">
                                 <select id="mm" class="sel">
                                     <option>월</option>
                                     <option value="01">1</option>
@@ -107,8 +107,8 @@
 
                         <!-- BIRTH_DD -->
                         <div id="bir_dd">
-                            <span class="box">
-                                <input type="text" id="dd" class="int" maxlength="2" placeholder="일">
+                            <span class="signup-box">
+                                <input type="text" id="dd" class="signup-int" maxlength="2" placeholder="일">
                             </span>
                         </div>
 
@@ -127,4 +127,4 @@
 
         </div> 
         <!-- wrapper -->
-    </div>
+</div>

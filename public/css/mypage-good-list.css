@@ -9,7 +9,7 @@
 }
 
 
-.goodList-container > div#container{
+div#goodBig-container{
     position: relative;
     max-width: 1200px;
     min-width: 1100px;
@@ -22,7 +22,7 @@
 
 /* menu*/
 
-.goodList-container > .menu_list {
+.good-menu_list {
     margin: 5px;
     text-align: center;
     float: left;
@@ -75,7 +75,7 @@
 
 /* btn */
 
-.goodList-container > button#btn_write{
+button#btn_write{
     display: block;
     width: 70px;
     height: 30px;
@@ -88,7 +88,7 @@
     font-size: 13px;
 }
 
-.goodList-container > button#btn-all-select{
+button#btn-all-select{
     width: 80px;
     height: 30px;
     border-radius: 7px;
@@ -99,7 +99,7 @@
     font-size: 13px;
 }
 
-.goodList-container > button#btn_delete{
+button#btn_delete{
     width: 60px;
     height: 30px;
     border-radius: 7px;
@@ -110,7 +110,7 @@
     font-size: 13px;
 }
 
-.goodList-container > select{
+.goodList-container select{
     width: 70px;
     height: 30px;
     margin-left: 10px;
@@ -120,7 +120,7 @@
     border-radius: 3px;
 }
 
-.goodList-container > div.wrapped_qna{
+div.wrapped_good{
     display:flex;
     max-width: 1200px;
     min-width: 1152px;
@@ -129,7 +129,7 @@
     background-color: white;
 }
 
-.goodList-container > img#img_profile{
+.goodList-container img#img_profile{
     width: 100px;
     height: 100px;
 }
@@ -147,13 +147,13 @@ div#img_message>a>img{
     width: 20px;
 }
 
-.goodList-container > div.user_container, div.qna_container{
+ div.user_container, div.good_container{
     float: left;
     background-color: #f9faff;
 }
 
 
-.goodList-container > div.user_info{
+div.user_info{
     position: relative;
     text-align: center;
     background-color: white;
@@ -161,14 +161,14 @@ div#img_message>a>img{
     padding: 10px 25px 10px 25px;
 }
 
-.goodList-container > div.user_info>div>a>p, div.user_info>p{
+div.user_info>div>a>p, div.user_info>p{
     display: inline-block;
     margin-top: 10px;
     font-weight: bold;
     font-size: 15px;
 }
 
-.goodList-container > div.user_detail{
+div.user_detail{
     background-color: #8398D1;
     font-weight: bold;
     color: white;
@@ -176,28 +176,28 @@ div#img_message>a>img{
     font-size: 11px;
 }
 
-.goodList-container > div.user_detail>div{
+div.user_detail>div{
     display: inline-block;
 }
 
-.goodList-container > div.detail_variable{
+div.detail_variable{
     text-align: right;
     margin-left: 50px;
 }
 
-.goodList-container > div.user_detail>div>p, div.user_detail>div>a>p{
+div.user_detail>div>p, div.user_detail>div>a>p{
     margin-top: 7px;
     line-height: 200%;
 }
 
-.goodList-container > div.user_detail>div>a{
+div.user_detail>div>a{
     font-weight: bold;
     color: white;
     font-size: 11px;
 
 }
 
-.goodList-container > div.qna_container{
+div.good_container{
     max-width: 1050px;
     min-width: 950px;
     border-left: 0.5px solid #787878;
@@ -205,44 +205,41 @@ div#img_message>a>img{
 }
 
 
-.goodList-container > div.qna_container>div.qna_detail{
+div.good_detail{
     background-color: white;
     border: 0.5px solid #787878;
     text-align: left;
     padding: 15px 20px 15px 20px;
 }
 
-.goodList-container > div.qna_container>div.qna_detail>div.button-container{
+div.good_container>div.good_detail>div.button-container{
     padding-bottom: 10px;
 }
 
-.goodList-container > div.qna_container>div.qna_detail>div.menu_list {
+div.good_container>div.good_detail>div.good-menu_list {
     padding-bottom: 10px;
 }
 
-.goodList-container > div.qna_kind{
+div.good_kind{
     /*text-align: left;*/
     border-bottom: 0.5px solid #787878;
     margin-bottom: 20px;
     min-height: 1000px;
 }
 
-.goodList-container > div.qna_list{
-    min-height: 1000px;
-}
 
 
-.goodList-container > .board_list_wrap {
+.board_list_wrap {
     padding: 3px;
 }
 
-.goodList-container > .board_list_head,
+.board_list_head,
 .board_list_body .item {
     padding: 10px 0;
     font-size: 0;
 }
 
-.goodList-container > .board_list_head {
+.board_list_head {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     height: 25px;
@@ -250,11 +247,11 @@ div#img_message>a>img{
     background-color: #8398D1 ;
 }
 
-.goodList-container > .board_list_body .item {
+.board_list_body .item {
     border-bottom: 1px solid #ccc;
 }
 
-.goodList-container > .board_list_body .item > div {
+.board_list_body .item > div {
     display: inline-block;
     text-align: center;
     font-size: 16px;
@@ -262,36 +259,36 @@ div#img_message>a>img{
     line-height: 50px;
 }
 
-.goodList-container > .board_list_head > div {
+.board_list_head > div {
     display: inline-block;
     text-align: center;
     font-size: 18px;
 }
 
-.goodList-container > .board_list_head > div {
+.board_list_head > div {
     font-weight: 600;
 }
 
-.goodList-container > .board_list .button {
+.board_list .button {
     width: 10%;
 }
 
-.goodList-container > .board_list .tit {
+.board_list .tit {
     width: 65%;
     padding-left: 50px;;
 }
 
-.goodList-container > .board_list_body div.tit {
+.board_list_body div.tit {
     text-align: left;
     
 }
 
-.goodList-container > .board_list_body div.tit a:hover {
+.board_list_body div.tit a:hover {
     text-decoration: underline;
 }
 
 
-.goodList-container > .board_list .date {
+.board_list .date {
     width: 15%;
 }
 
