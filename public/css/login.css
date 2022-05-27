@@ -1,11 +1,11 @@
-/*
-*{
+
+.login-container{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Alata', sans-serif;
 }
-*/
+
 
 .page-container{
     width: 100vw;

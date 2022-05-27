@@ -1,24 +1,23 @@
-/*
-html, body {
+.chatList-container {
     position: relative;
     height: 100%;
     min-width: 1000px;
     white-space: nowrap;
   }
   
-  body {
+  .chatList-container {
     background: #fff;
     font-size: 14px;
     color: #000;
   }
   
   
-  a{
+  .chatList-container > a{
       text-decoration: none;
       color: black;
   }
   
-  ul li{
+  .chatList-container > ul li{
       list-style: none;
   }
   
@@ -27,19 +26,20 @@ html, body {
   
   /* dropdown menu */
   
-  /*
-  main {
+  
+  .chatList-container > main {
     position: relative;
     margin-left: 120px;
     margin-right: 120px;
     z-index: 5;
   }
   
-  h2 {
+  /*2차수정*/
+  .chatList-container > h2 {
     margin: 15px 5px 15px auto;
   }
   
-  h2 > span > a {
+  .chatList-container > h2 > span > a {
     font-size: 18px;
     font-weight: normal;
     text-decoration: underline;
@@ -47,7 +47,7 @@ html, body {
     color: #BABABA;
   }
   
-  #all > a {
+  .chatList-container > #all > a {
     font-weight: bold;
     color: #000;
   }
@@ -91,45 +91,14 @@ html, body {
     -webkit-line-clamp: 2;
   }
   
-  .buttons {
+  .chatList-container > .buttons {
     display: inline-block;
-    float: right;
     text-align: center;
     margin: 10px 0px 0px 10px
   }
   
-  .buttons > a {
+  .chatList-container > .buttons > a {
     border: 1px solid darkgray;
     border-radius: 5px;
     padding: 5px 10px;
   }
-  
-  
-
-
-.logo_left_side {
-    position: absolute;
-    width : 30px;
-    height : 30px;
-    top: 20px;
-    left : 50px
-}
-
-.logo_left_side img {
-    width : 90px;
-    height: 70px;
-}
-
-.logo_right_side { 
-    position: absolute;
-    top : 20px;
-    right:1000px;
-    display: flex;
-}
-
-.logo_right_side p{
-    width: 70px;
-    height: 70px;
-
-}
-*/

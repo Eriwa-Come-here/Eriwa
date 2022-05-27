@@ -53,8 +53,8 @@ app.get("/admin-qna", adminController.showAdminQna);
 app.get("/admin-qna-response", adminController.showAdminQnaResponse);
 
 //mypageController 추가
-app.get("/mypage_good_list", mypageController.mypageGood);
-app.get("/mypage_reply_list", mypageController.mypageReply);
+app.get("/mypage-good-list", mypageController.mypageGood);
+app.get("/mypage-reply-list", mypageController.mypageReply);
 app.get("/mypage-write-list", mypageController.mypageWrite);
 app.get("/chat-list", mypageController.chatList);
 app.get("/chat", mypageController.chatStory);
