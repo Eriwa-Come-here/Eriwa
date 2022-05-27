@@ -1,4 +1,4 @@
-/*html, body {
+.notice-container {
   position: relative;
   height: 100%;
 
@@ -6,24 +6,24 @@
   white-space: nowrap;
 }
 
-body {
+.notice-container {
   background: #fff;
   font-size: 14px;
   color: #000;
 }
 
-main {
+.notice-main {
   position: relative;
-  margin-left: 120px;
-  margin-right: 120px;
+  margin-left: 150px;
+  margin-right: 150px;
   z-index: 5;
 }
 
-h2 {
+.notice-category > h2 {
   margin: 15px 5px 15px auto;
 }
 
-h2 > span > a {
+.notice-category > h2 > span > a {
   font-size: 18px;
   font-weight: normal;
   text-decoration: underline;
@@ -31,7 +31,7 @@ h2 > span > a {
   color: #BABABA;
 }
 
-#all > a {
+#all-notice > a {
   font-weight: bold;
   color: #000;
 }
@@ -52,8 +52,13 @@ h2 > span > a {
   background: #ffbdc1;
 }
 
-.post-title, .notification-day {
+.notice-title, .notification-day {
+  
   color: #8f8f8f;
+}
+
+.notice-title {
+  font-weight: bold;
 }
 
 .notification-subject, .notification-day {
@@ -75,15 +80,15 @@ h2 > span > a {
   -webkit-line-clamp: 2;
 }
 
-.buttons {
-  display: inline-block;
+.notice-top-button {
+  display: block;
   float: right;
   text-align: center;
   margin: 10px 0px 0px 10px
 }
 
-.buttons > a {
+.notice-top-button > a {
   border: 1px solid darkgray;
   border-radius: 5px;
   padding: 5px 10px;
-}*/
+}

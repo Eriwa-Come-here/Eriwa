@@ -1,19 +1,25 @@
-/*html, body {
+.service-intro-container {
   position: relative;
   height: 100%;
   min-width: 1000px;
+  max-width: 1300px;
   white-space: nowrap;
 }
 
-body {
+.service-intro-container {
   background: #fff;
   font-size: 14px;
   color: #000;
-}*/
+}
+
+.service-intro-main {
+  margin-left: 150px;
+  margin-right: 150px;
+}
 
 /* banner */
 .swiper {
-  width: 1000px;
+  width: 100%;
 }
 
 .swiper-slide {
@@ -47,17 +53,19 @@ body {
 
 /* card */
 .cards {
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 30px 0px;
 }
 
 .cards > section {
   position: relative;
   background: #f9f9f9;
-  width: 240px;
-  height: 320px;
+  width: 200px;
+  height: 240px;
   display: inline-block;
   border-radius: 15px;
-  margin: 30px 20px 30px 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   overflow: hidden;
   text-align: left;
@@ -70,9 +78,9 @@ body {
   -o-transition: 0.5s;  /*오페라*/
   transition: 0.5s;
 	width: 100%;
-	height: 200px;
+	height: 150px;
 	border-radius: 15px 15px 0 0;
-	background-size: 100% 200px;
+	background-size: 100% 150px;
 	background-repeat: no-repeat;
 
 }
@@ -95,7 +103,7 @@ body {
 
 .cards > section:hover .card-header  {
 	opacity: 0.8;
-  height: 180px;
+  height: 130px;
 }
 
 .card-body{
@@ -104,7 +112,7 @@ body {
   padding: 0px 20px 50px 0px;
 }
 
-/*h2 {
-  font-size: 22px;
+.card-body > h2 {
+  font-size: 18px;
   font-weight: bold;
-}*/
+}
