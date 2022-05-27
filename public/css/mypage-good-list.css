@@ -1,6 +1,7 @@
 .goodList-container {
     padding: 0px;
     margin: 0px;
+    overflow: hidden;
 }
 
 .goodList-container > a {
@@ -11,7 +12,7 @@
 
 div#goodBig-container{
     position: relative;
-    max-width: 1200px;
+    max-width: 1300px;
     min-width: 1100px;
     height: 100%;
     margin: 0 auto;
