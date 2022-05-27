@@ -101,6 +101,7 @@
 }
 
 .answer {
+  resize: none;
   border: 1px solid gray;
   background-color: white;
   border-radius: 10px;
