@@ -15,17 +15,6 @@ div#container>div>div.search>input{
     width: 95%;
 }
 
-div#container{
-    position: relative;
-    max-width: 1200px;
-    min-width: 1000px;
-    height: 100%;
-    margin: 0 auto;
-    padding: 0 20px;
-    margin-top: 15px;
-    box-sizing: border-box;
-}
-
 div.btn_option>a{
     display: inline-block;
 }
@@ -68,7 +57,7 @@ div.search_first, div.search_second, div.search_third{
     margin-left: 10px;
 }
 
-select{
+select.selec_search{
     width: 70px;
     height: 30px;
     margin-left: 10px;

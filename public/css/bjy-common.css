@@ -1,0 +1,115 @@
+/* container */
+
+div#container{
+    position: relative;
+    max-width: 1200px;
+    min-width: 1000px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    margin-top: 15px;
+    box-sizing: border-box;
+}
+
+div.contents{
+    position: relative;
+    border: 0.5px solid #787878;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: white;
+}
+
+/* contents */
+
+div#all_contents>div.board_action>h2{
+    display: inline-block;
+}
+
+div#all_contents>div.board_action{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+div.board_action>div>a>img{
+    width: 17px;
+    height: 17px;
+    margin-right: 5px;
+}
+
+div.board_action>div{
+    display: inline-block;
+    padding-right: 50px;
+}
+
+div#all_contents{
+    position: relative;
+    min-width: 1050px;
+    background-color: #F9FAFF;
+    padding: 10px 50px 50px 50px;
+}
+
+div.contents_explain{
+    float: left;
+    margin-bottom: 10px;
+}
+
+div.contents_info>a{
+    display: inline-block;
+    margin-right: 5px;
+}
+
+/* contents-info */
+
+div.contents_info{
+    position: absolute;
+    bottom: 15px;
+}
+
+div.contents_info>a>div>p{
+    position: relative;
+    bottom: 5px;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+div.contents_info>a>div>img{
+    width: 22px;
+    height: 22px;
+}
+
+div.btn_jjim>p{
+    color: #FF7979;
+}
+
+div.btn_comment>p{
+    color: #000000;
+}
+
+div.btn_grade>p{
+    color: #FFB636;
+}
+
+/*real_content*/
+
+div.contents>div>div>img{
+    height: 200px;
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+div.gallery_real_content {
+    width: 200px;
+    padding-right: 73px;
+    padding-bottom: 20px;
+    margin-left: 73px;
+    display: inline-block;
+}
+
+div.listview_real_content{
+    position: relative;
+    width: 465px;
+    padding-right: 30px;
+    margin-left: 30px;
+    display: inline-block;
+}
