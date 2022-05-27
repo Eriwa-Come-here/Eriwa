@@ -1,7 +1,8 @@
 .notice-container {
   position: relative;
   height: 100%;
-
+  padding: 0px;
+  margin: 0px;
   min-width: 1000px;
   white-space: nowrap;
 }
@@ -34,6 +35,10 @@
 #all-notice > a {
   font-weight: bold;
   color: #000;
+}
+
+.notification-content > ul {
+  padding: 0;
 }
 
 .notification-list {

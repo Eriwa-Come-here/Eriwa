@@ -1,5 +1,8 @@
 
 /* container */
+#container {
+    overflow: hidden;
+}
 
 button#btn_write{
     display: block;
