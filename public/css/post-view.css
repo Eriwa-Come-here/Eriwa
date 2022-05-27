@@ -1,6 +1,8 @@
 .post-view-container {
   position: relative;
   height: 100%;
+  padding: 0px;
+  margin: 0px;
   min-width: 1000px;
   white-space: nowrap;
 }
@@ -13,19 +15,20 @@
 
 .post-view-main {
   position: relative;
+  margin: 20px 150px 0px 20px;
   margin-left: 150px;
   margin-right: 150px;
   z-index: 5;
-}
-
-.post-article {
-  margin: 20px 0px;
 }
 
 .post-article > header, .post-content {
   /*margin: 10px 0px;*/
   padding: 0px 0px 10px 0px;
   height: 100%;
+}
+
+.post-article > header {
+  line-height: 90%;
 }
 
 .post-info {
@@ -45,6 +48,7 @@
 .post-content > p {
   white-space: normal;
   font-size: 16px;
+  word-break: break-all;
 }
 
 .post-info-left-content, .post-info-left-content > a
@@ -57,7 +61,7 @@
 .post-buttons {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  margin: 15px 0px 10px 0px;
+  margin: 30px 0px 10px 0px;
 }
 
 .post-buttons > .article-footer-center {
@@ -106,6 +110,7 @@
 .comment-content > p {
   white-space: normal;
   font-size: 16px;
+  word-break: break-all;
 }
 
 .comment-footer {
@@ -124,8 +129,7 @@
 .comment-writing-column {
   width: 70%;
   padding: 20px 60px;
-  margin: 10px auto;
-  margin-top: 20px;
+  margin: 20px auto 10px auto;
   background: #fff;
   border-radius: 10px;
 }
@@ -138,7 +142,7 @@
 .comment-textarea > p > textarea {
   resize: none;
   width: 100%;
-  margin: 5px 0px 10px 0px;
+  margin: 0px 0px 0px 0px;
   border: 1px solid #cccccc;
   border-radius: 7px;
 }
