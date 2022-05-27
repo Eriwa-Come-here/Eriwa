@@ -1,17 +1,6 @@
 
 /* container */
 
-div#container{
-    position: relative;
-    max-width: 1200px;
-    min-width: 1100px;
-    height: 100%;
-    margin: 0 auto;
-    padding: 0 20px;
-    margin-top: 15px;
-    box-sizing: border-box;
-}
-
 button#btn_write{
     display: block;
     width: 70px;
