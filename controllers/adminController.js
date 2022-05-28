@@ -1,3 +1,6 @@
+const db = require("../models/index"),
+  qna = db.qna;
+
 //회원관리
 exports.showAdminMember = (req, res) => {
   res.render("admin-member");
@@ -14,8 +17,16 @@ exports.showAdminAnalysis = (req, res) => {
 };
 
 //문의내역
-exports.showAdminQna = (req, res) => {
-  res.render("admin-qna");
+exports.showAdminQna = async (req, res) => {
+  try {
+    data = await qna.findAll();
+    console.log(data);
+    res.render("admin-qna", { qnas: data });
+  } catch (err) {
+    res.status(500).send({
+      message: err.message,
+    });
+  }
 };
 
 //문의글답변

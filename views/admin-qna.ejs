@@ -47,23 +47,24 @@
             <th scope="cols">구분</th>
           </tr>
         </thead>
+        <% qnas.forEach(s=>{ %>
         <tbody>
           <tr>
-            <td scope="row">1</td>
+            <td scope="row"><%= s.qna_id %></td>
             <td>
-              <span>김수정</span>
-              <span>/</span>
-              <span>sujung1122</span>
+              <!-- <span><%= s.name %></span>
+              <span>/</span> -->
+              <span><%= s.user_id %></span>
             </td>
             <td>
-              가나다라마바사아자차카타파하ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㄴㄴㄴㄴㄴ
+              <a href="/admin-qna-response"><%= s.question %></a>
             </td>
             <td>
-              <p>답변대기중</p>
-              <a href="/admin-qna-response">답변하기</a>
+              <p>답변대기</p>
             </td>
           </tr>
         </tbody>
+        <% }); %>
       </table>
     </div>
   </div>
