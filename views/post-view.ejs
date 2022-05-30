@@ -1,15 +1,20 @@
 <div class="post-view-container">
   <main class="post-view-main">
+    <!-- 본문 -->
     <article class="post-article">
       <header>
-        <a href="/board">지역 이름</a>
-        <h1>게시글 타이틀</h1>
+        <a href="/board"><%= post.address1 %></a>
+        <h1><%= post.title %> </h1>
         <div class="post-info">
-          <span class="post-info-left-content"><a href="/mypage-good-list"><img src="../public/images/usericon.png" alt="프로필 이미지"
-                width="20px">&nbsp;작성자</a>&nbsp;&nbsp;&nbsp;yyyy.mm.dd hh:mm</span>
-          <span class="post-info-right-content"><a href="#comment"><img src="../public/images/comment-alt.png" alt="댓글수" width="25"
-                height="25">&nbsp;댓글 1</a>&nbsp;&nbsp;&nbsp;<a href="#"><img src="../public/images/heart.png" alt="추천"
-                width="25" height="25">&nbsp;추천 5</a> </span>
+          <span class="post-info-left-content">
+            <a href="/mypage-good-list"><img src="../public/images/usericon.png" alt="프로필 이미지"
+                width="20px">&nbsp;<%= post.user_id %></a>&nbsp;&nbsp;&nbsp;<%= post.written_date %>
+          </span>
+          <span class="post-info-right-content">
+            <a href="#comment"><img src="../public/images/comment-alt.png" alt="댓글수" width="25"
+                height="25">&nbsp;댓글 <%= 1 %></a>&nbsp;&nbsp;&nbsp;<a href="#"><img src="../public/images/heart.png" alt="추천"
+                width="25" height="25">&nbsp;추천 <%= 5 %></a>
+          </span>
         </div>
       </header>
   
@@ -17,77 +22,109 @@
         <table>
           <thead>
             <tr>
-              <td rowspan="6"><img src="../public/images/cafe.png" alt="장소 사진" width="400px" height="auto"></td>
-              <td><span class="post-view-cell-title">이름</span>&nbsp;&nbsp;&nbsp;&nbsp;DalDalHaru</td>
+              <td rowspan="6"><img src="<%= `../public/images/${post.image}` %>" alt="장소 사진" width="400px" height="auto"></td>
+              <td><span class="post-view-cell-title">이름</span>&nbsp;&nbsp;&nbsp;&nbsp;<%= post.place_name %></td>
             </tr>
             <tr>
-              <td><span class="post-view-cell-title">종류</span>&nbsp;&nbsp;&nbsp;&nbsp;카페</td>
+              <td><span class="post-view-cell-title">종류</span>&nbsp;&nbsp;&nbsp;&nbsp;<%= post.place_type %></td>
             </tr>
             <tr>
-              <td><span class="post-view-cell-title">위치</span>&nbsp;&nbsp;&nbsp;&nbsp;서울특별시 성북구 돈암동</td>
+              <td><span class="post-view-cell-title">위치</span>&nbsp;&nbsp;&nbsp;&nbsp;<%= post.full_address %></td>
             </tr>
             <tr>
-              <td><span class="post-view-cell-title">별점</span>&nbsp;&nbsp;&nbsp;&nbsp;★★★★★</td>
+              <td><span class="post-view-cell-title">별점</span>&nbsp;&nbsp;&nbsp;&nbsp;<%= post.grade %>점</td>
             </tr>
             <tr>
-              <td><span class="post-view-cell-title">주차장</span>&nbsp;&nbsp;&nbsp;&nbsp;가능/불가능</td>
+              <td><span class="post-view-cell-title">주차장</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <% if (post.can_park == 0) { %>
+                  <span>불가능</span>
+                <% } else { %>
+                  <span>가능</span>
+                <% } %>
+              </td>
             </tr>
             <tr>
-              <td><span class="post-view-cell-title">반려동물 동반</span>&nbsp;&nbsp;&nbsp;&nbsp;가능/불가능</td>
+              <td><span class="post-view-cell-title">반려동물 동반</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <% if (post.can_pet == 0) { %>
+                  <span>불가능</span>
+                <% } else { %>
+                  <span>가능</span>
+                <% } %>
+              </td>
             </tr>
           </thead>
         </table>
-        <p id="post-content-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-          laborum.</p>
+        <p id="post-content-text"><%= post.content %></p>
         <div class="post-buttons">
           <span class="article-footer-center">
-            <a href="#"><span id="post-view-recommend"><img src="../public/images/heart.png" alt="추천" width="25"
+            <!-- 추천 기능 추가하기 -->
+            <a href="#" onclick="javascript:pushRecommend()"><span id="post-view-recommend"><img src="../public/images/heart.png" alt="추천" width="25"
                   height="25">&nbsp;추천</span></a>
+            <script>
+              function pushRecommend(){
+                // 기능 구현하기,,,,
+              }
+            </script>
             &nbsp;
-            <a href="#"><span id="post-view-share"><img src="../public/images/share.png" alt="공유" width="25"
+            <a href="#" onclick="javascript:copyUrl()"><span id="post-view-share"><img src="../public/images/share.png" alt="공유" width="25"
                   height="25">&nbsp;공유</span></a>
+            <script type="text/javascript">
+              function copyUrl(){
+                var url = '';
+                var textarea = document.createElement("textarea");
+                document.body.appendChild(textarea);
+                url = window.document.location.href;
+                textarea.value = url;
+                textarea.select();
+                document.execCommand("copy");
+                document.body.removeChild(textarea);
+                alert("url을 복사했습니다. 원하는 곳에 붙여넣기(Ctrl+V) 해주세요.")
+              }
+            </script>
           </span>
           <!-- 작성자에게만 보이게 -->
-          <span class="article-footer-right">
-            <a href="#">수정</a>
-            <a href="#">삭제</a>
-          </span>
+          <% if (post.user_id == currentUser.id) { %>
+            <span class="article-footer-right">
+              <a href="<%= `/board/post-view/${post.post_id}/edit` %>">수정</a>
+              <a href="<%= `/board/post-view/${post.post_id}/delete` %>">삭제</a>
+            </span>
+          <% } %>
         </div>
       </div>
     </article>
+    <!-- 본문 -->
+    <!-- 댓글창 -->
     <div class="comment-area" id="comment">
       <div class="comment-content">
         <div class="post-view-profile">
-          <a href="#"><img src="../public/images/usericon.png" alt="작성자 프로필">&nbsp;댓글 작성자</a>
+          <a href="#"><img src="../public/images/usericon.png" alt="작성자 프로필">&nbsp;<%= comment.user_id %></a>
         </div>
-        <p class="comment-content-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.</p>
+        <p class="comment-content-text"><%= comment.comment %></p>
         <div class="comment-footer">
-          yyyy.mm.dd hh.mm
+          <%= comment.written_date) %>
           <!-- 작성자에게만 보이게 -->
-          <span class="comment-buttons">
-            <a href="#">수정</a>
-            <a href="#">삭제</a>
-          </span>
+          <% if (post.user_id == currentUser.id) { %>
+            <span class="comment-buttons">
+              <a href="<%= `/board/post-view/${post.post_id}/comment/${comment.comment_id}/edit` %>">수정</a>
+              <a href="<%= `/board/post-view/${post.post_id}/comment/${comment.comment_id}/delete` %>">삭제</a>
+            </span>
+          <% } %>
         </div>
       </div>
   
       <div class="comment-writing-column">
         <div class="post-view-profile">
-          <img src="../public/images/usericon.png" alt="내 프로필">&nbsp;내 아이디
+          <img src="../public/images/usericon.png" alt="내 프로필">&nbsp;<%= currentUser.id %>
         </div>
-        <form class="comment-textarea" action="index.html" method="post">
+        <form class="comment-textarea" action="<%= `/board/post-view/${post.post_id}/comment/write` %>" method="post">
           <p><textarea placeholder="내용을 입력해 주세요" name="comment-textarea" rows="8" cols="80"></textarea></p>
           <p><input type="submit" name="등록" value="등록" class="post-view-myButton"></p>
         </form>
       </div>
     </div>
+    <!-- 댓글창 -->
     <div class="post-view-buttons">
-      <a href="/board">목록</a>
+      <a href="<<%= `/board/${post.address1}` %>">목록</a>
       <a href="/board/post-view">TOP</a>
     </div>
   </main>
