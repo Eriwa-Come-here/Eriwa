@@ -29,24 +29,15 @@
 }
 
 .place-input {
-  width: 300px;
+  width: 160px;
   height: 30px;
   border-radius: 5px;
   border: 1px solid #eaeaea;
   padding-left: 20px;
   padding-right: 20px;
-  font-size: 18px;
+  font-size: 17px;
 }
 
-.place-button {
-  padding: 5px 12px;
-  border-radius: 10px;
-  border-style: none;
-  font-size: 15px;
-  background-color: #eaeaea;
-  color: black;
-  font-family: Arial, Helvetica, sans-serif;
-}
 .td-style {
   font-size: 22px;
   padding: 10px;
@@ -54,13 +45,28 @@
 .td_border {
   border-bottom: 1px solid #eaeaea;
 }
-.photo-btn {
+
+.real-upload {
+  display: none;
+}
+
+#preview {
+  padding: 5px;
+  width: 150px;
+  height: 150px;
+  background-color: #eaeaea;
+  border-radius: 10px;
+}
+
+.image-preview {
   width: 150px;
   height: 150px;
 }
+
 .textarea-style {
   font-size: 20px;
   border: 1px solid #eaeaea;
+  resize: none;
 }
 
 .cancel-btn {

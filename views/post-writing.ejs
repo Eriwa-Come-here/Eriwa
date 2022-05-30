@@ -1,3 +1,4 @@
+<script src="../public/js/post.js"></script>
 <main class="main-all">
   <div class="post-main-div">
     <form action="/board/post-writing" method="post">
@@ -17,11 +18,9 @@
         <tr>
           <td rowspan="2" class="td-style td_border">위치</td>
           <td>
-            <!-- <input type="text" class="place-input" />
-            <button class="place-button">검색</button> -->
-            <select id="addr1"></select>
-            <select id="addr2"></select>
-            <select id="addr3"></select>
+            <select id="address1" class="place-input" onchange="loadsigungu();"></select>
+            <select id="address2" class="place-input">
+            </select>
           </td>
         </tr>
         <tr>
@@ -162,9 +161,13 @@
         <tr>
           <td class="td-style td_border">사진</td>
           <td class="td_border">
-            <span>
-              <button class="photo-btn"><img src="#" /></button>
-            </span>
+            <input
+              type="file"
+              class="real-upload"
+              accept="image/*"
+              onchange="readURL(this)"
+            />
+            <img id="preview" />
           </td>
         </tr>
         <tr>
