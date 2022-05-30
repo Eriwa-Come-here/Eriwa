@@ -8,6 +8,9 @@ let sequelize = new Sequelize(config.database, config.username, config.password,
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-// db.subscriber = require("./subscriber.js")(sequelize, Sequelize);
+db.User = require("./user.js")(sequelize, Sequelize);
+db.Post = require("./post.js")(sequelize, Sequelize);
+db.Qna = require("./qna.js")(sequelize, Sequelize);
+db.Recommend = require("./recommend.js")(sequelize, Sequelize);
 
 module.exports = db;

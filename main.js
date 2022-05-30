@@ -8,7 +8,10 @@ const port = 80,
   postController = require("./controllers/postController"),
   adminController = require("./controllers/adminController"),
   mypageController = require("./controllers/mypageController"),
-  loginController = require("./controllers/loginController");
+  loginController = require("./controllers/loginController"),
+  db = require("./models");
+
+db.sequelize.sync();
 
 app.set("port", process.env.PORT || 80);
 app.set("view engine", "ejs");
@@ -36,8 +39,8 @@ app.get("/", (req, res) => {
 app.get("/", homeController.showIndex);
 app.get("/board", homeController.showBoard);
 app.get("/search", homeController.showDetailSearch);
-app.get("/qna", homeController.showQna);
-app.get("/recommend", homeController.showRecommend);
+app.get("/mypage/qna", homeController.showQna);
+app.get("/mypage/recommend", homeController.showRecommend);
 app.get("/service-intro", homeController.showServiceIntro);
 app.get("/notice", homeController.showNotice);
 
