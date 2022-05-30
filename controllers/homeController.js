@@ -1,33 +1,48 @@
-exports.showIndex = (req, res) => {
-    res.render("index");
-}
+const db = require("../models/index"),
+    User = db.User,
+    Post = db.Post,
+    Qna = db.Qna,
+    Recommend = db.Recommend,
+    getUserParams = body => {
+        return{
+            title: body.title
+        };
+    };
 
-exports.showBoard = (req, res) => {
-    res.render("board");
+module.exports={
+    showIndex : async (req, res, next) => {
+        res.render("index");
+    },
+    
+    showBoard : (req, res, next) => {
+        res.render("board");
+    },
+    
+    showDetailSearch : (req, res, next) => {
+        res.render("detail-search");
+    },
+    
+    
+    
+    //mypage
+    showQna : (req, res, next) => {
+        res.render("mypage-qna");
+    },
+    
+    showRecommend : (req, res, next) => {
+        res.render("mypage-recommend");
+    },
+    
+    
+    //notice
+    showNotice : (req, res, next) => {
+        res.render("notice");
+    },
+    
+    //service-intro
+    showServiceIntro : (req, res, next) => {
+        res.render("service-intro");
+    }
+
 };
 
-exports.showDetailSearch = (req, res) => {
-    res.render("detail-search");
-};
-
-
-
-//mypage
-exports.showQna = (req, res) => {
-    res.render("mypage-qna");
-};
-
-exports.showRecommend = (req, res) => {
-    res.render("mypage-recommend");
-};
-
-
-//notice
-exports.showNotice = (req, res) => {
-    res.render("notice");
-};
-
-//service-intro
-exports.showServiceIntro = (req, res) => {
-    res.render("service-intro");
-};
