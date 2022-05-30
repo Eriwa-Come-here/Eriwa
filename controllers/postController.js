@@ -1,4 +1,4 @@
-const post = require("../models/post");
+const Post = require("../models/post");
 
 exports.showPostWriting = (req, res) => {
   res.render("post-writing");
@@ -7,12 +7,12 @@ exports.showPostWriting = (req, res) => {
 
 // show (post-view)
 exports.showPost = (req, res) => {
-  post.findOne({
+  Post.findOne({
     where: {
       post_id: req.params.post_id,
     },
-  }, function(err, post){
+  }, function(err, Post){
     if(err) return res.json(err);
-    res.render("post-view", {post:post});
+    res.render("post-view", {post:Post});
   });
 };

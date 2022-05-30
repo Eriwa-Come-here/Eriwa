@@ -68,9 +68,21 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
 
         },
-        address4:{
-            type: Sequelize.STRING
-
+        full_address: {
+            type: DataTypes.VIRTUAL,
+            get() {
+                let addresses = [this.address1, this.address2, this.address3];
+                let address = '';
+                for (var i = 0; i < addresses.length; i++) {
+                    if (addresses[i]) {
+                        address += addresses[i] + ' ';
+                    }
+                }
+                return address;
+            },
+            set(value) {
+                throw new Error("Do not try to set the 'full_address' value!");
+            }
         },
         place_name:{
             type: Sequelize.STRING, 
