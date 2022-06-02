@@ -43,7 +43,7 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
         primaryKey: true,
         references: {
-          model: Post,
+          model: post,
           key: "post_id",
         },
       },
