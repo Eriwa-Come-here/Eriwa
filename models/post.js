@@ -52,62 +52,45 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
       },
-
       address3: {
         type: Sequelize.STRING,
       },
-      full_address: {
-        type: Sequelize.VIRTUAL,
-        get() {
-          let addresses = [this.address1, this.address2, this.address3];
-          let address = "";
-          for (var i = 0; i < addresses.length; i++) {
-            if (addresses[i]) {
-              address += addresses[i] + " ";
-            }
-          }
-          return address;
+      place_name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      place_type: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      image: {
+        type: Sequelize.STRING,
+      },
+      grade: {
+        type: Sequelize.DOUBLE,
+        allowNull: false,
+      },
+      written_date: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
+      user_id: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        references: {
+          model: user,
+          key: "user_id",
         },
-        set(value) {
-          throw new Error("Do not try to set the 'full_address' value!");
-        },
-        place_name: {
-          type: Sequelize.STRING,
-          allowNull: false,
-        },
-        place_type: {
-          type: Sequelize.STRING,
-          allowNull: false,
-        },
-        image: {
-          type: Sequelize.STRING,
-        },
-        grade: {
-          type: Sequelize.DOUBLE,
-          allowNull: false,
-        },
-        written_date: {
-          type: Sequelize.DATE,
-          allowNull: false,
-        },
-        user_id: {
-            type: Sequelize.STRING,
-            allowNull: false,
-            references: {
-              model: user,
-              key: "user_id",
-            },
-        },
-        can_park: {
-          type: Sequelize.BOOLEAN,
-        },
-        can_pet: {
-          type: Sequelize.BOOLEAN,
-        },
-        view_count: {
-          type: Sequelize.INTEGER,
-          allowNull: false,
-        },
+      },
+      can_park: {
+        type: Sequelize.BOOLEAN,
+      },
+      can_pet: {
+        type: Sequelize.BOOLEAN,
+      },
+      view_count: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
     },
     {

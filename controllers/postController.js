@@ -1,23 +1,32 @@
-const post = require("../models/post");
-const Post = require("../models/post");
+const db = require('../models');
+const Sequelize = require('sequelize');
+const sequelize = db.sequelize;
+const post = require('../models/post');
 
 exports.showPostWriting = (req, res) => {
   res.render("post-writing");
 };
 
-// show (post-view)
-exports.showPost = (req, res) => {
-  Post.findOne(
-    {
+// show
+exports.showPost = async (req, res) => {
+  try {
+    //let post;
+    /*post = await db.post.findOne({
       where: {
-        post_id: req.params.post_id,
-      },
-    },
-    function (err, post) {
-      if (err) return res.json(err);
-      res.render("post-view", { post: post });
-    }
-  );
+        post_id: req.params.post_id
+      }
+    });*/
+    const [result, metadata] = await sequelize.query("SELECT * FROM `post` WHERE post_id = ?", {
+      type: Sequelize.SELECT,
+      replacements: [req.params.post_id]
+    });
+    console.log(result);
+    res.render("post-view", {post: result[0]});
+  } catch (err) {
+    res.status(500).send({
+      message: err.message,
+    });
+  }
 };
 
 exports.savePost = async (req, res) => {
