@@ -7,7 +7,7 @@ exports.showPostWriting = (req, res) => {
 
 // show (post-view)
 exports.showPost = (req, res) => {
-  Post.findOne(
+  post.findOne(
     {
       where: {
         post_id: req.params.post_id,
