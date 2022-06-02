@@ -69,7 +69,7 @@ module.exports = (sequelize, Sequelize) => {
 
         },
         full_address: {
-            type: DataTypes.VIRTUAL,
+            type: Sequelize.VIRTUAL,
             get() {
                 let addresses = [this.address1, this.address2, this.address3];
                 let address = '';

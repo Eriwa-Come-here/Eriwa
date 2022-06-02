@@ -32,7 +32,7 @@ module.exports = (sequelize, Sequelize) => {
     }
     Comment.init({
         post_id: { // 외래키
-            type: DataTypes.INTEGER,
+            type: Sequelize.INTEGER,
             allowNull: false,
             primaryKey: true,
             references: {
@@ -41,13 +41,13 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         comment_id: {
-            type: DataTypes.INTEGER,
+            type: Sequelize.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
         user_id: { // 외래키
-            type: DataTypes.STRING(20),
+            type: Sequelize.STRING(20),
             allowNull: false,
             defaultValue: "deleted",
             references: {
@@ -56,11 +56,11 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         comment: {
-            type: DataTypes.TEXT,
+            type: Sequelize.TEXT,
             allowNull: false
         },
         written_date: {
-            type: DataTypes.DATE,
+            type: Sequelize.DATE,
             allowNull: false
         }
     }, {
