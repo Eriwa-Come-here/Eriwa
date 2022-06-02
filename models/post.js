@@ -30,14 +30,6 @@ module.exports = (sequelize, Sequelize) => {
   }
   post.init(
     {
-      user_id: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        references: {
-          model: user,
-          key: "user_id",
-        },
-      },
       post_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -98,6 +90,14 @@ module.exports = (sequelize, Sequelize) => {
           type: Sequelize.DATE,
           allowNull: false,
         },
+        user_id: {
+            type: Sequelize.STRING,
+            allowNull: false,
+            references: {
+              model: user,
+              key: "user_id",
+            },
+          },
         can_park: {
           type: Sequelize.BOOLEAN,
         },

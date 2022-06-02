@@ -13,9 +13,9 @@ exports.showPost = (req, res) => {
         post_id: req.params.post_id,
       },
     },
-    function (err, Post) {
+    function (err, post) {
       if (err) return res.json(err);
-      res.render("post-view", { post: Post });
+      res.render("post-view", { post: post });
     }
   );
 };
