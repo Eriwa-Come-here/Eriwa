@@ -1,4 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
+  const post = require("./post")(sequelize, Sequelize);
+  const user = require("./user")(sequelize, Sequelize);
   class recommend extends Sequelize.Model {
     static async findByPkAndUpdate(id, params) {
       try {
