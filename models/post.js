@@ -97,7 +97,7 @@ module.exports = (sequelize, Sequelize) => {
               model: user,
               key: "user_id",
             },
-          },
+        },
         can_park: {
           type: Sequelize.BOOLEAN,
         },

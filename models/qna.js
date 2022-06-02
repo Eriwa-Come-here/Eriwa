@@ -1,4 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
+  const user = require("./user")(sequelize, Sequelize);
   class qna extends Sequelize.Model {
     static async findByPkAndUpdate(id, params) {
       try {
