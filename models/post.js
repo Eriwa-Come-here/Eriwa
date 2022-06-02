@@ -123,7 +123,9 @@ module.exports = (sequelize, Sequelize) => {
         }
     }, {
         sequelize,
-        modelName: 'post'
+        timestamps: false,
+        modelName: 'post',
+        tableName: 'post'
     });
     return Post;
 }

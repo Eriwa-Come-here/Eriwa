@@ -66,7 +66,8 @@ module.exports = (sequelize, Sequelize) => {
     }, {
         sequelize,
         timestamps: false,
-        modelName: 'comment'
+        modelName: 'comment',
+        tableName: 'comment'
     });
     return Comment;
 }

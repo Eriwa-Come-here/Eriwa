@@ -50,7 +50,9 @@ module.exports = (sequelize, Sequelize) => {
         }
     }, {
         sequelize,
-        modelName: 'recommend'
+        timestamps: false,
+        modelName: 'recommend',
+        tableName: 'recommend'
     });
     return Recommend;
 }
