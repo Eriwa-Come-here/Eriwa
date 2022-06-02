@@ -43,13 +43,15 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
         primaryKey: true,
         references: {
-          model: post,
+          model: Post,
           key: "post_id",
         },
       },
     },
     {
       sequelize,
+      timestamps: false,
+      modelName: "recommend",
       tableName: "recommend",
     }
   );

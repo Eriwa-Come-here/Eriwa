@@ -21,6 +21,7 @@ module.exports = (sequelize, Sequelize) => {
             where: { id: id },
           });
         }
+
         return user;
       } catch (err) {
         console.log(err);
@@ -61,6 +62,8 @@ module.exports = (sequelize, Sequelize) => {
     },
     {
       sequelize,
+      timestamps: false,
+      modelName: "user",
       tableName: "user",
     }
   );

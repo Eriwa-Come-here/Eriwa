@@ -60,6 +60,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
       },
+
       address3: {
         type: Sequelize.STRING,
       },
@@ -78,39 +79,41 @@ module.exports = (sequelize, Sequelize) => {
         set(value) {
           throw new Error("Do not try to set the 'full_address' value!");
         },
-      },
-      place_name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      place_type: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      image: {
-        type: Sequelize.STRING,
-      },
-      grade: {
-        type: Sequelize.DOUBLE,
-        allowNull: false,
-      },
-      written_date: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
-      can_park: {
-        type: Sequelize.BOOLEAN,
-      },
-      can_pet: {
-        type: Sequelize.BOOLEAN,
-      },
-      view_count: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
+        place_name: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
+        place_type: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
+        image: {
+          type: Sequelize.STRING,
+        },
+        grade: {
+          type: Sequelize.DOUBLE,
+          allowNull: false,
+        },
+        written_date: {
+          type: Sequelize.DATE,
+          allowNull: false,
+        },
+        can_park: {
+          type: Sequelize.BOOLEAN,
+        },
+        can_pet: {
+          type: Sequelize.BOOLEAN,
+        },
+        view_count: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+        },
       },
     },
     {
       sequelize,
+      timestamps: false,
+      modelName: "post",
       tableName: "post",
     }
   );
