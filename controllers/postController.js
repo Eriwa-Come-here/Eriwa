@@ -3,7 +3,8 @@ const path = require("path");
 const db = require("../models");
 const Sequelize = require("sequelize");
 const sequelize = db.sequelize;
-const post = require("../models/post");
+const Post = require("../models/post");
+const datefunc = require("../public/js/datefunc.js");
 
 //img 저장경로, 파일명 변경
 const storage = multer.diskStorage({
@@ -20,12 +21,6 @@ upload = multer({ storage: storage });
 // show
 exports.showPost = async (req, res) => {
   try {
-    //let post;
-    /*post = await db.post.findOne({
-      where: {
-        post_id: req.params.post_id
-      }
-    });*/
     const [result, metadata] = await sequelize.query(
       "SELECT * FROM `post` WHERE post_id = ?",
       {
@@ -34,10 +29,7 @@ exports.showPost = async (req, res) => {
       }
     );
     console.log(result);
-    res.render("post-view", {
-      post: result[0],
-      written_date: getDate(result[0].written_date),
-    });
+    res.render("post-view", { post: result[0], getDate: datefunc.getDate });
   } catch (err) {
     res.status(500).send({
       message: err.message,
@@ -45,27 +37,9 @@ exports.showPost = async (req, res) => {
   }
 };
 
-function getDate(date) {
-  return (
-    date.getFullYear() +
-    "." +
-    date.getMonth() +
-    "." +
-    date.getDate() +
-    ". " +
-    date.getHours() +
-    ":" +
-    date.getMinutes()
-  );
-}
-
-exports.showPostWriting = (req, res) => {
-  res.render("post-writing");
-};
-
-exports.create = async (req, res, next) => {
+exports.create = async (req, res) => {
   try {
-    await post.create({
+    await Post.create({
       // user_id: req.body.user_id,
       title: req.body.title,
       content: req.body.content,
