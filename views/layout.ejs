@@ -33,92 +33,93 @@
     <link rel="stylesheet" href="/public/css/chat.css" />
     <link rel="stylesheet" href="/public/css/login.css" />
     <link rel="stylesheet" href="/public/css/signup.css" />
-    <link rel="stylesheet" href="/public/css/bjy-common.css">
+    <link rel="stylesheet" href="/public/css/bjy-common.css" />
   </head>
   <body>
     <header>
       <div class="page_header">
-
-        <% posts.forEach(p => { %>
-          <div id="service_logo">
-            <ul>
-              <li>
-                <a href="/">
-                  <img id="logo" src="/public/images/logo.png" alt="Eriwa logo"/>
-                </a>
-                <ul id="eriwa_list">
-                  <p>이리와</p>
+        <% post.forEach(p => { %>
+        <div id="service_logo">
+          <ul>
+            <li>
+              <a href="/">
+                <img id="logo" src="/public/images/logo.png" alt="Eriwa logo" />
+              </a>
+              <ul id="eriwa_list">
+                <p>이리와</p>
+                <li>
+                  <a href="/service-intro"><p>이리와란?</p></a>
+                </li>
+                <li>
+                  <a href="/board"><p>전체</p></a>
+                </li>
+                <li>
+                  <a href="/board"><p>오늘의 이리와</p></a>
+                </li>
+              </ul>
+              <ul id="region_list">
+                <p>지역별</p>
+                <ul>
                   <li>
-                    <a href="/service-intro"><p>이리와란?</p></a>
+                    <a href="<%= `/board/${p.address1}`%>"><p>강원도</p></a>
                   </li>
                   <li>
-                    <a href="/board"><p>전체</p></a>
+                    <a href="<%= `/board/${p.address1}`%>"><p>경기도</p></a>
                   </li>
                   <li>
-                    <a href="/board"><p>오늘의 이리와</p></a>
+                    <a href="<%= `/board/${p.address1}`%>"><p>경상북도</p></a>
+                  </li>
+                  <li>
+                    <a href="<%= `/board/${p.address1}`%>"><p>경상남도</p></a>
+                  </li>
+                  <li>
+                    <a href="<%= `/board/${p.address1}`%>"><p>전라북도</p></a>
+                  </li>
+                  <li>
+                    <a href="<%= `/board/${p.address1}`%>"><p>전라남도</p></a>
+                  </li>
+                  <li>
+                    <a href="<%= `/board/${p.address1}`%>"><p>충청북도</p></a>
+                  </li>
+                  <li>
+                    <a href="<%= `/board/${p.address1}`%>"><p>충청남도</p></a>
+                  </li>
+                  <li>
+                    <a href="<%= `/board/${p.address1}`%>"><p>제주도</p></a>
                   </li>
                 </ul>
-                <ul id="region_list">
-                  <p>지역별</p>
-                  <ul>
-                    <li>
-                      <a href="<%= `/board/${p.address1}`%>"><p>강원도</p></a>
-                    </li>
-                    <li>
-                      <a href="<%= `/board/${p.address1}`%>"><p>경기도</p></a>
-                    </li>
-                    <li>
-                      <a href="<%= `/board/${p.address1}`%>"><p>경상북도</p></a>
-                    </li>
-                    <li>
-                      <a href="<%= `/board/${p.address1}`%>"><p>경상남도</p></a>
-                    </li>
-                    <li>
-                      <a href="<%= `/board/${p.address1}`%>"><p>전라북도</p></a>
-                    </li>
-                    <li>
-                      <a href="<%= `/board/${p.address1}`%>"><p>전라남도</p></a>
-                    </li>
-                    <li>
-                      <a href="<%= `/board/${p.address1}`%>"><p>충청북도</p></a>
-                    </li>
-                    <li>
-                      <a href="<%= `/board/${p.address1}`%>"><p>충청남도</p></a>
-                    </li>
-                    <li>
-                      <a href="<%= `/board/${p.address1}`%>"><p>제주도</p></a>
-                    </li>
-                  </ul>
-                  <ul>
-                    <li>
-                      <a href="<%= `/board/${p.address1}`%>"><p>광주광역시</p></a>
-                    </li>
-                    <li>
-                      <a href="<%= `/board/${p.address1}`%>"><p>대구광역시</p></a>
-                    </li>
-                    <li>
-                      <a href="<%= `/board/${p.address1}`%>"><p>대전광역시</p></a>
-                    </li>
-                    <li>
-                      <a href="<%= `/board/${p.address1}`%>"><p>부산광역시</p></a>
-                    </li>
-                    <li>
-                      <a href="<%= `/board/${p.address1}`%>"><p>서울특별시</p></a>
-                    </li>
-                    <li>
-                      <a href="<%= `/board/${p.address1}`%>"><p>울산광역시</p></a>
-                    </li>
-                    <li>
-                      <a href="<%= `/board/${p.address1}`%>"><p>인천광역시</p></a>
-                    </li>
-                    <li>
-                      <a href="<%= `/board/${p.address1}`%>"><p>세종특별자치시</p></a>
-                    </li>
-                  </ul>
+                <ul>
+                  <li>
+                    <a href="<%= `/board/${p.address1}`%>"><p>광주광역시</p></a>
+                  </li>
+                  <li>
+                    <a href="<%= `/board/${p.address1}`%>"><p>대구광역시</p></a>
+                  </li>
+                  <li>
+                    <a href="<%= `/board/${p.address1}`%>"><p>대전광역시</p></a>
+                  </li>
+                  <li>
+                    <a href="<%= `/board/${p.address1}`%>"><p>부산광역시</p></a>
+                  </li>
+                  <li>
+                    <a href="<%= `/board/${p.address1}`%>"><p>서울특별시</p></a>
+                  </li>
+                  <li>
+                    <a href="<%= `/board/${p.address1}`%>"><p>울산광역시</p></a>
+                  </li>
+                  <li>
+                    <a href="<%= `/board/${p.address1}`%>"><p>인천광역시</p></a>
+                  </li>
+                  <li>
+                    <a href="<%= `/board/${p.address1}`%>"
+                      ><p>세종특별자치시</p></a
+                    >
+                  </li>
                 </ul>
-              </li>
-            </ul>
-          </div>
+              </ul>
+            </li>
+          </ul>
+        </div>
         <% }); %>
         <div class="search">
           <input type="text" placeholder="실시간 검색어" />
@@ -133,7 +134,9 @@
           <a href="/notice" class="btn_alarm"
             ><img src="/public/images/alarm_icon.png" alt="alarm_icon"
           /></a>
-          <a href="/login" class="btn_login"><img src="/public/images/btn_login.png" alt="login_icon"></a>
+          <a href="/login" class="btn_login"
+            ><img src="/public/images/btn_login.png" alt="login_icon"
+          /></a>
         </div>
       </div>
     </header>

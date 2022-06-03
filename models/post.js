@@ -96,12 +96,10 @@ module.exports = (sequelize, Sequelize) => {
     },
     {
       sequelize,
-      timestamps: true,
+      timestamps: false,
       modelName: "post",
       tableName: "post",
     }
   );
-  post.removeAttribute('id');
-
   return post;
 };
