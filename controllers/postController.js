@@ -21,13 +21,17 @@ exports.showPost = async (req, res) => {
       replacements: [req.params.post_id]
     });
     console.log(result);
-    res.render("post-view", {post: result[0]});
+    res.render("post-view", {post: result[0], written_date: getDate(result[0].written_date)});
   } catch (err) {
     res.status(500).send({
       message: err.message,
     });
   }
 };
+
+function getDate(date) {
+  return date.getFullYear() + "." + date.getMonth() + "." + date.getDate() + ". " + date.getHours() + ":" + date.getMinutes();
+}
 
 exports.savePost = async (req, res) => {
   try {
