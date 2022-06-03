@@ -21,7 +21,7 @@ app.use(layouts);
 app.use("/public", express.static("public"));
 
 //express 설정
-app.set("layout", "layout");
+app.set("layout", "layout", homeController.index);
 app.set("layout extractScripts", true);
 
 app.use(
@@ -31,14 +31,9 @@ app.use(
 );
 app.use(express.json());
 
-//ejs 파일 렌더링 추가
-app.get("/", (req, res) => {
-  res.render("index");
-});
-
 //homeController 추가
-app.get("/", homeController.showIndex);
-app.get("/board", homeController.showBoard);
+app.get("/", homeController.index, homeController.showIndex);
+app.get("/board/:place_name",homeController.board , homeController.showBoard);
 app.get("/search", homeController.showDetailSearch);
 app.get("/mypage/qna", homeController.showQna);
 app.get("/mypage/recommend", homeController.showRecommend);

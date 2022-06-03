@@ -57,5 +57,8 @@ module.exports = (sequelize, Sequelize) => {
       tableName: "recommend",
     }
   );
+
+  recommend.removeAttribute('id');
+
   return recommend;
 };
