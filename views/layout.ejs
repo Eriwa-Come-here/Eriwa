@@ -38,7 +38,6 @@
   <body>
     <header>
       <div class="page_header">
-        <% posts.forEach(p => { %>
         <div id="service_logo">
           <ul>
             <li>
@@ -61,66 +60,63 @@
                 <p>지역별</p>
                 <ul>
                   <li>
-                    <a href="<%= `/board/${p.address1}`%>"><p>강원도</p></a>
+                    <a href=""><p>강원도</p></a>
                   </li>
                   <li>
-                    <a href="<%= `/board/${p.address1}`%>"><p>경기도</p></a>
+                    <a href=""><p>경기도</p></a>
                   </li>
                   <li>
-                    <a href="<%= `/board/${p.address1}`%>"><p>경상북도</p></a>
+                    <a href=""><p>경상북도</p></a>
                   </li>
                   <li>
-                    <a href="<%= `/board/${p.address1}`%>"><p>경상남도</p></a>
+                    <a href=""><p>경상남도</p></a>
                   </li>
                   <li>
-                    <a href="<%= `/board/${p.address1}`%>"><p>전라북도</p></a>
+                    <a href=""><p>전라북도</p></a>
                   </li>
                   <li>
-                    <a href="<%= `/board/${p.address1}`%>"><p>전라남도</p></a>
+                    <a href=""><p>전라남도</p></a>
                   </li>
                   <li>
-                    <a href="<%= `/board/${p.address1}`%>"><p>충청북도</p></a>
+                    <a href=""><p>충청북도</p></a>
                   </li>
                   <li>
-                    <a href="<%= `/board/${p.address1}`%>"><p>충청남도</p></a>
+                    <a href=""><p>충청남도</p></a>
                   </li>
                   <li>
-                    <a href="<%= `/board/${p.address1}`%>"><p>제주도</p></a>
+                    <a href=""><p>제주도</p></a>
                   </li>
                 </ul>
                 <ul>
                   <li>
-                    <a href="<%= `/board/${p.address1}`%>"><p>광주광역시</p></a>
+                    <a href=""><p>광주광역시</p></a>
                   </li>
                   <li>
-                    <a href="<%= `/board/${p.address1}`%>"><p>대구광역시</p></a>
+                    <a href=""><p>대구광역시</p></a>
                   </li>
                   <li>
-                    <a href="<%= `/board/${p.address1}`%>"><p>대전광역시</p></a>
+                    <a href=""><p>대전광역시</p></a>
                   </li>
                   <li>
-                    <a href="<%= `/board/${p.address1}`%>"><p>부산광역시</p></a>
+                    <a href=""><p>부산광역시</p></a>
                   </li>
                   <li>
-                    <a href="<%= `/board/${p.address1}`%>"><p>서울특별시</p></a>
+                    <a href=""><p>서울특별시</p></a>
                   </li>
                   <li>
-                    <a href="<%= `/board/${p.address1}`%>"><p>울산광역시</p></a>
+                    <a href=""><p>울산광역시</p></a>
                   </li>
                   <li>
-                    <a href="<%= `/board/${p.address1}`%>"><p>인천광역시</p></a>
+                    <a href=""><p>인천광역시</p></a>
                   </li>
                   <li>
-                    <a href="<%= `/board/${p.address1}`%>"
-                      ><p>세종특별자치시</p></a
-                    >
+                    <a href=""><p>세종특별자치시</p></a>
                   </li>
                 </ul>
               </ul>
             </li>
           </ul>
         </div>
-        <% }); %>
         <div class="search">
           <input type="text" placeholder="실시간 검색어" />
           <a href="/search"
