@@ -31,11 +31,6 @@ module.exports = {
     res.render("mypage-recommend");
   },
 
-  //notice
-  showNotice: (req, res, next) => {
-    res.render("notice");
-  },
-
   //service-intro
   showServiceIntro: (req, res, next) => {
     res.render("service-intro");
