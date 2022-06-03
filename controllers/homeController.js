@@ -9,35 +9,75 @@ const db = require("../models/index"),
     };
   };
 
-module.exports = {
-  showIndex: async (req, res, next) => {
-    res.render("index");
-  },
+module.exports={
+    //function
+    index : async (req, res, next) => {
+        try {
+            let post = await Post.findAll();
+            res.locals.post = post;
+            next();
+        } catch (error) {
+            next(error);
+        }
+    },
 
-  showBoard: (req, res, next) => {
-    res.render("board");
-  },
+    showIndexPost : async (req,res,next) => {
+        try {
+            let postId = req.params.post_id;
+            let post = await Post.findByKey(postId);
+            res.locals.post = post;
+            next();
+        } catch (error) {
+            next(error);
+        };
+    },
 
-  showDetailSearch: (req, res, next) => {
-    res.render("detail-search");
-  },
+    redirectView: (req, res, next) => {
+        let redirectPath = res.locals.redirect;
+        if(redirectPath!= undefined) res.redirect(redirectPath);
+        else next();
+    },
 
-  //mypage
-  showQna: (req, res, next) => {
-    res.render("mypage-qna");
-  },
+    showIndex : (req, res) => {
+        Post.findAll({
 
-  showRecommend: (req, res, next) => {
-    res.render("mypage-recommend");
-  },
-
-  //notice
-  showNotice: (req, res, next) => {
-    res.render("notice");
-  },
-
-  //service-intro
-  showServiceIntro: (req, res, next) => {
-    res.render("service-intro");
-  },
+        }).then( result =>{
+            res.render("index"),{
+                post: result
+            }
+        }).catch(function(err){
+            console.log(err);
+        });
+    },
+    
+    showBoard : (req, res) => {
+        let paramsPlace = req.params.place;
+        Post.findAll({
+            where: {address1:paramsPlace}
+        }).then( result =>{
+            res.render("board"),{
+                post: result
+            }
+        }).catch(function(err){
+            console.log(err);
+        });
+    },
+    
+    showDetailSearch : (req, res) => {
+        res.render("detail-search");
+    },
+    
+    //mypage
+    showQna : (req, res) => {
+        res.render("mypage-qna");
+    },
+    
+    showRecommend : (req, res) => {
+        res.render("mypage-recommend");
+    },
+    
+    //service-intro
+    showServiceIntro : (req, res) => {
+        res.render("service-intro");
+    }
 };

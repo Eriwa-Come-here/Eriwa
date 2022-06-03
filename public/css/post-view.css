@@ -27,10 +27,6 @@
   height: 100%;
 }
 
-.post-article > header {
-  line-height: 90%;
-}
-
 .post-info {
   display: flex;
   justify-content: space-between;

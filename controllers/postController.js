@@ -1,6 +1,9 @@
-const db = require("../models/index"),
-  post = db.post;
-(multer = require("multer")), (path = require("path"));
+const multer = require("multer");
+const path = require("path");
+const db = require("../models");
+const Sequelize = require("sequelize");
+const sequelize = db.sequelize;
+const post = require("../models/post");
 
 //img 저장경로, 파일명 변경
 const storage = multer.diskStorage({
@@ -14,19 +17,29 @@ const storage = multer.diskStorage({
 });
 upload = multer({ storage: storage });
 
-// show (post-view)
-exports.showPost = (req, res) => {
-  post.findOne(
-    {
+// show
+exports.showPost = async (req, res) => {
+  try {
+    //let post;
+    /*post = await db.post.findOne({
       where: {
-        post_id: req.params.post_id,
-      },
-    },
-    function (err, post) {
-      if (err) return res.json(err);
-      res.render("post-view", { post: post });
-    }
-  );
+        post_id: req.params.post_id
+      }
+    });*/
+    const [result, metadata] = await sequelize.query(
+      "SELECT * FROM `post` WHERE post_id = ?",
+      {
+        type: Sequelize.SELECT,
+        replacements: [req.params.post_id],
+      }
+    );
+    console.log(result);
+    res.render("post-view", { post: result[0] });
+  } catch (err) {
+    res.status(500).send({
+      message: err.message,
+    });
+  }
 };
 
 exports.showPostWriting = (req, res) => {
