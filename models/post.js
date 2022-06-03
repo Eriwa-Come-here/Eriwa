@@ -28,6 +28,7 @@ module.exports = (sequelize, Sequelize) => {
       }
     }
   }
+
   post.init(
     {
       post_id: {
@@ -91,12 +92,12 @@ module.exports = (sequelize, Sequelize) => {
           allowNull: false,
         },
         user_id: {
-            type: Sequelize.STRING,
-            allowNull: false,
-            references: {
-              model: user,
-              key: "user_id",
-            },
+          type: Sequelize.STRING,
+          allowNull: false,
+          references: {
+            model: user,
+            key: "user_id",
+          },
         },
         can_park: {
           type: Sequelize.BOOLEAN,
@@ -112,7 +113,7 @@ module.exports = (sequelize, Sequelize) => {
     },
     {
       sequelize,
-      timestamps: false,
+      timestamps: true,
       modelName: "post",
       tableName: "post",
     }

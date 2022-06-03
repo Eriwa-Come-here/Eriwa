@@ -47,6 +47,7 @@ app.get("/notice", homeController.showNotice);
 //postController추가
 app.get("/board/post-writing", postController.showPostWriting);
 app.get("/board/post-view/:post_id", postController.showPost);
+app.post("/board/post-writing", postController.create);
 
 //adminController추가
 app.get("/admin-member", adminController.showAdminMember);
