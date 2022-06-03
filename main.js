@@ -21,7 +21,7 @@ app.use(layouts);
 app.use("/public", express.static("public"));
 
 //express 설정
-app.set("layout", "layout", homeController.index);
+app.set("layout", "layout");
 app.set("layout extractScripts", true);
 
 app.use(
