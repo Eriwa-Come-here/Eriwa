@@ -79,7 +79,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
         references: {
-          model: user,
+          model: User,
           key: "user_id",
         },
       },
