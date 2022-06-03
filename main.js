@@ -5,6 +5,7 @@ const port = 80,
   layouts = require("express-ejs-layouts"),
   errorController = require("./controllers/errorController"),
   homeController = require("./controllers/homeController"),
+  noticeController = require("./controllers/noticeController"),
   postController = require("./controllers/postController"),
   adminController = require("./controllers/adminController"),
   mypageController = require("./controllers/mypageController"),
@@ -37,11 +38,14 @@ app.get("/search", homeController.showDetailSearch);
 app.get("/mypage/qna", homeController.showQna);
 app.get("/mypage/recommend", homeController.showRecommend);
 app.get("/service-intro", homeController.showServiceIntro);
-app.get("/notice", homeController.showNotice);
+
+//noticeController 추가
+app.get("/notice", noticeController.showNotice);
 
 //postController추가
 app.get("/board/post-writing", postController.showPostWriting);
 app.get("/board/post-view/:post_id", postController.showPost);
+//app.get("/board/post-view/post.post_id/delete", postController.deletePost);
 
 //adminController추가
 app.get("/admin-member", adminController.showAdminMember);

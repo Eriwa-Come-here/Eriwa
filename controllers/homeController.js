@@ -91,12 +91,6 @@ module.exports={
         res.render("mypage-recommend");
     },
     
-    
-    //notice
-    showNotice : (req, res) => {
-        res.render("notice");
-    },
-    
     //service-intro
     showServiceIntro : (req, res) => {
         res.render("service-intro");
