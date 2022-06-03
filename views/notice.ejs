@@ -9,7 +9,6 @@
     </div>
   
     <% if (events.length) { %>
-      <p>값이 있긴 있나</p>
       <div class="notification-content">
         <ul>
           <% events.forEach(function(event) { %>
@@ -37,9 +36,10 @@
             </li>
           <% }) %>
         </ul>
-        </div>
+      </div>
+    <% } else { %>
+      <div class="notification-content"><p>알림이 없습니다.</p></div>
     <% } %>
-  
     <div style="text-align: center; padding:10px;">알림은 30일 이후 삭제됩니다.</div>
     <div class="notice-top-button">
       <a href="/notice">TOP</a>
