@@ -2,7 +2,7 @@ const post = require("../models/post");
 
 // show (post-view)
 exports.showPost = (req, res) => {
-  post.findOne({
+  post.findAll({
     where: {
       post_id: req.params.post_id,
     },
@@ -12,6 +12,7 @@ exports.showPost = (req, res) => {
   });
 };
 
+/*
 // create
 router.post('/', util.isLoggedin, checkPostId, function(req, res){ // 1
     var post = res.locals.post; // 1-1
@@ -38,4 +39,4 @@ router.post('/', util.isLoggedin, checkPostId, function(req, res){ // 1
       res.locals.post = post; // 1-1
       next();
     });
-  }
+  }*/

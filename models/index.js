@@ -13,12 +13,9 @@ let sequelize = new Sequelize(
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-db.User = require("./user.js")(sequelize, Sequelize);
-db.Post = require("./post.js")(sequelize, Sequelize);
-db.Qna = require("./qna.js")(sequelize, Sequelize);
-db.Recommend = require("./recommend.js")(sequelize, Sequelize);
-
-//qna DB 연결
+db.user = require("./user.js")(sequelize, Sequelize);
+db.post = require("./post.js")(sequelize, Sequelize);
 db.qna = require("./qna.js")(sequelize, Sequelize);
+db.recommend = require("./recommend.js")(sequelize, Sequelize);
 
 module.exports = db;

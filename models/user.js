@@ -1,69 +1,71 @@
 module.exports = (sequelize, Sequelize) => {
-    class User extends Sequelize.Model{
-        static async findByPkAndUpdate(id, params) {
-            try{
-                let user = await User.findByPk(id);
-                if(user){
-                    user = await User.update(params, {
-                        where: {id: id}
-                    });
-                }
-                return user;
-            }catch(err){
-                console.log(err);
-            }
+  class user extends Sequelize.Model {
+    static async findByPkAndUpdate(id, params) {
+      try {
+        let user = await user.findByPk(id);
+        if (user) {
+          user = await user.update(params, {
+            where: { id: id },
+          });
         }
-        static async findByPkAndRemove(id){
-            try{
-                let user = await User.findByPk(id);
-                if(user){
-                    user = await User.destroy(params, {
-                        where: {id: id}
-                    });
-                }
-                return user;
-            }catch(err){
-                console.log(err);
-            }
-        }
+        return user;
+      } catch (err) {
+        console.log(err);
+      }
     }
-    User.init({
-        user_id:{
-            type: Sequelize.STRING, 
-            autoIncrement: true, 
-            allowNull: false, 
-            primaryKey: true
-        },
-        password:{
-            type: Sequelize.STRING, 
-            allowNull: false
-        },
-        name:{
-            type: Sequelize.STRING, 
-            allowNull: false
-
-        },
-        nickname:{
-            type: Sequelize.STRING, 
-            allowNull: false
-
-        },
-        email:{
-            type: Sequelize.STRING, 
-            allowNull: false
-            
-        },
-        birthdate:{
-            type: Sequelize.DATE, 
-            allowNull: false
-        },
-        gender:{
-            type: Sequelize.STRING(1), 
-            allowNull: false
+    static async findByPkAndRemove(id) {
+      try {
+        let user = await user.findByPk(id);
+        if (user) {
+          user = await user.destroy(params, {
+            where: { id: id },
+          });
         }
-    }, {
-        sequelize,
-        modelName: 'user'
-    });
-    return User;
-}
+
+        return user;
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  }
+  user.init(
+    {
+      user_id: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        primaryKey: true,
+      },
+      password: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      nickname: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      email: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      birthdate: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
+      gender: {
+        type: Sequelize.STRING(1),
+        allowNull: false,
+      },
+    },
+    {
+      sequelize,
+      timestamps: false,
+      modelName: "user",
+      tableName: "user",
+    }
+  );
+  return user;
+};

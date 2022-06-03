@@ -1,13 +1,13 @@
 const db = require("../models/index"),
-    User = db.user,
-    Post = db.post,
-    Qna = db.qna,
-    Recommend = db.recommend,
-    getPostParams = body => {
-        return{
-            title: body.title
-        };
+  user = db.user,
+  post = db.post,
+  qna = db.qna,
+  recommend = db.recommend,
+  getUserParams = (body) => {
+    return {
+      title: body.title,
     };
+  };
 
 module.exports={
     //function
@@ -86,6 +86,4 @@ module.exports={
     showServiceIntro : (req, res) => {
         res.render("service-intro");
     }
-
 };
-
