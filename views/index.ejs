@@ -3,7 +3,7 @@
         <h2>오늘의 이리와</h2>
         <section class="today_best_slider">
             <div class="today_best_contents">
-                <% post.forEach(p => { %>
+                <% posts.forEach(p => { %>
                     <div class="contents_img"><img src="<%= `/public/images/${p.image}` %>" alt="메인 사진"></div>
                     <div class="contents_detail">
                         <a href="<%= `/${p.image}` %>">
@@ -52,7 +52,7 @@
         </div>
         <div class="contents">
             <div class="gallery_real_content" id="idx_content_end1">
-                <% post.forEach(p => { %>
+                <% posts.forEach(p => { %>
                     <div><img src="<%= `/public/images/${p.image}` %>" alt="메인 사진"></div>
                     <div>
                         <a href="<%= `/${p.image}` %>">
@@ -87,7 +87,7 @@
                 <% }); %>
             </div>
             <div class="gallery_real_content" id="idx_content_end2">
-                <% post.forEach(p => { %>
+                <% posts.forEach(p => { %>
                     <div><img src="<%= `/public/images/${p.image}` %>" alt="메인 사진"></div>
                     <div>
                         <a href="<%= `/${p.image}` %>">
@@ -121,7 +121,7 @@
                 <% }); %>
             </div>
             <div class="gallery_real_content">
-                <% post.forEach(p => { %>
+                <% posts.forEach(p => { %>
                     <div><img src="<%= `/public/images/${p.image}` %>" alt="메인 사진"></div>
                     <div>
                         <a href="<%= `/${p.image}` %>">
