@@ -1,10 +1,10 @@
 module.exports = (sequelize, Sequelize) => {
-  class user extends Sequelize.Model {
+  class User extends Sequelize.Model {
     static async findByPkAndUpdate(id, params) {
       try {
-        let user = await user.findByPk(id);
+        let user = await User.findByPk(id);
         if (user) {
-          user = await user.update(params, {
+          user = await User.update(params, {
             where: { id: id },
           });
         }
@@ -15,9 +15,9 @@ module.exports = (sequelize, Sequelize) => {
     }
     static async findByPkAndRemove(id) {
       try {
-        let user = await user.findByPk(id);
+        let user = await User.findByPk(id);
         if (user) {
-          user = await user.destroy(params, {
+          user = await User.destroy(params, {
             where: { id: id },
           });
         }
@@ -28,7 +28,7 @@ module.exports = (sequelize, Sequelize) => {
       }
     }
   }
-  user.init(
+  User.init(
     {
       user_id: {
         type: Sequelize.STRING,
@@ -63,11 +63,11 @@ module.exports = (sequelize, Sequelize) => {
     {
       sequelize,
       timestamps: false,
-      modelName: "user",
+      modelName: "User",
       tableName: "user",
     }
   );
-  user.removeAttribute('id');
-  
-  return user;
+  User.removeAttribute("id");
+
+  return User;
 };

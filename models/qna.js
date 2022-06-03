@@ -1,11 +1,11 @@
 module.exports = (sequelize, Sequelize) => {
-  const user = require("./user")(sequelize, Sequelize);
-  class qna extends Sequelize.Model {
+  const User = require("./user")(sequelize, Sequelize);
+  class Qna extends Sequelize.Model {
     static async findByPkAndUpdate(id, params) {
       try {
-        let qna = await qna.findByPk(id);
+        let qna = await Qna.findByPk(id);
         if (qna) {
-          qna = await qna.update(params, {
+          qna = await Qna.update(params, {
             where: { id: id },
           });
         }
@@ -16,9 +16,9 @@ module.exports = (sequelize, Sequelize) => {
     }
     static async findByPkAndRemove(id) {
       try {
-        let qna = await qna.findByPk(id);
+        let qna = await Qna.findByPk(id);
         if (qna) {
-          qna = await qna.destroy(params, {
+          qna = await Qna.destroy(params, {
             where: { id: id },
           });
         }
@@ -28,13 +28,13 @@ module.exports = (sequelize, Sequelize) => {
       }
     }
   }
-  qna.init(
+  Qna.init(
     {
       user_id: {
         type: Sequelize.STRING,
         allowNull: false,
         references: {
-          model: user,
+          model: User,
           key: "user_id",
         },
       },
@@ -54,10 +54,10 @@ module.exports = (sequelize, Sequelize) => {
     },
     {
       sequelize,
-      modelName: "qna",
+      modelName: "Qna",
       tableName: "qna",
     }
   );
-  qna.removeAttribute('id');
-  return qna;
+  Qna.removeAttribute("id");
+  return Qna;
 };

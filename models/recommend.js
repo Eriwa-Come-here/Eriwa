@@ -1,12 +1,12 @@
 module.exports = (sequelize, Sequelize) => {
-  const user = require("./user")(sequelize, Sequelize);
-  const post = require("./post")(sequelize, Sequelize);
-  class recommend extends Sequelize.Model {
+  const User = require("./user")(sequelize, Sequelize);
+  const Post = require("./post")(sequelize, Sequelize);
+  class Recommend extends Sequelize.Model {
     static async findByPkAndUpdate(id, params) {
       try {
-        let recommend = await recommend.findByPk(id);
+        let recommend = await Recommend.findByPk(id);
         if (recommend) {
-          recommend = await recommend.update(params, {
+          recommend = await Recommend.update(params, {
             where: { id: id },
           });
         }
@@ -17,9 +17,9 @@ module.exports = (sequelize, Sequelize) => {
     }
     static async findByPkAndRemove(id) {
       try {
-        let recommend = await recommend.findByPk(id);
+        let recommend = await Recommend.findByPk(id);
         if (recommend) {
-          recommend = await recommend.destroy(params, {
+          recommend = await Recommend.destroy(params, {
             where: { id: id },
           });
         }
@@ -29,14 +29,14 @@ module.exports = (sequelize, Sequelize) => {
       }
     }
   }
-  recommend.init(
+  Recommend.init(
     {
       user_id: {
         type: Sequelize.STRING,
         allowNull: false,
         primaryKey: true,
         references: {
-          model: user,
+          model: User,
           key: "user_id",
         },
       },
@@ -45,7 +45,7 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
         primaryKey: true,
         references: {
-          model: post,
+          model: Post,
           key: "post_id",
         },
       },
@@ -53,12 +53,12 @@ module.exports = (sequelize, Sequelize) => {
     {
       sequelize,
       timestamps: false,
-      modelName: "recommend",
+      modelName: "Recommend",
       tableName: "recommend",
     }
   );
 
-  recommend.removeAttribute('id');
+  Recommend.removeAttribute("id");
 
-  return recommend;
+  return Recommend;
 };
