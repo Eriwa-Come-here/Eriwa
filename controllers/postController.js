@@ -2,6 +2,7 @@ const db = require('../models');
 const Sequelize = require('sequelize');
 const sequelize = db.sequelize;
 const post = require('../models/post');
+const datefunc = require('../public/js/datefunc.js');
 
 exports.showPostWriting = (req, res) => {
   res.render("post-writing");
@@ -10,28 +11,18 @@ exports.showPostWriting = (req, res) => {
 // show
 exports.showPost = async (req, res) => {
   try {
-    //let post;
-    /*post = await db.post.findOne({
-      where: {
-        post_id: req.params.post_id
-      }
-    });*/
     const [result, metadata] = await sequelize.query("SELECT * FROM `post` WHERE post_id = ?", {
       type: Sequelize.SELECT,
       replacements: [req.params.post_id]
     });
     console.log(result);
-    res.render("post-view", {post: result[0], written_date: getDate(result[0].written_date)});
+    res.render("post-view", {post: result[0], getDate: datefunc.getDate});
   } catch (err) {
     res.status(500).send({
       message: err.message,
     });
   }
 };
-
-function getDate(date) {
-  return date.getFullYear() + "." + date.getMonth() + "." + date.getDate() + ". " + date.getHours() + ":" + date.getMinutes();
-}
 
 exports.savePost = async (req, res) => {
   try {

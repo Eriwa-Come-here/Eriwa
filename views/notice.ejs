@@ -7,7 +7,6 @@
         <span id="note-notice"><a href="#">쪽지</a></span>
       </h2>
     </div>
-  
     <% if (events.length) { %>
       <div class="notification-content">
         <ul>
@@ -31,7 +30,7 @@
                 <div class="notice-content"><%= event.event_content %></div>
               </div>
               <div class="notification-day">
-                <span class="notice-date"><%= event.event_date %></span>
+                <span class="notice-date"><%= getDate(event.event_date) %></span>
               </div>
             </li>
           <% }) %>

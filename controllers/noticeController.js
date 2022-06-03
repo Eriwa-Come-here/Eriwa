@@ -1,6 +1,7 @@
 const db = require('../models');
 const Sequelize = require('sequelize');
 const sequelize = db.sequelize;
+const datefunc = require('../public/js/datefunc.js');
 
 
 module.exports = {
@@ -15,7 +16,7 @@ module.exports = {
                 replacements: ['aeaf']
             });
             console.log(result);
-            res.render("notice", {events: result});
+            res.render("notice", {events: result, getDate: datefunc.getDate});
         } catch (err) {
             res.status(500).send({
             message: err.message,
