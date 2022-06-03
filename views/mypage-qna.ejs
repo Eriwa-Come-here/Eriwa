@@ -1,14 +1,15 @@
 <div id="container">
+    <% user.forEach(u => { %>
         <div class="wrapped_qna">
             <div class="user_container">
                 <div class="user_info">
                     <a href=""><img id="img_profile" src="../public/images/profile_icon.png" alt="profile_icon"></a>
                     <br>
-                    <p>Name</p>
+                    <p><%= u.nickname %>></p>
                     <br>
                     <div id="img_message">
-                        <a href="">
-                            <img  src="../public/images/message_icon.png" alt="message_icon">
+                        <a href="/chat">
+                            <img src="../public/images/message_icon.png" alt="message_icon">
                             <p>쪽지함</p>
                         </a>
                     </div>
@@ -49,4 +50,5 @@
                 </div>
             </div>
         </div>
+    <% }); %>
 </div>

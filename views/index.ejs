@@ -3,36 +3,38 @@
         <h2>오늘의 이리와</h2>
         <section class="today_best_slider">
             <div class="today_best_contents">
-                <div class="contents_img"><img src="/public/images/comment_icon.png" alt="메인 사진"></div>
-                <div class="contents_detail">
-                    <a href="">
-                    <div class="contents_explain">
-                        <h1>Title</h1>
-                        <h4>location</h4>
-                        <h5>writer</h5>
-                        <p>contents</p>
-                    </div></a>
-                    <div class="contents_info">
-                        <a href="">
-                            <div class="btn_jjim">
-                                <img src="/public/images/jjim_icon.png" alt="찜">
-                                <p>2,100</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="btn_comment">
-                                <img src="/public/images/comment_icon.png" alt="댓글">
-                                <p>100</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="btn_grade">
-                                <img src="/public/images/grade_icon.png" alt="별점">
-                                <p>4.5</p>
-                            </div>
-                        </a>
+                <% post.forEach(p => { %>
+                    <div class="contents_img"><img src="<%= `/public/images/${p.image}` %>" alt="메인 사진"></div>
+                    <div class="contents_detail">
+                        <a href="<%= `/${p.image}` %>">
+                        <div class="contents_explain">
+                            <h1><%= p.title %></h1>
+                            <h4><%= p.address1 %></h4>
+                            <h5><%= p.user_id %></h5>
+                            <p><%= p.content %></p>
+                        </div></a>
+                        <div class="contents_info">
+                            <a href="<%= `/${p.image}` %>">
+                                <div class="btn_jjim">
+                                    <img src="/public/images/jjim_icon.png" alt="찜">
+                                    <p>2,100</p>
+                                </div>
+                            </a>
+                            <a href="<%= `/${p.image}` %>">
+                                <div class="btn_comment">
+                                    <img src="/public/images/comment_icon.png" alt="댓글">
+                                    <p>100</p>
+                                </div>
+                            </a>
+                            <a href="<%= `/${p.image}` %>">
+                                <div class="btn_grade">
+                                    <img src="/public/images/grade_icon.png" alt="별점">
+                                    <p><%= p.grade %></p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </div>
+                <% }); %>
             </div>
         </section>
     </div>
@@ -50,100 +52,107 @@
         </div>
         <div class="contents">
             <div class="gallery_real_content" id="idx_content_end1">
-                <div><img src="/public/images/comment_icon.png" alt="메인 사진"></div>
-                <div>
-                    <a href="">
-                    <div class="contents_explain">
-                        <h3>Title</h3>
-                        <h4>location</h4>
-                        <h5>writer</h5>
-                        <p>contents</p>
-                    </div></a>
-                    <div class="contents_info">
-                        <a href="">
-                            <div class="btn_jjim">
-                                <img src="/public/images/jjim_icon.png" alt="찜">
-                                <p>2,100</p>
+                <% post.forEach(p => { %>
+                    <div><img src="<%= `/public/images/${p.image}` %>" alt="메인 사진"></div>
+                    <div>
+                        <a href="<%= `/${p.image}` %>">
+                            <div class="contents_explain">
+                                <h3><%= p.title %></h3>
+                                <h4><%= p.address1 %></h4>
+                                <h5><%= p.user_id %></h5>
+                                <p><%= p.content %></p>
                             </div>
                         </a>
-                        <a href="">
-                            <div class="btn_comment">
-                                <img src="/public/images/comment_icon.png" alt="댓글">
-                                <p>100</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="btn_grade">
-                                <img src="/public/images/grade_icon.png" alt="별점">
-                                <p>4.5</p>
-                            </div>
-                        </a>
+                        <div class="contents_info">
+                            <a href="<%= `/${p.image}` %>">
+                                <div class="btn_jjim">
+                                    <img src="/public/images/jjim_icon.png" alt="찜">
+                                    <p>2,100</p>
+                                </div>
+                            </a>
+                            <a href="<%= `/${p.image}` %>">
+                                <div class="btn_comment">
+                                    <img src="/public/images/comment_icon.png" alt="댓글">
+                                    <p>100</p>
+                                </div>
+                            </a>
+                            <a href="<%= `/${p.image}` %>">
+                                <div class="btn_grade">
+                                    <img src="/public/images/grade_icon.png" alt="별점">
+                                    <p><%= p.grade %></p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </div>
+                <% }); %>
             </div>
             <div class="gallery_real_content" id="idx_content_end2">
-                <div><img src="/public/images/comment_icon.png" alt="메인 사진"></div>
-                <div>
-                    <a href="">
-                    <div class="contents_explain">
-                        <h3>Title</h3>
-                        <h4>location</h4>
-                        <h5>writer</h5>
-                        <p>contents</p>
-                    </div></a>
-                    <div class="contents_info">
-                        <a href="">
-                            <div class="btn_jjim">
-                                <img src="/public/images/jjim_icon.png" alt="찜">
-                                <p>2,100</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="btn_comment">
-                                <img src="/public/images/comment_icon.png" alt="댓글">
-                                <p>100</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="btn_grade">
-                                <img src="/public/images/grade_icon.png" alt="별점">
-                                <p>4.5</p>
-                            </div>
-                        </a>
+                <% post.forEach(p => { %>
+                    <div><img src="<%= `/public/images/${p.image}` %>" alt="메인 사진"></div>
+                    <div>
+                        <a href="<%= `/${p.image}` %>">
+                        <div class="contents_explain">
+                            <h3><%= p.title %></h3>
+                            <h4><%= p.address1 %></h4>
+                            <h5><%= p.user_id %></h5>
+                            <p><%= p.content %></p>
+                        </div></a>
+                        <div class="contents_info">
+                            <a href="<%= `/${p.image}` %>">
+                                <div class="btn_jjim">
+                                    <img src="/public/images/jjim_icon.png" alt="찜">
+                                    <p>2,100</p>
+                                </div>
+                            </a>
+                            <a href="<%= `/${p.image}` %>">
+                                <div class="btn_comment">
+                                    <img src="/public/images/comment_icon.png" alt="댓글">
+                                    <p>100</p>
+                                </div>
+                            </a>
+                            <a href="<%= `/${p.image}` %>">
+                                <div class="btn_grade">
+                                    <img src="/public/images/grade_icon.png" alt="별점">
+                                    <p><%= p.grade %></p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </div>
+                <% }); %>
             </div>
             <div class="gallery_real_content">
-                <div><img src="/public/images/comment_icon.png" alt="메인 사진"></div>
-                <div>
-                    <a href="">
-                    <div class="contents_explain">
-                        <h3>Title</h3>
-                        <h4>location</h4>
-                        <h5>writer</h5>
-                        <p>contents</p>
-                    </div></a>
-                    <div class="contents_info">
-                        <a href="">
-                            <div class="btn_jjim">
-                                <img src="/public/images/jjim_icon.png" alt="찜">
-                                <p>2,100</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="btn_comment">
-                                <img src="/public/images/comment_icon.png" alt="댓글">
-                                <p>100</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="btn_grade">
-                                <img src="/public/images/grade_icon.png" alt="별점">
-                                <p>4.5</p>
-                            </div>
-                        </a>
+                <% post.forEach(p => { %>
+                    <div><img src="<%= `/public/images/${p.image}` %>" alt="메인 사진"></div>
+                    <div>
+                        <a href="<%= `/${p.image}` %>">
+                        <div class="contents_explain">
+                            <h3><%= p.title %></h3>
+                            <h4><%= p.address1 %></h4>
+                            <h5><%= p.user_id %></h5>
+                            <p><%= p.content %></p>
+                        </div></a>
+                        <div class="contents_info">
+                            <a href="<%= `/${p.image}` %>">
+                                <div class="btn_jjim">
+                                    <img src="/public/images/jjim_icon.png" alt="찜">
+                                    <p>2,100</p>
+                                </div>
+                            </a>
+                            <a href="<%= `/${p.image}` %>">
+                                <div class="btn_comment">
+                                    <img src="/public/images/comment_icon.png" alt="댓글">
+                                    <p>100</p>
+                                </div>
+                            </a>
+                            <a href="<%= `/${p.image}` %>">
+                                <div class="btn_grade">
+                                    <img src="/public/images/grade_icon.png" alt="별점">
+                                    <p><%= p.grade %></p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </div>
+                <% }); %>
             </div>
         </div>
     </div>
