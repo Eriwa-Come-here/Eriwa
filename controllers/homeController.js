@@ -13,18 +13,23 @@ module.exports={
     //function
     index : async (req, res, next) => {
         try {
-            let post = await Post.findAll();
-            res.locals.post = post;
+            let posts = await post.findAll();
+            res.locals.posts = posts;
             next();
         } catch (error) {
+            console.log(`Error fetching: ${error.message}`);
             next(error);
         }
+    },
+
+    showIndex : (req, res) => {
+        res.render("index")
     },
 
     showIndexPost : async (req,res,next) => {
         try {
             let postId = req.params.post_id;
-            let post = await Post.findByKey(postId);
+            let post = await post.findByKey(postId);
             res.locals.post = post;
             next();
         } catch (error) {
@@ -38,21 +43,20 @@ module.exports={
         else next();
     },
 
-    showIndex : (req, res) => {
-        Post.findAll({
-
-        }).then( result =>{
-            res.render("index"),{
-                post: result
-            }
-        }).catch(function(err){
-            console.log(err);
-        });
+    board : async (req, res, next) => {
+        try {
+            let posts = await post.findAll();
+            res.locals.posts = posts;
+            next();
+        } catch (error) {
+            console.log(`Error fetching: ${error.message}`);
+            next(error);
+        }
     },
     
     showBoard : (req, res) => {
         let paramsPlace = req.params.place;
-        Post.findAll({
+        post.findAll({
             where: {address1:paramsPlace}
         }).then( result =>{
             res.render("board"),{
@@ -68,6 +72,17 @@ module.exports={
     },
     
     //mypage
+    qna : async (req, res, next) => {
+        try {
+            let qnas = await qna.findAll();
+            res.locals.qnas = qnas;
+            next();
+        } catch (error) {
+            console.log(`Error fetching: ${error.message}`);
+            next(error);
+        }
+    },
+
     showQna : (req, res) => {
         res.render("mypage-qna");
     },

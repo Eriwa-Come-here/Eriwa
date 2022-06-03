@@ -100,5 +100,7 @@ module.exports = (sequelize, Sequelize) => {
       tableName: "post",
     }
   );
+  post.removeAttribute('id');
+
   return post;
 };

@@ -67,5 +67,7 @@ module.exports = (sequelize, Sequelize) => {
       tableName: "user",
     }
   );
+  user.removeAttribute('id');
+  
   return user;
 };
