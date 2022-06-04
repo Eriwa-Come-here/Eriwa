@@ -54,7 +54,7 @@ app.post("/comment/:post_id", commentController.createComment);
 
 //adminController 추가
 app.get("/admin-member", adminController.showAdminMember);
-app.post("/admin-member/:user_id", adminController.memberDelete);
+app.post("/admin-member/delete", adminController.memberDelete);
 app.get("/admin-post", adminController.showAdminPost);
 app.get("/admin-analysis", adminController.showAdminAnalysis);
 app.get("/admin-qna", adminController.showAdminQna);
