@@ -51,8 +51,8 @@
             <th scope="cols"></th>
           </tr>
         </thead>
-        <% user.forEach(user=>{ %>
         <tbody>
+          <% users.forEach(user => { %>
           <tr>
             <td scope="row"><%= user.name %></td>
             <td><%= user.user_id %></td>
@@ -61,11 +61,11 @@
             <td><%= user.birthdate %></td>
             <td><%= user.gender %></td>
             <td>
-              <form action="<%=`/admin-member/${user.user_id}`%>" method="post">
+              <form action="<%=`/admin-member/delete`%>" method="post">
                 <input
                   type="hidden"
                   name="user_id"
-                  value="<%=user.user_id %>"
+                  value="<%= user.user_id %>"
                 />
                 <input
                   type="submit"
@@ -76,8 +76,8 @@
               </form>
             </td>
           </tr>
+          <% }); %>
         </tbody>
-        <% }); %>
       </table>
     </div>
   </div>
