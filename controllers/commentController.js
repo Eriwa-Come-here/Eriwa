@@ -1,42 +1,40 @@
-const post = require("../models/post");
+//const Post = require("../models/post");
 
-// show (post-view)
-exports.showPost = (req, res) => {
-  post.findAll({
-    where: {
-      post_id: req.params.post_id,
-    },
-  }, function(err, post){
-    if(err) return res.json(err);
-    res.render("post-view", {post:post});
-  });
-};
+const db = require('../models');
+const Sequelize = require('sequelize');
+const sequelize = db.sequelize;
+const Comment = db.comment;
 
-/*
-// create
-router.post('/', util.isLoggedin, checkPostId, function(req, res){ // 1
-    var post = res.locals.post; // 1-1
-  
-    req.body.author = req.user._id; // 2
-    req.body.post = post._id;       // 2
-  
-    Comment.create(req.body, function(err, comment){
-      if(err){
-        req.flash('commentForm', { _id: null, form:req.body });                 // 3
-        req.flash('commentError', { _id: null, errors:util.parseError(err) });  // 3
-      }
-      return res.redirect('/posts/'+post._id+res.locals.getPostQueryString()); //4
-    });
-  });
-  
-  module.exports = router;
-  
-  // private functions
-  function checkPostId(req, res, next){ // 1
-    Post.findOne({_id:req.query.postId},function(err, post){
-      if(err) return res.json(err);
-  
-      res.locals.post = post; // 1-1
+
+module.exports = {
+  // create
+  createComment: async (req, res, next) => {
+    try {
+      await sequelize.query(" INSERT INTO `comment`(`post_id`, `user_id`, `comment`, `written_date`) VALUES (?, ?, ?, ?)", {
+        type: sequelize.QueryTypes.INSERT,
+        replacements: [req.params.post_id, 'test3333', req.body.comment_content, new Date()]
+      });
+      res.redirect("/board/post-view/" + req.params.post_id);
       next();
+    } catch (err) {
+      res.status(500).send({
+        message: err.message,
+      });
+    }
+  }
+  /*
+  createComment: async (req, res) => {
+    Comment.create({
+      post_id: req.params.post_id,
+      user_id: 'test2222', // 나중에 수정하기
+      comment: "test data",//req.body.comment_content,
+      written_date: new Date()
+    }).then(result => {
+      res.redirect("/board/post-view");
+    }). catch(err => {
+      res.status(500).send({
+        message: err.message,
+      });
     });
   }*/
+};
