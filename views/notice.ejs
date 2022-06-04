@@ -23,10 +23,12 @@
               </div>
               <div class="notification-maker" style="display:inline-block; text-align: center;">
                 <img src="/public/images/usericon.png" alt="프로필 이미지" width="20px"><br/>
-                <span>유저닉네임</span>
+                <span><%= event.event_author %></span>
               </div>
               <div class="notification-text">
-                <span class="notice-title">게시글 타이틀</span>
+                <% if (event.event_type == "댓글") { %>
+                  <span class="notice-title"><%= event.event_title %></span>
+                <% } %>
                 <div class="notice-content"><%= event.event_content %></div>
               </div>
               <div class="notification-day">

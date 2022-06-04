@@ -10,6 +10,7 @@ const port = 80,
   adminController = require("./controllers/adminController"),
   mypageController = require("./controllers/mypageController"),
   loginController = require("./controllers/loginController"),
+  commentController = require("./controllers/commentController"),
   db = require("./models");
 
 db.sequelize.sync();
@@ -42,13 +43,16 @@ app.get("/service-intro", homeController.showServiceIntro);
 //noticeController 추가
 app.get("/notice", noticeController.showNotice);
 
-//postController추가
-app.get("/post-writing", postController.showPostWriting);
+//postController 추가
+app.get("/board/post-writing", postController.showPostWriting);
 app.get("/board/post-view/:post_id", postController.showPost);
 app.post("/post-writing", postController.create);
 //app.get("/board/post-view/post.post_id/delete", postController.deletePost);
 
-//adminController추가
+//commentController 추가
+app.post("/comment/:post_id", commentController.createComment);
+
+//adminController 추가
 app.get("/admin-member", adminController.showAdminMember);
 app.post("/admin-member/:user_id", adminController.memberDelete);
 app.get("/admin-post", adminController.showAdminPost);

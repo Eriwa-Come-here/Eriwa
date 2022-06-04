@@ -48,9 +48,15 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      event_author: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      event_title: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       event_content: {
-        // 여기에,,,댓글작성자랑 게시글 제목이랑,,,댓글내용,,,,
-        // +쪽지 작성자랑 쪽지 내용,,,
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -58,6 +64,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
       },
+
       is_checked: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
