@@ -33,7 +33,7 @@ app.use(express.json());
 
 //homeController 추가
 app.get("/", homeController.index, homeController.showIndex);
-app.get("/board/:place_name",homeController.board , homeController.showBoard);
+app.get("/board/:place_name", homeController.board, homeController.showBoard);
 app.get("/search", homeController.showDetailSearch);
 app.get("/mypage/qna", homeController.showQna);
 app.get("/mypage/recommend", homeController.showRecommend);
@@ -43,13 +43,14 @@ app.get("/service-intro", homeController.showServiceIntro);
 app.get("/notice", noticeController.showNotice);
 
 //postController추가
-app.get("/board/post-writing", postController.showPostWriting);
+app.get("/post-writing", postController.showPostWriting);
 app.get("/board/post-view/:post_id", postController.showPost);
-app.post("/board/post-writing", postController.create);
+app.post("/post-writing", postController.create);
 //app.get("/board/post-view/post.post_id/delete", postController.deletePost);
 
 //adminController추가
 app.get("/admin-member", adminController.showAdminMember);
+app.post("/admin-member/:user_id", adminController.memberDelete);
 app.get("/admin-post", adminController.showAdminPost);
 app.get("/admin-analysis", adminController.showAdminAnalysis);
 app.get("/admin-qna", adminController.showAdminQna);

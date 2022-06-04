@@ -6,18 +6,6 @@ const sequelize = db.sequelize;
 const Post = require("../models/post");
 const datefunc = require("../public/js/datefunc.js");
 
-//img 저장경로, 파일명 변경
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cd(null, "public/images");
-  },
-  filename: (req, file, cb) => {
-    const extname = path.extname(file.originalname);
-    cd(null, path.basename(file.originalname, origin) + extname);
-  },
-});
-upload = multer({ storage: storage });
-
 // show
 exports.showPost = async (req, res) => {
   try {
@@ -37,10 +25,26 @@ exports.showPost = async (req, res) => {
   }
 };
 
-exports.create = async (req, res) => {
+exports.showPostWriting = (req, res) => {
+  res.render("post-writing");
+};
+
+//img 저장경로, 파일명 변경
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cd(null, "public/images");
+//   },
+//   filename: (req, file, cb) => {
+//     const extname = path.extname(file.originalname);
+//     cd(null, path.basename(file.originalname, extname) + Date.now() + extname);
+//   },
+// });
+// const upload = multer({ storage: storage });
+
+exports.create = async (req, res, next) => {
   try {
     await Post.create({
-      // user_id: req.body.user_id,
+      user_id: req.body.user_id,
       title: req.body.title,
       content: req.body.content,
       address1: req.body.address1,
@@ -53,9 +57,9 @@ exports.create = async (req, res) => {
       can_park: req.body.can_park,
       can_pet: req.body.can_pet,
     });
-    res.render("board");
+    res.render("/");
   } catch (error) {
-    console.log(`Error saving post: ${error.message}`);
+    console.log(`Error fetching Post by ID: ${error.message}`);
     next(error);
   }
 };

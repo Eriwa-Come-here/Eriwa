@@ -33,9 +33,9 @@ module.exports = (sequelize, Sequelize) => {
     {
       post_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         autoincrement: true,
         primarykey: true,
+        allowNull: false,
       },
       title: {
         type: Sequelize.STRING,
@@ -101,5 +101,7 @@ module.exports = (sequelize, Sequelize) => {
       tableName: "post",
     }
   );
+  Post.removeAttribute("id");
+
   return Post;
 };

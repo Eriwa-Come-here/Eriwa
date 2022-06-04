@@ -69,25 +69,7 @@
         <tr>
           <td class="td-style td_border">평점</td>
           <td class="td_border">
-            <span class="star">
-              ★★★★★
-              <span>★★★★★</span>
-              <input
-                type="range"
-                oninput="drawStar(this)"
-                value="1"
-                step="1"
-                min="0"
-                max="10"
-              />
-            </span>
-            <script>
-              const drawStar = (target) => {
-                document.querySelector(`.star span`).style.width = `${
-                  target.value * 10
-                }%`;
-              };
-            </script>
+            <input type="text" class="input-style" name="grade" />
           </td>
         </tr>
         <tr>

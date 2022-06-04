@@ -5,7 +5,7 @@ module.exports = (sequelize, Sequelize) => {
         let user = await User.findByPk(id);
         if (user) {
           user = await User.update(params, {
-            where: { id: id },
+            where: { user_id: id },
           });
         }
         return user;
@@ -18,7 +18,7 @@ module.exports = (sequelize, Sequelize) => {
         let user = await User.findByPk(id);
         if (user) {
           user = await User.destroy(params, {
-            where: { id: id },
+            where: { user_id: id },
           });
         }
 
@@ -67,7 +67,7 @@ module.exports = (sequelize, Sequelize) => {
       tableName: "user",
     }
   );
-  User.removeAttribute("id");
+  // User.removeAttribute("id");
 
   return User;
 };
