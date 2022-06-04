@@ -1,7 +1,7 @@
 //models/comment.js
 module.exports = (sequelize, Sequelize) => {
-  const user = require("./user")(sequelize, Sequelize);
-  const post = require("./post")(sequelize, Sequelize);
+  const User = require("./user")(sequelize, Sequelize);
+  const Post = require("./post")(sequelize, Sequelize);
   class Comment extends Sequelize.Model {
     static async findByPkAndUpdate(id, params) {
       try {
