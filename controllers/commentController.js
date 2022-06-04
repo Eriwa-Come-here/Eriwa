@@ -15,7 +15,6 @@ module.exports = {
         replacements: [req.params.post_id, 'test3333', req.body.comment_content, new Date()]
       });
       res.redirect("/board/post-view/" + req.params.post_id);
-      next();
     } catch (err) {
       res.status(500).send({
         message: err.message,

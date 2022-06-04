@@ -43,14 +43,16 @@ app.get("/service-intro", homeController.showServiceIntro);
 //noticeController 추가
 app.get("/notice", noticeController.showNotice);
 
-//postController추가
+//postController 추가
 app.get("/board/post-writing", postController.showPostWriting);
 app.get("/board/post-view/:post_id", postController.showPost);
 //app.get("/board/post-view/post.post_id/delete", postController.deletePost);
-app.post("/comment/:post_id", commentController.createComment, postController.showPost);
+
+//commentController 추가
+app.post("/comment/:post_id", commentController.createComment);
 
 
-//adminController추가
+//adminController 추가
 app.get("/admin-member", adminController.showAdminMember);
 app.get("/admin-post", adminController.showAdminPost);
 app.get("/admin-analysis", adminController.showAdminAnalysis);
