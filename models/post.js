@@ -1,11 +1,11 @@
 module.exports = (sequelize, Sequelize) => {
-  const user = require("./user")(sequelize, Sequelize);
-  class post extends Sequelize.Model {
+  const User = require("./user")(sequelize, Sequelize);
+  class Post extends Sequelize.Model {
     static async findByPkAndUpdate(id, params) {
       try {
-        let post = await post.findByPk(id);
+        let post = await Post.findByPk(id);
         if (post) {
-          post = await post.update(params, {
+          post = await Post.update(params, {
             where: { id: id },
           });
         }
@@ -16,9 +16,9 @@ module.exports = (sequelize, Sequelize) => {
     }
     static async findByPkAndRemove(id) {
       try {
-        let post = await post.findByPk(id);
+        let post = await Post.findByPk(id);
         if (post) {
-          post = await post.destroy(params, {
+          post = await Post.destroy(params, {
             where: { id: id },
           });
         }
@@ -28,13 +28,14 @@ module.exports = (sequelize, Sequelize) => {
       }
     }
   }
-  post.init(
+
+  Post.init(
     {
       post_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         autoincrement: true,
         primarykey: true,
+        allowNull: false,
       },
       title: {
         type: Sequelize.STRING,
@@ -78,7 +79,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
         references: {
-          model: user,
+          model: User,
           key: "user_id",
         },
       },
@@ -96,11 +97,11 @@ module.exports = (sequelize, Sequelize) => {
     {
       sequelize,
       timestamps: false,
-      modelName: "post",
+      modelName: "Post",
       tableName: "post",
     }
   );
-  post.removeAttribute('id');
+  Post.removeAttribute("id");
 
-  return post;
+  return Post;
 };

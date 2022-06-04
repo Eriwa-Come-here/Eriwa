@@ -1,12 +1,10 @@
-const db = require('../models');
-const Sequelize = require('sequelize');
+const multer = require("multer");
+const path = require("path");
+const db = require("../models");
+const Sequelize = require("sequelize");
 const sequelize = db.sequelize;
-const Post = require('../models/post');
-const datefunc = require('../public/js/datefunc.js');
-
-exports.showPostWriting = (req, res) => {
-  res.render("post-writing");
-};
+const Post = require("../models/post");
+const datefunc = require("../public/js/datefunc.js");
 
 // show
 exports.showPost = async (req, res) => {
@@ -33,7 +31,23 @@ exports.showPost = async (req, res) => {
   }
 };
 
-exports.savePost = async (req, res) => {
+exports.showPostWriting = (req, res) => {
+  res.render("post-writing");
+};
+
+//img 저장경로, 파일명 변경
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cd(null, "public/images");
+//   },
+//   filename: (req, file, cb) => {
+//     const extname = path.extname(file.originalname);
+//     cd(null, path.basename(file.originalname, extname) + Date.now() + extname);
+//   },
+// });
+// const upload = multer({ storage: storage });
+
+exports.create = async (req, res, next) => {
   try {
     await Post.create({
       user_id: req.body.user_id,
@@ -44,15 +58,17 @@ exports.savePost = async (req, res) => {
       address3: req.body.address3,
       place_name: req.body.place_name,
       place_type: req.body.place_type,
-      // img:req.body.img,
+      img: `/images/{req.body.img}`,
       grade: req.body.grade,
       can_park: req.body.can_park,
       can_pet: req.body.can_pet,
     });
-    res.render("board");
-  } catch (err) {
-    res.status(500).send({
-      message: err.message,
-    });
+    res.render("/");
+  } catch (error) {
+    console.log(`Error fetching Post by ID: ${error.message}`);
+    next(error);
   }
 };
+
+exports.edit = async (req, res) => {};
+exports.delete = async (req, res) => {};

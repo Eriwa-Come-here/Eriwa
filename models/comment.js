@@ -2,12 +2,12 @@
 module.exports = (sequelize, Sequelize) => {
   const user = require("./user")(sequelize, Sequelize);
   const post = require("./post")(sequelize, Sequelize);
-  class comment extends Sequelize.Model {
+  class Comment extends Sequelize.Model {
     static async findByPkAndUpdate(id, params) {
       try {
-        let comment = await comment.findByPk(id);
+        let comment = await Comment.findByPk(id);
         if (comment) {
-          comment = await comment.update(params, {
+          comment = await Comment.update(params, {
             where: { id: id },
           });
         }
@@ -18,9 +18,9 @@ module.exports = (sequelize, Sequelize) => {
     }
     static async findByPkAndRemove(id) {
       try {
-        let comment = await comment.findByPk(id);
+        let comment = await Comment.findByPk(id);
         if (comment) {
-          comment = await comment.destroy(params, {
+          comment = await Comment.destroy(params, {
             where: { id: id },
           });
         }
@@ -30,7 +30,7 @@ module.exports = (sequelize, Sequelize) => {
       }
     }
   }
-  comment.init(
+  Comment.init(
     {
       post_id: {
         // 외래키
@@ -38,7 +38,7 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
         primaryKey: true,
         references: {
-          model: post,
+          model: Post,
           key: "post_id",
         },
       },
@@ -54,7 +54,7 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
         defaultValue: "deleted",
         references: {
-          model: user,
+          model: User,
           key: "user_id",
         },
       },
@@ -70,9 +70,9 @@ module.exports = (sequelize, Sequelize) => {
     {
       sequelize,
       timestamps: false,
-      modelName: "comment",
+      modelName: "Comment",
       tableName: "comment",
     }
   );
-  return comment;
+  return Comment;
 };

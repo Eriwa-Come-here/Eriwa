@@ -25,7 +25,7 @@
   </div>
   <div class="main-contents">
     <div class="subject">문의 내역</div>
-    <div class="main-searchbox-pos">
+    <!-- <div class="main-searchbox-pos">
       <form>
         <select class="qna-select-style">
           <option>구분</option>
@@ -36,24 +36,22 @@
       </form>
       <input type="text" class="main-search-box" />
       <button class="qna-button-style">검색</button>
-    </div>
+    </div> -->
     <div>
-      <!-- <table class="qna-table-style">
+      <table class="qna-table-style">
         <thead>
           <tr>
             <th scope="cols">No.</th>
-            <th scope="cols">회원명/회원아이디</th>
+            <th scope="cols">회원아이디</th>
             <th scope="cols">문의내용</th>
             <th scope="cols">구분</th>
           </tr>
         </thead>
-        <% qnas.forEach(s=>{ %>
+        <% qna.forEach(s=>{ %>
         <tbody>
           <tr>
             <td scope="row"><%= s.qna_id %></td>
             <td>
-              <span><%= s.name %></span>
-              <span>/</span>
               <span><%= s.user_id %></span>
             </td>
             <td>
@@ -65,7 +63,7 @@
           </tr>
         </tbody>
         <% }); %>
-      </table> -->
+      </table>
     </div>
   </div>
 </div>

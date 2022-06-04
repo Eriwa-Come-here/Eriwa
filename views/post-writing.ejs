@@ -1,7 +1,11 @@
 <script src="../public/js/post.js"></script>
 <main class="main-all">
   <div class="post-main-div">
-    <form action="/board/post-writing" method="post">
+    <form
+      action="/board/post-writing"
+      method="post"
+      enctype="multipart/form-data"
+    >
       <table class="post-table-style">
         <tr>
           <td class="td-style td_border">제목</td>
@@ -36,11 +40,11 @@
           <td class="td-style td_border">장소종류</td>
           <td class="td_border">
             <span>
-              <input type="radio" name="place_type" /> 카페
-              <input type="radio" name="place_type" /> 식당
-              <input type="radio" name="place_type" /> 주점
-              <input type="radio" name="place_type" /> 관광
-              <input type="radio" name="place_type" /> 기타
+              <input type="radio" name="place_type" value="cafe" /> 카페
+              <input type="radio" name="place_type" value="restaurant" /> 식당
+              <input type="radio" name="place_type" value="bar" /> 주점
+              <input type="radio" name="place_type" value="sightseeing" /> 관광
+              <input type="radio" name="place_type" value="etc" /> 기타
             </span>
           </td>
         </tr>
@@ -48,8 +52,8 @@
           <td class="td-style">주차장 이용</td>
           <td>
             <span>
-              <input type="radio" name="can_park" /> 가능
-              <input type="radio" name="can_park" /> 불가능
+              <input type="radio" name="can_park" value="1" /> 가능
+              <input type="radio" name="can_park" value="0" /> 불가능
             </span>
           </td>
         </tr>
@@ -57,33 +61,15 @@
           <td class="td-style td_border">반려동물 동반</td>
           <td class="td_border">
             <span>
-              <input type="radio" name="can_pet" /> 가능
-              <input type="radio" name="can_pet" /> 불가능
+              <input type="radio" name="can_pet" value="1" /> 가능
+              <input type="radio" name="can_pet" value="0" /> 불가능
             </span>
           </td>
         </tr>
         <tr>
           <td class="td-style td_border">평점</td>
           <td class="td_border">
-            <span class="star">
-              ★★★★★
-              <span>★★★★★</span>
-              <input
-                type="range"
-                oninput="drawStar(this)"
-                value="1"
-                step="1"
-                min="0"
-                max="10"
-              />
-            </span>
-            <script>
-              const drawStar = (target) => {
-                document.querySelector(`.star span`).style.width = `${
-                  target.value * 10
-                }%`;
-              };
-            </script>
+            <input type="text" class="input-style" name="grade" />
           </td>
         </tr>
         <tr>
@@ -114,7 +100,7 @@
       <div>
         <span class="btn_pos">
           <button class="cancel-btn">취소</button>
-          <button class="submit-btn">등록</button>
+          <button class="submit-btn" type="submit">등록</button>
         </span>
       </div>
     </form>

@@ -26,7 +26,7 @@
   <div class="main-contents">
     <div class="subject">전체 회원</div>
     <div class="main-searchbox-pos">
-      <form>
+      <!-- <form>
         <select class="member-select-style">
           <option>구분</option>
           <option>회원아이디</option>
@@ -34,62 +34,50 @@
           <option>사용자</option>
           <option>관리자</option>
         </select>
-      </form>
-      <input type="text" class="main-search-box" />
-      <button class="member-button-style">검색</button>
+      </form> -->
+      <!-- <input type="text" class="main-search-box" />
+      <button class="member-button-style">검색</button> -->
     </div>
     <div>
       <table class="table-style">
         <thead>
           <tr>
-            <th scope="cols">No.</th>
-            <th scope="cols">회원명 / 회원아이디</th>
+            <th scope="cols">회원명</th>
+            <th scope="cols">회원아이디</th>
             <th scope="cols">게시글수</th>
             <th scope="cols">이메일</th>
-            <th scope="cols">구분</th>
+            <th scope="cols">생년월일</th>
+            <th scope="cols">성별</th>
+            <th scope="cols"></th>
           </tr>
         </thead>
+        <% user.forEach(user=>{ %>
         <tbody>
           <tr>
-            <td scope="row">1</td>
+            <td scope="row"><%= user.name %></td>
+            <td><%= user.user_id %></td>
+            <td>//게시글수//</td>
+            <td><%= user.email %></td>
+            <td><%= user.birthdate %></td>
+            <td><%= user.gender %></td>
             <td>
-              <a href="#">김수정</a>
-              <span>/</span>
-              <a href="#">sujung1122</a>
+              <form action="<%=`/admin-member/${user.user_id}`%>" method="post">
+                <input
+                  type="hidden"
+                  name="user_id"
+                  value="<%=user.user_id %>"
+                />
+                <input
+                  type="submit"
+                  name="Delete"
+                  value="Delete"
+                  onClick="alert('회원정보를 삭제하시겠습니까?')"
+                />
+              </form>
             </td>
-            <td>2</td>
-            <td>
-              <a href="#">sujung1122@gmail.com</a>
-            </td>
-            <td>사용자</td>
-          </tr>
-          <tr>
-            <td scope="row">1</td>
-            <td>
-              <a href="#">김수정</a>
-              <span>/</span>
-              <a href="#">sujung1122</a>
-            </td>
-            <td>2</td>
-            <td>
-              <a href="#">sujung1122@gmail.com</a>
-            </td>
-            <td>사용자</td>
-          </tr>
-          <tr>
-            <td scope="row">1</td>
-            <td>
-              <a href="#">김수정</a>
-              <span>/</span>
-              <a href="#">sujung1122</a>
-            </td>
-            <td>2</td>
-            <td>
-              <a href="#">sujung1122@gmail.com</a>
-            </td>
-            <td>사용자</td>
           </tr>
         </tbody>
+        <% }); %>
       </table>
     </div>
   </div>
