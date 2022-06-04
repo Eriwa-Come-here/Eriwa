@@ -1,7 +1,7 @@
 const db = require('../models');
 const Sequelize = require('sequelize');
 const sequelize = db.sequelize;
-const post = require('../models/post');
+const Post = require('../models/post');
 const datefunc = require('../public/js/datefunc.js');
 
 exports.showPostWriting = (req, res) => {
@@ -11,12 +11,21 @@ exports.showPostWriting = (req, res) => {
 // show
 exports.showPost = async (req, res) => {
   try {
-    const [result, metadata] = await sequelize.query("SELECT * FROM `post` WHERE post_id = ?", {
+    const [post, post_metadata] = await sequelize.query("SELECT * FROM `post` WHERE post_id = ?", {
       type: Sequelize.SELECT,
       replacements: [req.params.post_id]
     });
-    console.log(result);
-    res.render("post-view", {post: result[0], getDate: datefunc.getDate});
+    const [recommend, recommend_metadata] = await sequelize.query("SELECT COUNT(*) AS count FROM `recommend` WHERE post_id = ?", {
+      type: Sequelize.SELECT,
+      replacements: [req.params.post_id]
+    });;
+    const [comments, comment_metadata] = await sequelize.query("SELECT * FROM `comment` WHERE post_id = ?", {
+      type: Sequelize.SELECT,
+      replacements: [req.params.post_id]
+    });
+    console.log(post);
+    console.log(comments);
+    res.render("post-view", {post: post[0], recommend_count: recommend[0].conut, comments: comments, getDate: datefunc.getDate});
   } catch (err) {
     res.status(500).send({
       message: err.message,
@@ -26,7 +35,7 @@ exports.showPost = async (req, res) => {
 
 exports.savePost = async (req, res) => {
   try {
-    await post.create({
+    await Post.create({
       user_id: req.body.user_id,
       title: req.body.title,
       content: req.body.content,

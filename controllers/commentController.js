@@ -21,19 +21,4 @@ module.exports = {
       });
     }
   }
-  /*
-  createComment: async (req, res) => {
-    Comment.create({
-      post_id: req.params.post_id,
-      user_id: 'test2222', // 나중에 수정하기
-      comment: "test data",//req.body.comment_content,
-      written_date: new Date()
-    }).then(result => {
-      res.redirect("/board/post-view");
-    }). catch(err => {
-      res.status(500).send({
-        message: err.message,
-      });
-    });
-  }*/
 };
