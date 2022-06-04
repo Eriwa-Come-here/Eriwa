@@ -11,7 +11,7 @@ module.exports = {
 
     showNotice: async (req, res) => {
         try {
-            const [result, metadata] = await sequelize.query("SELECT * FROM `event` WHERE user_id = ?", {
+            const [result, metadata] = await sequelize.query("SELECT * FROM `event` WHERE user_id = ? ORDER BY event_date DESC", {
                 type: Sequelize.SELECT,
                 replacements: ['aeaf']
             });
