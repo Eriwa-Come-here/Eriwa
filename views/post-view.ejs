@@ -12,8 +12,8 @@
           </span>
           <span class="post-info-right-content">
             <a href="#comment"><img src="/public/images/comment-alt.png" alt="댓글수" width="25"
-                height="25">&nbsp;댓글 <%= 1 %></a>&nbsp;&nbsp;&nbsp;<a href="#"><img src="/public/images/heart.png" alt="추천"
-                width="25" height="25">&nbsp;추천 <%= 5 %></a>
+                height="25">&nbsp;댓글 <%= comments.length %></a>&nbsp;&nbsp;&nbsp;<a href="#"><img src="/public/images/heart.png" alt="추천"
+                width="25" height="25">&nbsp;추천 <%= recommend_count %></a>
           </span>
         </div>
       </header>
@@ -95,13 +95,34 @@
     <!-- 본문 -->
     <!-- 댓글창 -->
     <div class="comment-area" id="comment">
-  
+      <% if (comments.length) { %>
+        <% comments.forEach(comment => { %>
+          <div class="comment-content">
+            <div class="post-view-profile">
+              <a href="#"><img src="/public/images/usericon.png" alt="작성자 프로필">&nbsp;<%= comment.user_id %></a>
+            </div>
+            <p class="comment-content-text"><%= comment.comment %></p>
+            <div class="comment-footer">
+              <%= getDate(comment.written_date) %>
+              <!-- 작성자에게만 보이게 -->
+              
+                <span class="comment-buttons">
+                  <a href="<%= `/board/post-view/${post.post_id}/comment/${comment.comment_id}/edit` %>">수정</a>
+                  <a href="<%= `/board/post-view/${post.post_id}/comment/${comment.comment_id}/delete` %>">삭제</a>
+                </span>
+              
+            </div>
+          </div>
+        <% }) %>   
+      <% } %>
+      
       <div class="comment-writing-column">
         <div class="post-view-profile">
-          <img src="/public/images/usericon.png" alt="내 프로필">&nbsp;내 아이디
+          <img src="/public/images/usericon.png" alt="내 프로필">&nbsp; 내 아이디
         </div>
-        <form class="comment-textarea" action="" method="post">
-          <p><textarea placeholder="내용을 입력해 주세요" name="comment-textarea" rows="8" cols="80"></textarea></p>
+        <form class="comment-textarea" action="<%= `/comment/${post.post_id}` %>" method="post">
+          <input type="hidden" id="comment_author">
+          <p><textarea placeholder="내용을 입력해 주세요" name="comment_content" rows="8" cols="80"></textarea></p>
           <p><input type="submit" name="등록" value="등록" class="post-view-myButton"></p>
         </form>
       </div>
