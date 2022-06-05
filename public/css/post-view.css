@@ -98,12 +98,13 @@
   padding: 20px;
 }
 
-.comment-content {
-  padding: 20px 40px;
+.comment-content-container {
   border-bottom: 1px solid #dadada;
+  padding: 20px 40px;
 }
 
-.comment-content > p {
+.comment-content-text {
+  padding-bottom: 5px;
   white-space: normal;
   font-size: 16px;
   word-break: break-all;
@@ -116,10 +117,20 @@
   color: darkgray;
 }
 
-.comment-buttons > a {
-  padding: 0px 5px;
+.comment-buttons > a, .comment-buttons > form {
+  display: inline-block;
+  margin-left: 8px;
+}
+
+.edit-delete {
+  display: block;
+  background-color: rgba(255, 255, 255, 0);
   color: gray;
   text-decoration: underline;
+  cursor: pointer;
+  font-size: 13px;
+	border: 0;
+  outline: 0;
 }
 
 .comment-writing-column {
@@ -135,7 +146,7 @@
   align-items: center;
 }
 
-.comment-textarea > p > textarea {
+.comment-textarea > div > textarea {
   resize: none;
   width: 100%;
   margin: 0px 0px 0px 0px;
@@ -143,10 +154,11 @@
   border-radius: 7px;
 }
 
+/*
 #comment-submit {
   display: block;
   margin: 0 0 0 auto;
-}
+}*/
 
 .post-view-myButton {
 	background-color: #ffffff;
@@ -178,4 +190,30 @@
   border: 1px solid darkgray;
   border-radius: 5px;
   padding: 5px 10px;
+}
+
+.comment-edit-form {
+  display: none;
+}
+
+.comment-edit-form > form {
+  display: block;
+}
+
+.comment-edit-buttons {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr;
+}
+
+#comment-edit-button {
+  margin-left: 5px;
+}
+
+.comment-edit-hide {
+  display: none;
+}
+
+.comment-edit-show {
+  display: block;
 }

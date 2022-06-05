@@ -1,3 +1,4 @@
+<script src="/public/js/post.js"></script>
 <div class="post-view-container">
   <main class="post-view-main">
     <!-- 본문 -->
@@ -13,7 +14,7 @@
           <span class="post-info-right-content">
             <a href="#comment"><img src="/public/images/comment-alt.png" alt="댓글수" width="25"
                 height="25">&nbsp;댓글 <%= comments.length %></a>&nbsp;&nbsp;&nbsp;<a href="#"><img src="/public/images/heart.png" alt="추천"
-                width="25" height="25">&nbsp;추천 <%= recommend_count %></a>
+                width="25" height="25">&nbsp;추천 <%= post.recommend_count %></a>
           </span>
         </div>
       </header>
@@ -60,74 +61,76 @@
             <!-- 추천 기능 추가하기 -->
             <a href="#" onclick="javascript:pushRecommend()"><span id="post-view-recommend"><img src="/public/images/heart.png" alt="추천" width="25"
                   height="25">&nbsp;추천</span></a>
-            <script>
-              function pushRecommend(){
-                // 기능 구현하기,,,,
-              }
-            </script>
             &nbsp;
             <a href="#" onclick="javascript:copyUrl()"><span id="post-view-share"><img src="/public/images/share.png" alt="공유" width="25"
                   height="25">&nbsp;공유</span></a>
-            <script type="text/javascript">
-              function copyUrl(){
-                var url = '';
-                var textarea = document.createElement("textarea");
-                document.body.appendChild(textarea);
-                url = window.document.location.href;
-                textarea.value = url;
-                textarea.select();
-                document.execCommand("copy");
-                document.body.removeChild(textarea);
-                alert("url을 복사했습니다. 원하는 곳에 붙여넣기(Ctrl+V) 해주세요.")
-              }
-            </script>
           </span>
           <!-- 작성자에게만 보이게 -->
           <% if (post.user_id) { %>
             <span class="article-footer-right">
               <a href="<%= `/board/post-view/${post.post_id}/edit` %>">수정</a>
-              <a href="<%= `/board/post-view/${post.post_id}/delete` %>">삭제</a>
+              <a href="<%= `/post-view/${post.post_id}/delete` %>">삭제</a>
             </span>
           <% } %>
         </div>
       </div>
     </article>
-    <!-- 본문 -->
+
     <!-- 댓글창 -->
     <div class="comment-area" id="comment">
       <% if (comments.length) { %>
         <% comments.forEach(comment => { %>
-          <div class="comment-content">
-            <div class="post-view-profile">
-              <a href="#"><img src="/public/images/usericon.png" alt="작성자 프로필">&nbsp;<%= comment.user_id %></a>
+          <div class="comment-content-container">
+            <div class="comment-content">
+              <div class="post-view-profile">
+                <a href="#"><img src="/public/images/usericon.png" alt="작성자 프로필">&nbsp;<%= comment.user_id %></a>
+              </div>
+              <div id="<%= `comment-content-${comment.comment_id}` %>">
+                <div class="comment-content-text"><%= comment.comment %></div>
+              
+                <div class="comment-footer">
+                  <%= getDate(comment.written_date) %>
+                  <!-- 작성자에게만 보이게 -->
+                    <span class="comment-buttons">
+                      <!-- 클릭하면 수정 폼을 보여줌 -->
+                      <a onclick="showEdit('<%= `comment-content-${comment.comment_id}` %>', '<%= `comment-edit-${comment.comment_id}` %>');" href="javascript:void(0)" class="edit-delete">수정</a>
+                      <form action="<%= `/comment/${post.post_id}/delete` %>" method="post">
+                        <input type="hidden" name="comment_id" value="<%= comment.comment_id %>">
+                        <input type="submit" name="삭제" value="삭제" class="edit-delete">
+                      </form>
+                    </span>
+                </div>
+              </div>
             </div>
-            <p class="comment-content-text"><%= comment.comment %></p>
-            <div class="comment-footer">
-              <%= getDate(comment.written_date) %>
-              <!-- 작성자에게만 보이게 -->
-              
-                <span class="comment-buttons">
-                  <a href="<%= `/board/post-view/${post.post_id}/comment/${comment.comment_id}/edit` %>">수정</a>
-                  <a href="<%= `/board/post-view/${post.post_id}/comment/${comment.comment_id}/delete` %>">삭제</a>
-                </span>
-              
+
+            <!-- 댓글 수정 폼 -->
+            <div class="comment-edit-form" id="<%= `comment-edit-${comment.comment_id}` %>">
+
+              <form class="comment-textarea" action="<%= `/comment/${post.post_id}/edit` %>" method="post">
+                <input type="hidden" id="comment_author" value="">
+                <div><textarea placeholder="<%= comment.comment %>" name="comment_content" rows="8" cols="80"></textarea></div>
+                <div class="comment-edit-buttons">
+                  <input type="button" onclick="hideEdit('<%= `comment-content-${comment.comment_id}` %>', '<%= `comment-edit-${comment.comment_id}` %>');" name="cancel_update" value="취소" class="post-view-myButton">
+                  <input type="submit" name="submit_update" value="수정" class="post-view-myButton" id="comment-edit-button">
+                </div>
+              </form>
             </div>
           </div>
         <% }) %>   
       <% } %>
       
-      <div class="comment-writing-column">
+      <div class="comment-writing-column" id="testid">
         <div class="post-view-profile">
           <img src="/public/images/usericon.png" alt="내 프로필">&nbsp; 내 아이디
         </div>
         <form class="comment-textarea" action="<%= `/comment/${post.post_id}` %>" method="post">
-          <input type="hidden" id="comment_author">
-          <p><textarea placeholder="내용을 입력해 주세요" name="comment_content" rows="8" cols="80"></textarea></p>
-          <p><input type="submit" name="등록" value="등록" class="post-view-myButton"></p>
+          <input type="hidden" id="comment_author" value="">
+          <div><textarea placeholder="내용을 입력해 주세요" name="comment_content" rows="8" cols="80"></textarea></div>
+          <div><input type="submit" name="등록" value="등록" class="post-view-myButton"></div>
         </form>
       </div>
     </div>
-    <!-- 댓글창 -->
+
     <div class="post-view-buttons">
       <a href="/board">목록</a>
       <a href="<%= `/board/post-view/${post.post_id}` %>">TOP</a>
