@@ -34,7 +34,7 @@ app.use(express.json());
 
 //homeController 추가
 app.get("/", homeController.index, homeController.showIndex);
-app.get("/board/:place_name", homeController.board, homeController.showBoard);
+// app.get("/board/:place_name", homeController.board, homeController.showBoard);
 app.get("/search", homeController.showDetailSearch);
 app.get("/mypage/qna", homeController.showQna);
 app.get("/mypage/recommend", homeController.showRecommend);
@@ -46,7 +46,7 @@ app.get("/notice", noticeController.showNotice);
 //postController 추가
 app.get("/board/post-writing", postController.showPostWriting);
 app.get("/board/post-view/:post_id", postController.showPost);
-app.post("/post-writing", postController.createPost);
+app.post("/board/post-writing", postController.createPost);
 //app.get("/post-view/:post_id/delete", postController.deletePost);
 
 //commentController 추가
@@ -57,6 +57,7 @@ app.post("/comment/:post_id/delete", commentController.deleteComment);
 app.get("/admin-member", adminController.showAdminMember);
 app.post("/admin-member/delete", adminController.memberDelete);
 app.get("/admin-post", adminController.showAdminPost);
+app.post("/admin-post/delete", adminController.postDelete);
 app.get("/admin-analysis", adminController.showAdminAnalysis);
 app.get("/admin-qna", adminController.showAdminQna);
 app.get("/admin-qna-response", adminController.showAdminQnaResponse);

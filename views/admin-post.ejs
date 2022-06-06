@@ -26,56 +26,46 @@
   <div class="main-contents">
     <div class="subject">전체 게시글</div>
     <div>
-      <!-- <form class="combobox-pos">
-        <select class="post-select-style">
-          <option>구분</option>
-          <option>최신순</option>
-          <option>오래된순</option>
-          <option>추천순</option>
-        </select>
-      </form> -->
-    </div>
-    <div>
-      <ul class="list_ul_style">
-        <li class="li_box">
-          <div class="li_inner">
-            <div class="list_img">
-              <a href="#">이미지</a>
-            </div>
-            <div class="article_info">
-              <p class="title">제목 : 아아아</p>
-              <p class="list_info">내용:아아아아아아아아아</p>
-              <p>서울시 성북구 어쩌구</p>
-              <p>
-                <span class="icon-style"
-                  ><img src="../public/images/jjim_icon.png" width="18" />
-                  9999</span
-                >
-                <span class="icon-style"
-                  ><img src="../public/images/comment-alt.png" width="18" />
-                  100</span
-                >
-                <span class="icon-style"
-                  ><img src="../public/images/grade_icon.png" width="20" />
-                  100</span
-                >
-              </p>
-            </div>
-            <div class="user_profile">
-              <span>
-                <a href="#"
-                  ><img src="../public/images/profile_icon.png" width="25"
-                /></a>
-              </span>
-              <span>
-                <a role="button" href="#" class="more_btn">
-                  <img src="../public/images/menu.png" width="6" />
-                </a>
-              </span>
-            </div>
-          </div>
-        </li>
-      </ul>
+      <table class="table-style">
+        <thead>
+          <tr>
+            <th scope="cols">회원아이디</th>
+            <th scope="cols">제목</th>
+            <!-- <th scope="cols">상호명</th>
+            <th scope="cols">장소</th> -->
+            <th scope="cols">조회수</th>
+            <th scope="cols">댓글수</th>
+            <th scope="cols"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% post.forEach(post => { %>
+          <tr>
+            <td scope="row"><%= post.user_id %></td>
+            <td><%= post.title %></td>
+            <!-- <td><%= post.place_name %></td>
+            <td><%= post.address1 %> <%= post.address2 %></td> -->
+            <td><%= post.view_count %></td>
+            <td><%= post.commentCount %></td>
+            <td>
+              <form action="<%=`/admin-post/delete`%>" method="post">
+                <input
+                  type="hidden"
+                  name="post_id"
+                  value="<%= post.post_id %>"
+                />
+                <input
+                  type="submit"
+                  name="Delete"
+                  value="Delete"
+                  onClick="alert('게시글을 삭제하시겠습니까?')"
+                />
+              </form>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

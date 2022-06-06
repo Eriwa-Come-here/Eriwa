@@ -346,6 +346,8 @@ function sido() {
   document.getElementById("address1").innerHTML = sido.join("");
 }
 
+sido();
+
 function loadsigungu() {
   const sido = document.getElementById("address1").value;
   const sigungu = [];
@@ -461,8 +463,6 @@ function loadsigungu() {
 
   document.getElementById("address2").innerHTML = sigungu.join("");
 }
-
-sido();
 
 //img태그 누르면 파일첨부로 이동
 const realUpload = document.querySelector(".real-upload");

@@ -1,108 +1,95 @@
 <script src="../public/js/post.js"></script>
-<main class="main-all">
-  <div class="post-main-div">
-    <form
-      action="/board/post-writing"
-      method="post"
-      enctype="multipart/form-data"
-    >
-      <table class="post-table-style">
-        <tr>
-          <td class="td-style td_border">제목</td>
-          <td class="td_border">
-            <input type="text" name="title" class="input-style" />
-          </td>
-        </tr>
-        <tr>
-          <td class="td-style td_border">상호명</td>
-          <td class="td_border">
-            <input type="text" name="place_name" class="input-style" />
-          </td>
-        </tr>
-        <tr>
-          <td rowspan="2" class="td-style td_border">위치</td>
-          <td>
-            <select
-              id="address1"
-              class="place-input"
-              onchange="loadsigungu();"
-              name="address1"
-            ></select>
-            <select id="address2" class="place-input" name="address2"></select>
-          </td>
-        </tr>
-        <tr>
-          <td class="td_border">
+<main class="post-main">
+  <form action="/board/post-writing" method="post">
+    <div class="post-main-div">
+      <p>
+        <span>제목</span>
+        <span>
+          <input type="text" name="title" class="input-style" />
+        </span>
+      </p>
+      <p>
+        <span>장소이름</span>
+        <span>
+          <input type="text" name="place_name" class="input-style" />
+        </span>
+      </p>
+      <p>
+        <span>위치</span>
+        <span>
+          <select
+            id="address1"
+            class="place-input"
+            onchange="loadsigungu();"
+            name="address1"
+            ,
+          ></select>
+          <select id="address2" class="place-input" name="address2"></select>
+          <span>
             <input type="text" class="input-style" name="address3" />
-          </td>
-        </tr>
-        <tr>
-          <td class="td-style td_border">장소종류</td>
-          <td class="td_border">
-            <span>
-              <input type="radio" name="place_type" value="cafe" /> 카페
-              <input type="radio" name="place_type" value="restaurant" /> 식당
-              <input type="radio" name="place_type" value="bar" /> 주점
-              <input type="radio" name="place_type" value="sightseeing" /> 관광
-              <input type="radio" name="place_type" value="etc" /> 기타
-            </span>
-          </td>
-        </tr>
-        <tr>
-          <td class="td-style">주차장 이용</td>
-          <td>
-            <span>
-              <input type="radio" name="can_park" value="1" /> 가능
-              <input type="radio" name="can_park" value="0" /> 불가능
-            </span>
-          </td>
-        </tr>
-        <tr>
-          <td class="td-style td_border">반려동물 동반</td>
-          <td class="td_border">
-            <span>
-              <input type="radio" name="can_pet" value="1" /> 가능
-              <input type="radio" name="can_pet" value="0" /> 불가능
-            </span>
-          </td>
-        </tr>
-        <tr>
-          <td class="td-style td_border">평점</td>
-          <td class="td_border">
-            <input type="text" class="input-style" name="grade" />
-          </td>
-        </tr>
-        <tr>
-          <td class="td-style td_border">사진</td>
-          <td class="td_border">
-            <input
-              type="file"
-              class="real-upload"
-              accept="image/*"
-              onchange="readURL(this)"
-              name="img"
-            />
-            <img id="preview" />
-          </td>
-        </tr>
-        <tr>
-          <td class="td-style">방문 후기</td>
-          <td>
-            <textarea
-              cols="60"
-              rows="15"
-              name="content"
-              class="textarea-style"
-            ></textarea>
-          </td>
-        </tr>
-      </table>
+          </span>
+        </span>
+      </p>
+      <p>
+        <span>장소종류</span>
+        <span>
+          <input type="radio" name="place_type" value="카페" /> 카페
+          <input type="radio" name="place_type" value="식당" /> 식당
+          <input type="radio" name="place_type" value="주점" /> 주점
+          <input type="radio" name="place_type" value="관광" /> 관광
+          <input type="radio" name="place_type" value="기타" /> 기타
+        </span>
+      </p>
+      <p>
+        <span>주차장 이용</span>
+        <span>
+          <input type="radio" name="can_park" value="1" /> 가능
+          <input type="radio" name="can_park" value="0" /> 불가능
+        </span>
+      </p>
+      <p>
+        <span>반려동물 동반</span>
+        <span>
+          <input type="radio" name="can_pet" value="1" /> 가능
+          <input type="radio" name="can_pet" value="0" /> 불가능
+        </span>
+      </p>
+      <p>
+        <span>평점</span>
+        <span>
+          <input type="text" class="input-style" name="grade" />
+        </span>
+      </p>
+      <p>
+        <span>사진</span>
+        <span>
+          <input
+            type="file"
+            class="real-upload"
+            accept="image/*"
+            onchange="readURL(this)"
+            name="image"
+          />
+          <img id="preview" />
+        </span>
+      </p>
+      <p>
+        <span>방문후기</span>
+        <span>
+          <textarea
+            cols="60"
+            rows="15"
+            name="content"
+            class="textarea-style"
+          ></textarea>
+        </span>
+      </p>
       <div>
         <span class="btn_pos">
-          <button class="cancel-btn">취소</button>
+          <!-- <button class="cancel-btn">취소</button> -->
           <button class="submit-btn" type="submit">등록</button>
         </span>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
 </main>
