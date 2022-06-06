@@ -52,11 +52,11 @@
           </tr>
         </thead>
         <tbody>
-          <% users.forEach(user => { %>
+          <% user.forEach(user => { %>
           <tr>
             <td scope="row"><%= user.name %></td>
             <td><%= user.user_id %></td>
-            <td>//게시글수//</td>
+            <td><%= user.count %></td>
             <td><%= user.email %></td>
             <td><%= user.birthdate %></td>
             <td><%= user.gender %></td>

@@ -9,12 +9,13 @@ module.exports = {
   //회원관리
   showAdminMember: async (req, res, next) => {
     try {
-      const [memberData, metadata] = await sequelize.query("SELECT * FROM `user`", {
-        type: Sequelize.SELECT,
-      });
+      const [memberData, metadata] = await sequelize.query(
+        "SELECT `user`.* , COUNT(`post`.`post_id`) AS `count` FROM `user` LEFT JOIN `post` ON `user`.`user_id`=`post`.`user_id` GROUP BY `user`.`user_id`",
+        { type: Sequelize.SELECT }
+      );
       console.log(memberData);
-      res.locals.user = memberData;
-      res.render("admin-member", { users: memberData });
+      res.locals.users = memberData;
+      res.render("admin-member", { user: memberData });
     } catch (error) {
       console.log(`Error fetching User by ID: ${error.message}`);
       next(error);
@@ -26,9 +27,9 @@ module.exports = {
     try {
       await sequelize.query("DELETE FROM `user` WHERE user_id = ?", {
         type: Sequelize.DELETE,
-        replacements: [user_id]
+        replacements: [user_id],
       });
-      res.redirect ("/admin-member");
+      res.redirect("/admin-member");
       next();
     } catch (error) {
       console.log(`Error fetching User by ID: ${error.message}`);
@@ -37,8 +38,34 @@ module.exports = {
   },
 
   //게시물관리
-  showAdminPost: (req, res) => {
-    res.render("admin-post");
+  showAdminPost: async (req, res, next) => {
+    try {
+      const [postData, metadata] = await sequelize.query(
+        "SELECT `post`.* , COUNT(`comment`.`post_id`) AS `commentCount` FROM `post` LEFT JOIN `comment` ON `post`.`post_id`=`comment`.`post_id` GROUP BY `post`.`post_id`",
+        { type: Sequelize.SELECT }
+      );
+      console.log(postData);
+      res.locals.posts = postData;
+      res.render("admin-post", { post: postData });
+    } catch (error) {
+      console.log(`Error fetching User by ID: ${error.message}`);
+      next(error);
+    }
+  },
+
+  postDelete: async (req, res, next) => {
+    let post_id = req.body.post_id;
+    try {
+      await sequelize.query("DELETE FROM `post` WHERE post_id = ?", {
+        type: Sequelize.DELETE,
+        replacements: [post_id],
+      });
+      res.redirect("/admin-post");
+      next();
+    } catch (error) {
+      console.log(`Error fetching User by ID: ${error.message}`);
+      next(error);
+    }
   },
 
   //통계분석

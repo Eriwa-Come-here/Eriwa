@@ -18,7 +18,7 @@ module.exports = (sequelize, Sequelize) => {
       try {
         let post = await Post.findByPk(id);
         if (post) {
-          post = await Post.destroy(params, {
+          post = await Post.destroy({
             where: { id: id },
           });
         }
@@ -51,7 +51,6 @@ module.exports = (sequelize, Sequelize) => {
       },
       address2: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       address3: {
         type: Sequelize.STRING,
@@ -92,6 +91,7 @@ module.exports = (sequelize, Sequelize) => {
       view_count: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        default: 0,
       },
     },
     {
