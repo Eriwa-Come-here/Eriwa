@@ -100,7 +100,8 @@
 
 .comment-content-container {
   border-bottom: 1px solid #dadada;
-  padding: 20px 40px;
+  margin: 0px 40px;
+  padding: 20px 0px;
 }
 
 .comment-content-text {
