@@ -5,7 +5,7 @@ const Sequelize = require("sequelize");
 const sequelize = db.sequelize;
 const Post = db.post;
 const datefunc = require("../public/js/datefunc.js");
-const { now } = require("sequelize/types/utils");
+//const { now } = require("sequelize/types/utils");
 
 // show
 exports.showPost = async (req, res) => {
