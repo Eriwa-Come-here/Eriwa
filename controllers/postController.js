@@ -1,11 +1,9 @@
-const multer = require("multer");
+// const multer = require("multer");
 const path = require("path");
 const db = require("../models");
 const Sequelize = require("sequelize");
 const sequelize = db.sequelize;
-const Post = db.post;
 const datefunc = require("../public/js/datefunc.js");
-const { now } = require("sequelize/types/utils");
 
 // show
 exports.showPost = async (req, res) => {
