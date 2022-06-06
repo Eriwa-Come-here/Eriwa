@@ -11,14 +11,7 @@ const { now } = require("sequelize/types/utils");
 exports.showPost = async (req, res) => {
   try {
     const [post, post_metadata] = await sequelize.query(
-      "SELECT * FROM `post` WHERE post_id = ?",
-      {
-        type: Sequelize.SELECT,
-        replacements: [req.params.post_id],
-      }
-    );
-    const [recommend, recommend_metadata] = await sequelize.query(
-      "SELECT COUNT(*) AS count FROM `recommend` WHERE post_id = ?",
+      "SELECT `post`.*, COUNT(`recommend`.`user_id`) AS `recommend_count` FROM `post` LEFT JOIN `recommend` ON `post`.`post_id` = `recommend`.`post_id` GROUP BY `post`.`post_id` HAVING `post`.`post_id` = ?",
       {
         type: Sequelize.SELECT,
         replacements: [req.params.post_id],
@@ -31,11 +24,9 @@ exports.showPost = async (req, res) => {
         replacements: [req.params.post_id],
       }
     );
-    console.log(post);
-    console.log(comments);
+    //res.render("post-view", {post: post[0], recommend_count: recommend[0].conut, comments: comments, getDate: datefunc.getDate});
     res.render("post-view", {
       post: post[0],
-      recommend_count: recommend[0].conut,
       comments: comments,
       getDate: datefunc.getDate,
     });

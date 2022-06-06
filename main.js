@@ -47,10 +47,11 @@ app.get("/notice", noticeController.showNotice);
 app.get("/board/post-writing", postController.showPostWriting);
 app.get("/board/post-view/:post_id", postController.showPost);
 app.post("/board/post-writing", postController.createPost);
-//app.get("/board/post-view/post.post_id/delete", postController.deletePost);
+//app.get("/post-view/:post_id/delete", postController.deletePost);
 
 //commentController 추가
 app.post("/comment/:post_id", commentController.createComment);
+app.post("/comment/:post_id/delete", commentController.deleteComment);
 
 //adminController 추가
 app.get("/admin-member", adminController.showAdminMember);
