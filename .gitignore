@@ -3,6 +3,3 @@ node_modules
 
 # .env 파일을 무시
 .env
-
-#uploadFiles 무시
-uploadFiles
