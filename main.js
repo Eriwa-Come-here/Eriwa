@@ -13,6 +13,18 @@ const port = 80,
   commentController = require("./controllers/commentController"),
   db = require("./models");
 
+const multer = require("multer");
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "./public/uploadFiles/");
+  },
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    cb(null, path.basename(file.originalname, ext) + "-" + Date.now() + ext);
+  },
+});
+const upload = multer({ storage: storage });
+
 db.sequelize.sync();
 
 app.set("port", process.env.PORT || 80);
@@ -46,7 +58,11 @@ app.get("/notice", noticeController.showNotice);
 //postController 추가
 app.get("/board/post-writing", postController.showPostWriting);
 app.get("/board/post-view/:post_id", postController.showPost);
-app.post("/board/post-writing", postController.createPost);
+app.post(
+  "/board/post-writing",
+  upload.single("image"),
+  postController.createPost
+);
 //app.get("/post-view/:post_id/delete", postController.deletePost);
 
 //commentController 추가
