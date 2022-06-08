@@ -71,5 +71,18 @@ exports.createPost = async (req, res, next) => {
   }
 };
 
-exports.edit = async (req, res) => {};
-exports.delete = async (req, res) => {};
+exports.editPost = async (req, res, next) => {};
+exports.deletePost = async (req, res, next) => {
+  let post_id = req.body.post_id;
+  try {
+    await sequelize.query("DELETE FROM `post` WHERE post_id = ?", {
+      type: Sequelize.DELETE,
+      replacements: [post_id],
+    });
+    res.redirect("/board");
+    next();
+  } catch (error) {
+    console.log(`Error fetching User by ID: ${error.message}`);
+    next(error);
+  }
+};
