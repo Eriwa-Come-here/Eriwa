@@ -22,8 +22,7 @@
 }
 
 .post-article > header, .post-content {
-  /*margin: 10px 0px;*/
-  padding: 0px 0px 10px 0px;
+  padding: 10px;
   height: 100%;
 }
 
@@ -35,6 +34,13 @@
 
 .post-content > table {
   border-spacing: 10px;
+  height: 280px;
+}
+
+.table-post-img > img {
+  width: 400px;
+  height: 280px;
+  object-fit: contain;
 }
 
 .post-view-cell-title {
