@@ -149,7 +149,7 @@ div.search >a> img{
 
 /* action button */
 
-a.btn_bookmark, a.btn_alarm{
+a.btn_bookmark, a.btn_alarm, a.btn_mypage{
     position: absolute;
     top: 30px;
 
@@ -163,11 +163,15 @@ a.btn_alarm{
     right: 120px;
 }
 
-a.btn_bookmark>img, a.btn_alarm>img{
+a.btn_mypage{
+    right: 80px;
+}
+
+a.btn_bookmark>img, a.btn_alarm>img, a.btn_mypage>img{
     width: 25px;
 }
 
-div.action>a.btn_login{
+a.btn_login{
     position: absolute;
     top: 20px;
     right: 20px;
@@ -185,6 +189,44 @@ div.action>a.btn_login{
     line-height: 42px;
 }
 
-div.action > button{
+.flash{
+    background-color: rgb(122, 255, 171);
+    color: black;
+    width: 100%;
+    text-align: center;
+    padding: 10px 30px;
+    position: absolute;
+    z-index: 100;
+
+}
+
+.error{
+    background-color: rgb(247, 209, 86);
+    color: rgb(253, 68, 68);
+}
+
+/* menu - eriwa list*/
+
+div.div_mypage>ul>li>ul{
+    z-index: 100;
+    position: absolute;
+    top:60px;
+    right: 40px;
+    display: none;
     background-color: white;
+    text-align: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+div.div_mypage>ul>li>ul>li{
+    padding: 5px 20px 0px 20px;
+    font-size: 12px;
+}
+
+
+div.div_mypage>ul>li:hover>ul{
+    display: block;
 }

@@ -29,9 +29,8 @@ exports.showPost = async (req, res) => {
       getDate: datefunc.getDate,
     });
   } catch (err) {
-    res.status(500).send({
-      message: err.message,
-    });
+    console.log(`Error fetching Post by ID: ${error.message}`);
+    next(error);
   }
 };
 
