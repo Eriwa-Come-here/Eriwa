@@ -1,3 +1,5 @@
+const passportLocalSequelize = require("passport-local-sequelize");
+
 module.exports = (sequelize, Sequelize) => {
   class User extends Sequelize.Model {
     static async findByPkAndUpdate(id, params) {
@@ -21,22 +23,24 @@ module.exports = (sequelize, Sequelize) => {
             where: { id: id },
           });
         }
-
         return user;
+
       } catch (err) {
         console.log(err);
       }
     }
-  }
+  };
+
   User.init(
     {
       user_id: {
         type: Sequelize.STRING,
         allowNull: false,
         primaryKey: true,
+        unique: true
       },
       password: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(1024),
         allowNull: false,
       },
       name: {
@@ -52,22 +56,31 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
       },
       birthdate: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull: false,
       },
       gender: {
         type: Sequelize.STRING(1),
         allowNull: false,
       },
+      mysalt: {
+        type: Sequelize.STRING
+      }
     },
+
     {
       sequelize,
       timestamps: false,
       modelName: "User",
       tableName: "user",
-    }
-  );
-  // User.removeAttribute("id");
+    });
+
+  passportLocalSequelize.attachToUser(User, {
+    usernameField: "user_id",
+    hashField: "password",
+    saltField: "mysalt"
+  });
+  
 
   return User;
 };

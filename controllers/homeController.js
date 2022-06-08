@@ -1,19 +1,14 @@
 const db = require("../models/index"),
-  user = db.user,
-  post = db.post,
-  qna = db.qna,
-  recommend = db.recommend,
-  getUserParams = (body) => {
-    return {
-      title: body.title,
-    };
-  };
+  User = db.user,
+  Post = db.post,
+  Qna = db.qna,
+  Recommend = db.recommend;
 
 module.exports={
     //function
     index : async (req, res, next) => {
         try {
-            let posts = await post.findAll();
+            let posts = await Post.find();
             res.locals.posts = posts;
             next();
         } catch (error) {
@@ -29,7 +24,7 @@ module.exports={
     showIndexPost : async (req,res,next) => {
         try {
             let postId = req.params.post_id;
-            let post = await post.findByKey(postId);
+            let post = await Post.findByKey(postId);
             res.locals.post = post;
             next();
         } catch (error) {
@@ -45,7 +40,7 @@ module.exports={
 
     board : async (req, res, next) => {
         try {
-            let posts = await post.findAll();
+            let posts = await Post.findAll();
             res.locals.posts = posts;
             next();
         } catch (error) {
@@ -56,7 +51,7 @@ module.exports={
     
     showBoard : (req, res) => {
         let paramsPlace = req.params.place;
-        post.findAll({
+        Post.findAll({
             where: {address1:paramsPlace}
         }).then( result =>{
             res.render("board"),{
@@ -74,7 +69,7 @@ module.exports={
     //mypage
     qna : async (req, res, next) => {
         try {
-            let qnas = await qna.findAll();
+            let qnas = await Qna.findAll();
             res.locals.qnas = qnas;
             next();
         } catch (error) {

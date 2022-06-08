@@ -123,19 +123,54 @@
             ><img src="/public/images/search_icon.png" alt="검색"
           /></a>
         </div>
+        <% if (loggedIn) { %>
         <div class="action">
-          <a href="/mypage/recommend" class="btn_bookmark"
-            ><img src="/public/images/bookmark_icon.png" alt="bookmark_icon"
-          /></a>
-          <a href="/notice" class="btn_alarm"
-            ><img src="/public/images/alarm_icon.png" alt="alarm_icon"
-          /></a>
-          <a href="/login" class="btn_login">
-            로그인
-          </a>   	
+          <a href="/mypage/recommend" class="btn_bookmark">
+            <img src="/public/images/bookmark_icon.png" alt="bookmark_icon"/>
+          </a>
+          <a href="/notice" class="btn_alarm">
+            <img src="/public/images/alarm_icon.png" alt="alarm_icon"/>
+          </a>
+          <div class="div_mypage">
+            <ul>
+              <li>          
+                <a href="/mypage-good-list" class="btn_mypage"><img src="/public/images/profile_icon.png" alt="profile_icon"></a>
+                <ul id="mypage_list">
+                  <li>
+                    <a href="/mypage-good-list"><p>마이페이지</p></a>
+                  </li>
+                  <li>
+                    <a href="/"><p>개인정보 수정</p></a>
+                  </li>
+                  <li>
+                    <a href="/mypage/qna"><p>1:1 문의</p></a>
+                  </li>
+                  <li>
+                    <a href="/users/logout"><p>로그아웃</p></a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <%} else {%>
+          <a href="/users/login" class="btn_login">로그인</a>   	
         </div>
+        <% } %>
       </div>
     </header>
+    <div class="flashes">
+        <% if (flashMessages) {%>
+            <% if (flashMessages.success) {%>
+                <div class="flash success">
+                    <%= flashMessages.success%>
+                </div>
+            <% } else if (flashMessages.error) {%>
+                <div class="flash error">
+                    <%= flashMessages.error%>
+                </div>
+            <%} %>
+        <%} %>
+    </div>
     <%- body %>
     <footer>
       <div>

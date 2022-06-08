@@ -11,9 +11,14 @@ const port = 80,
   mypageController = require("./controllers/mypageController"),
   loginController = require("./controllers/loginController"),
   commentController = require("./controllers/commentController"),
-  db = require("./models");
+  db = require("./models/index"), 
+  flash = require("connect-flash"),
+  cookieParser = require("cookie-parser"),
+  session = require("express-session"),
+  passport = require("passport");
 
 db.sequelize.sync();
+const User = db.user;
 
 app.set("port", process.env.PORT || 80);
 app.set("view engine", "ejs");
@@ -25,16 +30,39 @@ app.use("/public", express.static("public"));
 app.set("layout", "layout");
 app.set("layout extractScripts", true);
 
+app.use(express.json());
 app.use(
   express.urlencoded({
     extended: false,
   })
 );
-app.use(express.json());
+
+app.use(cookieParser("secret"));
+app.use(session({
+  secret: process.env.COOKIE_SECRET,
+  resave: false,
+  saveUninitialized:true
+}));
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+app.use(flash());
+app.use((req, res, next)=>{
+  res.locals.loggedIn = req.isAuthenticated();
+  res.locals.currentUser = req.user;
+  res.locals.flashMessages = req.flash();
+  next();
+});
+
 
 //homeController 추가
 app.get("/", homeController.index, homeController.showIndex);
-// app.get("/board/:place_name", homeController.board, homeController.showBoard);
 app.get("/search", homeController.showDetailSearch);
 app.get("/mypage/qna", homeController.showQna);
 app.get("/mypage/recommend", homeController.showRecommend);
@@ -48,6 +76,9 @@ app.get("/board/post-writing", postController.showPostWriting);
 app.get("/board/post-view/:post_id", postController.showPost);
 app.post("/board/post-writing", postController.createPost);
 //app.get("/post-view/:post_id/delete", postController.deletePost);
+
+
+//app.get("/board/:place_name", homeController.board, homeController.showBoard);
 
 //commentController 추가
 app.post("/comment/:post_id", commentController.createComment);
@@ -70,8 +101,13 @@ app.get("/chat-list", mypageController.chatList);
 app.get("/chat", mypageController.chatStory);
 
 //loginController 추가
-app.get("/login", loginController.login);
-app.get("/signup", loginController.signup);
+app.get("/users/login", loginController.login);
+app.post("/users/login", loginController.authenticate, loginController.redirectView);
+
+app.get("/users/logout", loginController.logout, loginController.showLogout);
+app.get("/users/signup", loginController.signup);
+app.get("/users/create", loginController.signupSuccess);
+app.post("/users/create", loginController.create, loginController.redirectView);
 
 //errorController 추가
 app.use(errorController.pageNotFoundError);
