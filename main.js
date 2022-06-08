@@ -98,6 +98,7 @@ app.post(
 
 //commentController 추가
 app.post("/comment/:post_id", commentController.createComment);
+app.post("/comment/:post_id/edit", commentController.updateComment);
 app.post("/comment/:post_id/delete", commentController.deleteComment);
 
 //adminController 추가

@@ -11,7 +11,7 @@
       <div class="notification-content">
         <ul>
           <% events.forEach(function(event) { %>
-            <li class="notification-list" OnClick="location.href ='<%= event.url_address %>'" style="cursor:pointer;">
+            <li class="notification-list <%= `is-checked-${event.is_checked}` %>" OnClick="location.href ='<%= event.url_address %>'" style="cursor:pointer;">
               <div class="notification-subject">
                 <span class="notification-subject-img">
                   <% if (event.event_type == "댓글") { %>

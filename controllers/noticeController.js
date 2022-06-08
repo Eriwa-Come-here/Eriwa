@@ -15,7 +15,7 @@ module.exports = {
                 type: Sequelize.SELECT,
                 replacements: ['aeaf']
             });
-            console.log(result);
+            console.log(result[0].is_checked);
             res.render("notice", {events: result, getDate: datefunc.getDate});
         } catch (err) {
             res.status(500).send({
