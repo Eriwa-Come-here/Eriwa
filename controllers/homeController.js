@@ -8,7 +8,7 @@ module.exports={
     //function
     index : async (req, res, next) => {
         try {
-            let posts = await Post.find();
+            let posts = await Post.findAll();
             res.locals.posts = posts;
             next();
         } catch (error) {
