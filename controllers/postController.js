@@ -3,9 +3,7 @@ const path = require("path");
 const db = require("../models");
 const Sequelize = require("sequelize");
 const sequelize = db.sequelize;
-const Post = db.post;
 const datefunc = require("../public/js/datefunc.js");
-//const { now } = require("sequelize/types/utils");
 
 // show
 exports.showPost = async (req, res) => {
@@ -41,18 +39,6 @@ exports.showPostWriting = (req, res) => {
   res.render("post-writing");
 };
 
-//img 저장경로, 파일명 변경
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cd(null, "public/images");
-//   },
-//   filename: (req, file, cb) => {
-//     const extname = path.extname(file.originalname);
-//     cd(null, path.basename(file.originalname, extname) + Date.now() + extname);
-//   },
-// });
-// const upload = multer({ storage: storage });
-
 exports.createPost = async (req, res, next) => {
   try {
     await sequelize.query(
@@ -67,7 +53,7 @@ exports.createPost = async (req, res, next) => {
           req.body.address3,
           req.body.place_name,
           req.body.place_type,
-          req.body.image,
+          req.file.filename,
           req.body.grade,
           new Date(),
           "test3333",
