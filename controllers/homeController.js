@@ -1,8 +1,6 @@
 const db = require("../models/index"),
   User = db.user,
-  Post = db.post,
-  Qna = db.qna,
-  Recommend = db.recommend;
+  Post = db.post;
 
 module.exports={
     //function
@@ -64,26 +62,6 @@ module.exports={
     
     showDetailSearch : (req, res) => {
         res.render("detail-search");
-    },
-    
-    //mypage
-    qna : async (req, res, next) => {
-        try {
-            let qnas = await Qna.findAll();
-            res.locals.qnas = qnas;
-            next();
-        } catch (error) {
-            console.log(`Error fetching: ${error.message}`);
-            next(error);
-        }
-    },
-
-    showQna : (req, res) => {
-        res.render("mypage-qna");
-    },
-    
-    showRecommend : (req, res) => {
-        res.render("mypage-recommend");
     },
     
     //service-intro

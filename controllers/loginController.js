@@ -37,13 +37,13 @@ module.exports = {
                     next();
                 }else{
                     res.locals.redirect = "/users/signup";
-                    console.log(`Error from signup user: ${error.message}`);
+                    console.log(`Error from signup : ${error.message}`);
                     req.flash("error", "Failed to login");
                     next(error);
                 }
             });
         } catch (error) {
-            console.log("Error from signup");
+            console.log(`Error from signup : ${error.message}`);
             res.locals.redirect="/users/signup";
             req.flash("error", "Failed to login");
             next(error);
@@ -69,10 +69,6 @@ module.exports = {
 
     login: (req, res) => {
         res.render("login");
-    }, 
-    
-    showLogout: (req, res) => {
-        res.render("logout");
     }, 
 
     logout: (req, res, next)=>{

@@ -76,8 +76,8 @@ app.use((req, res, next)=>{
 //homeController 추가
 app.get("/", homeController.index, homeController.showIndex);
 app.get("/search", homeController.showDetailSearch);
-app.get("/mypage/qna", homeController.showQna);
-app.get("/mypage/recommend", homeController.showRecommend);
+app.get("/mypage/qna", mypageController.showQna);
+app.get("/mypage/recommend", mypageController.showRecommend);
 app.get("/service-intro", homeController.showServiceIntro);
 
 //noticeController 추가
@@ -101,26 +101,26 @@ app.post("/comment/:post_id", commentController.createComment);
 app.post("/comment/:post_id/delete", commentController.deleteComment);
 
 //adminController 추가
-app.get("/admin-member", adminController.showAdminMember);
-app.post("/admin-member/delete", adminController.memberDelete);
-app.get("/admin-post", adminController.showAdminPost);
-app.post("/admin-post/delete", adminController.postDelete);
-app.get("/admin-analysis", adminController.showAdminAnalysis);
-app.get("/admin-qna", adminController.showAdminQna);
-app.get("/admin-qna-response", adminController.showAdminQnaResponse);
+app.get("/admin/member", adminController.showAdminMember);
+app.post("/admin/member/delete", adminController.memberDelete);
+app.get("/admin/post", adminController.showAdminPost);
+app.post("/admin/post/delete", adminController.postDelete);
+app.get("/admin/analysis", adminController.showAdminAnalysis);
+app.get("/admin/qna", adminController.showAdminQna);
+app.get("/admin/qna/response", adminController.showAdminQnaResponse);
 
 //mypageController 추가
-app.get("/mypage-good-list", mypageController.mypageGood);
-app.get("/mypage-reply-list", mypageController.mypageReply);
-app.get("/mypage-write-list", mypageController.mypageWrite);
-app.get("/chat-list", mypageController.chatList);
-app.get("/chat", mypageController.chatStory);
+app.get("/mypage", mypageController.mypageGood);
+app.get("/mypage/comment", mypageController.mypageReply);
+app.get("/mypage/post", mypageController.mypageWrite);
+app.get("/chat", mypageController.chatList);
+app.get("/chat/write", mypageController.chatStory);
 
 //loginController 추가
 app.get("/users/login", loginController.login);
 app.post("/users/login", loginController.authenticate, loginController.redirectView);
 
-app.get("/users/logout", loginController.logout, loginController.showLogout);
+app.get("/users/logout", loginController.logout, loginController.redirectView);
 app.get("/users/signup", loginController.signup);
 app.get("/users/create", loginController.signupSuccess);
 app.post("/users/create", loginController.create, loginController.redirectView);
