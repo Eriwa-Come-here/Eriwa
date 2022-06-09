@@ -2,24 +2,24 @@
   <div class="main-sidemenu">
     <ul class="menu-ul">
       <li>
-        <a href="/admin-member" class="sidemenu-style"> 회원관리</a>
+        <a href="/admin/member" class="sidemenu-style"> 회원관리</a>
       </li>
       <li>
-        <a href="/admin-post" class="sidemenu-style"> 게시글관리</a>
+        <a href="/admin/post" class="sidemenu-style"> 게시글관리</a>
       </li>
       <li>
-        <a href="/admin-analysis" class="sidemenu-style"> 통계분석</a>
+        <a href="/admin/analysis" class="sidemenu-style"> 통계분석</a>
         <ul class="smallmenu-ul">
           <li>
-            <a href="/admin-analysis" class="smallmenu"> - 일일 게시글 분석</a>
+            <a href="/admin/analysis" class="smallmenu"> - 일일 게시글 분석</a>
           </li>
           <li>
-            <a href="/admin-analysis" class="smallmenu"> - 사용자 분석</a>
+            <a href="/admin/analysis" class="smallmenu"> - 사용자 분석</a>
           </li>
         </ul>
       </li>
       <li>
-        <a href="/admin-qna" class="sidemenu-style"> 문의내역</a>
+        <a href="/admin/qna" class="sidemenu-style"> 문의내역</a>
       </li>
     </ul>
   </div>
@@ -48,7 +48,7 @@
             <td><%= post.view_count %></td>
             <td><%= post.commentCount %></td>
             <td>
-              <form action="<%=`/admin-post/delete`%>" method="post">
+              <form action="<%=`/admin/post/delete`%>" method="post">
                 <input
                   type="hidden"
                   name="post_id"

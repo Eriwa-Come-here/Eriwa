@@ -11,7 +11,7 @@ const port = 80,
   mypageController = require("./controllers/mypageController"),
   loginController = require("./controllers/loginController"),
   commentController = require("./controllers/commentController"),
-  db = require("./models/index"), 
+  db = require("./models/index"),
   flash = require("connect-flash"),
   cookieParser = require("cookie-parser"),
   session = require("express-session"),
@@ -50,12 +50,13 @@ app.use(
 );
 
 app.use(cookieParser("secret"));
-app.use(session({
-  secret: process.env.COOKIE_SECRET,
-  resave: false,
-  saveUninitialized:true
-}));
-
+app.use(
+  session({
+    secret: process.env.COOKIE_SECRET,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -63,16 +64,14 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
 app.use(flash());
-app.use((req, res, next)=>{
+app.use((req, res, next) => {
   res.locals.loggedIn = req.isAuthenticated();
   res.locals.currentUser = req.user;
   res.locals.flashMessages = req.flash();
   res.locals.boardView = req.boardView;
   next();
 });
-
 
 //homeController 추가
 app.get("/", homeController.index, homeController.showIndex);
@@ -81,6 +80,7 @@ app.get("/service-intro", homeController.showServiceIntro);
 
 //noticeController 추가
 app.get("/notice", noticeController.showNotice);
+app.post("/notice/check/", noticeController.checkNotice);
 
 //postController 추가
 app.get("/board/post-writing", postController.showPostWriting);
@@ -91,7 +91,6 @@ app.post(
   postController.createPost
 );
 //app.get("/post-view/:post_id/delete", postController.deletePost);
-
 
 //app.get("/board/:place_name", homeController.board, homeController.showBoard);
 
@@ -120,7 +119,11 @@ app.get("/chat/write", mypageController.chatStory);
 
 //loginController 추가
 app.get("/users/login", loginController.login);
-app.post("/users/login", loginController.authenticate, loginController.redirectView);
+app.post(
+  "/users/login",
+  loginController.authenticate,
+  loginController.redirectView
+);
 
 app.get("/users/logout", loginController.logout, loginController.redirectView);
 app.get("/users/signup", loginController.signup);

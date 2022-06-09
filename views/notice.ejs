@@ -11,14 +11,20 @@
       <div class="notification-content">
         <ul>
           <% events.forEach(function(event) { %>
-            <li class="notification-list <%= `is-checked-${event.is_checked}` %>" OnClick="location.href ='<%= event.url_address %>'" style="cursor:pointer;">
+            <form name="noticeCheck" id="<%= `notice-${event.event_id}` %>" action="/notice/check/" method="post">
+              <input type="hidden" name="user_id" value="<%= currentUser.dataValues.user_id %>">
+              <input type="hidden" name="event_id" value="<%= event.event_id %>">
+              <input type="hidden" name="is_checked" value="<%= event.is_checked %>">
+              <input type="hidden" name="event_url" value="<%= event.url_address %>">
+            </form>
+            <li class="notification-list <%= `is-checked-${event.is_checked}` %>" onclick="javascript:document.getElementById('<%= `notice-${event.event_id}` %>').submit();" style="cursor:pointer;">
               <div class="notification-subject">
                 <span class="notification-subject-img">
                   <% if (event.event_type == "댓글") { %>
                     <img src="/public/images/commenttype.png" alt="알림 종류" width="40px" height="40px">
                   <% } else { %>
                     <img src="/public/images/note.png" alt="알림 종류" width="40px" height="40px">
-                  <% } %> 
+                   <% } %> 
                 </span>
               </div>
               <div class="notification-maker" style="display:inline-block; text-align: center;">
