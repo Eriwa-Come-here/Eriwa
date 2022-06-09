@@ -9,14 +9,14 @@ const datefunc = require("../public/js/datefunc.js");
 exports.showPost = async (req, res) => {
   try {
     const [post, post_metadata] = await sequelize.query(
-      "SELECT `post`.*, COUNT(`recommend`.`user_id`) AS `recommend_count` FROM `post` LEFT JOIN `recommend` ON `post`.`post_id` = `recommend`.`post_id` GROUP BY `post`.`post_id` HAVING `post`.`post_id` = ?",
+      "SELECT `p`.* , `u`.`nickname`, COUNT(`r`.`user_id`) AS `recommend_count` FROM `post` AS `p` LEFT JOIN `user` AS `u` ON `u`.`user_id` = `p`.`user_id` LEFT JOIN `recommend` AS `r` ON `p`.`post_id` = `r`.`post_id` GROUP BY `p`.`post_id` HAVING `p`.`post_id` = ?",
       {
         type: Sequelize.SELECT,
         replacements: [req.params.post_id],
       }
     );
     const [comments, comment_metadata] = await sequelize.query(
-      "SELECT * FROM `comment` WHERE post_id = ?",
+      "SELECT `c`.*, `u`.`nickname` FROM `comment` AS `c` LEFT JOIN `user` AS `u` ON `u`.`user_id` = `c`.`user_id` WHERE `post_id` = ?",
       {
         type: Sequelize.SELECT,
         replacements: [req.params.post_id],

@@ -69,18 +69,18 @@ app.use((req, res, next) => {
   res.locals.loggedIn = req.isAuthenticated();
   res.locals.currentUser = req.user;
   res.locals.flashMessages = req.flash();
+  res.locals.boardView = req.boardView;
   next();
 });
 
 //homeController 추가
 app.get("/", homeController.index, homeController.showIndex);
 app.get("/search", homeController.showDetailSearch);
-app.get("/mypage/qna", mypageController.showQna);
-app.get("/mypage/recommend", mypageController.showRecommend);
 app.get("/service-intro", homeController.showServiceIntro);
 
 //noticeController 추가
 app.get("/notice", noticeController.showNotice);
+app.post("/notice/check/", noticeController.checkNotice);
 
 //postController 추가
 app.get("/board/post-writing", postController.showPostWriting);
@@ -93,7 +93,6 @@ app.post(
   upload.single("image"),
   postController.createPost
 );
-//app.post("/board/post-view/:post_id", noticeController.checkNotice, postController.shotPost);
 //app.get("/post-view/:post_id/delete", postController.deletePost);
 
 //app.get("/board/:place_name", homeController.board, homeController.showBoard);
@@ -113,11 +112,13 @@ app.get("/admin/qna", adminController.showAdminQna);
 app.get("/admin/qna/response/:qna_id", adminController.showAdminQnaResponse);
 
 //mypageController 추가
-// app.get("/mypage", mypageController.mypageGood);
-// app.get("/mypage/comment", mypageController.mypageReply);
-// app.get("/mypage/post", mypageController.mypageWrite);
-// app.get("/chat", mypageController.chatList);
-// app.get("/chat/write", mypageController.chatStory);
+app.get("/mypage", mypageController.mypageGood);
+app.get("/mypage/qna", mypageController.showQna);
+app.get("/mypage/recommend", mypageController.showRecommend);
+app.get("/mypage/comment", mypageController.mypageReply);
+app.get("/mypage/post", mypageController.mypageWrite);
+app.get("/chat", mypageController.chatList);
+app.get("/chat/write", mypageController.chatStory);
 
 //loginController 추가
 app.get("/users/login", loginController.login);

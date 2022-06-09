@@ -1,3 +1,5 @@
+const { sequelize } = require("../models/index");
+
 const db = require("../models/index"),
   User = db.user,
   Post = db.post;
@@ -6,7 +8,13 @@ module.exports={
     //function
     index : async (req, res, next) => {
         try {
+
+            let max = await Post.max('view_count');
+            let post = await Post.findOne({
+                where: { view_count: max }
+            });
             let posts = await Post.findAll();
+            res.locals.post = post;
             res.locals.posts = posts;
             next();
         } catch (error) {

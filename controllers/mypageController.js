@@ -19,9 +19,7 @@ exports.chatStory = (req, res) => {
 };
 
 
-module.exports={
-    //mypage
-    qna : async (req, res, next) => {
+exports.qna = async (req, res, next) => {
         try {
             let qnas = await Qna.findAll();
             res.locals.qnas = qnas;
@@ -30,13 +28,12 @@ module.exports={
             console.log(`Error fetching: ${error.message}`);
             next(error);
         }
-    },
+};
 
-    showQna : (req, res) => {
+exports.showQna = (req, res) => {
         res.render("mypage-qna");
-    },
+};
     
-    showRecommend : (req, res) => {
+exports.showRecommend = (req, res) => {
         res.render("mypage-recommend");
-    },
 };
