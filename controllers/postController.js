@@ -38,6 +38,10 @@ exports.showPostWriting = (req, res) => {
   res.render("post-writing");
 };
 
+exports.showPostEdit = (req, res) => {
+  res.render("post-edit");
+};
+
 exports.createPost = async (req, res, next) => {
   try {
     await sequelize.query(
@@ -55,7 +59,7 @@ exports.createPost = async (req, res, next) => {
           req.file.filename,
           req.body.grade,
           new Date(),
-          "test3333",
+          req.body.post_author,
           req.body.can_park,
           req.body.can_pet,
           "0",
@@ -70,7 +74,22 @@ exports.createPost = async (req, res, next) => {
   }
 };
 
-exports.editPost = async (req, res, next) => {};
+exports.editPost = async (req, res, next) => {
+  try {
+    await sequelize.query("UPDATE `post` SET (`title`=?,`content`=?,`address1`=?,`address2`=?,`address3`=?,`place_name`=?,`place_type`=?,`image`=?,`grade`=?,`can_park`=?,`can_pet`=? )  WHERE `post_id` = ?;", {
+      type: sequelize.QueryTypes.UPDATE,
+      replacements: [req.body.title, req.params.content, req.body.address1, req.body.address2, req.body.address3,
+        req.body.place_name, req.body.place_type, req.file.filename, req.body.grade, req.body.can_park,
+        req.body.can_pet]
+    });
+    console.log(req.body.url);
+    res.redirect("/board/post-view/" + req.params.post_id);
+  } catch (err) {
+    console.log(`${err.message}`);
+    next(err);
+  }
+},
+
 exports.deletePost = async (req, res, next) => {
   let post_id = req.body.post_id;
   try {
@@ -78,7 +97,7 @@ exports.deletePost = async (req, res, next) => {
       type: Sequelize.DELETE,
       replacements: [post_id],
     });
-    res.redirect("/board");
+    res.redirect("/");
     next();
   } catch (error) {
     console.log(`Error fetching User by ID: ${error.message}`);

@@ -1,10 +1,8 @@
+<% if (loggedIn) {%>
 <script src="../public/js/post.js"></script>
 <main class="post-main">
-  <form
-    action="/board/post-writing"
-    method="post"
-    enctype="multipart/form-data"
-  >
+  <form action="/board/post-writing" method="post" enctype="multipart/form-data">
+  <input type="hidden" name="post_author" value="<%= currentUser.dataValues.user_id %>">
     <div class="post-main-div">
       <p>
         <span>제목</span>
@@ -61,20 +59,11 @@
       <p>
         <span>평점</span>
         <span>
-          <select id="grade" class="input-style" name="grade">
-            <option value=""></option>
-            <option value="5.0">5</option>
-            <option value="4.5">4.5</option>
-            <option value="4.0">4</option>
-            <option value="3.5">3.5</option>
-            <option value="3.0">3</option>
-            <option value="2.5">2.5</option>
-            <option value="2.0">2</option>
-            <option value="1.5">1.5</option>
-            <option value="1.0">1</option>
-            <option value="0.5">0.5</option>
-            <option value="0">0</option>
-          </select>
+          <input type="radio" name="grade" value="1" /> 1
+          <input type="radio" name="grade" value="2" /> 2
+          <input type="radio" name="grade" value="3" /> 3
+          <input type="radio" name="grade" value="4" /> 4
+          <input type="radio" name="grade" value="5" /> 5
         </span>
       </p>
       <p>
@@ -110,3 +99,4 @@
     </div>
   </form>
 </main>
+<%} else {%> <%- include("login")%> <% } %>

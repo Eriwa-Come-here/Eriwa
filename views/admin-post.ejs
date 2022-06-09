@@ -31,8 +31,7 @@
           <tr>
             <th scope="cols">회원아이디</th>
             <th scope="cols">제목</th>
-            <!-- <th scope="cols">상호명</th>
-            <th scope="cols">장소</th> -->
+            <th scope="cols"></th>
             <th scope="cols">조회수</th>
             <th scope="cols">댓글수</th>
             <th scope="cols"></th>
@@ -42,9 +41,9 @@
           <% post.forEach(post => { %>
           <tr>
             <td scope="row"><%= post.user_id %></td>
-            <td><%= post.title %></td>
-            <!-- <td><%= post.place_name %></td>
-            <td><%= post.address1 %> <%= post.address2 %></td> -->
+            <td><a href="<%=`/board/post-view/${post.post_id}`%>"><%= post.title %></a></td>
+            <!-- <td><%= post.title %></td> -->
+            <td><img src="<%= `/public/uploadFiles/${post.image}` %>" width="50"/></td>
             <td><%= post.view_count %></td>
             <td><%= post.commentCount %></td>
             <td>

@@ -13,9 +13,9 @@ module.exports = {
         try {
             const [result, metadata] = await sequelize.query("SELECT * FROM `event` WHERE user_id = ? ORDER BY event_date DESC", {
                 type: Sequelize.SELECT,
-                replacements: ['aeaf']
+                replacements: [res.locals.currentUser.dataValues.user_id]
             });
-            console.log(result[0].is_checked);
+            // console.log(result[0].is_checked);
             res.render("notice", {events: result, getDate: datefunc.getDate});
         } catch (err) {
             res.status(500).send({
