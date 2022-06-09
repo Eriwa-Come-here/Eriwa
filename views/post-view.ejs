@@ -9,7 +9,7 @@
         <div class="post-info">
           <span class="post-info-left-content">
             <a href="/mypage-good-list"><img src="/public/images/usericon.png" alt="프로필 이미지"
-                width="25px">&nbsp;<%= post.user_id %></a>&nbsp;&nbsp;&nbsp;<%= getDate(post.written_date) %>
+                width="25px">&nbsp;<%= post.nickname %></a>&nbsp;&nbsp;&nbsp;<%= getDate(post.written_date) %>
           </span>
           <span class="post-info-right-content">
             <a href="#comment"><img src="/public/images/comment-alt.png" alt="댓글수" width="25"
@@ -86,7 +86,7 @@
           <div class="comment-content-container">
             <div class="comment-content">
               <div class="post-view-profile">
-                <a href="#"><img src="/public/images/usericon.png" alt="작성자 프로필" width="25px">&nbsp;<%= comment.user_id %></a>
+                <a href="#"><img src="/public/images/usericon.png" alt="작성자 프로필" width="25px">&nbsp;<%= comment.nickname %></a>
               </div>
               <div id="<%= `comment-content-${comment.comment_id}` %>">
                 <div class="comment-content-text"><%= comment.comment %></div>
@@ -127,7 +127,7 @@
       
       <div class="comment-writing-column" id="testid">
         <div class="post-view-profile">
-          <img src="/public/images/usericon.png" alt="내 프로필" width="25px">&nbsp; <%= currentUser.dataValues.user_id %>
+          <img src="/public/images/usericon.png" alt="내 프로필" width="25px">&nbsp; <%= currentUser.dataValues.nickname %>
         </div>
         <form class="comment-textarea" onsubmit="return confirm('댓글을 등록하시겠습니까?');" action="<%= `/comment/${post.post_id}` %>" method="post">
           <input type="hidden" name="post_author" value="<%= post.user_id %>">
