@@ -1,5 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
   const User = require("./user")(sequelize, Sequelize);
+  
   class Post extends Sequelize.Model {
     static async findByPkAndUpdate(id, params) {
       try {
@@ -91,17 +92,19 @@ module.exports = (sequelize, Sequelize) => {
       view_count: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        default: 0,
+        default: 0
       },
     },
+
     {
       sequelize,
       timestamps: false,
       modelName: "Post",
       tableName: "post",
-    }
-  );
+    });
+
   Post.removeAttribute("id");
+
 
   return Post;
 };

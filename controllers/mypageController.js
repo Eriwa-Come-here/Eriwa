@@ -1,39 +1,45 @@
-exports.mypageGood = (req, res) => {
-    res.render("mypage-good-list");
-};
+const db = require("../models/index"), 
+    Qna = db.qna;
 
-exports.mypageReply = (req, res) => {
-    res.render("mypage-reply-list");
-};
+module.exports={
+    mypageGood : (req, res) => {
+        res.render("mypage-good-list");
+    },
 
-exports.mypageWrite = (req, res) => {
-    res.render("mypage-write-list");
-};
+    mypageReply : (req, res) => {
+        res.render("mypage-reply-list");
+    },
 
-exports.chatList = (req, res) => {
-    res.render("chat-list");
-};
+    mypageWrite : (req, res) => {
+        res.render("mypage-write-list");
+    },
 
-exports.chatStory = (req, res) => {
-    res.render("chat");
-};
+    chatList : (req, res) => {
+        res.render("chat-list");
+    },
 
+    chatStory : (req, res) => {
+        res.render("chat");
+    },
 
-exports.qna = async (req, res, next) => {
+    qna : async (req, res, next) => {
         try {
-            let qnas = await Qna.findAll();
+            let qnas = await Qna.findAll({
+                where: {user_id : res.locals.currentUser.user_id}
+            });
             res.locals.qnas = qnas;
             next();
         } catch (error) {
             console.log(`Error fetching: ${error.message}`);
             next(error);
         }
-};
+    },
 
-exports.showQna = (req, res) => {
+    showQna : (req, res) => {
         res.render("mypage-qna");
-};
-    
-exports.showRecommend = (req, res) => {
+    },
+        
+    showRecommend : (req, res) => {
         res.render("mypage-recommend");
+    }
 };

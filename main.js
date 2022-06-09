@@ -69,7 +69,6 @@ app.use((req, res, next) => {
   res.locals.loggedIn = req.isAuthenticated();
   res.locals.currentUser = req.user;
   res.locals.flashMessages = req.flash();
-  res.locals.boardView = req.boardView;
   next();
 });
 
@@ -83,6 +82,7 @@ app.get("/notice", noticeController.showNotice);
 app.post("/notice/check/", noticeController.checkNotice);
 
 //postController 추가
+app.get("/board", homeController.board, homeController.showBoardBase);
 app.get("/board/post-writing", postController.showPostWriting);
 app.get("/board/post-view/:post_id", postController.showPost);
 app.post(
@@ -92,7 +92,7 @@ app.post(
 );
 //app.get("/post-view/:post_id/delete", postController.deletePost);
 
-//app.get("/board/:place_name", homeController.board, homeController.showBoard);
+app.get("/board/:place_name", homeController.board, homeController.showBoard);
 
 //commentController 추가
 app.post("/comment/:post_id", commentController.createComment);
@@ -110,7 +110,10 @@ app.get("/admin/qna/response", adminController.showAdminQnaResponse);
 
 //mypageController 추가
 app.get("/mypage", mypageController.mypageGood);
-app.get("/mypage/qna", mypageController.showQna);
+app.get("/mypage/qna", mypageController.qna, mypageController.showQna);
+app.get("/mypage/qna/:qna_id", mypageController.qna, mypageController.showQna);
+
+
 app.get("/mypage/recommend", mypageController.showRecommend);
 app.get("/mypage/comment", mypageController.mypageReply);
 app.get("/mypage/post", mypageController.mypageWrite);

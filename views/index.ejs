@@ -53,8 +53,9 @@
                 <a href=""><img src="/public/images/list_view_icon.png" alt="목록 보기"></a>
             </div>
         </div>
-        <% posts.forEach(p => { %>
+        <% for(let i=0;i<posts.length; i++){ p = posts[i]; %>
         <div class="contents">
+            <% if( (i%3) == 0 ) {  %>
             <div class="gallery_real_content" id="idx_content_end1">
                 <% if(p.image == null ) { %>
                 <div><img src="/public/images/no_image.png" alt="메인 사진"></div>
@@ -92,6 +93,8 @@
                     </div>
                 </div>
             </div>
+            <% i++; p = posts[i]; } %>
+            <% if( (i%3) == 1 ) {  %>
             <div class="gallery_real_content" id="idx_content_end2">
                 <div><img src="<%= `/public/images/${p.image}` %>" alt="메인 사진"></div>
                 <div>
@@ -124,6 +127,8 @@
                     </div>
                 </div>
             </div>
+            <% i++; p = posts[i]; } %>
+            <% if( (i%3) == 2 ) { %>
             <div class="gallery_real_content">
                 <div><img src="<%= `/public/images/${p.image}` %>" alt="메인 사진"></div>
                 <div>
@@ -156,7 +161,8 @@
                     </div>
                 </div>
             </div>
+            <%} %>
         </div>
-        <% }); %>
+        <% } %>
     </div>
 </div>
