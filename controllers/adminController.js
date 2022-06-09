@@ -92,11 +92,13 @@ module.exports = {
   showAdminQnaResponse: async(req, res,next) => {
     try {
       const [qnaData, metadata]=await sequelize.query("SELECT `qna`.* ,`user`.`name` FROM `qna` LEFT JOIN `user` ON `qna`.`user_id`=`user`.`user_id` WHERE qna_id=?",
-      { type: Sequelize.SELECT,
-      replacements :[req.params.qna_id] }
+      {
+        type: Sequelize.SELECT,
+        replacements :[req.params.qna_id]
+      }
     );
       console.log(qnaData);
-      res.render("admin-qna-response",{qna:qnaData});
+      res.render("admin-qna-response",{qna:qnaData[0]});
     } catch (error) {
       console.log(`Error fetching User by ID: ${error.message}`);
       next(error);
