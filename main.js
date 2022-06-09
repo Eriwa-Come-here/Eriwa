@@ -93,6 +93,7 @@ app.post(
   upload.single("image"),
   postController.createPost
 );
+//app.post("/board/post-view/:post_id", noticeController.checkNotice, postController.shotPost);
 //app.get("/post-view/:post_id/delete", postController.deletePost);
 
 //app.get("/board/:place_name", homeController.board, homeController.showBoard);
