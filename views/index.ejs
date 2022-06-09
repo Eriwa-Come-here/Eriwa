@@ -6,7 +6,7 @@
                 <% if(post.image == null ) { %>
                 <div class="contents_img"><img src="/public/images/no_image.png" alt="메인 사진"></div>
                 <%} else { %>
-                <div class="contents_img"><img src="<%= `/public/images/${post.image}` %>" alt="메인 사진"></div>
+                <div class="contents_img"><img src="<%= `/public/uploadFiles/${post.image}` %>" alt="메인 사진"></div>
                 <%} %>
                 <div class="contents_detail">
                     <a href="<%= `/board/post-view/${post.post_id}` %>">
@@ -60,7 +60,7 @@
                 <% if(p.image == null ) { %>
                 <div><img src="/public/images/no_image.png" alt="메인 사진"></div>
                 <%} else { %>
-                <div><img src="<%= `/public/images/${p.image}` %>" alt="메인 사진"></div>
+                <div><img src="<%= `/public/uploadFiles/${p.image}` %>" alt="메인 사진"></div>
                 <%} %>
                 <div>
                     <a href="<%= `/board/post-view/${p.post_id}` %>">
@@ -96,7 +96,7 @@
             <% i++; p = posts[i]; } %>
             <% if( (i%3) == 1 ) {  %>
             <div class="gallery_real_content" id="idx_content_end2">
-                <div><img src="<%= `/public/images/${p.image}` %>" alt="메인 사진"></div>
+                <div><img src="<%= `/public/uploadFiles/${p.image}` %>" alt="메인 사진"></div>
                 <div>
                     <a href="<%= `/board/post-view/${p.post_id}` %>">
                     <div class="contents_explain">
@@ -130,7 +130,7 @@
             <% i++; p = posts[i]; } %>
             <% if( (i%3) == 2 ) { %>
             <div class="gallery_real_content">
-                <div><img src="<%= `/public/images/${p.image}` %>" alt="메인 사진"></div>
+                <div><img src="<%= `/public/uploadFiles/${p.image}` %>" alt="메인 사진"></div>
                 <div>
                     <a href="<%= `/board/post-view/${p.post_id}` %>">
                     <div class="contents_explain">

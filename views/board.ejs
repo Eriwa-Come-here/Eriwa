@@ -19,7 +19,7 @@
                         <% if(p.image == null ) { %>
                         <div class="img_main"><img src="/public/images/no_image.png" alt="메인 사진"></div>
                         <%} else { %>
-                        <div class="img_main"><img src="<%= `/public/images/${p.image}` %>" alt="메인 사진"></div>
+                        <div class="img_main"><img src="<%= `/public/uploadFiles/${p.image}` %>" alt="메인 사진"></div>
                         <%} %>
                             
                         <div class="contents_info" id="info_1">
@@ -59,7 +59,7 @@
                         <% if(p?.image == null ) { %>
                         <div class="img_main"><img src="/public/images/no_image.png" alt="메인 사진"></div>
                         <%} else { %>
-                        <div class="img_main"><img src="<%= `/public/images/${p.image}` %>" alt="메인 사진"></div>
+                        <div class="img_main"><img src="<%= `/public/uploadFiles/${p.image}` %>" alt="메인 사진"></div>
                         <%} %>
                         
                         <div class="contents_info" id="info_2">
