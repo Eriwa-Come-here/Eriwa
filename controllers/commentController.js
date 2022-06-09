@@ -10,7 +10,7 @@ module.exports = {
     try {
       await sequelize.query("INSERT INTO `comment`(`post_id`, `user_id`, `comment`, `written_date`) VALUES (?, ?, ?, ?)", {
         type: sequelize.QueryTypes.INSERT,
-        replacements: [req.params.post_id, 'test3333', req.body.comment_content, date]
+        replacements: [req.params.post_id, req.body.comment_author, req.body.comment_content, date]
       });
       await sequelize.query("INSERT INTO `event`(`user_id`, `event_type`, `event_author`, `event_title`, `event_content`, `url_address`, `event_date`) VALUES (?, ?, ?, ?, ?, ?, ?)", {
         type: sequelize.QueryTypes.INSERT,

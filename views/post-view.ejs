@@ -9,7 +9,7 @@
         <div class="post-info">
           <span class="post-info-left-content">
             <a href="/mypage-good-list"><img src="/public/images/usericon.png" alt="프로필 이미지"
-                width="20px">&nbsp;<%= post.user_id %></a>&nbsp;&nbsp;&nbsp;<%= getDate(post.written_date) %>
+                width="25px">&nbsp;<%= post.user_id %></a>&nbsp;&nbsp;&nbsp;<%= getDate(post.written_date) %>
           </span>
           <span class="post-info-right-content">
             <a href="#comment"><img src="/public/images/comment-alt.png" alt="댓글수" width="25"
@@ -68,9 +68,12 @@
           <!-- 작성자에게만 보이게 -->
           <% if (post.user_id && post.user_id == currentUser.dataValues.user_id) { %>
             <span class="article-footer-right">
-              <a href="<%= `/board/post-view/${post.post_id}/edit` %>">수정</a>
-              <a href="<%= `/post-view/${post.post_id}/delete` %>">삭제</a>
+              <a href="<%= `/board/post-view/${post.post_id}/edit` %>" class="post-edit-delete">수정</a>
+              <form onsubmit="return confirm('정말 삭제하시겠습니까?');" action="<%= `/board/post-view/${post.post_id}/delete` %>" method="post">
+                <input type="submit" name="삭제" value="삭제" class="post-edit-delete">
+              </form>
             </span>
+            
           <% } %>
         </div>
       </div>
@@ -83,7 +86,7 @@
           <div class="comment-content-container">
             <div class="comment-content">
               <div class="post-view-profile">
-                <a href="#"><img src="/public/images/usericon.png" alt="작성자 프로필">&nbsp;<%= comment.user_id %></a>
+                <a href="#"><img src="/public/images/usericon.png" alt="작성자 프로필" width="25px">&nbsp;<%= comment.user_id %></a>
               </div>
               <div id="<%= `comment-content-${comment.comment_id}` %>">
                 <div class="comment-content-text"><%= comment.comment %></div>
@@ -124,7 +127,7 @@
       
       <div class="comment-writing-column" id="testid">
         <div class="post-view-profile">
-          <img src="/public/images/usericon.png" alt="내 프로필">&nbsp; <%= currentUser.dataValues.user_id %>
+          <img src="/public/images/usericon.png" alt="내 프로필" width="25px">&nbsp; <%= currentUser.dataValues.user_id %>
         </div>
         <form class="comment-textarea" onsubmit="return confirm('댓글을 등록하시겠습니까?');" action="<%= `/comment/${post.post_id}` %>" method="post">
           <input type="hidden" name="post_author" value="<%= post.user_id %>">

@@ -55,7 +55,7 @@ exports.createPost = async (req, res, next) => {
           req.file.filename,
           req.body.grade,
           new Date(),
-          "test3333",
+          req.body.post_author,
           req.body.can_park,
           req.body.can_pet,
           "0",

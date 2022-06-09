@@ -81,6 +81,7 @@ app.get("/service-intro", homeController.showServiceIntro);
 
 //noticeController 추가
 app.get("/notice", noticeController.showNotice);
+app.post("/notice/check/", noticeController.checkNotice);
 
 //postController 추가
 app.get("/board/post-writing", postController.showPostWriting);
@@ -90,7 +91,6 @@ app.post(
   upload.single("image"),
   postController.createPost
 );
-//app.post("/board/post-view/:post_id", noticeController.checkNotice, postController.shotPost);
 //app.get("/post-view/:post_id/delete", postController.deletePost);
 
 //app.get("/board/:place_name", homeController.board, homeController.showBoard);
