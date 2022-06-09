@@ -91,6 +91,7 @@ app.post(
   upload.single("image"),
   postController.createPost
 );
+//app.post("/board/post-view/:post_id", noticeController.checkNotice, postController.shotPost);
 //app.get("/post-view/:post_id/delete", postController.deletePost);
 
 
@@ -111,11 +112,11 @@ app.get("/admin/qna", adminController.showAdminQna);
 app.get("/admin/qna/response", adminController.showAdminQnaResponse);
 
 //mypageController 추가
-app.get("/mypage", mypageController.mypageGood);
-app.get("/mypage/comment", mypageController.mypageReply);
-app.get("/mypage/post", mypageController.mypageWrite);
-app.get("/chat", mypageController.chatList);
-app.get("/chat/write", mypageController.chatStory);
+// app.get("/mypage", mypageController.mypageGood);
+// app.get("/mypage/comment", mypageController.mypageReply);
+// app.get("/mypage/post", mypageController.mypageWrite);
+// app.get("/chat", mypageController.chatList);
+// app.get("/chat/write", mypageController.chatStory);
 
 //loginController 추가
 app.get("/users/login", loginController.login);
