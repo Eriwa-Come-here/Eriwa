@@ -96,7 +96,7 @@ module.exports = {
       replacements :[req.params.qna_id] }
     );
       console.log(qnaData);
-      res.render("admin-qna-response",{qna:qnaData});
+      res.render("admin-qna-response",{qna:qnaData[0]});
     } catch (error) {
       console.log(`Error fetching User by ID: ${error.message}`);
       next(error);
