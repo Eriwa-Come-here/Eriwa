@@ -48,13 +48,12 @@
             </td>
             <td>
               <a href="<%= `/admin/qna/response/${qna.qna_id}`%>"><%= qna.question %></a>
-              <%= qna.question %>
             </td>
             <td>
               <% if (qna.answer) { %>
-                <p>답변완료</p>
+                  답변완료
               <% } else { %>
-                <a href="<%= `/admin/qna/response/${qna.qna_id}`%>"><p>답변대기</p></a>
+                <a href="<%= `/admin/qna/response/${qna.qna_id}`%>"  class="qna-answer-waiting">답변대기</a>
               <% }; %>
             </td>
           </tr>

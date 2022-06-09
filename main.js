@@ -110,6 +110,7 @@ app.post("/admin/post/delete", adminController.postDelete);
 app.get("/admin/analysis", adminController.showAdminAnalysis);
 app.get("/admin/qna", adminController.showAdminQna);
 app.get("/admin/qna/response/:qna_id", adminController.showAdminQnaResponse);
+app.post("/admin/qna/response/:qna_id", adminController.qnaResponse);
 
 //mypageController 추가
 app.get("/mypage", mypageController.mypageGood);

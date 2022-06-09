@@ -134,3 +134,8 @@
   vertical-align: top;
   border-bottom: 1px solid #ccc;
 }
+
+.qna-answer-waiting{
+  color: red;
+  text-decoration: underline;
+}

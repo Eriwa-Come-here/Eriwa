@@ -104,4 +104,21 @@ module.exports = {
       next(error);
     }
   },
+
+  qnaResponse: async (req, res, next) => {
+    try {
+      await sequelize.query(
+        "UPDATE `qna` SET `answer`=? WHERE qna_id=?",
+        {
+          type: sequelize.QueryTypes.UPDATE,
+          replacements: [req.body.answer , req.params.qna_id]
+        }
+      );
+      res.redirect("/admin/qna");
+    } catch (error) {
+      console.log(`Error fetching Post by ID: ${error.message}`);
+      next(error);
+    }
+  }
+
 }
