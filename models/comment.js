@@ -50,9 +50,8 @@ module.exports = (sequelize, Sequelize) => {
       },
       user_id: {
         // 외래키
-        type: Sequelize.STRING(20),
+        type: Sequelize.STRING,
         allowNull: false,
-        defaultValue: "deleted",
         references: {
           model: User,
           key: "user_id",

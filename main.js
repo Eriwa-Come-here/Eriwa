@@ -85,6 +85,9 @@ app.post("/notice/check/", noticeController.checkNotice);
 app.get("/board", homeController.board, homeController.showBoardBase);
 app.get("/board/post-writing", postController.showPostWriting);
 app.get("/board/post-view/:post_id", postController.showPost);
+app.post("/board/post-view/:post_id/delete", postController.deletePost);
+app.get("/board/post-view/:post_id/edit",postController.showPostEdit);
+app.post("/board/post-view/:post_id/edit",postController.editPost);
 app.post(
   "/board/post-writing",
   upload.single("image"),
@@ -106,7 +109,7 @@ app.get("/admin/post", adminController.showAdminPost);
 app.post("/admin/post/delete", adminController.postDelete);
 app.get("/admin/analysis", adminController.showAdminAnalysis);
 app.get("/admin/qna", adminController.showAdminQna);
-app.get("/admin/qna/response", adminController.showAdminQnaResponse);
+app.get("/admin/qna/response/:qna_id", adminController.showAdminQnaResponse);
 
 //mypageController 추가
 app.get("/mypage", mypageController.mypageGood);
