@@ -74,20 +74,32 @@ module.exports = {
   },
 
   //문의내역
-  showAdminQna: async (req, res) => {
+  showAdminQna: async (req, res,next) => {
     try {
-      qnaData = await Qna.findAll();
+      const [qnaData, metadata]=await sequelize.query("SELECT `qna`.* ,`user`.`name` FROM `qna` LEFT JOIN `user` ON `qna`.`user_id`=`user`.`user_id`",
+      { type: Sequelize.SELECT }
+    );
+      res.locals.qnas=qnaData;
       console.log(qnaData);
-      res.render("admin-qna", { qna: qnaData });
-    } catch (err) {
-      res.status(500).send({
-        message: err.message,
-      });
+      res.render("admin-qna",{qna:qnaData});
+    } catch (error) {
+      console.log(`Error fetching User by ID: ${error.message}`);
+      next(error);
     }
   },
 
   //문의글답변
-  showAdminQnaResponse: (req, res) => {
-    res.render("admin-qna-response");
+  showAdminQnaResponse: async(req, res,next) => {
+    try {
+      const [qnaData, metadata]=await sequelize.query("SELECT `qna`.* ,`user`.`name` FROM `qna` LEFT JOIN `user` ON `qna`.`user_id`=`user`.`user_id` WHERE qna_id=?",
+      { type: Sequelize.SELECT,
+      replacements :[req.params.qna_id] }
+    );
+      console.log(qnaData);
+      res.render("admin-qna-response",{qna:qnaData});
+    } catch (error) {
+      console.log(`Error fetching User by ID: ${error.message}`);
+      next(error);
+    }
   },
-};
+}

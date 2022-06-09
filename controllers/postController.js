@@ -66,7 +66,6 @@ exports.createPost = async (req, res, next) => {
         ],
       }
     );
-
     res.redirect("/");
   } catch (error) {
     console.log(`Error fetching Post by ID: ${error.message}`);
@@ -91,7 +90,7 @@ exports.editPost = async (req, res, next) => {
 },
 
 exports.deletePost = async (req, res, next) => {
-  let post_id = req.body.post_id;
+  let post_id = req.params.post_id;
   try {
     await sequelize.query("DELETE FROM `post` WHERE post_id = ?", {
       type: Sequelize.DELETE,

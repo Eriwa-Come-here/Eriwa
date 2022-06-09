@@ -27,11 +27,11 @@
     <div class="subject">문의내역</div>
     <div class="pos-flex">
       <span class="user-name-id">
-        <span>회원명</span>
+        <span><%= qna.name %> </span>
         <span>/</span>
-        <span>회원아이디</span>
+        <span><%= qna.user_id %></span>
       </span>
-      <span class="question">문의내용</span>
+      <span class="question" value="<%= qna.question %>"></span>
     </div>
     <div class="pos-flex">
       <span class="admin">관리자</span>

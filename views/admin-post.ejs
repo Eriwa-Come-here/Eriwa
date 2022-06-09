@@ -43,7 +43,7 @@
             <td scope="row"><%= post.user_id %></td>
             <td><a href="<%=`/board/post-view/${post.post_id}`%>"><%= post.title %></a></td>
             <!-- <td><%= post.title %></td> -->
-            <td><img src="<%= `/public/uploadFiles/${post.image}` %>" width="50"/></td>
+            <td><img src="<%= `/public/uploadFiles/${post.image}` %>" width="50" height="50"/></td>
             <td><%= post.view_count %></td>
             <td><%= post.commentCount %></td>
             <td>

@@ -18,7 +18,7 @@
           </span>
         </div>
       </header>
-  
+
       <div class="post-content">
         <table>
           <thead>
@@ -69,7 +69,9 @@
           <% if (post.user_id && post.user_id == currentUser.dataValues.user_id) { %>
             <span class="article-footer-right">
               <a href="<%= `/board/post-view/${post.post_id}/edit` %>">수정</a>
-              <a href="<%= `/post-view/${post.post_id}/delete` %>">삭제</a>
+              <form onsubmit="return confirm('정말 삭제하시겠습니까?');" action="<%= `/board/post-view/${post.post_id}/delete` %>" method="post">
+                <input type="submit" name="삭제" value="삭제" class="edit-delete">
+              </form>
             </span>
           <% } %>
         </div>
@@ -91,7 +93,6 @@
                 <div class="comment-footer">
                   <%= getDate(comment.written_date) %>
                   <!-- 작성자에게만 보이게 -->
-                  <% if (comment.user_id && comment.user_id == currentUser.dataValues.user_id) { %>
                     <span class="comment-buttons">
                       <!-- 클릭하면 수정 폼을 보여줌 -->
                       <a onclick="showEdit('<%= `comment-content-${comment.comment_id}` %>', '<%= `comment-edit-${comment.comment_id}` %>');" href="javascript:void(0)" class="edit-delete">수정</a>
@@ -100,7 +101,6 @@
                         <input type="submit" name="삭제" value="삭제" class="edit-delete">
                       </form>
                     </span>
-                  <% } %>
                 </div>
               </div>
             </div>
@@ -124,11 +124,11 @@
       
       <div class="comment-writing-column" id="testid">
         <div class="post-view-profile">
-          <img src="/public/images/usericon.png" alt="내 프로필">&nbsp; <%= currentUser.dataValues.user_id %>
+          <img src="/public/images/usericon.png" alt="내 프로필">&nbsp; 내 아이디
         </div>
         <form class="comment-textarea" onsubmit="return confirm('댓글을 등록하시겠습니까?');" action="<%= `/comment/${post.post_id}` %>" method="post">
           <input type="hidden" name="post_author" value="<%= post.user_id %>">
-          <input type="hidden" name="comment_author" value="<%= currentUser.dataValues.user_id %>">
+          <input type="hidden" name="comment_author" value="test2222">
           <input type="hidden" name="post_title" value="<%= post.title %> ">
           <div><textarea placeholder="내용을 입력해 주세요" name="comment_content" rows="8" cols="80"></textarea></div>
           <div><input type="submit" name="등록" value="등록" class="post-view-myButton"></div>
