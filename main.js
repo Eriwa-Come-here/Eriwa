@@ -69,6 +69,7 @@ app.use((req, res, next)=>{
   res.locals.loggedIn = req.isAuthenticated();
   res.locals.currentUser = req.user;
   res.locals.flashMessages = req.flash();
+  res.locals.boardView = req.boardView;
   next();
 });
 
@@ -76,8 +77,6 @@ app.use((req, res, next)=>{
 //homeController 추가
 app.get("/", homeController.index, homeController.showIndex);
 app.get("/search", homeController.showDetailSearch);
-app.get("/mypage/qna", mypageController.showQna);
-app.get("/mypage/recommend", mypageController.showRecommend);
 app.get("/service-intro", homeController.showServiceIntro);
 
 //noticeController 추가
@@ -112,6 +111,8 @@ app.get("/admin/qna/response", adminController.showAdminQnaResponse);
 
 //mypageController 추가
 app.get("/mypage", mypageController.mypageGood);
+app.get("/mypage/qna", mypageController.showQna);
+app.get("/mypage/recommend", mypageController.showRecommend);
 app.get("/mypage/comment", mypageController.mypageReply);
 app.get("/mypage/post", mypageController.mypageWrite);
 app.get("/chat", mypageController.chatList);
