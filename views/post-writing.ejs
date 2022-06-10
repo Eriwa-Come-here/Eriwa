@@ -1,74 +1,58 @@
-<% if (loggedIn) {%>
 <script src="../public/js/post.js"></script>
 <main class="post-main">
   <form action="/board/post-writing" method="post" enctype="multipart/form-data">
   <input type="hidden" name="post_author" value="<%= currentUser.dataValues.user_id %>">
     <div class="post-main-div">
-      <p>
-        <span>제목</span>
-        <span>
+        <span class="post_text_border">제목</span>
+        <span class="post_input_border">
           <input type="text" name="title" class="input-style" />
         </span>
-      </p>
-      <p>
-        <span>장소이름</span>
-        <span>
+        <span class="post_text_border">장소이름</span>
+        <span class="post_input_border">
           <input type="text" name="place_name" class="input-style" />
         </span>
-      </p>
-      <p>
-        <span>위치</span>
+        <span class="post_text_border">위치</span>
         <span>
           <select
             id="address1"
-            class="place-input"
+            class="place-input1"
             onchange="loadsigungu();"
             name="address1"
             ,
           ></select>
-          <select id="address2" class="place-input" name="address2"></select>
-          <span>
-            <input type="text" class="input-style" name="address3" />
+          <select id="address2" class="place-input1" name="address2"></select>
+          <span class="post_input_border">
+            <input type="text" class="place-input2" name="address3" />
           </span>
         </span>
-      </p>
-      <p>
-        <span>장소종류</span>
-        <span>
+        <span class="post_text_border">장소종류</span>
+        <span class="post_input_border">
           <input type="radio" name="place_type" value="카페" /> 카페
           <input type="radio" name="place_type" value="식당" /> 식당
           <input type="radio" name="place_type" value="주점" /> 주점
           <input type="radio" name="place_type" value="관광" /> 관광
           <input type="radio" name="place_type" value="기타" /> 기타
         </span>
-      </p>
-      <p>
-        <span>주차장 이용</span>
-        <span>
+        <span class="post_text_border">주차장 이용</span>
+        <span class="post_input_border">
           <input type="radio" name="can_park" value="1" /> 가능
           <input type="radio" name="can_park" value="0" /> 불가능
         </span>
-      </p>
-      <p>
-        <span>반려동물 동반</span>
-        <span>
+        <span class="post_text_border">반려동물 동반</span>
+        <span class="post_input_border">
           <input type="radio" name="can_pet" value="1" /> 가능
           <input type="radio" name="can_pet" value="0" /> 불가능
         </span>
-      </p>
-      <p>
-        <span>평점</span>
-        <span>
+        <span class="post_text_border">평점</span>
+        <span class="post_input_border">
           <input type="radio" name="grade" value="1" /> 1
           <input type="radio" name="grade" value="2" /> 2
           <input type="radio" name="grade" value="3" /> 3
           <input type="radio" name="grade" value="4" /> 4
           <input type="radio" name="grade" value="5" /> 5
         </span>
-      </p>
-      <p>
-        <span>사진</span>
-        <span>
+        <span class="post_text_border">사진</span>
+        <span class="post_input_border">
           <input
             type="file"
             class="real-upload"
@@ -78,25 +62,21 @@
           />
           <img id="preview" />
         </span>
-      </p>
-      <p>
-        <span>방문후기</span>
-        <span>
+        <span class="post_text_border">방문후기</span>
+        <span class="post_input_border">
           <textarea
-            cols="60"
+            cols="51"
             rows="15"
             name="content"
             class="textarea-style"
           ></textarea>
         </span>
-      </p>
+      <div></div>
       <div>
         <span class="btn_pos">
-          <!-- <button class="cancel-btn">취소</button> -->
           <button class="submit-btn" type="submit">등록</button>
         </span>
       </div>
     </div>
   </form>
 </main>
-<%} else {%> <%- include("login")%> <% } %>
