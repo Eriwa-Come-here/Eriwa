@@ -50,7 +50,13 @@ div#all_contents{
 
 div.contents_explain{
     float: left;
+    width: 200px;
     margin-bottom: 10px;
+}
+
+
+div.contents_explain>h4{
+    color: #8398D1;
 }
 
 div.contents_info>a{
@@ -93,13 +99,14 @@ div.btn_grade>p{
 /*real_content*/
 
 div.contents>div>div>img{
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
     margin-bottom: 10px;
 }
 
 div.gallery_real_content {
     width: 200px;
+    height: 300px;
     padding-right: 73px;
     padding-bottom: 20px;
     margin-left: 73px;

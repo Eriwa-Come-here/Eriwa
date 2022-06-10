@@ -30,23 +30,32 @@
         <thead>
           <tr>
             <th scope="cols">No.</th>
-            <th scope="cols">회원아이디</th>
+            <th scope="cols">회원명/회원아이디</th>
             <th scope="cols">문의내용</th>
             <th scope="cols">구분</th>
           </tr>
         </thead>
-        <% qna.forEach(s=>{ %>
+        <% qna.forEach(qna=>{ %>
         <tbody>
           <tr>
-            <td scope="row"><%= s.qna_id %></td>
-            <td>
-              <span><%= s.user_id %></span>
+            <td scope="row">
+              <%= qna.qna_id %>
             </td>
             <td>
-              <a href="/admin/qna/response"><%= s.question %></a>
+              <span><%= qna.name %></span>
+              <span>/</span>
+              <span><%= qna.user_id %></span>
             </td>
             <td>
-              <p>답변대기</p>
+              <a href="<%= `/admin/qna/response/${qna.qna_id}`%>"><%= qna.question %></a>
+              <%= qna.question %>
+            </td>
+            <td>
+              <% if (qna.answer) { %>
+                <p>답변완료</p>
+              <% } else { %>
+                <a href="<%= `/admin/qna/response/${qna.qna_id}`%>"><p>답변대기</p></a>
+              <% }; %>
             </td>
           </tr>
         </tbody>

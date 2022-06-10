@@ -75,16 +75,19 @@ app.use((req, res, next) => {
 //homeController 추가
 app.get("/", homeController.index, homeController.showIndex);
 app.get("/search", homeController.showDetailSearch);
-app.get("/mypage/qna", mypageController.showQna);
-app.get("/mypage/recommend", mypageController.showRecommend);
 app.get("/service-intro", homeController.showServiceIntro);
 
 //noticeController 추가
 app.get("/notice", noticeController.showNotice);
+app.post("/notice/check/", noticeController.checkNotice);
 
 //postController 추가
+app.get("/board", homeController.board, homeController.showBoardBase);
 app.get("/board/post-writing", postController.showPostWriting);
 app.get("/board/post-view/:post_id", postController.showPost);
+app.post("/board/post-view/:post_id/delete", postController.deletePost);
+app.get("/board/post-view/:post_id/edit",postController.showPostEdit);
+app.post("/board/post-view/:post_id/edit",postController.editPost);
 app.post(
   "/board/post-writing",
   upload.single("image"),
@@ -92,7 +95,7 @@ app.post(
 );
 //app.get("/post-view/:post_id/delete", postController.deletePost);
 
-//app.get("/board/:place_name", homeController.board, homeController.showBoard);
+app.get("/board/:place_name", homeController.board, homeController.showBoard);
 
 //commentController 추가
 app.post("/comment/:post_id", commentController.createComment);
@@ -106,10 +109,15 @@ app.get("/admin/post", adminController.showAdminPost);
 app.post("/admin/post/delete", adminController.postDelete);
 app.get("/admin/analysis", adminController.showAdminAnalysis);
 app.get("/admin/qna", adminController.showAdminQna);
-app.get("/admin/qna/response", adminController.showAdminQnaResponse);
+app.get("/admin/qna/response/:qna_id", adminController.showAdminQnaResponse);
 
 //mypageController 추가
 app.get("/mypage", mypageController.mypageGood);
+app.get("/mypage/qna", mypageController.qna, mypageController.showQna);
+app.get("/mypage/qna/:qna_id", mypageController.qna, mypageController.showQna);
+
+
+app.get("/mypage/recommend", mypageController.showRecommend);
 app.get("/mypage/comment", mypageController.mypageReply);
 app.get("/mypage/post", mypageController.mypageWrite);
 app.get("/chat", mypageController.chatList);

@@ -5,24 +5,31 @@ const datefunc = require('../public/js/datefunc.js');
 
 
 module.exports = {
-    showNotice: (req, res, next) => {
-        res.render("notice");
-    },
-
-    showNotice: async (req, res) => {
+    showNotice: async (req, res, next) => {
         try {
             const [result, metadata] = await sequelize.query("SELECT * FROM `event` WHERE user_id = ? ORDER BY event_date DESC", {
                 type: Sequelize.SELECT,
-                replacements: ['aeaf']
+                replacements: [res.locals.currentUser.dataValues.user_id]
             });
-            console.log(result[0].is_checked);
             res.render("notice", {events: result, getDate: datefunc.getDate});
         } catch (err) {
-            res.status(500).send({
-            message: err.message,
-            });
+            console.log(`Error from notice: ${err.message}`);
+            next(err);
         }
     },
-    
+
+    checkNotice: async (req, res, next) => {
+        try {
+            if (req.body.is_checked == 0) {
+                await sequelize.query("UPDATE `event` SET `is_checked` = 1 WHERE `user_id` = ? AND `event_id` = ?;", {
+                    type: sequelize.QueryTypes.UPDATE,
+                    replacements: [req.body.user_id, req.body.event_id]
+                });
+            }
+            res.redirect(req.body.event_url);
+        } catch (err) {
+            console.log(`Error from notice: ${err.message}`);
+            next(err);
+        }     
+    }
 };
-  
