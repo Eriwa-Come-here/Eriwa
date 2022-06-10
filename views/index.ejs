@@ -3,37 +3,37 @@
         <h2>👑 오늘의 이리와 👑</h2>
             <section class="today_best_slider">
             <div class="today_best_contents">
-                <% if(post.image == null ) { %>
+                <% if(post?.image == null ) { %>
                 <div class="contents_img"><img src="/public/images/no_image.png" alt="메인 사진"></div>
                 <%} else { %>
-                <div class="contents_img"><img src="<%= `/public/uploadFiles/${post.image}` %>" alt="메인 사진"></div>
+                <div class="contents_img"><img src="<%= `/public/uploadFiles/${post?.image}` %>" alt="메인 사진"></div>
                 <%} %>
                 <div class="contents_detail">
-                    <a href="<%= `/board/post-view/${post.post_id}` %>">
+                    <a href="<%= `/board/post-view/${post?.post_id}` %>">
                     <div class="contents_explain">
-                        <h1><%= post.title %></h1>
-                        <h4><%= post.address1 %></h4>
-                        <h5><%= post.user_id %></h5>
-                        <p><%= post.content %></p>
+                        <h1><%= post?.title %></h1>
+                        <h4><%= post?.address1 %></h4>
+                        <h5><%= post?.user_id %></h5>
+                        <p><%= post?.content %></p>
                     </div>
                     </a>
                     <div class="contents_info">
-                        <a href="<%= `/board/post-view/${post.post_id}` %>">
+                        <a href="<%= `/board/post-view/${post?.post_id}` %>">
                             <div class="btn_jjim">
                                 <img src="/public/images/jjim_icon.png" alt="찜">
                                 <p>2,100</p>
                             </div>
                         </a>
-                        <a href="<%= `/board/post-view/${post.post_id}` %>">
+                        <a href="<%= `/board/post-view/${post?.post_id}` %>">
                             <div class="btn_comment">
                                 <img src="/public/images/comment_icon.png" alt="댓글">
                                 <p>100</p>
                             </div>
                         </a>
-                        <a href="<%= `/board/post-view/${post.post_id}` %>">
+                        <a href="<%= `/board/post-view/${post?.post_id}` %>">
                             <div class="btn_grade">
                                 <img src="/public/images/grade_icon.png" alt="별점">
-                                <p><%= post.grade %></p>
+                                <p><%= post?.grade %></p>
                             </div>
                         </a>
                     </div>
@@ -60,34 +60,34 @@
                 <% if(p.image == null ) { %>
                 <div><img src="/public/images/no_image.png" alt="메인 사진"></div>
                 <%} else { %>
-                <div><img src="<%= `/public/uploadFiles/${p.image}` %>" alt="메인 사진"></div>
+                <div><img src="<%= `/public/uploadFiles/${p?.image}` %>" alt="메인 사진"></div>
                 <%} %>
                 <div>
-                    <a href="<%= `/board/post-view/${p.post_id}` %>">
+                    <a href="<%= `/board/post-view/${p?.post_id}` %>">
                         <div class="contents_explain">
-                            <h3><%= p.title %></h3>
-                            <h4><%= p.address1 %></h4>
-                            <h5><%= p.user_id %></h5>
-                            <p><%= p.content %></p>
+                            <h3><%= p?.title %></h3>
+                            <h4><%= p?.address1 %></h4>
+                            <h5><%= p?.user_id %></h5>
+                            <p><%= p?.content %></p>
                         </div>
                     </a>
                     <div class="contents_info">
-                        <a href="<%= `/board/post-view/${p.post_id}` %>">
+                        <a href="<%= `/board/post-view/${p?.post_id}` %>">
                             <div class="btn_jjim">
                                 <img src="/public/images/jjim_icon.png" alt="찜">
                                 <p>2,100</p>
                             </div>
                         </a>
-                        <a href="<%= `/board/post-view/${p.post_id}` %>">
+                        <a href="<%= `/board/post-view/${p?.post_id}` %>">
                             <div class="btn_comment">
                                 <img src="/public/images/comment_icon.png" alt="댓글">
                                 <p>100</p>
                             </div>
                         </a>
-                        <a href="<%= `/board/post-view/${p.post_id}` %>">
+                        <a href="<%= `/board/post-view/${p?.post_id}` %>">
                             <div class="btn_grade">
                                 <img src="/public/images/grade_icon.png" alt="별점">
-                                <p><%= p.grade %></p>
+                                <p><%= p?.grade %></p>
                             </div>
                         </a>
                     </div>
@@ -96,32 +96,32 @@
             <% i++; p = posts[i]; } %>
             <% if( (i%3) == 1 ) {  %>
             <div class="gallery_real_content" id="idx_content_end2">
-                <div><img src="<%= `/public/uploadFiles/${p.image}` %>" alt="메인 사진"></div>
+                <div><img src="<%= `/public/uploadFiles/${p?.image}` %>" alt="메인 사진"></div>
                 <div>
-                    <a href="<%= `/board/post-view/${p.post_id}` %>">
+                    <a href="<%= `/board/post-view/${p?.post_id}` %>">
                     <div class="contents_explain">
-                        <h3><%= p.title %></h3>
-                        <h4><%= p.address1 %></h4>
-                        <h5><%= p.user_id %></h5>
-                        <p><%= p.content %></p>
+                        <h3><%= p?.title %></h3>
+                        <h4><%= p?.address1 %></h4>
+                        <h5><%= p?.user_id %></h5>
+                        <p><%= p?.content %></p>
                     </div></a>
                     <div class="contents_info">
-                        <a href="<%= `/board/post-view/${p.post_id}` %>">
+                        <a href="<%= `/board/post-view/${p?.post_id}` %>">
                             <div class="btn_jjim">
                                 <img src="/public/images/jjim_icon.png" alt="찜">
                                 <p>2,100</p>
                             </div>
                         </a>
-                        <a href="<%= `/board/post-view/${p.post_id}` %>">
+                        <a href="<%= `/board/post-view/${p?.post_id}` %>">
                             <div class="btn_comment">
                                 <img src="/public/images/comment_icon.png" alt="댓글">
                                 <p>100</p>
                             </div>
                         </a>
-                        <a href="<%= `/board/post-view/${p.post_id}` %>">
+                        <a href="<%= `/board/post-view/${p?.post_id}` %>">
                             <div class="btn_grade">
                                 <img src="/public/images/grade_icon.png" alt="별점">
-                                <p><%= p.grade %></p>
+                                <p><%= p?.grade %></p>
                             </div>
                         </a>
                     </div>
