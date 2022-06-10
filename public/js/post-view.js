@@ -1,5 +1,10 @@
+// 
+function showDrop(id) {
+    document.getElementById(id).classList.toggle("drop-list-show");
+}
+
 // 현재 문서의 url 복사하기
-function copyUrl(){
+function copyUrl() {
     var url = '';
     var textarea = document.createElement("textarea");
     document.body.appendChild(textarea);

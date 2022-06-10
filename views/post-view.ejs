@@ -7,15 +7,23 @@
         <a href="/board"><%= post.address1 %></a>
         <h1><%= post.title %> </h1>
         <div class="post-info">
-          <span class="post-info-left-content">
-            <a href="/mypage"><img src="/public/images/usericon.png" alt="프로필 이미지"
-              width="25px">&nbsp;<%= post.nickname %></a>&nbsp;&nbsp;&nbsp;<%= getDate(post.written_date) %>
-          </span>
-          <span class="post-info-right-content">
+          <div class="post-info-left-content">
+            <a onclick="javascript: showDrop('post-author-nickname');"><img src="/public/images/usericon.png" alt="프로필 이미지"
+              width="25px">&nbsp;<%= post.nickname %></a>&nbsp;&nbsp;&nbsp;
+              <ul class="drop-list"  id="post-author-nickname">
+                <% if (currentUser && post.user_id == currentUser?.dataValues.user_id) { %>
+                  <li class="drop-item"><a href="/mypage" class="drop-button">마이페이지</a></li>
+                <% } else { %>
+                  <li class="drop-item"><a href="" class="drop-button">쪽지 보내기</a></li>
+                <% } %>
+              </ul>
+            <%= getDate(post.written_date) %>
+          </div>
+          <div class="post-info-right-content">
             <a href="#comment"><img src="/public/images/comment-alt.png" alt="댓글수" width="25"
                 height="25">&nbsp;댓글 <%= comments.length %></a>&nbsp;&nbsp;&nbsp;<a href="#"><img src="/public/images/heart.png" alt="추천"
                 width="25" height="25">&nbsp;추천 <%= post.recommend_count %></a>
-          </span>
+          </div>
         </div>
       </header>
 
@@ -85,7 +93,14 @@
           <div class="comment-content-container">
             <div class="comment-content">
               <div class="post-view-profile">
-                <a href="#"><img src="/public/images/usericon.png" alt="작성자 프로필" width="25px">&nbsp;<%= comment.nickname %></a>
+                <div class="comment-profile-wrap"><a onclick="javascript: showDrop('<%= `comment-author-nickname-${comment.comment_id}` %>');"><img src="/public/images/usericon.png" alt="작성자 프로필" width="25px">&nbsp;<%= comment.nickname %></a></div>
+                  <ul class="comment-drop-list"  id="<%= `comment-author-nickname-${comment.comment_id}` %>">
+                    <% if (currentUser && comment.user_id == currentUser?.dataValues.user_id) { %>
+                      <li class="drop-item"><a href="/mypage" class="drop-button">마이페이지</a></li>
+                    <% } else { %>
+                      <li class="drop-item"><a href="" class="drop-button">쪽지 보내기</a></li>
+                    <% } %>
+                  </ul>
               </div>
               <div id="<%= `comment-content-${comment.comment_id}` %>">
                 <div class="comment-content-text"><%= comment.comment %></div>
@@ -111,12 +126,12 @@
             <div class="comment-edit-form" id="<%= `comment-edit-${comment.comment_id}` %>">
 
               <form class="comment-textarea" onsubmit="return confirm('댓글을 수정하시겠습니까?');" action="<%= `/comment/${post.post_id}/edit` %>" method="post">
-                <input type="hidden" id="comment_author" value="<%= comment.user_id %>">
+                <input type="hidden" name="comment_author" value="<%= comment.user_id %>">
                 <input type="hidden" name="comment_id" value="<%= comment.comment_id %>">
                 <div><textarea placeholder="<%= comment.comment %>" name="comment_content" rows="8" cols="80"></textarea></div>
                 <div class="comment-edit-buttons">
                   <input type="button" onclick="hideEdit('<%= `comment-content-${comment.comment_id}` %>', '<%= `comment-edit-${comment.comment_id}` %>');" name="cancel_update" value="취소" class="post-view-myButton">
-                  <input type="submit" name="submit_update" value="수정" class="post-view-myButton" id="comment-edit-button">
+                  <input type="submit" name="submit_update" value="수정" class="post-view-myButton comment-edit-button">
                 </div>
               </form>
             </div>
@@ -125,7 +140,7 @@
       <% } %>
       
       <div class="comment-writing-column" id="testid">
-        <div class="post-view-profile">
+        <div class="comment-my-profile">
           <img src="/public/images/usericon.png" alt="내 프로필" width="25px">&nbsp; <%= currentUser?.dataValues.nickname %>
         </div>
         <form class="comment-textarea" onsubmit="return confirm('댓글을 등록하시겠습니까?');" action="<%= `/comment/${post.post_id}` %>" method="post">
