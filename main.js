@@ -124,6 +124,8 @@ app.get("/mypage/update", loginController.checkLogin, mypageController.showUpdat
 app.post("/mypage/update", mypageController.logout, mypageController.passwordCheck);
 app.post("/mypage/:id/edit", mypageController.edit, mypageController.redirectView);
 
+
+//noteController 추가
 app.get("/note/:type", noteController.noteList);
 app.get("/chat/write", noteController.chatStory);
 
