@@ -1,6 +1,17 @@
 // 
 function showDrop(id) {
-    document.getElementById(id).classList.toggle("drop-list-show");
+    const profile = document.getElementById(id);
+    //profile.classList.toggle("drop-list-show");
+    profile.classList.add("drop-list-show");
+
+}
+
+function hideDrop(id) {
+    const profile = document.getElementById(id);
+    //profile.classList.toggle("drop-list-show");
+    setTimeout(() => {
+        profile.classList.remove("drop-list-show");
+    }, 100);
 }
 
 // 현재 문서의 url 복사하기
