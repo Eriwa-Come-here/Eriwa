@@ -85,7 +85,7 @@
           <div class="comment-content-container">
             <div class="comment-content">
               <div class="post-view-profile">
-                <a href="#"><img src="/public/images/usericon.png" alt="작성자 프로필">&nbsp;<%= comment.user_id %></a>
+                <a href="#"><img src="/public/images/usericon.png" alt="작성자 프로필" width="25px">&nbsp;<%= comment.nickname %></a>
               </div>
               <div id="<%= `comment-content-${comment.comment_id}` %>">
                 <div class="comment-content-text"><%= comment.comment %></div>
@@ -96,10 +96,10 @@
                   <% if (comment.user_id && comment.user_id == currentUser?.dataValues.user_id) { %>
                     <span class="comment-buttons">
                       <!-- 클릭하면 수정 폼을 보여줌 -->
-                      <a onclick="showEdit('<%= `comment-content-${comment.comment_id}` %>', '<%= `comment-edit-${comment.comment_id}` %>');" href="javascript:void(0)" class="edit-delete">수정</a>
+                      <a onclick="showEdit('<%= `comment-content-${comment.comment_id}` %>', '<%= `comment-edit-${comment.comment_id}` %>');" href="javascript:void(0)" class="post-edit-delete">수정</a>
                       <form onsubmit="return confirm('정말 삭제하시겠습니까?');" action="<%= `/comment/${post.post_id}/delete` %>" method="post">
                         <input type="hidden" name="comment_id" value="<%= comment.comment_id %>">
-                        <input type="submit" name="삭제" value="삭제" class="edit-delete">
+                        <input type="submit" name="삭제" value="삭제" class="post-edit-delete">
                       </form>
                     </span>
                     <%}%>
