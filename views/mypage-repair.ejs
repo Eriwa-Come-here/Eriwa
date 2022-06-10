@@ -1,22 +1,6 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>이리와</title>
-    <link rel="stylesheet" href="../public/css/mypage-repair.css" >
-</head>
-<body>
-    <header>
-        <div class="logo_left_side">
-            <img src="../public/images/logo.png">
-        </div>
-        <div class="logo_right_side">
-            <img src="../public/images/profile_icon.png">
-        </div>
-    </div>
-    </header>
-    <div id="container">
-        <div class="wrapped_qna">
+<div class="repairList-container">  
+    <div id="repairBig-container">
+        <div class="repair-wrapped">
             <div class="user_container">
                 <div class="user_info">
                     <a href=""><img id="profile" src="../public/images/profile_icon.png" alt="profile_icon"></a>
@@ -31,7 +15,7 @@
                     </div>
                 </div>
                 <div class="user_detail">
-                    <div class="detail_constant">
+                    <div class="repair-detail_constant">
                         <p>・ 작성한 글</p>
                         <p>・ 작성한 댓글</p>
                         <p>・ 추천한 글</p>
@@ -45,27 +29,154 @@
 
                     </div>
                 </div>
-                <div class="empty"></div>
-            </div>
-            <div class="qna_container">
-                <h3>개인정보 수정</h3>
-                <div class="qna_detail">
-                    <div class="qna_kind">
-                    </div>
-                    <div class="qna_list">
-                        <p>닉네임</p>
-                    </div>
-                    <button id="btn_write">작성</button>
+                <div class="repair-empty">
+                    <a href=""><p>탈퇴하기</p></a>
                 </div>
             </div>
-        </div>
-        <footer>
-            <div><a href="./service_intro.ejs"><p>서비스 소개</p></a></div>
-            <div><a href=""><p>이용약관</p></a></div>
-            <div><a href=""><p>신고가이드</p></a></div>
-            <br>
-            <p>Copyright © 2022 Team Eriwa. All rights deserved</p>
-        </footer>
+            <div class="repair_container">
+                <div class="repair-detail">
+                    <div class="repair-menu_list">
+                        <div class="repair_list">
+                            <h3>개인정보 수정</h3>
+                        </div>
+                    </div>
+                <div id="repair-wrapper-detail">
+                    <form action="/users/create" method="post">
+                    <!-- content-->
+                    <div id="repair-content">
+                        <!-- PW1 -->
+                        <div>
+                            <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
+                            <span class="repair-box int_pass">
+                                <input type="password" name="password" id="password" class="repair-int" maxlength="20" minlength="8" placeholder="영소문자와 숫자 1자 이상 반드시 포함, 8자 이상" required>
+                                <span class="step_ps_url"></span>
+                                <span id="alertTxt">사용불가</span>
+                            </span>
+                            <span class="error_next_box"></span>
+                        </div>
+            
+                        <!-- PW2 -->
+                        <div>
+                            <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
+                            <span class="repair-box int_pass_check">
+                                <input type="password" name="password2" id="password2" class="repair-int" maxlength="20" minlength="8" required>
+                            </span>
+                            <span class="error_next_box"></span>
+                        </div>
+            
+                        <!-- NAME -->
+                        <div>
+                            <h3 class="join_title"><label for="name">이름</label></h3>
+                            <span class="repair-box int_name">
+                                <input type="text" name="name" id="name" class="repair-int" maxlength="20" required>
+                            </span>
+                            <span class="error_next_box"></span>
+                        </div>
+                        <div>
+                            <h3 class="join_title"><label for="phoneNo">닉네임</label></h3>
+                            <span class="repair-box int_mobile">
+                                <input type="text" name="nickname" id="nickname" class="repair-int" maxlength="16" placeholder="한글은 2자 이상, 영어는 4자 이상" required>
+                            </span>
+                            <span class="error_next_box"></span>    
+                        </div>
+                        <div>
+                            <h3 class="join_title"><label for="email">이메일<span class="optional"></span></label></h3>
+                            <span class="repair-box int_email">
+                                <input type="text" name="email" id="email" class="repair-int" maxlength="100" required>
+                            </span>
+                            <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>    
+                        </div>
+            
+            
+                        <div>
+                            <h3 class="join_title"><label for="yy">생년월일</label></h3>
+            
+                            <div id="bir_wrap">
+                                <div class="bir">
+                                    <span class="repair-box">
+                                        <input type="text" name="birthdate" id="birthdate" class="repair-int" maxlength="10" minlength="10" placeholder="생년월일 (예시: 2022-02-01)" required>
+                                    </span>
+                                </div>
+                                <!-- BIRTH_YY 
+                                <div id="bir_yy">
+                                    <span class="signup-box">
+                                        <input type="text" name="yy" id="yy" class="signup-int" maxlength="4" minlength="4" placeholder="년(4자)" required>
+                                    </span>
+                                </div>
+            
+                                <div id="bir_mm">
+                                    <span class="signup-box">
+                                        <select id="mm" name="mm" class="sel" required>
+                                            <option>월</option>
+                                            <option value="01">1</option>
+                                            <option value="02">2</option>
+                                            <option value="03">3</option>
+                                            <option value="04">4</option>
+                                            <option value="05">5</option>
+                                            <option value="06">6</option>
+                                            <option value="07">7</option>
+                                            <option value="08">8</option>
+                                            <option value="09">9</option>                                    
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                        </select>
+                                    </span>
+                                </div>
+            
+                                <div id="bir_dd">
+                                    <span class="signup-box">
+                                        <select name="dd" id="dd" required>
+                                            <option>일</option>
+                                            <option value="01">1</option>
+                                            <option value="02">2</option>
+                                            <option value="03">3</option>
+                                            <option value="04">4</option>
+                                            <option value="05">5</option>
+                                            <option value="06">6</option>
+                                            <option value="07">7</option>
+                                            <option value="08">8</option>
+                                            <option value="09">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                            <option value="25">25</option>
+                                            <option value="26">26</option>
+                                            <option value="27">27</option>
+                                            <option value="28">28</option>
+                                            <option value="29">29</option>
+                                            <option value="30">30</option>
+                                            <option value="31">31</option>
+                                        </select>
+                                    </span>
+                                </div>-->
+            
+                            </div>
+                            <span class="error_next_box"></span>    
+                        </div>
+            
+                        <!-- JOIN BTN-->
+                        <div class="repair-btn_area">
+                            <button type="submit" id="btnJoin">
+                                <span>수정</span>
+                            </button>
+                        </div>
+                    </div> 
+                    <!-- content-->
+                    </form>
+                </div>
+            </div>
     </div>
-</body>
-</html> 
+    </div>
