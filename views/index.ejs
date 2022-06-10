@@ -134,10 +134,10 @@
                 <div>
                     <a href="<%= `/board/post-view/${p?.post_id}` %>">
                     <div class="contents_explain">
-                        <h3><%= p.title %></h3>
-                        <h4><%= p.address1 %></h4>
-                        <h5><%= p.user_id %></h5>
-                        <p><%= p.content %></p>
+                        <h3><%= p?.title %></h3>
+                        <h4><%= p?.address1 %></h4>
+                        <h5><%= p?.user_id %></h5>
+                        <p><%= p?.content %></p>
                     </div></a>
                     <div class="contents_info">
                         <a href="<%= `/board/post-view/${p?.post_id}` %>">
@@ -155,7 +155,7 @@
                         <a href="<%= `/board/post-view/${p?.post_id}` %>">
                             <div class="btn_grade">
                                 <img src="/public/images/grade_icon.png" alt="별점">
-                                <p><%= p.grade %></p>
+                                <p><%= p?.grade %></p>
                             </div>
                         </a>
                     </div>
