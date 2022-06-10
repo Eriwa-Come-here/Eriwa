@@ -83,16 +83,12 @@ app.post("/notice/check/", noticeController.checkNotice);
 
 //postController 추가
 app.get("/board", homeController.board, homeController.showBoardBase);
-app.get("/board/post-writing", postController.showPostWriting);
+app.get("/board/post-writing",loginController.checkLogin, postController.showPostWriting);
 app.get("/board/post-view/:post_id", postController.showPost);
 app.post("/board/post-view/:post_id/delete", postController.deletePost);
 app.get("/board/post-view/:post_id/edit",postController.showPostEdit);
 app.post("/board/post-view/:post_id/edit",postController.editPost);
-app.post(
-  "/board/post-writing",
-  upload.single("image"),
-  postController.createPost
-);
+app.post("/board/post-writing", upload.single("image"), postController.createPost);
 //app.get("/post-view/:post_id/delete", postController.deletePost);
 
 app.get("/board/:place_name", homeController.board, homeController.showBoard);
