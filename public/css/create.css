@@ -1,0 +1,127 @@
+div.loginyn-container{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Alata', sans-serif;
+}
+
+div.loginyn-container{
+    width: 100vw;
+    height: 100vh;
+    background: #eff0f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+div.shadow{
+    -webkit-box-shadow: 27px 43px 43px -26px rgba(89,89,89,0.39);
+    -moz-box-shadow: 27px 43px 43px -26px rgba(89,89,89,0.39);
+    box-shadow: 27px 43px 43px -26px rgba(89,89,89,0.39);
+}
+div.loginyn-form-container{
+ 
+    background:#f5f5f5 ;
+    width:860px;
+    height: 540px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 10px black;
+    border-radius: 10px;
+
+}
+div.loginyn-form-right-side{
+    overflow: hidden;
+    width: 50%; 
+    border-radius: 10px 0px 0px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+div.loginyn-form-right-side img{
+    width: 100%;
+}
+div.loginyn-form-left-side{
+    width: 100%;
+    border-radius: 0px 10px 10px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:30px;
+    background: rgb(255,255,255);
+    background: linear-gradient(287deg, rgba(255,255,255,1) 0%, rgba(243,244,244,1) 0%, rgba(255,255,255,1) 100%);
+}
+div.loginyn-form-left-side .login-top-wrap{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width:100%;
+}
+
+
+div.loginyn-stay-sign-in{
+	width: 200px;
+	height: 30px;
+	display: flex;
+	font-size: 11px;
+	color: #4e4e4e;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+div.loginyn-stay-sign-in span{
+	padding-left: 40px;
+	line-height: 10px;
+}
+
+
+div.loginyn-btn-wrap{
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.congradu {
+    width:25px;
+    height:25px;
+}
+.loginyn-login {
+    font-size: 25px;
+    font-style: normal;
+    display : flex;
+    font-weight: 700;
+    justify-content : center;
+    line-height : 400px;
+    height:400px;
+}
+
+div.loginyn-btn-wrap .yesLogin-btn{
+    width:200px;
+    height:40px;
+    color:white;
+    border: 0;
+    border-radius: 4px;
+    background: #7173C9;
+    
+}
+
+div.loginyn-btn-wrap .noLogin-btn{
+    width:200px;
+    height:40px;
+    color:white;
+    border: 0;
+    border-radius: 4px;
+    background: #7173C9;
+    margin-left: 50px;
+}
+
+div.loginyn-btn-wrap a{
+    margin-top:10px;
+    font-size: 11px;
+    color: gray;
+
+}
+
