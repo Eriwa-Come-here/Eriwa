@@ -1,5 +1,7 @@
 const db = require("../models/index"), 
-    Qna = db.qna;
+    Qna = db.qna,
+    Recommend = db.recommend,
+    Post = db.post;
 
 module.exports={
     mypageGood : (req, res) => {
@@ -41,5 +43,23 @@ module.exports={
         
     showRecommend : (req, res) => {
         res.render("mypage-recommend");
+    },
+
+    recommend: async (req, res, next) => {
+        try {
+            let recommends = await Recommend.findAll({
+            });
+            res.locals.recommends = recommends;
+
+            
+            let posts = await Post.findAll();
+            res.locals.posts = posts;
+
+            next();
+        } catch (error) {
+            console.log(`Error fetching: ${error.message}`);
+            next(error);
+        }
+
     }
 };

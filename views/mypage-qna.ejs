@@ -4,7 +4,7 @@
             <div class="user_info">
                 <img id="img_profile" src="/public/images/profile_icon.png" alt="profile_icon">
                 <br>
-                <p><%= currentUser.nickname %>></p>
+                <p><%= currentUser.nickname %></p>
                 <br>
                 <div id="img_message">
                     <a href="/chat">
@@ -69,19 +69,19 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <%= if(q.isAnswered) { %>
+                                        <% if(q.isAnswered) { %>
                                         <p>답변</p>
-                                        <%} else { %>
+                                        <% } else { %>
                                         <p>미답변</p>
                                         <%} %>
                                     </td>
                                 </tr>
-                                <%} %>
+                                <%}); %>
                             </tbody>
                         </table>
                     </div>
+                    <% } %>
                 </div>
-                <% }); %>
                 <button id="btn_write">작성</button>
             </div>
         </div>
