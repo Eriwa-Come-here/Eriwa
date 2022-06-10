@@ -28,8 +28,19 @@
   font-size: 18px;
   font-weight: normal;
   text-decoration: underline;
+  text-underline-position: under;
   margin: 5px;
-  color: #000000;
+  color: #ababab;
+}
+
+#receive-note > a {
+  font-weight: bold;
+  color: #000;
+}
+
+#send-note > a {
+  font-weight: bold;
+  color: #000;
 }
 
 .note-list-header {
@@ -37,6 +48,7 @@
   grid-template-columns: 20% 50% 30%;
   column-gap: 10px;
   align-items: center;
+  font-size: 16px;
   text-align: center;
   height: 30px;
   background: #929292;

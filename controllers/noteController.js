@@ -4,20 +4,16 @@ const sequelize = db.sequelize;
 const datefunc = require("../public/js/datefunc.js");
 
 module.exports = {
-  
+  chatStory : (req, res) => {
+    res.render("note");
+  },
 
-  chatList : (req, res) => {
-    res.render("chat-list");
-},
-
-chatStory : (req, res) => {
-    res.render("chat");
-},
   noteList: async (req, res, next) => {
     try {
       if (req.params.type == "receive") {
         const [result, metadata] = await sequelize.query("SELECT * FROM `note` WHERE `receive_user_id` = ? ORDER BY `written_date` DESC", {
           type: Sequelize.SELECT,
+          //replacements: [res.locals.currentUser.dataValues.user_id]
           replacements: ['qwerty1253']
       });
       res.render("receive-note-list", {type: req.params.type,notes: result, getDate: datefunc.getDate});
@@ -54,20 +50,5 @@ chatStory : (req, res) => {
       console.log(`${err.message}`);
       next(err);
     }
-  },
-
-  // delete
-  deleteComment: async (req, res, next) => {
-    try {
-      await sequelize.query("DELETE FROM `comment` WHERE `post_id` = ? AND `comment_id` = ?", {
-        type: Sequelize.DELETE,
-        replacements: [req.params.post_id, req.body.comment_id]
-      });
-      res.redirect ("/board/post-view/" + req.params.post_id);
-      next();
-    } catch (err) {
-      console.log(`${err.message}`);
-      next(err);
-    }
-  },
+  }
 };
