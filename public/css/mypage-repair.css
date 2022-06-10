@@ -1,272 +1,14 @@
-*{
+.repairList-container{
     padding: 0px;
     margin: 0px;
 }
 
-header {
-    width : 100%;
-    height : 100px;
-    position: relative;
-    border-bottom: 1px solid black;
-}
-
-.logo_left_side {
-    position: absolute;
-    width : 25px;
-    height : 25px;
-    top: 10px;
-    left : 610px;
-}
-
-.logo_left_side img {
-    width : 90px;
-    height: 70px;
-}
-
-.logo_right_side { 
-    position: absolute;
-    top : 10px;
-    right: 580px;
-}
-
-.logo_right_side img{
-    width: 70px;
-    height: 70px;
-}
-
-a{
+.repairList-container a{
     text-decoration: none;
     color: black;
 }
 
-ul li{
-    list-style: none;
-}
-
-/* header */
-
-header{
-    border-bottom: 1px solid #dadada;
-    height: 80px;
-}
-
-div.page_header{
-    position: relative;
-    max-width: 1200px;
-    min-width: 1000px;
-    height: 100%;
-    margin: 0 auto;
-    padding: 0 20px;
-    box-sizing: border-box;
-}
-
-div.page_header>div{
-    display: inline-block;
-    margin: 5px;
-}
-
-/* logo */
-
-div#service_logo{
-    position: relative;
-    top:0;
-    text-align: left;
-}
-
-div#service_logo>ul>li>a>img{
-    width: 100px;
-}
-
-/* dropdown menu */
-
-div#service_logo>ul>li>a{
-    position: absolute;
-    top: 0;
-}
-
-/* menu - eriwa list*/
-
-div#service_logo>ul>li>ul{
-    z-index: 1;
-    position: relative;
-    top:70px;
-    float: left;
-    display: none;
-    background-color: white;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-div#service_logo>ul>li>ul>p{
-    text-align: center;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-div#service_logo>ul>li>ul#eriwa_list>p{
-    margin-bottom: 5px;
-}
-
-div#service_logo>ul>li>ul>li{
-    padding: 5px 20px 0px 20px;
-    font-size: 12px;
-}
-
-/* mouse hover*/
-
-div#service_logo>ul>li:hover>ul{
-    display: block;
-}
-
-/* menu - region list */
-
-div#service_logo>ul>li>ul#region_list{
-    background-color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-div#service_logo>ul>li>ul#region_list>ul{
-    float: left;
-    padding: 5px 20px 0px 20px;
-    font-size: 12px;
-}
-
-div#service_logo>ul>li>ul>ul>li{
-    padding: 5px 20px 0px 20px;
-}
-
-/* search */
-
-div.page_header> div.search{
-    position: absolute;
-    top: 20px;
-    right: 250px;
-    
-}
-
-div.search{
-    border: 2px solid black;
-    border-radius: 20px;
-    height: 30px;
-    max-height: 30px;
-}
-
-div.search>input{
-    border: 0px;
-    border-radius: 20px;
-    outline: none;
-    width: 76%;
-    padding:5px;
-    padding-left: 10px;
-    text-align: left center;
-    font-size: 12px;
-}
-
-div.search>a{
-    position: relative;
-    top:5px;
-    right: 5px;
-}
-
-
-div.search >a> img{
-    border-radius: 20px;
-    width: 20px;
-}
-
-div#container>div.search{
-    margin: 20px 40px 20px 40px;
-}
-
-div#container>div.search>input{
-    width: 95%;
-}
-
-/* action button */
-
-a.btn_bookmark, a.btn_alarm{
-    position: absolute;
-    top: 30px;
-
-}
-
-a.btn_bookmark{
-    right: 160px;
-}
-
-a.btn_alarm{
-    right: 120px;
-}
-
-a.btn_bookmark>img, a.btn_alarm>img{
-    width: 25px;
-}
-
-div.action>a.btn_login{
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: inline-block;
-    background-color: white;
-    color: black;
-    border: 2px solid black;
-    border-radius: 10px;
-    width: 80px;
-    height: 40px;
-    text-align: center;
-    vertical-align: top;
-    font-size: 15px;
-    font-weight: bold;
-    line-height: 42px;
-}
-
-div.action > button{
-    background-color: white;
-}
-
-
-/* footer */
-
-footer{
-    float: left;
-    position: relative;
-    min-width: 1150px;
-    max-width: 1200px;
-    height: 100%;
-    margin: 0px auto;
-    padding: 60px 20px;
-    margin-top: 50px;
-    box-sizing: border-box;
-    font-size: 16px;
-    border-top: 1px solid #dadada;
-}
-
-footer>div{
-    display: inline-block;
-    padding-right: 10px;
-    margin-right: 10px;
-    border-right: 1px solid #dadada;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-footer>p{
-    margin-top: 20px;
-    font-weight: bold;
-    font-size: 12px;
-}
-
-footer>div>a{
-    color: rgb(145, 145, 145);
-}
-
-
-/* container */
-
-div#container{
+div#repairBig-container {
     position: relative;
     max-width: 1200px;
     min-width: 1100px;
@@ -278,20 +20,193 @@ div#container{
 }
 
 
-button#btn_write{
-    display: block;
-    width: 70px;
-    height: 30px;
-    margin-top: 20px;
-    border: 0;
-    border-radius: 7px;
-    background-color: #8398D1;
-    color: white;
-    font-weight: bold;
-    font-size: 13px;
+/* menu*/
+.repair-menu_list {
+    margin: 5px;
+    text-align: center;
+    display: flex;  
 }
 
-select{
+
+.repair_list {
+    width: 298px;
+    height: 50px;
+    float: left;
+    display:flex;
+    font-size: 18px;
+    margin: auto;
+}
+
+.repair_list h3 {
+    margin: auto;
+}
+
+#repair-wrapped {
+    position: relative;
+    height: 100%;
+}
+
+#repair-content {
+    position: relative;
+    left : 50%;
+    transform: translate(-50%);
+    width : 460px;
+}
+
+/*입력폼*/
+
+.input:focus {
+    outline: none;
+}
+
+.join_title {
+    margin: 19px 0 8px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.repair-box {
+    display: block;
+    width: 100%;
+    height: 51px;
+    border: solid 1px #dadada;
+    padding: 10px 14px 10px 14px;
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
+}
+
+ .repair-int {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 29px;
+    border: none;
+    background: #fff;
+    font-size: 15px;
+}
+
+
+.repair-box.int_id {
+    padding-right: 110px;
+}
+
+.repair-box.int_pass {
+    padding-right: 40px;
+}
+
+.repair-box.int_pass_check {
+    padding-right: 40px;
+}
+
+.step_url {
+    position: absolute;
+    top: 16px;
+    right: 13px;
+    font-size: 15px;
+    color: #8e8e8e;
+}
+
+
+.step_ps_url {
+    position: absolute;
+    top: 16px;
+    right: 13px;
+    font-size: 15px;
+    color: #8e8e8e;
+}
+
+.pswdImg {
+    width: 18px;
+    height: 20px;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    margin-top: -10px;
+    cursor: pointer;
+}
+
+#bir_wrap {
+    display: table;
+    width: 100%;
+}
+
+#bir_yy {
+    display: table-cell;
+    width: 147px;
+    
+}
+
+#bir_mm {
+    display: table-cell;
+    width: 147px;
+    vertical-align: middle;
+}
+
+#bir_dd {
+    display: table-cell;
+    width: 147px;
+}
+
+#bir_mm, #bir_dd {
+    padding-left: 10px;
+}
+
+select {
+    width: 100%;
+    height: 29px;
+    font-size: 15px;
+    background-size: 20px 8px;
+    -webkit-appearance: none;
+    display: inline-block;
+    text-align: start;
+    border: none;
+    cursor: default;
+}
+
+/* 에러메세지 */
+
+.error_next_box {
+    margin-top: 9px;
+    font-size: 12px;
+    color: red;    
+    display: none;
+}
+
+#alertTxt {
+    position: absolute;
+    top: 19px;
+    right: 38px;
+    font-size: 12px;
+    color: red;
+    display: none;
+}
+
+.btn_area {
+    margin: 30px 0 91px;
+}
+
+#btnJoin {
+    width: 100%;
+    padding: 21px 0 17px;
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    background-color: #7173C9;
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+
+
+
+/* container */
+
+
+/*select{
     width: 70px;
     height: 30px;
     margin-left: 10px;
@@ -300,14 +215,14 @@ select{
     color: #787878;
     border-radius: 3px;
 }
+*/
 
-div.wrapped_qna{
-    float: left;
+div.repair-wrapped {
+    display: flex;
     max-width: 1200px;
     min-width: 1152px;
     margin-top: 20px;
-    border: 0.5px solid #787878;
-    display: flex;
+    /*border: 0.5px solid #787878;*/
     background-color: white;
 }
 
@@ -329,8 +244,9 @@ div#img_message>a>img{
     width: 20px;
 }
 
-div.user_container, div.qna_container{
+div.user_container, div.repair_container{
     float: left;
+    border: 0.5px solid black;
     background-color: #f9faff;
 }
 
@@ -364,11 +280,11 @@ div.user_detail>div{
 
 div.detail_variable{
     text-align: right;
-    margin-left: 50px;
 }
 
 div.user_detail>div>p, div.user_detail>div>a>p{
     margin-top: 7px;
+    line-height: 200%;
 }
 
 div.user_detail>div>a{
@@ -378,30 +294,34 @@ div.user_detail>div>a{
 
 }
 
-div.qna_container{
+div.repair_container{
     max-width: 1050px;
     min-width: 950px;
     border-left: 0.5px solid #787878;
     padding: 20px 20px 20px 20px;
 }
 
-div.qna_container>h3{
-    margin-bottom: 10px;
-}
-
-div.qna_container>div.qna_detail{
+div.repair_container>div.repair-detail{
     background-color: white;
     border: 0.5px solid #787878;
-    text-align: center;
+    text-align: left;
     padding: 15px 20px 15px 20px;
 }
 
-div.qna_kind{
-    text-align: right;
-    border-bottom: 0.5px solid #787878;
-    margin-bottom: 20px;
+div.repair_container>h3{
+    margin-bottom: 10px;
 }
 
-div.qna_list{
-    min-height: 1000px;
+div.repair_container>div.repair-detail>div.repair-menu_list {
+    padding-bottom: 10px;
+}
+
+.repair-empty{
+    margin-top: 420px;
+    margin-left: 85px;
+    
+}
+
+.repair-empty p {
+    font-size: 10px;
 }

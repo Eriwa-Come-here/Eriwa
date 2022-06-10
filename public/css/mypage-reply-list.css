@@ -300,3 +300,12 @@ div.qna_list{
     width: 15%;
 }
 
+.reply-empty{
+    margin-top: 785px;
+    margin-left: 85px;
+    
+}
+
+.reply-empty p {
+    font-size: 10px;
+}
