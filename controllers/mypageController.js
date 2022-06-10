@@ -28,15 +28,6 @@ module.exports={
         res.render("mypage-write-list");
     },
 
-
-    chatList : (req, res) => {
-        res.render("chat-list");
-    },
-
-    chatStory : (req, res) => {
-        res.render("chat");
-    },
-
     qna : async (req, res, next) => {
         try {
             let qnas = await Qna.findAll({

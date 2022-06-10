@@ -1,9 +1,42 @@
 const db = require('../models');
 const Sequelize = require('sequelize');
 const sequelize = db.sequelize;
-
+const datefunc = require("../public/js/datefunc.js");
 
 module.exports = {
+  
+
+  chatList : (req, res) => {
+    res.render("chat-list");
+},
+
+chatStory : (req, res) => {
+    res.render("chat");
+},
+  noteList: async (req, res, next) => {
+    try {
+      if (req.params.type == "receive") {
+        const [result, metadata] = await sequelize.query("SELECT * FROM `note` WHERE `receive_user_id` = ? ORDER BY `written_date` DESC", {
+          type: Sequelize.SELECT,
+          replacements: ['qwerty1253']
+      });
+      res.render("receive-note-list", {type: req.params.type,notes: result, getDate: datefunc.getDate});
+      } else if (req.params.type == "send") {
+        const [result, metadata] = await sequelize.query("SELECT * FROM `note` WHERE `send_user_id` = ? ORDER BY `written_date` DESC", {
+          type: Sequelize.SELECT,
+          //replacements: [res.locals.currentUser.dataValues.user_id]
+          replacements: ['qwerty1253']
+      });
+      res.render("send-note-list", {notes: result, getDate: datefunc.getDate});
+      } else {
+        next();
+      }
+    } catch (err) {
+      console.log(`${err.message}`);
+      next(err);
+    }
+  },
+
   // create
   createComment: async (req, res, next) => {
     var date = new Date();

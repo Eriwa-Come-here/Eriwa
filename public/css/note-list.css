@@ -1,0 +1,93 @@
+.note-list-container {
+  position: relative;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  min-width: 1000px;
+  white-space: nowrap;
+}
+
+.note-list-container {
+  background: #fff;
+  font-size: 14px;
+  color: #000;
+}
+
+.note-list-main {
+  position: relative;
+  margin-left: 150px;
+  margin-right: 150px;
+  z-index: 5;
+}
+
+.note-list-category > h2 {
+  margin: 15px 5px 15px auto;
+}
+
+.note-list-category > h2 > span > a {
+  font-size: 18px;
+  font-weight: normal;
+  text-decoration: underline;
+  margin: 5px;
+  color: #000000;
+}
+
+.note-list-header {
+  display: grid;
+  grid-template-columns: 20% 50% 30%;
+  column-gap: 10px;
+  align-items: center;
+  text-align: center;
+  height: 30px;
+  background: #929292;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.note-list-content > ul {
+  padding: 0;
+}
+
+.note-list {
+  height: 120px;
+  display: grid;
+  grid-template-columns: 20% 50% 30%;
+  column-gap: 10px;
+  align-items: center;
+  border-top: solid 1px #E4E4E4;
+  border-bottom: solid 1px #E4E4E4;
+  background: #fafafa;
+}
+
+.note-day {
+  color: #8f8f8f;
+  display:inline-block;
+  text-align: center;
+}
+
+.note-text {
+  padding-left: 30px;
+}
+
+.note-content {
+  width: 100%;
+  white-space: normal;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.note-list-top-button {
+  display: block;
+  float: right;
+  text-align: center;
+  margin: 10px 0px 0px 10px
+}
+
+.note-list-top-button > a {
+  border: 1px solid darkgray;
+  border-radius: 5px;
+  padding: 5px 10px;
+}

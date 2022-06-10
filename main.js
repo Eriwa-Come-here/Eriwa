@@ -11,6 +11,7 @@ const port = 80,
   mypageController = require("./controllers/mypageController"),
   loginController = require("./controllers/loginController"),
   commentController = require("./controllers/commentController"),
+  noteController = require("./controllers/noteController"),
   db = require("./models/index"),
   flash = require("connect-flash"),
   cookieParser = require("cookie-parser"),
@@ -123,8 +124,8 @@ app.get("/mypage/update", loginController.checkLogin, mypageController.showUpdat
 app.post("/mypage/update", mypageController.logout, mypageController.passwordCheck);
 app.post("/mypage/:id/edit", mypageController.edit, mypageController.redirectView);
 
-app.get("/chat", mypageController.chatList);
-app.get("/chat/write", mypageController.chatStory);
+app.get("/note/:type", noteController.noteList);
+app.get("/chat/write", noteController.chatStory);
 
 //loginController 추가
 app.get("/users/login", loginController.login);
