@@ -83,16 +83,12 @@ app.post("/notice/check/", noticeController.checkNotice);
 
 //postController 추가
 app.get("/board", homeController.board, homeController.showBoardBase);
-app.get("/board/post-writing", postController.showPostWriting);
+app.get("/board/post-writing",loginController.checkLogin, postController.showPostWriting);
 app.get("/board/post-view/:post_id", postController.showPost);
 app.post("/board/post-view/:post_id/delete", postController.deletePost);
 app.get("/board/post-view/:post_id/edit",postController.showPostEdit);
 app.post("/board/post-view/:post_id/edit",postController.editPost);
-app.post(
-  "/board/post-writing",
-  upload.single("image"),
-  postController.createPost
-);
+app.post("/board/post-writing", upload.single("image"), postController.createPost);
 //app.get("/post-view/:post_id/delete", postController.deletePost);
 
 app.get("/board/:place_name", homeController.board, homeController.showBoard);
@@ -110,6 +106,7 @@ app.post("/admin/post/delete", adminController.postDelete);
 app.get("/admin/analysis", adminController.showAdminAnalysis);
 app.get("/admin/qna", adminController.showAdminQna);
 app.get("/admin/qna/response/:qna_id", adminController.showAdminQnaResponse);
+app.post("/admin/qna/response/:qna_id", adminController.qnaResponse);
 
 //mypageController 추가
 app.get("/mypage", mypageController.mypageGood);
@@ -120,7 +117,12 @@ app.get("/mypage/qna/:qna_id", mypageController.qna, mypageController.showQna);
 app.get("/mypage/recommend", mypageController.recommend, mypageController.showRecommend);
 app.get("/mypage/comment", mypageController.mypageReply);
 app.get("/mypage/post", mypageController.mypageWrite);
-app.get("/mypage/repair", mypageController.mypageRepair);
+
+app.get("/mypage/passwordCheck", mypageController.showPasswordCheck);
+app.get("/mypage/update", loginController.checkLogin, mypageController.showUpdate);
+app.post("/mypage/update", mypageController.logout, mypageController.passwordCheck);
+app.post("/mypage/:id/edit", mypageController.edit, mypageController.redirectView);
+
 app.get("/chat", mypageController.chatList);
 app.get("/chat/write", mypageController.chatStory);
 
@@ -136,6 +138,7 @@ app.get("/users/logout", loginController.logout, loginController.redirectView);
 app.get("/users/signup", loginController.signup);
 app.get("/users/create", loginController.signupSuccess);
 app.post("/users/create", loginController.create, loginController.redirectView);
+app.post("/users/:id/delete", loginController.delete, loginController.redirectView);
 
 //errorController 추가
 app.use(errorController.pageNotFoundError);

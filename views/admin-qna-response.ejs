@@ -33,14 +33,16 @@
       </span>
       <span class="question" value=""><%= qna.question %></span>
     </div>
-    <div class="pos-flex">
-      <span class="admin">관리자</span>
-      <span>
-        <textarea cols="100" rows="15" class="answer"></textarea>
-      </span>
-    </div>
-    <div class="res-button-position">
-      <button class="res-button-style">등록</button>
-    </div>
+    <form action="<%= `/admin/qna/response/${qna.qna_id}`%>" method="post">
+      <div class="pos-flex">
+        <span class="admin">관리자</span>
+        <span>
+          <textarea cols="100" rows="15" class="answer" name="answer"><%=qna.answer %></textarea>
+        </span>
+      </div>
+      <div class="res-button-position">
+        <button class="res-button-style" type="submit">등록</button>
+      </div>
+    </form>
   </div>
 </div>

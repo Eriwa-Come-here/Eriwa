@@ -29,7 +29,7 @@ module.exports = {
         type: Sequelize.DELETE,
         replacements: [user_id],
       });
-      res.redirect("/admin-member");
+      res.redirect("/admin/member");
       next();
     } catch (error) {
       console.log(`Error fetching User by ID: ${error.message}`);
@@ -60,7 +60,7 @@ module.exports = {
         type: Sequelize.DELETE,
         replacements: [post_id],
       });
-      res.redirect("/admin-post");
+      res.redirect("/admin/post");
       next();
     } catch (error) {
       console.log(`Error fetching User by ID: ${error.message}`);
@@ -104,4 +104,21 @@ module.exports = {
       next(error);
     }
   },
+
+  qnaResponse: async (req, res, next) => {
+    try {
+      await sequelize.query(
+        "UPDATE `qna` SET `answer`=? WHERE qna_id=?",
+        {
+          type: sequelize.QueryTypes.UPDATE,
+          replacements: [req.body.answer , req.params.qna_id]
+        }
+      );
+      res.redirect("/admin/qna");
+    } catch (error) {
+      console.log(`Error fetching Post by ID: ${error.message}`);
+      next(error);
+    }
+  }
+
 }

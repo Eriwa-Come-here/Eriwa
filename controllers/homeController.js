@@ -16,7 +16,9 @@ module.exports={
             let post = await Post.findOne({
                 where: { view_count: max }
             });
-            let posts = await Post.findAll({/*
+            let posts = await Post.findAll({
+                order: [["written_date", "DESC"]]
+                /*
                 include : [{
                     model: Comment,
                     required: true
@@ -44,7 +46,9 @@ module.exports={
 
     board : async (req, res, next) => {
         try {
-            let posts = await Post.findAll();
+            let posts = await Post.findAll({
+                order: [["written_date", "DESC"]]
+            });
             
             res.locals.posts = posts;
             next();
