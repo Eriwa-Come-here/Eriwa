@@ -113,13 +113,14 @@ app.get("/admin/qna/response/:qna_id", adminController.showAdminQnaResponse);
 
 //mypageController 추가
 app.get("/mypage", mypageController.mypageGood);
-app.get("/mypage/qna", mypageController.qna, mypageController.showQna);
+app.get("/mypage/qna", loginController.checkLogin, mypageController.qna, mypageController.showQna);
 app.get("/mypage/qna/:qna_id", mypageController.qna, mypageController.showQna);
 
 
 app.get("/mypage/recommend", mypageController.recommend, mypageController.showRecommend);
 app.get("/mypage/comment", mypageController.mypageReply);
 app.get("/mypage/post", mypageController.mypageWrite);
+app.get("/mypage/repair", mypageController.mypageRepair);
 app.get("/chat", mypageController.chatList);
 app.get("/chat/write", mypageController.chatStory);
 

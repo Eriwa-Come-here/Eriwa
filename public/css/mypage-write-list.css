@@ -181,7 +181,7 @@ div.user_detail>div{
     display: inline-block;
 }
 
-div.detail_variable{
+div.write-detail_variable{
     text-align: right;
 }
 
@@ -296,3 +296,12 @@ div.write_list{
 }
 
 
+.write-empty{
+    margin-top: 785px;
+    margin-left: 85px;
+    
+}
+
+.write-empty p {
+    font-size: 10px;
+}

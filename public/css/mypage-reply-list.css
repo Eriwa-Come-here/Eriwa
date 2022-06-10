@@ -186,7 +186,7 @@ div.user_container, div.reply-container{
     display: inline-block;
 }
 
-.replyList-container div.detail_variable{
+div.reply-detail_variable{
     text-align: right;
 }
 
@@ -300,3 +300,12 @@ div.qna_list{
     width: 15%;
 }
 
+.reply-empty{
+    margin-top: 785px;
+    margin-left: 85px;
+    
+}
+
+.reply-empty p {
+    font-size: 10px;
+}
