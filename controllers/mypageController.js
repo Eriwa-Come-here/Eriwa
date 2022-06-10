@@ -16,6 +16,10 @@ module.exports={
         res.render("mypage-write-list");
     },
 
+    mypageRepair : (req, res) => {
+        res.render("mypage-repair");
+    },
+
     chatList : (req, res) => {
         res.render("chat-list");
     },

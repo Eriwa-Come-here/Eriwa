@@ -1,7 +1,6 @@
 .goodList-container {
     padding: 0px;
     margin: 0px;
-    overflow: hidden;
 }
 
 .goodList-container > a {
@@ -30,7 +29,7 @@ div#goodBig-container{
     display: flex;    
 }
 
-.write_list {
+.goodList-container .write_list {
     width: 298px;
     height: 50px;
     border: 1px solid black;
@@ -41,10 +40,10 @@ div#goodBig-container{
     margin: auto;
 }
 
-.write_list span{
+.goodList-container .write_list span{
     margin:auto;
 }
-.reply_list {
+.goodList-container .reply_list {
     width : 298px;
     height: 50px;
     border-top:1px solid black;
@@ -56,10 +55,10 @@ div#goodBig-container{
 
     display:flex;
 }
-.reply_list span{
+.goodList-container .reply_list span{
     margin:auto;
 }
-.good_list {
+.goodList-container .good_list {
     width : 298px;
     height: 50px;
     border : 1px solid black;
@@ -70,13 +69,13 @@ div#goodBig-container{
     background-color: #8398D1;
 
 }
-.good_list span{
+.goodList-container .good_list span{
     margin:auto;
 }
 
 /* btn */
 
-button#btn_write{
+.goodList-container button#btn_write{
     display: block;
     width: 70px;
     height: 30px;
@@ -89,7 +88,7 @@ button#btn_write{
     font-size: 13px;
 }
 
-button#btn-all-select{
+.goodList-container button#btn-all-select{
     width: 80px;
     height: 30px;
     border-radius: 7px;
@@ -100,7 +99,7 @@ button#btn-all-select{
     font-size: 13px;
 }
 
-button#btn_delete{
+.goodList-container button#btn_delete{
     width: 60px;
     height: 30px;
     border-radius: 7px;
@@ -121,12 +120,12 @@ button#btn_delete{
     border-radius: 3px;
 }
 
-div.wrapped_good{
+div.good-wrapped{
     display:flex;
     max-width: 1200px;
     min-width: 1152px;
     margin-top: 20px;
-    border: 0.5px solid #787878;
+    /*border: 0.5px solid #787878;*/
     background-color: white;
 }
 
@@ -135,12 +134,12 @@ div.wrapped_good{
     height: 100px;
 }
 
-div#img_message>a{
+.goodList-container div#img_message>a{
     position: relative;
     padding-left: 20px;
 }
 
-div#img_message>a>img{
+.goodList-container div#img_message>a>img{
     position: absolute;
     top: 0;
     right: 40px;
@@ -150,11 +149,12 @@ div#img_message>a>img{
 
  div.user_container, div.good_container{
     float: left;
+    border: 0.5px solid black;
     background-color: #f9faff;
 }
 
 
-div.user_info{
+.goodList-container div.user_info{
     position: relative;
     text-align: center;
     background-color: white;
@@ -162,14 +162,14 @@ div.user_info{
     padding: 10px 25px 10px 25px;
 }
 
-div.user_info>div>a>p, div.user_info>p{
+.goodList-container div.user_info>div>a>p, div.user_info>p{
     display: inline-block;
     margin-top: 10px;
     font-weight: bold;
     font-size: 15px;
 }
 
-div.user_detail{
+.goodList-container div.user_detail{
     background-color: #8398D1;
     font-weight: bold;
     color: white;
@@ -177,21 +177,21 @@ div.user_detail{
     font-size: 11px;
 }
 
-div.user_detail>div{
+.goodList-container div.user_detail>div{
     display: inline-block;
 }
 
-div.detail_variable{
+div.good-detail_variable{
     text-align: right;
-    margin-left: 50px;
+    /*margin-left: 50px;*/
 }
 
-div.user_detail>div>p, div.user_detail>div>a>p{
+.goodList-container div.user_detail>div>p, div.user_detail>div>a>p{
     margin-top: 7px;
     line-height: 200%;
 }
 
-div.user_detail>div>a{
+.goodList-container div.user_detail>div>a{
     font-weight: bold;
     color: white;
     font-size: 11px;
@@ -206,14 +206,14 @@ div.good_container{
 }
 
 
-div.good_detail{
+div.good_container > div.good_detail{
     background-color: white;
     border: 0.5px solid #787878;
     text-align: left;
     padding: 15px 20px 15px 20px;
 }
 
-div.good_container>div.good_detail>div.button-container{
+div.good_container>div.good_detail>div.good-button-container{
     padding-bottom: 10px;
 }
 
@@ -222,7 +222,6 @@ div.good_container>div.good_detail>div.good-menu_list {
 }
 
 div.good_kind{
-    /*text-align: left;*/
     border-bottom: 0.5px solid #787878;
     margin-bottom: 20px;
     min-height: 1000px;
@@ -230,17 +229,17 @@ div.good_kind{
 
 
 
-.board_list_wrap {
+.good-board_list_wrap {
     padding: 3px;
 }
 
-.board_list_head,
-.board_list_body .item {
+.good-board_list_head,
+.good-board_list_body .item {
     padding: 10px 0;
     font-size: 0;
 }
 
-.board_list_head {
+.good-board_list_head {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     height: 25px;
@@ -248,11 +247,11 @@ div.good_kind{
     background-color: #8398D1 ;
 }
 
-.board_list_body .item {
+.good-board_list_body .item {
     border-bottom: 1px solid #ccc;
 }
 
-.board_list_body .item > div {
+.good-board_list_body .item > div {
     display: inline-block;
     text-align: center;
     font-size: 16px;
@@ -260,37 +259,56 @@ div.good_kind{
     line-height: 50px;
 }
 
-.board_list_head > div {
+.good-board_list_head > div {
     display: inline-block;
     text-align: center;
     font-size: 18px;
 }
 
-.board_list_head > div {
+.good-board_list_head > div {
     font-weight: 600;
 }
 
-.board_list .button {
+.good-board_list .button {
     width: 10%;
 }
 
-.board_list .tit {
+.good-board_list .tit {
     width: 65%;
     padding-left: 50px;;
 }
 
-.board_list_body div.tit {
+.good-board_list_body div.tit {
     text-align: left;
     
 }
 
-.board_list_body div.tit a:hover {
+.good-board_list_body div.tit a:hover {
     text-decoration: underline;
 }
 
 
-.board_list .date {
+.good-board_list .date {
     width: 15%;
 }
 
 
+.write-empty{
+    margin-top: 785px;
+    margin-left: 85px;
+    
+}
+
+.write-empty p {
+    font-size: 10px;
+}
+
+.good-empty{
+    margin-top: 785px;
+    margin-left: 85px;
+    
+}
+
+.good-empty p {
+    font-size: 10px;
+}
