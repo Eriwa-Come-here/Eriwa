@@ -1,6 +1,7 @@
 const db = require("../models/index"),
     User = db.user,
     passport=require("passport"),
+    httpStatus = require("http-status-codes"),
     getUserParams = body => {
         return {
             user_id: body.user_id,
@@ -31,7 +32,7 @@ module.exports = {
             let user = new User(userParams);
             User.register(user, req.body.password, (error, user)=>{
                 if(user){
-                    req.flash("success", `Hi ${user.nickname}`);
+                    req.flash("success", `반가워요 ${user.nickname}님 로그인 해보세요!`);
                     res.locals.redirect = "/users/create";
                     res.locals.user = user;
                     next();
@@ -70,6 +71,16 @@ module.exports = {
     login: (req, res) => {
         res.render("login");
     }, 
+
+    checkLogin: (req, res, next) =>{
+        if(res.locals.loggedIn){
+            next();
+        }else{
+            let errCode = httpStatus.UNAUTHORIZED;
+            res.status(errCode);
+            res.render("need-login");
+            }
+    },
 
     logout: (req, res, next)=>{
         req.logout((err)=>{

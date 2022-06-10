@@ -6,6 +6,7 @@ exports.pageNotFoundError = (req, res) => {
   res.render("error");
 };
 
+
 exports.internalServerError = (error, req, res, next) => {
   let errorCode = httpStatus.INTERNAL_SERVER_ERROR;
   console.log(`ERROR occured: ${error.stack}`);
