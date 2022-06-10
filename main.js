@@ -113,7 +113,7 @@ app.get("/admin/qna/response/:qna_id", adminController.showAdminQnaResponse);
 
 //mypageController 추가
 app.get("/mypage", mypageController.mypageGood);
-app.get("/mypage/qna", mypageController.qna, mypageController.showQna);
+app.get("/mypage/qna", loginController.checkLogin, mypageController.qna, mypageController.showQna);
 app.get("/mypage/qna/:qna_id", mypageController.qna, mypageController.showQna);
 
 
