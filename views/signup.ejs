@@ -10,7 +10,8 @@
                     <label for="id">아이디</label>
                 </h3>
                 <span class="signup-box int_id">
-                    <input type="text" name="user_id" id="user_id" class="signup-int" maxlength="20" minlength="5" placeholder="영소문자와 숫자만 사용 가능, 5자 이상" required>
+                    <input type="text" name="user_id" id="user_id" pattern="^[a-z0-9]+$"
+                     class="signup-int" maxlength="20" minlength="5" placeholder="영소문자와 숫자만 사용 가능, 5자 이상" required>
                     <span class="step_url"></span>
                 </span>
                 <span class="error_next_box"></span>
@@ -20,7 +21,9 @@
             <div>
                 <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
                 <span class="signup-box int_pass">
-                    <input type="password" name="password" id="password" class="signup-int" maxlength="20" minlength="8" placeholder="영소문자와 숫자 1자 이상 반드시 포함, 8자 이상" required>
+                    <input type="password" name="password" id="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$"
+                    class="signup-int" maxlength="20" minlength="8" 
+                    placeholder="영소문자와 숫자 1자 이상 반드시 포함, 8자 이상" required>
                     <span class="step_ps_url"></span>
                     <span id="alertTxt">사용불가</span>
                     
@@ -32,7 +35,8 @@
             <div>
                 <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
                 <span class="signup-box int_pass_check">
-                    <input type="password" name="password2" id="password2" class="signup-int" maxlength="20" minlength="8" required>
+                    <input type="password" name="password2" id="password2" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$"
+                    class="signup-int" maxlength="20" minlength="8" required>
                 </span>
                 <span class="error_next_box"></span>
             </div>
@@ -55,7 +59,9 @@
             <div>
                 <h3 class="join_title"><label for="email">이메일<span class="optional"></span></label></h3>
                 <span class="signup-box int_email">
-                    <input type="text" name="email" id="email" class="signup-int" maxlength="100" required>
+                    <input type="text" name="email" id="email" 
+                    pattern="([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                    class="signup-int" maxlength="100" required>
                 </span>
                 <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>    
             </div>
@@ -78,7 +84,8 @@
                 <div id="bir_wrap">
                     <div class="bir">
                         <span class="signup-box">
-                            <input type="text" name="birthdate" id="birthdate" class="signup-int" maxlength="10" minlength="10" placeholder="생년월일 (예시: 2022-02-01)" required>
+                            <input type="text" name="birthdate" id="birthdate" pattern="^(19[0-9][0-9]|20\d{2})-(0[0-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$"
+                            class="signup-int" maxlength="10" minlength="10" placeholder="생년월일 (예시: 2022-02-01)" required>
                         </span>
                     </div>
                 </div>

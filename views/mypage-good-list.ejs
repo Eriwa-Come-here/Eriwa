@@ -3,18 +3,17 @@
     <div class="good-wrapped">
       <div class="user_container">
         <div class="user_info">
-          <a href=""
-            ><img
-              id="profile"
-              src="../public/images/profile_icon.png"
-              alt="profile_icon"
-          /></a>
+          <img
+            id="profile"
+            src="/public/images/profile_icon.png"
+            alt="profile_icon"
+          />
           <br />
           <p>Name</p>
           <br />
           <div id="img_message">
-            <a href="">
-              <img src="../public/images/message_icon.png" alt="message_icon" />
+            <a href="/chat">
+              <img src="/public/images/message_icon.png" alt="message_icon" />
               <p>쪽지함</p>
             </a>
           </div>
@@ -30,12 +29,14 @@
             <a href=""><p>1건</p></a>
             <a href=""><p>56건</p></a>
             <a href=""><p>31건</p></a>
-            <a href=""><p>수정하기</p></a>
+            <a href="<%=`mypage/passwordCheck`%>"><p>수정하기</p></a>
           </div>
         </div>
         <div class="good-empty">
-          <a href=""><p>탈퇴하기</p></a>
-      </div>
+          <form action="/users/<%=currentUser?.user_id%>/delete" method="post">
+            <button type="submit"><p>탈퇴하기</p></button>
+          </form>
+        </div>
       </div>
       <div class="good_container">
         <div class="good_detail">

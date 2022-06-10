@@ -5,10 +5,16 @@ module.exports = (sequelize, Sequelize) => {
     static async findByPkAndUpdate(id, params) {
       try {
         let user = await User.findByPk(id);
+        let oldPassword = user.password;
         if (user) {
           user = await User.update(params, {
-            where: { id: id },
+            where: { user_id: id },
           });
+          /*
+        if(params.password != null){          
+          user = await User.changePassword(oldPassword, params.password);
+          console.log(user);
+        }        */
         }
         return user;
       } catch (err) {
@@ -20,7 +26,7 @@ module.exports = (sequelize, Sequelize) => {
         let user = await User.findByPk(id);
         if (user) {
           user = await User.destroy({
-            where: { id: id },
+            where: { user_id: id },
           });
         }
         return user;
@@ -81,6 +87,7 @@ module.exports = (sequelize, Sequelize) => {
     saltField: "mysalt"
   });
   
+  //User.removeAttribute("id");
 
   return User;
 };
