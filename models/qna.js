@@ -51,6 +51,13 @@ module.exports = (sequelize, Sequelize) => {
       answer: {
         type: Sequelize.TEXT,
       },
+      /*
+      isAnwered:{
+        type: Sequelize.Virtual,
+        get(){
+          return answer != null;
+        }
+      }*/
     },
     {
       timestamps: false,

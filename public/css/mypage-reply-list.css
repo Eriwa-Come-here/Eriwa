@@ -9,7 +9,7 @@
 }
 
 
-.replyList-container div#container{
+div#replyBig-container{
     position: relative;
     max-width: 1200px;
     min-width: 1100px;
@@ -22,7 +22,7 @@
 
 /* menu*/
 
-.replyList-container .menu_list {
+.reply-menu_list {
     margin: 5px;
     text-align: center;
     float: left;
@@ -43,6 +43,7 @@
 .replyList-container .write_list span{
     margin:auto;
 }
+
 .replyList-container .reply_list {
     width : 298px;
     height: 50px;
@@ -55,9 +56,13 @@
 
     display:flex;
 }
+
+
 .replyList-container .reply_list span{
     margin:auto;
 }
+
+
 .replyList-container .good_list {
     width : 298px;
     height: 50px;
@@ -88,7 +93,7 @@
     font-size: 13px;
 }
 
-button#btn-all-select{
+.replyList-container button#btn-all-select{
     width: 80px;
     height: 30px;
     border-radius: 7px;
@@ -99,7 +104,7 @@ button#btn-all-select{
     font-size: 13px;
 }
 
-button#btn_delete{
+.replyList-container button#btn_delete{
     width: 60px;
     height: 30px;
     border-radius: 7px;
@@ -120,12 +125,12 @@ button#btn_delete{
     border-radius: 3px;
 }
 
-.replyList-container div.wrapped_qna{
+div.reply-wrapped{
     display:flex;
     max-width: 1200px;
     min-width: 1152px;
     margin-top: 20px;
-    border: 0.5px solid #787878;
+    /*border: 0.5px solid #787878;*/
     background-color: white;
 }
 
@@ -147,8 +152,9 @@ button#btn_delete{
     width: 20px;
 }
 
-.replyList-container div.user_container, div.qna_container{
+div.user_container, div.reply-container{
     float: left;
+    border: 0.5px solid black;
     background-color: #f9faff;
 }
 
@@ -182,7 +188,6 @@ button#btn_delete{
 
 .replyList-container div.detail_variable{
     text-align: right;
-    margin-left: 50px;
 }
 
 .replyList-container div.user_detail>div>p, div.user_detail>div>a>p{
@@ -197,7 +202,7 @@ button#btn_delete{
 
 }
 
-.replyList-container div.qna_container{
+div.reply-container{
     max-width: 1050px;
     min-width: 950px;
     border-left: 0.5px solid #787878;
@@ -205,19 +210,18 @@ button#btn_delete{
 }
 
 
-.replyList-container div.qna_container>div.qna_detail{
+div.reply-container>div.reply-detail{
     background-color: white;
     border: 0.5px solid #787878;
     text-align: left;
-    
     padding: 15px 20px 15px 20px;
 }
 
-.replyList-container div.qna_container>div.qna_detail>div.button-container{
+div.reply-container>div.reply-detail>div.reply-button-container{
     padding-bottom: 10px;
 }
 
-.replyList-container div.qna_container>div.qna_detail>div.menu_list {
+div.reply-container>div.reply-detail>div.reply-menu_list {
     padding-bottom: 10px;
 }
 
@@ -227,22 +231,23 @@ div.reply_kind{
     min-height: 1000px;
 }
 
-.replyList-container div.qna_list{
+/*
+div.qna_list{
     min-height: 1000px;
 }
+*/
 
-
-.replyList-container .board_list_wrap {
+.reply-board_list_wrap {
     padding: 3px;
 }
 
-.replyList-container .board_list_head,
-.board_list_body .item {
+.reply-board_list_head,
+.reply-board_list_body .item {
     padding: 10px 0;
     font-size: 0;
 }
 
-.replyList-container .board_list_head {
+.reply-board_list_head {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     height: 25px;
@@ -250,11 +255,11 @@ div.reply_kind{
     background-color: #8398D1 ;
 }
 
-.replyList-container .board_list_body .item {
+.reply-board_list_body .item {
     border-bottom: 1px solid #ccc;
 }
 
-.replyList-container .board_list_body .item > div {
+.reply-board_list_body .item > div {
     display: inline-block;
     text-align: center;
     font-size: 16px;
@@ -262,36 +267,36 @@ div.reply_kind{
     line-height: 50px;
 }
 
-.replyList-container .board_list_head > div {
+.reply-board_list_head > div {
     display: inline-block;
     text-align: center;
     font-size: 18px;
 }
 
-.replyList-container .board_list_head > div {
+.reply-board_list_head > div {
     font-weight: 600;
 }
 
-.replyList-container .board_list .button {
+.reply-board_list .button {
     width: 10%;
 }
 
-.replyList-container .board_list .tit {
+.reply-board_list .tit {
     width: 65%;
     padding-left: 50px;;
 }
 
-.replyList-container .board_list_body div.tit {
+.reply-board_list_body div.tit {
     text-align: left;
     
 }
 
-.replyList-container .board_list_body div.tit a:hover {
+.reply-board_list_body div.tit a:hover {
     text-decoration: underline;
 }
 
 
-.replyList-container .board_list .date {
+.reply-board_list .date {
     width: 15%;
 }
 

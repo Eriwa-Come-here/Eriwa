@@ -1,11 +1,10 @@
 <div id="container">
     <div class="wrapped_qna">
-        <% user.forEach(u => { %>
         <div class="user_container">
             <div class="user_info">
-                <a href=""><img id="img_profile" src="/public/images/profile_icon.png" alt="profile_icon"></a>
+                <img id="img_profile" src="/public/images/profile_icon.png" alt="profile_icon">
                 <br>
-                <p><%= u.nickname %>></p>
+                <p><%= currentUser.nickname %>></p>
                 <br>
                 <div id="img_message">
                     <a href="/chat">
@@ -28,8 +27,6 @@
             </div>
             <div class="empty"></div>
         </div>
-        <% }); %>
-        <% qna.forEach(q => { %>
         <div class="qna_container">
             <h3>1:1 문의글</h3>
             <div class="qna_detail">
@@ -46,11 +43,47 @@
                     </select>
                 </div>
                 <div class="qna_list">
-                    <p>1:1문의 내역이 없습니다.</p>
+                    <% if(qnas == null) { %>
+                    <div>
+                        <p>1:1문의 내역이 없습니다.</p>
+                    </div>
+                    <%} else { %>
+                    <div class="qnas_data">
+                        <table class="qna_table">
+                            <thead>
+                                <tr>
+                                    <th>문의번호</th>
+                                    <th>문의내용</th>
+                                    <th>답변유무</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% qnas.forEach(q => { %>   
+                                <tr>
+                                    <td>
+                                        <%= q.qna_id %>
+                                    </td>
+                                    <td class="qna_p">
+                                        <a href="/mypage/qna/`${q.qna_id}`">
+                                            <%= q.question %>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <%= if(q.isAnswered) { %>
+                                        <p>답변</p>
+                                        <%} else { %>
+                                        <p>미답변</p>
+                                        <%} %>
+                                    </td>
+                                </tr>
+                                <%} %>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+                <% }); %>
                 <button id="btn_write">작성</button>
             </div>
         </div>
-        <% }); %>
     </div>
 </div>

@@ -1,19 +1,28 @@
-const { sequelize } = require("../models/index");
-
 const db = require("../models/index"),
-  User = db.user,
-  Post = db.post;
+  Post = db.post,
+  Recommend = db.recommend,
+  Comment = db.comment,
+  getBoardParams = body => {
+      return {
+          place_address: body.address
+      };
+  };
 
 module.exports={
     //function
     index : async (req, res, next) => {
         try {
-
             let max = await Post.max('view_count');
             let post = await Post.findOne({
                 where: { view_count: max }
             });
-            let posts = await Post.findAll();
+            let posts = await Post.findAll({/*
+                include : [{
+                    model: Comment,
+                    required: true
+                }]*/
+            });
+
             res.locals.post = post;
             res.locals.posts = posts;
             next();
@@ -27,17 +36,6 @@ module.exports={
         res.render("index")
     },
 
-    showIndexPost : async (req,res,next) => {
-        try {
-            let postId = req.params.post_id;
-            let post = await Post.findByKey(postId);
-            res.locals.post = post;
-            next();
-        } catch (error) {
-            next(error);
-        };
-    },
-
     redirectView: (req, res, next) => {
         let redirectPath = res.locals.redirect;
         if(redirectPath!= undefined) res.redirect(redirectPath);
@@ -47,6 +45,7 @@ module.exports={
     board : async (req, res, next) => {
         try {
             let posts = await Post.findAll();
+            
             res.locals.posts = posts;
             next();
         } catch (error) {
@@ -56,16 +55,20 @@ module.exports={
     },
     
     showBoard : (req, res) => {
-        let paramsPlace = req.params.place;
-        Post.findAll({
-            where: {address1:paramsPlace}
-        }).then( result =>{
+        res.locals.p = req.params.place_name;
+
+        try{
             res.render("board"),{
-                post: result
+                place_name: params.place_address
             }
-        }).catch(function(err){
+        }
+        catch(err){
             console.log(err);
-        });
+        }
+    },
+
+    showBoardBase : (req, res) => {
+        res.render("board");
     },
     
     showDetailSearch : (req, res) => {

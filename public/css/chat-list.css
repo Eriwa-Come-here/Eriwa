@@ -58,7 +58,7 @@
     grid-template-columns: 15% 15% 40% 30%;
     column-gap: 10px;
     align-items: center;
-    background: #F8F8F8;
+    /*background: #F8F8F8;*/
     border-top: solid 1px #E4E4E4;
     border-bottom: solid 1px #E4E4E4;
   }

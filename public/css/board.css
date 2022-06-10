@@ -44,3 +44,8 @@ div#writingPost{
     font-weight: bold;
     font-size: 13px;
 }
+
+#info_1, #info_2{
+    left: -5px;
+    bottom: -15px;
+}
