@@ -349,7 +349,7 @@ div.chat_container>div.chat-detail>div.chat-menu_list {
     right: 10px;
 }
 
-#signup-content {
+#chat-content {
     position: relative;
     left: 50%;
     transform: translate(-50%);

@@ -181,7 +181,7 @@ div.good-wrapped{
     display: inline-block;
 }
 
-.goodList-container div.detail_variable{
+div.good-detail_variable{
     text-align: right;
     /*margin-left: 50px;*/
 }
