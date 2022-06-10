@@ -29,7 +29,7 @@ module.exports = {
         type: Sequelize.DELETE,
         replacements: [user_id],
       });
-      res.redirect("/admin-member");
+      res.redirect("/admin/member");
       next();
     } catch (error) {
       console.log(`Error fetching User by ID: ${error.message}`);
@@ -60,7 +60,7 @@ module.exports = {
         type: Sequelize.DELETE,
         replacements: [post_id],
       });
-      res.redirect("/admin-post");
+      res.redirect("/admin/post");
       next();
     } catch (error) {
       console.log(`Error fetching User by ID: ${error.message}`);
