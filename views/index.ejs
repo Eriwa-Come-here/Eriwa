@@ -130,9 +130,9 @@
             <% i++; p = posts[i]; } %>
             <% if( (i%3) == 2 ) { %>
             <div class="gallery_real_content">
-                <div><img src="<%= `/public/uploadFiles/${p.image}` %>" alt="메인 사진"></div>
+                <div><img src="<%= `/public/uploadFiles/${p?.image}` %>" alt="메인 사진"></div>
                 <div>
-                    <a href="<%= `/board/post-view/${p.post_id}` %>">
+                    <a href="<%= `/board/post-view/${p?.post_id}` %>">
                     <div class="contents_explain">
                         <h3><%= p.title %></h3>
                         <h4><%= p.address1 %></h4>
@@ -140,19 +140,19 @@
                         <p><%= p.content %></p>
                     </div></a>
                     <div class="contents_info">
-                        <a href="<%= `/board/post-view/${p.post_id}` %>">
+                        <a href="<%= `/board/post-view/${p?.post_id}` %>">
                             <div class="btn_jjim">
                                 <img src="/public/images/jjim_icon.png" alt="찜">
                                 <p>2,100</p>
                             </div>
                         </a>
-                        <a href="<%= `/board/post-view/${p.post_id}` %>">
+                        <a href="<%= `/board/post-view/${p?.post_id}` %>">
                             <div class="btn_comment">
                                 <img src="/public/images/comment_icon.png" alt="댓글">
                                 <p>100</p>
                             </div>
                         </a>
-                        <a href="<%= `/board/post-view/${p.post_id}` %>">
+                        <a href="<%= `/board/post-view/${p?.post_id}` %>">
                             <div class="btn_grade">
                                 <img src="/public/images/grade_icon.png" alt="별점">
                                 <p><%= p.grade %></p>
