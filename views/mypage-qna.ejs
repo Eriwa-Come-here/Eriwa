@@ -4,7 +4,7 @@
             <div class="user_info">
                 <img id="img_profile" src="/public/images/profile_icon.png" alt="profile_icon">
                 <br>
-                <p><%= currentUser.nickname %>></p>
+                <p><%= currentUser.nickname %></p>
                 <br>
                 <div id="img_message">
                     <a href="/chat">
@@ -76,12 +76,12 @@
                                         <%} %>
                                     </td>
                                 </tr>
-                                <%} %>
+                                <%}); %>
                             </tbody>
                         </table>
                     </div>
+                    <% } %>
                 </div>
-                <% }); %>
                 <button id="btn_write">작성</button>
             </div>
         </div>

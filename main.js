@@ -118,7 +118,7 @@ app.get("/mypage/qna", mypageController.qna, mypageController.showQna);
 app.get("/mypage/qna/:qna_id", mypageController.qna, mypageController.showQna);
 
 
-app.get("/mypage/recommend", mypageController.showRecommend);
+app.get("/mypage/recommend", mypageController.recommend, mypageController.showRecommend);
 app.get("/mypage/comment", mypageController.mypageReply);
 app.get("/mypage/post", mypageController.mypageWrite);
 app.get("/chat", mypageController.chatList);
