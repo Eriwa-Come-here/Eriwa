@@ -8,13 +8,15 @@
         <h1><%= post.title %> </h1>
         <div class="post-info">
           <div class="post-info-left-content">
-            <a onclick="javascript: showDrop('post-author-nickname');"><img src="/public/images/usericon.png" alt="프로필 이미지"
-              width="25px">&nbsp;<%= post.nickname %></a>&nbsp;&nbsp;&nbsp;
+            <button  onclick="javascript: showDrop('post-author-nickname');" onblur="javascript: hideDrop('post-author-nickname');">
+              <img src="/public/images/usericon.png" alt="프로필 이미지"
+              width="25px">&nbsp;<%= post.nickname %>
+            </button>&nbsp;&nbsp;&nbsp;
               <ul class="drop-list"  id="post-author-nickname">
                 <% if (currentUser && post.user_id == currentUser?.dataValues.user_id) { %>
                   <li class="drop-item"><a href="/mypage" class="drop-button">마이페이지</a></li>
                 <% } else { %>
-                  <li class="drop-item"><a href="" class="drop-button">쪽지 보내기</a></li>
+                  <li class="drop-item"><a href="#" class="drop-button">쪽지 보내기</a></li>
                 <% } %>
               </ul>
             <%= getDate(post.written_date) %>
@@ -93,7 +95,14 @@
           <div class="comment-content-container">
             <div class="comment-content">
               <div class="post-view-profile">
-                <div class="comment-profile-wrap"><a onclick="javascript: showDrop('<%= `comment-author-nickname-${comment.comment_id}` %>');"><img src="/public/images/usericon.png" alt="작성자 프로필" width="25px">&nbsp;<%= comment.nickname %></a></div>
+                <div class="comment-profile-wrap">
+                  <button 
+                    onclick="javascript: showDrop('<%= `comment-author-nickname-${comment.comment_id}` %>');" 
+                    onblur="javascript: hideDrop('<%= `comment-author-nickname-${comment.comment_id}` %>');"
+                  >
+                    <img src="/public/images/usericon.png" alt="작성자 프로필" width="25px">&nbsp;<%= comment.nickname %>
+                  </button>
+                </div>
                   <ul class="comment-drop-list"  id="<%= `comment-author-nickname-${comment.comment_id}` %>">
                     <% if (currentUser && comment.user_id == currentUser?.dataValues.user_id) { %>
                       <li class="drop-item"><a href="/mypage" class="drop-button">마이페이지</a></li>

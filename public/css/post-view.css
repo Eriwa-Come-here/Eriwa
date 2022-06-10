@@ -53,11 +53,18 @@
   word-break: break-all;
 }
 
-.post-info-left-content, .post-info-left-content > a
+.post-info-left-content, .post-info-left-content > button
 , .post-info-right-content, .post-info-right-content > a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.post-info-left-content > button, .comment-profile-wrap > button {
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+	border: 0;
+  outline: 0;
 }
 
 .post-info-left {
@@ -205,7 +212,7 @@
   border-radius: 10px;
 }
 
-.comment-profile-wrap > a, .comment-my-profile {
+.comment-profile-wrap > button, .comment-my-profile {
   display: flex;
   align-items: center;
 }
