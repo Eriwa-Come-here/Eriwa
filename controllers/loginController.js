@@ -28,18 +28,19 @@ module.exports = {
     create: async(req,res, next) => {
         if(req.skip) next();
         let userParams = getUserParams(req.body);
+        
         try { 
             let user = new User(userParams);
             User.register(user, req.body.password, (error, user)=>{
                 if(user){
-                    req.flash("success", `반가워요 ${user.nickname}님 로그인 해보세요!`);
+                    req.flash("success", `반가워요 ${user.nickname}님🥰 어서 로그인하여 이리와를 즐겨보세요!`);
                     res.locals.redirect = "/users/create";
                     res.locals.user = user;
                     next();
                 }else{
                     res.locals.redirect = "/users/signup";
                     console.log(`Error from signup : ${error.message}`);
-                    req.flash("error", "Failed to login");
+                    req.flash("error", "비밀번호가 틀렸습니다");
                     next(error);
                 }
             });
@@ -61,6 +62,7 @@ module.exports = {
         let userId = req.params.id;
         try {
             let user = await User.findByPkAndRemove(userId);
+            req.flash("success", "성공적으로 탈퇴했습니다🥺 아쉽지만 다음에 만나요!");
             res.locals.redirect = "/";
             next();
         } catch (error) {
@@ -84,7 +86,7 @@ module.exports = {
 
     logout: (req, res, next)=>{
         req.logout((err)=>{
-            req.flash("success", "You have been logged out!");
+            req.flash("success", "로그인 되었습니다! 다음에도 찾아주실거죠?🥹");
             res.locals.redirect="/"
             next();
         })

@@ -17,15 +17,21 @@
                 <div class="detail_constant">
                     <p>・ 작성한 글</p>
                     <p>・ 작성한 댓글</p>
+                    <p>・ 개인정보</p>
                     <p>・ 추천한 글</p>
                 </div>
                 <div class="detail_variable">
                     <a href=""><p>1건</p></a>
                     <a href=""><p>56건</p></a>
                     <a href=""><p>31건</p></a>
+                    <a href="/mypage/passwordCheck"><p>수정하기</p></a>
                 </div>
             </div>
-            <div class="empty"></div>
+            <div class="good-empty">
+              <form action="/users/<%=currentUser?.user_id%>/delete" method="post">
+                <button type="submit"><p>탈퇴하기</p></button>
+              </form>
+            </div>
         </div>
         <div class="qna_container">
             <h3>1:1 문의글</h3>

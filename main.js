@@ -11,6 +11,7 @@ const port = 80,
   mypageController = require("./controllers/mypageController"),
   loginController = require("./controllers/loginController"),
   commentController = require("./controllers/commentController"),
+  noteController = require("./controllers/noteController"),
   db = require("./models/index"),
   flash = require("connect-flash"),
   cookieParser = require("cookie-parser"),
@@ -119,9 +120,16 @@ app.get("/mypage/comment", mypageController.mypageReply);
 app.post("/mypage/comment/delete", mypageController.mypageCommentDelete);
 app.get("/mypage/post", mypageController.mypageWrite);
 app.post("/mypage/post/delete", mypageController.mypagePostDelete);
-app.get("/mypage/repair", mypageController.mypageRepair);
-app.get("/chat", mypageController.chatList);
-app.get("/chat/write", mypageController.chatStory);
+// app.get("/mypage/repair", mypageController.mypageRepair);
+app.get("/mypage/passwordCheck", mypageController.showPasswordCheck);
+app.get("/mypage/update", loginController.checkLogin, mypageController.showUpdate);
+app.post("/mypage/update", mypageController.logout, mypageController.passwordCheck);
+app.post("/mypage/:id/edit", mypageController.edit, mypageController.redirectView);
+
+
+//noteController 추가
+app.get("/note/:type", noteController.noteList);
+app.get("/chat/write", noteController.chatStory);
 
 //loginController 추가
 app.get("/users/login", loginController.login);
@@ -135,6 +143,7 @@ app.get("/users/logout", loginController.logout, loginController.redirectView);
 app.get("/users/signup", loginController.signup);
 app.get("/users/create", loginController.signupSuccess);
 app.post("/users/create", loginController.create, loginController.redirectView);
+app.post("/users/:id/delete", loginController.delete, loginController.redirectView);
 
 //errorController 추가
 app.use(errorController.pageNotFoundError);

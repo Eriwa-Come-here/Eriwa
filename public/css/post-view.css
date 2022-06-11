@@ -26,6 +26,10 @@
   height: 100%;
 }
 
+.post-article > header > h1 {
+  line-height: 40px;
+}
+
 .post-info {
   display: flex;
   justify-content: space-between;
