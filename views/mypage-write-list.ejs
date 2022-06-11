@@ -51,7 +51,7 @@
           </div> -->
           <div class="write_kind">
             <div class="mypage_nav">
-              <span class="mypage_nav_span"><a href="/mypage/recommend">추천한 글</a></span>
+              <span class="mypage_nav_span"><a href="/mypage">추천한 글</a></span>
               <span class="mypage_nav_span mypage_nav_choice"><a href="/mypage/post">내가 쓴 글</a></span>
               <span class="mypage_nav_span"><a href="/mypage/comment">내가 쓴 댓글</a></span>
             </div>
@@ -75,9 +75,9 @@
                       <td><%= post.commentCount %></td>
                       <td><%= getDate(post.written_date) %></td>
                       <td>
-                        <form action="<%=`/mypage/post/delete`%>" method="post">
+                        <form onsubmit="return confirm('게시글을 삭제하시겠습니까?');" action="<%=`/mypage/post/delete`%>" method="post">
                           <input type="hidden" name="post_id" value="<%= post.post_id %>"/>
-                          <button type="submit" class="mypage_del_btn" name="Delete" onClick="alert('게시글을 삭제하시겠습니까?')">삭제</button>
+                          <button type="submit" class="mypage_del_btn" name="Delete">삭제</button>
                         </form>
                       </td>
                     </tr>
