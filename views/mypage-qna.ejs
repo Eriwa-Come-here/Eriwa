@@ -24,7 +24,7 @@
                     <a href=""><p>1건</p></a>
                     <a href=""><p>56건</p></a>
                     <a href=""><p>31건</p></a>
-                    <a href="/mypage/passwordCheck"><p>수정하기</p></a>
+                    <a href="/mypage/update"><p>수정하기</p></a>
                 </div>
             </div>
             <div class="good-empty">
@@ -70,12 +70,12 @@
                                         <%= q.qna_id %>
                                     </td>
                                     <td class="qna_p">
-                                        <a href="/mypage/qna/`${q.qna_id}`">
+                                        <a href="/mypage/qna/<%=q.qna_id%>">
                                             <%= q.question %>
                                         </a>
                                     </td>
                                     <td>
-                                        <% if(q.isAnswered) { %>
+                                        <% if(q.answer != null) { %>
                                         <p>답변</p>
                                         <% } else { %>
                                         <p>미답변</p>
@@ -88,7 +88,7 @@
                     </div>
                     <% } %>
                 </div>
-                <button id="btn_write">작성</button>
+                <a href="/mypage/qna/write"><button id="btn_write">작성</button></a>
             </div>
         </div>
     </div>

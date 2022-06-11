@@ -25,7 +25,7 @@
                         <a href=""><p>1건</p></a>
                         <a href=""><p>56건</p></a>
                         <a href=""><p>31건</p></a>
-                        <a href="<%=`/mypage/passwordCheck`%>"><p>수정하기</p></a>
+                        <a href="<%=`/mypage/update`%>"><p>수정하기</p></a>
                     </div>
                 </div>
                 <div class="repair-empty">
@@ -44,8 +44,8 @@
                         <h5>생년월일: <%=currentUser?.birthdate%></h3>
                         <form action="/mypage/<%=currentUser?.user_id%>/edit" method="post">
                         <!-- content-->
+                        <!--
                         <div id="repair-content">
-                            <!-- PW1 -->
                             <div>
                                 <h3 class="join_title"><label for="pswd1">변경할 비밀번호</label></h3>
                                 <span class="repair-box int_pass">
@@ -57,7 +57,6 @@
                                 <span class="error_next_box"></span>
                             </div>
                 
-                            <!-- PW2 -->
                             <div>
                                 <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
                                 <span class="repair-box int_pass_check">
@@ -65,7 +64,7 @@
                                     id="password2" class="repair-int" maxlength="20" minlength="8">
                                 </span>
                                 <span class="error_next_box"></span>
-                            </div>
+                            </div>-->
                 
                             <!-- NAME -->
                             <div>

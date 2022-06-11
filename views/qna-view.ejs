@@ -1,0 +1,64 @@
+<div id="container">
+    <div class="wrapped_qna">
+        <div class="user_container">
+            <div class="user_info">
+                <img id="img_profile" src="/public/images/profile_icon.png" alt="profile_icon">
+                <br>
+                <p><%= currentUser.nickname %></p>
+                <br>
+                <div id="img_message">
+                    <a href="/chat">
+                        <img src="/public/images/message_icon.png" alt="message_icon">
+                        <p>쪽지함</p>
+                    </a>
+                </div>
+            </div>
+            <div class="user_detail">
+                <div class="detail_constant">
+                    <p>・ 작성한 글</p>
+                    <p>・ 작성한 댓글</p>
+                    <p>・ 개인정보</p>
+                    <p>・ 추천한 글</p>
+                </div>
+                <div class="detail_variable">
+                    <a href=""><p>1건</p></a>
+                    <a href=""><p>56건</p></a>
+                    <a href=""><p>31건</p></a>
+                    <a href="/mypage/update"><p>수정하기</p></a>
+                </div>
+            </div>
+            <div class="good-empty">
+              <form action="/users/<%=currentUser?.user_id%>/delete" method="post">
+                <button type="submit"><p>탈퇴하기</p></button>
+              </form>
+            </div>
+        </div>
+        <div class="qna_container">
+            <h3>1:1 문의글</h3>
+            <div class="qna_detail">
+                <div class="qna_list">
+                    <div class="qnas_data">
+                        <h4>문의 내용</h4>
+                        <div class="qna_content">
+                            <p><%= q.question%></p>
+                        </div>
+                    </div>
+                    <% if(q.answer != null) { %>
+                    <div>
+                        <h4>답변 내용</h4>
+                        <div class="qna_reply">
+                            <p><%= q.answer%></p>
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+                <% if(q.answer == null) { %>
+                <a href="/mypage/qna/<%=q.qna_id%>/edit">수정</a>
+                <form action="/mypage/qna/<%=q.qna_id%>/delete" method="post">
+                    <button id="btn_write">삭제</button>
+                </form>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>

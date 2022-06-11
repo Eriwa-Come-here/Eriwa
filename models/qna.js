@@ -4,9 +4,10 @@ module.exports = (sequelize, Sequelize) => {
     static async findByPkAndUpdate(id, params) {
       try {
         let qna = await Qna.findByPk(id);
+        console.log(qna);
         if (qna) {
           qna = await Qna.update(params, {
-            where: { id: id },
+            where: { qna_id: id }
           });
         }
         return qna;
@@ -17,9 +18,10 @@ module.exports = (sequelize, Sequelize) => {
     static async findByPkAndRemove(id) {
       try {
         let qna = await Qna.findByPk(id);
+        console.log(qna);
         if (qna) {
-          qna = await Qna.destroy(params, {
-            where: { id: id },
+          qna = await Qna.destroy({
+            where: { qna_id: id }
           });
         }
         return qna;
@@ -51,13 +53,6 @@ module.exports = (sequelize, Sequelize) => {
       answer: {
         type: Sequelize.TEXT,
       },
-      /*
-      isAnwered:{
-        type: Sequelize.Virtual,
-        get(){
-          return answer != null;
-        }
-      }*/
     },
     {
       timestamps: false,

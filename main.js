@@ -111,16 +111,18 @@ app.post("/admin/qna/response/:qna_id", adminController.qnaResponse);
 //mypageController 추가
 app.get("/mypage", mypageController.mypageGood);
 app.get("/mypage/qna", loginController.checkLogin, mypageController.qna, mypageController.showQna);
-app.get("/mypage/qna/:qna_id", mypageController.qna, mypageController.showQna);
+app.get("/mypage/qna/write", mypageController.showQnaWrite);
+app.post("/mypage/qna/write", mypageController.qnaWrite, mypageController.redirectView);
+app.get("/mypage/qna/:qna_id", mypageController.qnaView, mypageController.showQnaView);
+app.get("/mypage/qna/:qna_id/edit", mypageController.qnaEditView, mypageController.showQnaEdit);
+app.post("/mypage/qna/:qna_id/edit", mypageController.qnaEdit, mypageController.redirectView);
+app.post("/mypage/qna/:qna_id/delete", mypageController.qnaDelete, mypageController.redirectView);
 
 
 app.get("/mypage/recommend", mypageController.recommend, mypageController.showRecommend);
 app.get("/mypage/comment", mypageController.mypageReply);
 app.get("/mypage/post", mypageController.mypageWrite);
-
-app.get("/mypage/passwordCheck", mypageController.showPasswordCheck);
 app.get("/mypage/update", loginController.checkLogin, mypageController.showUpdate);
-app.post("/mypage/update", mypageController.logout, mypageController.passwordCheck);
 app.post("/mypage/:id/edit", mypageController.edit, mypageController.redirectView);
 
 app.get("/chat", mypageController.chatList);
