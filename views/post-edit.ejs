@@ -1,4 +1,4 @@
-<script src="../public/js/post.js"></script>
+<script src="/public/js/post.js"></script>
 <main class="post-main">
   <form action="<%= `/board/post-view/${post.post_id}/edit`%>" method="post" enctype="multipart/form-data">
   <input type="hidden" name="post_author" value="<%= currentUser.dataValues.user_id %>">
