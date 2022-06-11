@@ -42,8 +42,20 @@ module.exports = {
     res.render("post-writing");
   },
   
-  showPostEdit: (req, res) => {
-    res.render("post-edit");
+  showPostEdit: async(req, res,next) => {
+    try {
+      const [postData, metadata]=await sequelize.query("SELECT `post`.* FROM `post` WHERE post_id=?",
+      {
+        type: Sequelize.SELECT,
+        replacements :[req.params.post_id]
+      }
+    );
+      console.log(postData);
+      res.render("post-edit",{post:postData[0]});
+    } catch (error) {
+      console.log(`Error fetching User by ID: ${error.message}`);
+      next(error);
+    }
   },
   
   createPost: async (req, res, next) => {
@@ -79,7 +91,7 @@ module.exports = {
   
   editPost: async (req, res, next) => {
     try {
-      await sequelize.query("UPDATE `post` SET (`title`=?,`content`=?,`address1`=?,`address2`=?,`address3`=?,`place_name`=?,`place_type`=?,`image`=?,`grade`=?,`can_park`=?,`can_pet`=? )  WHERE `post_id` = ?;", {
+      await sequelize.query("UPDATE `post` SET (`title`=?,`content`=?,`address1`=?,`address2`=?,`address3`=?,`place_name`=?,`place_type`=?,/*`image`=?,`grade`=?,`can_park`=?,`can_pet`=? )  WHERE `post_id` = ?;", {
         type: sequelize.QueryTypes.UPDATE,
         replacements: [req.body.title, req.params.content, req.body.address1, req.body.address2, req.body.address3,
           req.body.place_name, req.body.place_type, req.file.filename, req.body.grade, req.body.can_park,

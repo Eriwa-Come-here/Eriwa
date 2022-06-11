@@ -87,7 +87,7 @@ app.get("/board/post-writing",loginController.checkLogin, postController.showPos
 app.get("/board/post-view/:post_id", postController.showPost);
 app.post("/board/post-view/:post_id/delete", postController.deletePost);
 app.get("/board/post-view/:post_id/edit",postController.showPostEdit);
-app.post("/board/post-view/:post_id/edit",postController.editPost);
+app.post("/board/post-view/:post_id/edit", upload.single("image"),postController.editPost);
 app.post("/board/post-writing", upload.single("image"), postController.createPost);
 //app.get("/post-view/:post_id/delete", postController.deletePost);
 
@@ -116,7 +116,9 @@ app.get("/mypage/qna/:qna_id", mypageController.qna, mypageController.showQna);
 
 app.get("/mypage/recommend", mypageController.recommend, mypageController.showRecommend);
 app.get("/mypage/comment", mypageController.mypageReply);
+app.post("/mypage/comment/delete", mypageController.mypageCommentDelete);
 app.get("/mypage/post", mypageController.mypageWrite);
+app.post("/mypage/post/delete", mypageController.mypagePostDelete);
 app.get("/mypage/repair", mypageController.mypageRepair);
 app.get("/chat", mypageController.chatList);
 app.get("/chat/write", mypageController.chatStory);

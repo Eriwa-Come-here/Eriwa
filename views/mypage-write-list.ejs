@@ -1,89 +1,94 @@
 <div class="writeList-container">
-    <div id="writeBig-container">
-        <div class="write-wrapped">
-            <div class="user_container">
-                <div class="user_info">
-                    <a href=""><img id="profile" src="../public/images/profile_icon.png" alt="profile_icon"></a>
-                    <br>
-                    <p>Name</p>
-                    <br>
-                    <div id="img_message">
-                        <a href="">
-                            <img  src="../public/images/message_icon.png" alt="message_icon">
-                            <p>쪽지함</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="user_detail">
-                    <div class="detail_constant">
-                        <p>・ 작성한 글</p>
-                        <p>・ 작성한 댓글</p>
-                        <p>・ 추천한 글</p>
-                        <p>・ 개인정보</p>
-                    </div>
-                    <div class="write-detail_variable">
-                        <a href=""><p>1건</p></a>
-                        <a href=""><p>56건</p></a>
-                        <a href=""><p>31건</p></a>
-                        <a href=""><p>수정하기</p></a>
-                    </div>
-                </div>
-                <div class="write-empty">
-                    <a href=""><p>탈퇴하기</p></a>
-                </div>
-            </div>
-            <div class="write_container">
-                <div class="write_detail">
-                    <div class="write-menu_list">
-                        <div class="write_list">
-                            <span>내가 쓴 글</span>
-                        </div>
-                        <div class="reply_list">
-                            <span>내가 쓴 댓글</span>
-                        </div>
-                        <div class="good_list">
-                            <span>추천한 글</span>
-                        </div>
-                    </div>
-                    <div class= "button-container">
-                        
-                        <button id="btn-all-select">전체선택</button>
-                        <button id="btn_delete">삭제</button>
-                    </div>
-                    <div class="write_kind">
-                    <div class="board_list_wrap">
-                        <div class="board_list">
-                            <div class="board_list_head">
-                                <div class="button"></div>
-                                <div class="tit">제목</div>
-                                <div class="date">작성일</div>
-                            </div>
-                            <div class="board_list_body">
-                                <div class="item">
-                                    <div class="button">
-                                        <label><label><input style="zoom:1.5" type="checkbox" name="check" value="check"></label></label>
-                                    </div>
-                                    <div class="tit"><a href="#">성신여대 맛집 리스트</a></div>
-                                    <div class="date">2021-12-27</div>
-                                </div>
-                                <div class="item">
-                                    <div class="button">
-                                        <label><label><input style="zoom:1.5" type="checkbox" name="check" value="check"></label></label>
-                                    </div>
-                                    <div class="tit"><a href="#">오리고기 먹고싶다</a></div>
-                                    <div class="date">2022-08-09</div>
-                                </div>
-                                <div class="item">
-                                    <div class="button">
-                                        <label><label><input style="zoom:1.5" type="checkbox" name="check" value="check"></label></label>
-                                    </div>
-                                    <div class="tit"><a href="#">나만 알고싶은 이 가게</a></div>
-                                    <div class="date">2022-11-18</div>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-            </div>
+  <div id="writeBig-container">
+    <div class="write-wrapped">
+      <div class="user_container">
+        <div class="user_info">
+          <a href=""><img id="profile" src="../public/images/profile_icon.png" alt="profile_icon"/></a>
+          <br />
+          <p>Name</p>
+          <br />
+          <div id="img_message">
+            <a href="">
+              <img src="../public/images/message_icon.png" alt="message_icon" />
+              <p>쪽지함</p>
+            </a>
+          </div>
         </div>
+        <div class="user_detail">
+          <div class="detail_constant">
+            <p>・ 작성한 글</p>
+            <p>・ 작성한 댓글</p>
+            <p>・ 추천한 글</p>
+            <p>・ 개인정보</p>
+          </div>
+          <div class="write-detail_variable">
+            <a href=""><p>1건</p></a>
+            <a href=""><p>56건</p></a>
+            <a href=""><p>31건</p></a>
+            <a href=""><p>수정하기</p></a>
+          </div>
+        </div>
+        <div class="write-empty">
+          <a href=""><p>탈퇴하기</p></a>
+        </div>
+      </div>
+      <div class="write_container">
+        <div class="write_detail">
+          <!-- <div class="write-menu_list">
+            <div class="write_list">
+              <span>내가 쓴 글</span>
+            </div>
+            <div class="reply_list">
+              <span>내가 쓴 댓글</span>
+            </div>
+            <div class="good_list">
+              <span>추천한 글</span>
+            </div>
+          </div> -->
+          <!-- <div class="button-container">
+            <button id="btn-all-select">전체선택</button>
+            <button id="btn_delete">삭제</button>
+          </div> -->
+          <div class="write_kind">
+            <div class="mypage_nav">
+              <span class="mypage_nav_span"><a href="/mypage/recommend">추천한 글</a></span>
+              <span class="mypage_nav_span mypage_nav_choice"><a href="/mypage/post">내가 쓴 글</a></span>
+              <span class="mypage_nav_span"><a href="/mypage/comment">내가 쓴 댓글</a></span>
+            </div>
+            <div>
+              <div class="mypage_content">
+                <table class="mypage_post_table">
+                  <thead>
+                    <tr>
+                      <th scope="cols">글 제목</th>
+                      <th scope="cols">조회수</th>
+                      <th scope="cols">댓글수</th>
+                      <th scope="cols">작성일자</th>
+                      <th scope="cols"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% post.forEach(post => { %>
+                    <tr>
+                      <td><a href="<%=`/board/post-view/${post.post_id}`%>"><%= post.title %></a></td>
+                      <td><%= post.view_count %></td>
+                      <td><%= post.commentCount %></td>
+                      <td><%= getDate(post.written_date) %></td>
+                      <td>
+                        <form action="<%=`/mypage/post/delete`%>" method="post">
+                          <input type="hidden" name="post_id" value="<%= post.post_id %>"/>
+                          <button type="submit" class="mypage_del_btn" name="Delete" onClick="alert('게시글을 삭제하시겠습니까?')">삭제</button>
+                        </form>
+                      </td>
+                    </tr>
+                    <% }); %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
