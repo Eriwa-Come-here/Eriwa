@@ -128,6 +128,7 @@ app.post("/mypage/:id/edit", mypageController.edit, mypageController.redirectVie
 
 
 //noteController 추가
+app.post("/note/write", noteController.noteWrite);
 app.get("/note/:type", noteController.noteList);
 app.get("/chat/write", noteController.chatStory);
 

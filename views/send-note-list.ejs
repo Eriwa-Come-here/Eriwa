@@ -1,12 +1,16 @@
+<script src="/public/js/note.js"></script>
 <div class="note-list-container">
   <main class="note-list-main">
     <div class="note-list-category">
-      <h2>
-        <span id=""><a href="/note/receive">받은쪽지</a></span>
-        <span id="send-note"><a href="/note/send">보낸쪽지</a></span>
-      </h2>
+      <div class="note-list-type">
+        <h2>
+          <span id=""><a href="/note/receive">받은쪽지</a></span>
+          <span id="send-note"><a href="/note/send">보낸쪽지</a></span>
+        </h2>
+      </div>
+      <div><button onclick="javascript: openNote('note-write-modal');" class="note-write-button">쪽지쓰기</button></div>
     </div>
-    <!-- 받은 쪽지 -->
+    <!-- 보낸 쪽지 -->
     <div class="note-list-header">
       <div>받은사람</div>
       <div>내용</div>
@@ -16,7 +20,7 @@
       <div class="note-list-content">
         <ul>
           <% notes.forEach(function(note) { %>
-            <li class="note-list" onclick="location.href='';" style="cursor:pointer;">
+            <li class="note-list" onclick="javascript: openNote('<%= `note-modal-container-${note.note_id}` %>');" style="cursor:pointer;">
               <div class="send-user" style="display:inline-block; text-align: center;">
                 <img src="/public/images/usericon.png" alt="프로필 이미지" width="20px"><br/>
                 <span><%= note.receive_user_id %></span>
@@ -28,6 +32,25 @@
                 <span class="note-date"><%= getDate(note.written_date) %></span>
               </div>
             </li>
+            <!-- note-view modal -->
+            <div class="note-modal-container hide-note" id="<%= `note-modal-container-${note.note_id}` %>">
+              <div class="note-modal-bg"></div>
+              <div class="note-modal">
+                <div class="note-modal-content">
+                  <div class="note-modal-header">
+                    <div><span>받은사람</span><span><%= note.receive_user_id %></span></div>
+                    <div><span>보낸날짜</span><span><%= getDate(note.written_date) %></span></div>
+                  </div>
+                  <div class="note-modal-text">
+                    <p><%= note.note_content %></p>
+                  </div>
+                  <div class="note-modal-footer">
+                    <button>답장</button>
+                    <button onclick="javascript: closeNote('<%= `note-modal-container-${note.note_id}` %>');">닫기</button>
+                  </div>
+                </div>
+              </div>   
+            </div>           
           <% }) %>
         </ul>
       </div>
@@ -38,5 +61,34 @@
     <div class="note-list-top-button">
       <a href="<%= `/note/send` %>">TOP</a>
     </div>
+    <!-- modal -->
+    <div class="note-modal-container hide-note" id="note-write-modal">
+      <div class="note-modal-bg"></div>
+      <div class="note-modal">
+        <form action="/note/write" onsubmit="return confirm('쪽지를 보내시겠습니까?');" method="post">
+          <input type="hidden" name="url" value="/note/send">
+          <input type="hidden" name="note_author_id" value="<%= currentUser.dataValues.user_id %>">
+          <input type="hidden" name="note_author_nickname" value="<%= currentUser.dataValues.nickname %>">
+          <div class="note-modal-item">
+            <div class="recipient-area-wrap">
+              <div class="recipient-area">
+                <label for="recipient">받는사람</label>
+                <input type="text" name="recipient" id="recipient">
+              </div>
+            </div>
+            <div class="note-write-wrap">
+              <div class="note-write-area">
+                <label for="new-note-textarea">내용</label>
+                <textarea name="new_note_content" id="new-note-textarea" rows="8" style="padding: 6px;"></textarea>
+              </div>
+            </div>
+            <div class="note-modal-footer">
+              <button type="submit">보내기</button>
+              <button type="button" onclick="javascript: closeNote('note-write-modal');">취소</button>
+            </div>
+          </div>
+        </form>
+      </div>   
+    </div>    
   </main>
 </div>

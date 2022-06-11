@@ -1,4 +1,4 @@
-// 
+// 프로필 클릭 메뉴 보여주기
 function showDrop(id) {
     const profile = document.getElementById(id);
     //profile.classList.toggle("drop-list-show");
@@ -6,6 +6,7 @@ function showDrop(id) {
 
 }
 
+// 프로필 클릭 메뉴 닫기
 function hideDrop(id) {
     const profile = document.getElementById(id);
     //profile.classList.toggle("drop-list-show");
