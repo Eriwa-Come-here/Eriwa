@@ -1,28 +1,22 @@
-<!-- <script src="../public/js/post.js"></script>
+<script src="/public/js/post.js"></script>
 <main class="post-main">
-  <form action="/board/post-writing" method="post" enctype="multipart/form-data">
+  <form action="<%= `/board/post-view/${post.post_id}/edit`%>" method="post" enctype="multipart/form-data">
   <input type="hidden" name="post_author" value="<%= currentUser.dataValues.user_id %>">
     <div class="post-main-div">
         <span class="post_text_border">제목</span>
         <span class="post_input_border">
-          <input type="text" name="title" class="input-style" />
+          <input type="text" name="title" class="input-style" value="<%= post.title %>"/>
         </span>
         <span class="post_text_border">장소이름</span>
         <span class="post_input_border">
-          <input type="text" name="place_name" class="input-style" />
+          <input type="text" name="place_name" class="input-style" value="<%= post.place_name %>"/>
         </span>
         <span class="post_text_border">위치</span>
         <span>
-          <select
-            id="address1"
-            class="place-input1"
-            onchange="loadsigungu();"
-            name="address1"
-            ,
-          ></select>
+          <select id="address1" class="place-input1" onchange="loadsigungu();" name="address1"></select>
           <select id="address2" class="place-input1" name="address2"></select>
           <span class="post_input_border">
-            <input type="text" class="place-input2" name="address3" />
+            <input type="text" class="place-input2" name="address3" value="<%= post.address3 %>"/>
           </span>
         </span>
         <span class="post_text_border">장소종류</span>
@@ -53,30 +47,18 @@
         </span>
         <span class="post_text_border">사진</span>
         <span class="post_input_border">
-          <input
-            type="file"
-            class="real-upload"
-            accept="image/*"
-            onchange="readURL(this)"
-            name="image"
-          />
-          <img id="preview" />
+          <input type="file" class="real-upload" accept="image/*" onchange="readURL(this)" name="image"/>
+          <img id="preview"/>
         </span>
         <span class="post_text_border">방문후기</span>
         <span class="post_input_border">
-          <textarea
-            cols="51"
-            rows="15"
-            name="content"
-            class="textarea-style"
-          ></textarea>
-        </span>
-      <div></div>
-      <div>
+          <textarea cols="51" rows="15" name="content" class="textarea-style"><%= post.content %></textarea></span>
+        <div></div>
+        <div>
         <span class="btn_pos">
           <button class="submit-btn" type="submit">등록</button>
         </span>
       </div>
     </div>
   </form>
-</main> -->
+</main>

@@ -1,36 +1,36 @@
 module.exports = (sequelize, Sequelize) => {
     const User = require("./user")(sequelize, Sequelize);
-    class Chat extends Sequelize.Model {
+    class Note extends Sequelize.Model {
       static async findByPkAndUpdate(id, params) {
         try {
-          let chat = await Chat.findByPk(id);
-          if (chat) {
-            chat = await Chat.update(params, {
+          let note = await Note.findByPk(id);
+          if (note) {
+            note = await Note.update(params, {
               where: { id: id },
             });
           }
-          return chat;
+          return note;
         } catch (err) {
           console.log(err);
         }
       }
       static async findByPkAndRemove(id) {
         try {
-          let chat = await Chat.findByPk(id);
-          if (chat) {
-            chat = await Chat.destroy(params, {
+          let note = await Note.findByPk(id);
+          if (note) {
+            note = await Note.destroy(params, {
               where: { id: id },
             });
           }
-          return chat;
+          return note;
         } catch (err) {
           console.log(err);
         }
       }
     }
-    Chat.init(
+    Note.init(
       {
-        chat_id: {
+        note_id: {
           type: Sequelize.INTEGER,
           allowNull: false,
           autoincrement: true,
@@ -52,7 +52,7 @@ module.exports = (sequelize, Sequelize) => {
               key: "user_id",
             },
           },
-        chat_content: {
+        note_content: {
           type: Sequelize.STRING,
           allowNull: false,
         },
@@ -64,10 +64,10 @@ module.exports = (sequelize, Sequelize) => {
       {
         sequelize,
         timestamps: false,
-        modelName: "Chat",
-        tableName: "chat",
+        modelName: "Note",
+        tableName: "note",
       }
     );
-    return Chat;
+    return Note;
   };
   

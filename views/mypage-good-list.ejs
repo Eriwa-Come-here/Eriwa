@@ -40,7 +40,7 @@
       </div>
       <div class="good_container">
         <div class="good_detail">
-          <div class="good-menu_list">
+          <!-- <div class="good-menu_list">
             <div class="write_list">
               <span>내가 쓴 글</span>
             </div>
@@ -54,31 +54,44 @@
           <div class="good-button-container">
             <button id="btn-all-select">전체선택</button>
             <button id="btn_delete">삭제</button>
-          </div>
+          </div> -->
           <div class="good_kind">
-            <div class="good-board_list_wrap">
-              <div class="good-board_list">
-                <div class="good-board_list_head">
-                  <div class="button"></div>
-                  <div class="tit">제목</div>
-                  <div class="date">작성일</div>
-                </div>
-                <div class="good-board_list_body">
-                  <div class="item">
-                      <div class="button">
-                          <label><label><input style="zoom: 1.5" type="checkbox" name="check" value="check" /></label></label>
-                      </div>
-                      <div class="tit">
-                          <a href="#">상수역 맛집리스트</a>
-                      </div>
-                      <div class="date">2021-12-27</div>
-                  </div>
+            <div class="mypage_nav">
+              <span class="mypage_nav_span"><a href="/mypage" class="mypage_nav_choice">추천한 글</a></span>
+              <span class="mypage_nav_span"><a href="/mypage/post">내가 쓴 글</a></span>
+              <span class="mypage_nav_span"><a href="/mypage/comment">내가 쓴 댓글</a></span>
+            </div>
+            <div>
+              <div class="mypage_content">
+                <table class="mypage_good_table">
+                  <thead>
+                    <tr>
+                      <th scope="cols">글번호</th>
+                      <th scope="cols">제목</th>
+                      <th scope="cols">장소이름</th>
+                      <th scope="cols">장소위치</th>
+                      <th scope="cols">조회수</th>
+                      <th scope="cols">작성일자</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% good.forEach(good => { %>
+                    <tr>
+                      <td><%= good.post_id %></td>
+                      <td><a href="<%=`/board/post-view/${good.post_id}`%>"><%= good.title %></a></td>
+                      <td><%= good.place_name %></td>
+                      <td><%= good.address1 %> <%= good.address2 %> <%= good.address3 %></td>
+                      <td><%= good.view_count %></td>
+                      <td><%= getDate(good.written_date) %></td>
+                    </tr>
+                    <% }); %>
+                  </tbody>
+                </table>
               </div>
-              </div>
+            </div>
           </div>
+        </div>
       </div>
+    </div>
   </div>
-</div>
-</div>
-</div>
 </div>

@@ -1,0 +1,42 @@
+<div class="note-list-container">
+  <main class="note-list-main">
+    <div class="note-list-category">
+      <h2>
+        <span id=""><a href="/note/receive">받은쪽지</a></span>
+        <span id="send-note"><a href="/note/send">보낸쪽지</a></span>
+      </h2>
+    </div>
+    <!-- 받은 쪽지 -->
+    <div class="note-list-header">
+      <div>받은사람</div>
+      <div>내용</div>
+      <div>날짜</div>
+    </div>
+    <% if (notes.length) { %>
+      <div class="note-list-content">
+        <ul>
+          <% notes.forEach(function(note) { %>
+            <li class="note-list" onclick="location.href='';" style="cursor:pointer;">
+              <div class="send-user" style="display:inline-block; text-align: center;">
+                <img src="/public/images/usericon.png" alt="프로필 이미지" width="20px"><br/>
+                <span><%= note.receive_user_id %></span>
+              </div>
+              <div class="note-text">
+                <div class="note-content"><%= note.note_content %></div>
+              </div>
+              <div class="note-day">
+                <span class="note-date"><%= getDate(note.written_date) %></span>
+              </div>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    <% } else { %>
+      <div class="note-content"><p>보낸 쪽지가 없습니다.</p></div>
+    <% } %>
+    <div style="text-align: center; padding:10px;">쪽지는 30일 이후 삭제됩니다.</div>
+    <div class="note-list-top-button">
+      <a href="<%= `/note/send` %>">TOP</a>
+    </div>
+  </main>
+</div>
