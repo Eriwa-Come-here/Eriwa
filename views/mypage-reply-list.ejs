@@ -70,7 +70,7 @@
                                   <tbody>
                                     <% comment.forEach(comment => { %>
                                     <tr>
-                                      <td><a href="<%=`/mypage/comment/${comment.post_id}`%>"><%= comment.title %></a></td>
+                                      <td><a href="<%=`/board/post-view/${comment.post_id}`%>"><%= comment.title %></a></td>
                                       <td><%= comment.comment %></td>
                                       <td><%= getDate(comment.written_date) %></td>
                                       <td>
