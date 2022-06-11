@@ -19,8 +19,20 @@ const sequelize = db.sequelize;
 const datefunc = require('../public/js/datefunc.js');
 
 module.exports={
-    mypageGood : (req, res) => {
-        res.render("mypage-good-list");
+    mypageGood : async (req, res, next) => {
+      try {
+        const [goodData, metadata] = await sequelize.query(
+          "SELECT `recommend`.* ,`post`.* FROM `recommend` LEFT JOIN `post` ON `recommend`.`post_id`=`post`.`post_id` WHERE `recommend`.`user_id`=?",
+          { type: Sequelize.SELECT,
+            replacements: [res.locals.currentUser.user_id] }
+        );
+        console.log(goodData);
+        res.locals.goods = goodData;
+        res.render("mypage-good-list", { good: goodData ,getDate: datefunc.getDate});
+      } catch (error) {
+        console.log(`Error fetching User by ID: ${error.message}`);
+        next(error);
+      }
     },
 
     mypageReply : async (req, res, next) => {

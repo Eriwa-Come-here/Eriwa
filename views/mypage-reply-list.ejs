@@ -52,9 +52,9 @@
                     </div> -->
                     <div class="reply_kind">
                         <div class="mypage_nav">
-                            <span class="mypage_nav_span"><a href="/mypage/recommend">추천한 글</a></span>
+                            <span class="mypage_nav_span"><a href="/mypage">추천한 글</a></span>
                             <span class="mypage_nav_span"><a href="/mypage/post">내가 쓴 글</a></span>
-                            <span class="mypage_nav_span  mypage_nav_choice"><a href="/mypage/comment">내가 쓴 댓글</a></span>
+                            <span class="mypage_nav_span mypage_nav_choice"><a href="/mypage/comment">내가 쓴 댓글</a></span>
                         </div>
                         <div>
                             <div class="mypage_content">
@@ -74,9 +74,9 @@
                                       <td><%= comment.comment %></td>
                                       <td><%= getDate(comment.written_date) %></td>
                                       <td>
-                                        <form action="<%=`/mypage/comment/delete`%>" method="post">
+                                        <form onsubmit="return confirm('댓글을 삭제하시겠습니까?');" action="<%=`/mypage/comment/delete`%>" method="post">
                                           <input type="hidden" name="comment_id" value="<%= comment.comment_id %>"/>
-                                          <button type="submit" class="mypage_del_btn" name="Delete" onClick="alert('댓글을 삭제하시겠습니까?')">삭제</button>
+                                          <button type="submit" class="mypage_del_btn" name="Delete">삭제</button>
                                         </form>
                                       </td>
                                     </tr>

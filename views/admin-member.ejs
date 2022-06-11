@@ -48,18 +48,9 @@
             <td><%= user.birthdate %></td>
             <td><%= user.gender %></td>
             <td>
-              <form action="<%=`/admin/member/delete`%>" method="post">
-                <input
-                  type="hidden"
-                  name="user_id"
-                  value="<%= user.user_id %>"
-                />
-                <input
-                  type="submit"
-                  name="Delete"
-                  value="Delete"
-                  onClick="alert('회원정보를 삭제하시겠습니까?')"
-                />
+              <form onsubmit="return confirm('회원을 삭제하시겠습니까?');" action="<%=`/admin/member/delete`%>" method="post">
+                <input type="hidden" name="user_id" value="<%= user.user_id %>" />
+                <button type="submit" name="Delete" value="Delete">삭제</button>
               </form>
             </td>
           </tr>
