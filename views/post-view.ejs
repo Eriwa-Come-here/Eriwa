@@ -155,6 +155,7 @@
         <form class="comment-textarea" onsubmit="return confirm('댓글을 등록하시겠습니까?');" action="<%= `/comment/${post.post_id}` %>" method="post">
           <input type="hidden" name="post_author" value="<%= post.user_id %>">
           <input type="hidden" name="comment_author" value="<%= currentUser?.dataValues.user_id %>">
+          <input type="hidden" name="comment_author_nickname" value="<%= currentUser?.dataValues.nickname %>">
           <input type="hidden" name="post_title" value="<%= post.title %> ">
           <div><textarea placeholder="내용을 입력해 주세요" name="comment_content" rows="8" cols="80" style="padding: 6px;"></textarea></div>
           <div><input type="submit" name="등록" value="등록" class="post-view-myButton"></div>

@@ -166,12 +166,12 @@
 
 .comment-area {
   background: #E3EDF7;
-  padding: 20px;
+  padding: 40px 20px;
 }
 
 .comment-content-container {
   border-bottom: 1px solid #dadada;
-  margin: 0px 70px;
+  margin: 0px 40px;
   padding: 20px 20px;
 }
 
