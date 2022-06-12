@@ -15,9 +15,8 @@
 
 .post-view-main {
   position: relative;
-  margin: 20px 150px 0px 20px;
-  margin-left: 150px;
-  margin-right: 150px;
+  margin: 20px auto 0px auto;
+  width: 60%;
   z-index: 5;
 }
 
