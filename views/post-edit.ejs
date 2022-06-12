@@ -21,33 +21,95 @@
         </span>
         <span class="post_text_border">장소종류</span>
         <span class="post_input_border">
-          <input type="radio" name="place_type" value="카페" /> 카페
+          <% if (post.place_type=="카페") { %>
+          <input type="radio" name="place_type" value="카페" checked/> 카페
           <input type="radio" name="place_type" value="식당" /> 식당
           <input type="radio" name="place_type" value="주점" /> 주점
           <input type="radio" name="place_type" value="관광" /> 관광
           <input type="radio" name="place_type" value="기타" /> 기타
+          <% } else if (post.place_type=="식당") { %>
+            <input type="radio" name="place_type" value="카페" /> 카페
+            <input type="radio" name="place_type" value="식당" checked/> 식당
+            <input type="radio" name="place_type" value="주점" /> 주점
+            <input type="radio" name="place_type" value="관광" /> 관광
+            <input type="radio" name="place_type" value="기타" /> 기타
+            <% } else if (post.place_type=="주점") { %>
+              <input type="radio" name="place_type" value="카페" /> 카페
+              <input type="radio" name="place_type" value="식당" /> 식당
+              <input type="radio" name="place_type" value="주점" checked/> 주점
+              <input type="radio" name="place_type" value="관광" /> 관광
+              <input type="radio" name="place_type" value="기타" /> 기타
+              <% } else if (post.place_type=="관광") { %>
+                <input type="radio" name="place_type" value="카페" /> 카페
+                <input type="radio" name="place_type" value="식당" /> 식당
+                <input type="radio" name="place_type" value="주점" /> 주점
+                <input type="radio" name="place_type" value="관광" checked/> 관광
+                <input type="radio" name="place_type" value="기타" /> 기타
+                <% } else { %>
+                <input type="radio" name="place_type" value="카페"   /> 카페
+                  <input type="radio" name="place_type" value="식당" /> 식당
+                  <input type="radio" name="place_type" value="주점" /> 주점
+                  <input type="radio" name="place_type" value="관광" /> 관광
+                  <input type="radio" name="place_type" value="기타" checked/> 기타
+                  <% } %>                   
         </span>
         <span class="post_text_border">주차장 이용</span>
         <span class="post_input_border">
-          <input type="radio" name="can_park" value="1" /> 가능
-          <input type="radio" name="can_park" value="0" /> 불가능
+          <% if (post.can_park==1) { %>
+            <input type="radio" name="can_park" value="1" checked/> 가능
+            <input type="radio" name="can_park" value="0" /> 불가능
+            <% } else { %>
+              <input type="radio" name="can_park" value="1" /> 가능
+              <input type="radio" name="can_park" value="0" checked/> 불가능
+              <% } %> 
         </span>
         <span class="post_text_border">반려동물 동반</span>
         <span class="post_input_border">
-          <input type="radio" name="can_pet" value="1" /> 가능
+          <% if (post.can_pet==1) { %>
+          <input type="radio" name="can_pet" value="1" checked/> 가능
           <input type="radio" name="can_pet" value="0" /> 불가능
+          <% } else { %>
+            <input type="radio" name="can_pet" value="1" /> 가능
+            <input type="radio" name="can_pet" value="0" checked/> 불가능
+            <% } %> 
         </span>
         <span class="post_text_border">평점</span>
         <span class="post_input_border">
-          <input type="radio" name="grade" value="1" /> 1
-          <input type="radio" name="grade" value="2" /> 2
-          <input type="radio" name="grade" value="3" /> 3
-          <input type="radio" name="grade" value="4" /> 4
-          <input type="radio" name="grade" value="5" /> 5
+          <% if (post.grade==1) { %>
+            <input type="radio" name="grade" value="1" checked/> 1
+            <input type="radio" name="grade" value="2" /> 2
+            <input type="radio" name="grade" value="3" /> 3
+            <input type="radio" name="grade" value="4" /> 4
+            <input type="radio" name="grade" value="5" /> 5
+            <% } else if (post.grade==2) { %>
+              <input type="radio" name="grade" value="1" /> 1
+              <input type="radio" name="grade" value="2" checked/> 2
+              <input type="radio" name="grade" value="3" /> 3
+              <input type="radio" name="grade" value="4" /> 4
+              <input type="radio" name="grade" value="5" /> 5
+              <% } else if (post.grade==3) { %>
+                <input type="radio" name="grade" value="1" /> 1
+                <input type="radio" name="grade" value="2" /> 2
+                <input type="radio" name="grade" value="3" checked/> 3
+                <input type="radio" name="grade" value="4" /> 4
+                <input type="radio" name="grade" value="5" /> 5
+                <% } else if (post.grade==4) { %>
+                  <input type="radio" name="grade" value="1" /> 1
+                  <input type="radio" name="grade" value="2" /> 2
+                  <input type="radio" name="grade" value="3" /> 3
+                  <input type="radio" name="grade" value="4" checked/> 4
+                  <input type="radio" name="grade" value="5" /> 5
+                  <% } else { %>
+                      <input type="radio" name="grade" value="1" /> 1
+                      <input type="radio" name="grade" value="2" /> 2
+                      <input type="radio" name="grade" value="3" /> 3
+                      <input type="radio" name="grade" value="4" /> 4
+                      <input type="radio" name="grade" value="5" checked/> 5
+                      <% } %> 
         </span>
         <span class="post_text_border">사진</span>
         <span class="post_input_border">
-          <input type="file" class="real-upload" accept="image/*" onchange="readURL(this)" name="image"/>
+          <input type="file" class="real-upload" accept="image/*" onchange="readURL(this)" name="newimage"/>
           <img id="preview"/>
         </span>
         <span class="post_text_border">방문후기</span>

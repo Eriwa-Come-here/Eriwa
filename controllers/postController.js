@@ -91,13 +91,12 @@ module.exports = {
   
   editPost: async (req, res, next) => {
     try {
-      await sequelize.query("UPDATE `post` SET (`title`=?,`content`=?,`address1`=?,`address2`=?,`address3`=?,`place_name`=?,`place_type`=?,/*`image`=?,`grade`=?,`can_park`=?,`can_pet`=? )  WHERE `post_id` = ?;", {
+      await sequelize.query("UPDATE `post` SET `title`=?,`content`=?,`address1`=?,`address2`=?,`address3`=?,`place_name`=?,`place_type`=?,`image`=?,`grade`=?,`can_park`=?,`can_pet`=? WHERE `post_id` = ?;", {
         type: sequelize.QueryTypes.UPDATE,
-        replacements: [req.body.title, req.params.content, req.body.address1, req.body.address2, req.body.address3,
+        replacements: [req.body.title, req.body.content, req.body.address1, req.body.address2, req.body.address3,
           req.body.place_name, req.body.place_type, req.file.filename, req.body.grade, req.body.can_park,
-          req.body.can_pet]
+          req.body.can_pet,req.params.post_id]
       });
-      console.log(req.body.url);
       res.redirect("/board/post-view/" + req.params.post_id);
     } catch (err) {
       console.log(`${err.message}`);
