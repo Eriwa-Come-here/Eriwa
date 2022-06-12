@@ -1,4 +1,4 @@
-<script src="/public/js/post.js"></script>
+<script src="/public/js/post-edit.js"></script>
 <main class="post-main">
   <form action="<%= `/board/post-view/${post.post_id}/edit`%>" method="post" enctype="multipart/form-data">
   <input type="hidden" name="post_author" value="<%= currentUser.dataValues.user_id %>">
@@ -13,7 +13,12 @@
         </span>
         <span class="post_text_border">위치</span>
         <span>
-          <select id="address1" class="place-input1" onchange="loadsigungu();" name="address1"></select>
+          <script>
+            sido('<%= post.address1 %>');
+            loadsigungu('<%= post.address2 %>');
+          </script>
+          <select id="address1" class="place-input1" onchange="loadsigungu();" name="address1">
+          </select>
           <select id="address2" class="place-input1" name="address2"></select>
           <span class="post_input_border">
             <input type="text" class="place-input2" name="address3" value="<%= post.address3 %>"/>
