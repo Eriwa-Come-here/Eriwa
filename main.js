@@ -90,7 +90,6 @@ app.post("/board/post-view/:post_id/delete", postController.deletePost);
 app.get("/board/post-view/:post_id/edit",postController.showPostEdit);
 app.post("/board/post-view/:post_id/edit", upload.single("newimage"),postController.editPost);
 app.post("/board/post-writing", upload.single("image"), postController.createPost);
-//app.get("/post-view/:post_id/delete", postController.deletePost);
 
 app.get("/board/:place_name", homeController.board, homeController.showBoard);
 
