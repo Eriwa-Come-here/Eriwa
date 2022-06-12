@@ -13,15 +13,15 @@ module.exports = {
       if (req.params.type == "receive") {
         const [result, metadata] = await sequelize.query("SELECT * FROM `note` WHERE `receive_user_id` = ? ORDER BY `written_date` DESC", {
           type: Sequelize.SELECT,
-          //replacements: [res.locals.currentUser.dataValues.user_id]
-          replacements: ['qwerty1253']
+          replacements: [res.locals.currentUser.dataValues.user_id]
+          //replacements: ['qwerty1253']
       });
       res.render("receive-note-list", {type: req.params.type,notes: result, getDate: datefunc.getDate});
       } else if (req.params.type == "send") {
         const [result, metadata] = await sequelize.query("SELECT * FROM `note` WHERE `send_user_id` = ? ORDER BY `written_date` DESC", {
           type: Sequelize.SELECT,
-          //replacements: [res.locals.currentUser.dataValues.user_id]
-          replacements: ['qwerty1253']
+          replacements: [res.locals.currentUser.dataValues.user_id]
+          //replacements: ['qwerty1253']
       });
       res.render("send-note-list", {notes: result, getDate: datefunc.getDate});
       } else {
@@ -33,21 +33,30 @@ module.exports = {
     }
   },
 
-  // create
-  createComment: async (req, res, next) => {
+  //create
+  noteWrite : async (req, res, next) => {
     var date = new Date();
     try {
-      await sequelize.query("INSERT INTO `comment`(`post_id`, `user_id`, `comment`, `written_date`) VALUES (?, ?, ?, ?)", {
-        type: sequelize.QueryTypes.INSERT,
-        replacements: [req.params.post_id, req.body.comment_author, req.body.comment_content, date]
+      const [user, metadata] = await sequelize.query("SELECT `user_id` FROM `user` WHERE `nickname` = ?",{
+        type: Sequelize.SELECT,
+        replacements: [req.body.recipient]
       });
-      await sequelize.query("INSERT INTO `event`(`user_id`, `event_type`, `event_author`, `event_title`, `event_content`, `url_address`, `event_date`) VALUES (?, ?, ?, ?, ?, ?, ?)", {
-        type: sequelize.QueryTypes.INSERT,
-        replacements: [req.body.post_author, '댓글', req.body.comment_author, req.body.post_title, req.body.comment_content, `/board/post-view/${req.params.post_id}`, date]
-      });
-      res.redirect("/board/post-view/" + req.params.post_id);
+      if (user[0]) {
+        console.log(req.body)
+        await sequelize.query("INSERT INTO `note`(`receive_user_id`, `send_user_id`, `note_content`, `written_date`) VALUES (?, ?, ?, ?)", {
+          type: sequelize.QueryTypes.INSERT,
+          replacements: [user[0].user_id, req.body.note_author_id, req.body.new_note_content, date]
+        });
+        await sequelize.query("INSERT INTO `event`(`user_id`, `event_type`, `event_author`, `event_content`, `url_address`, `event_date`) VALUES (?, ?, ?, ?, ?, ?)", {
+          type: sequelize.QueryTypes.INSERT,
+          replacements: [user[0].user_id, '쪽지', req.body.note_author_nickname, req.body.new_note_content, `/note/receive`, date]
+        });
+        req.flash("success", `${req.body.recipient}에게 쪽지를 보냈습니다.`);
+      } else {
+        req.flash("error", `${req.body.recipient}이(가) 존재하지 않습니다.`);
+      }
+      res.redirect(req.body.url);
     } catch (err) {
-      console.log(`${err.message}`);
       next(err);
     }
   }
