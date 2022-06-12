@@ -115,7 +115,7 @@
         <span class="post_text_border">사진</span>
         <span class="post_input_border">
           <input type="file" class="real-upload" accept="image/*" onchange="readURL(this)" name="newimage"/>
-          <img id="preview"/>
+          <img id="preview" src="<%= `/public/uploadFiles/${post.image}` %>"/>
         </span>
         <span class="post_text_border">방문후기</span>
         <span class="post_input_border">
