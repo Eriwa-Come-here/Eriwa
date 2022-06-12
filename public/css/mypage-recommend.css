@@ -11,8 +11,9 @@ div.title{
 }
 
 div.sort_kind{
-    position: relative;
-    margin-top: 10px;
+    position: absolute;
+    width: 95%;
+    margin: 20px 0px 50px 0px;
     border: 0.5px solid #787878;
     border-radius: 10px;
     text-align: left;
@@ -45,3 +46,21 @@ div#location_hide{
 }
 
 
+div#all_contents_rmd{
+    position: relative;
+    top: 30px;
+    min-width: 1050px;
+    background-color: #F9FAFF;
+    padding: 10px 50px 50px 50px;
+    margin-top: 50px;
+    color: #8398D1;
+}
+
+div#all_contents_rmd>div.board_action>h2{
+    display: inline-block;
+}
+
+div#all_contents_rmd>div.board_action{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

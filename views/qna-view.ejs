@@ -38,13 +38,14 @@
             <div class="qna_detail">
                 <div class="qna_list">
                     <div class="qnas_data">
+                        <a href="/mypage/qna"><img src="/public/images/back.png" alt="back"></a>
                         <h4>문의 내용</h4>
                         <div class="qna_content">
                             <p><%= q.question%></p>
                         </div>
                     </div>
                     <% if(q.answer != null) { %>
-                    <div>
+                    <div class="reply_content">
                         <h4>답변 내용</h4>
                         <div class="qna_reply">
                             <p><%= q.answer%></p>
@@ -53,7 +54,7 @@
                     <% } %>
                 </div>
                 <% if(q.answer == null) { %>
-                <a href="/mypage/qna/<%=q.qna_id%>/edit">수정</a>
+                <a href="/mypage/qna/<%=q.qna_id%>/edit" class="btn_pretty">수정</a>
                 <form action="/mypage/qna/<%=q.qna_id%>/delete" method="post">
                     <button id="btn_write">삭제</button>
                 </form>

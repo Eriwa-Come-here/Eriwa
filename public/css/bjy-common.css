@@ -116,7 +116,22 @@ div.gallery_real_content {
 div.listview_real_content{
     position: relative;
     width: 465px;
+    height: 160px;
     padding-right: 30px;
     margin-left: 30px;
     display: inline-block;
+}
+
+.btn_pretty{
+    display: block;
+    width: 70px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 20px;
+    border: 0;
+    border-radius: 7px;
+    background-color: #8398D1;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
 }

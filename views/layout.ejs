@@ -35,9 +35,31 @@
     <link rel="stylesheet" href="/public/css/signup.css" />
     <link rel="stylesheet" href="/public/css/bjy-common.css" />
     <link rel="stylesheet" href="/public/css/create.css" />
+    <link rel="stylesheet" href="/public/css/qna.css">
   </head>
   <body>
     <header>
+      <% const place_name1 = [
+      { v: "경기도", t: "경기도" },
+      { v: "강원도", t: "강원도" },
+      { v: "충청북도", t: "충청북도" },
+      { v: "충청남도", t: "충청남도" },
+      { v: "전라북도", t: "전라북도" },
+      { v: "전라남도", t: "전라남도" },
+      { v: "경상북도", t: "경상북도" },
+      { v: "경상남도", t: "경상남도" },
+      { v: "제주특별자치도", t: "제주특별자치도" },
+      ],
+      place_name2 = [
+      { v: "서울특별시", t: "서울특별시" },
+      { v: "부산광역시", t: "부산광역시" },
+      { v: "대구광역시", t: "대구광역시" },
+      { v: "인천광역시", t: "인천광역시" },
+      { v: "대전광역시", t: "대전광역시" },
+      { v: "광주광역시", t: "광주광역시" },
+      { v: "울산광역시", t: "울산광역시" },
+      { v: "세종특별자치시", t: "세종특별자치시" },
+      ]; %>
       <div class="page_header">
         <div id="service_logo">
           <ul>
@@ -51,7 +73,7 @@
                   <a href="/service-intro"><p>이리와란?</p></a>
                 </li>
                 <li>
-                  <a href="/board"><p>전체</p></a>
+                  <a href="/board/all"><p>전체</p></a>
                 </li>
                 <li>
                   <a href="/board"><p>오늘의 이리와</p></a>
@@ -60,59 +82,18 @@
               <ul id="region_list">
                 <p>지역별</p>
                 <ul>
+                  <% place_name1.forEach (n => { %>
                   <li>
-                    <a href="/board/강원도"><p>강원도</p></a>
+                    <a href="/board/<%=n.v%>"><p><%=n.t%></p></a>
                   </li>
-                  <li>
-                    <a href=""><p>경기도</p></a>
-                  </li>
-                  <li>
-                    <a href=""><p>경상북도</p></a>
-                  </li>
-                  <li>
-                    <a href=""><p>경상남도</p></a>
-                  </li>
-                  <li>
-                    <a href=""><p>전라북도</p></a>
-                  </li>
-                  <li>
-                    <a href=""><p>전라남도</p></a>
-                  </li>
-                  <li>
-                    <a href=""><p>충청북도</p></a>
-                  </li>
-                  <li>
-                    <a href=""><p>충청남도</p></a>
-                  </li>
-                  <li>
-                    <a href=""><p>제주도</p></a>
-                  </li>
+                  <% }); %>
                 </ul>
                 <ul>
-                  <li>
-                    <a href=""><p>광주광역시</p></a>
-                  </li>
-                  <li>
-                    <a href=""><p>대구광역시</p></a>
-                  </li>
-                  <li>
-                    <a href=""><p>대전광역시</p></a>
-                  </li>
-                  <li>
-                    <a href=""><p>부산광역시</p></a>
-                  </li>
-                  <li>
-                    <a href=""><p>서울특별시</p></a>
-                  </li>
-                  <li>
-                    <a href=""><p>울산광역시</p></a>
-                  </li>
-                  <li>
-                    <a href=""><p>인천광역시</p></a>
-                  </li>
-                  <li>
-                    <a href=""><p>세종특별자치시</p></a>
-                  </li>
+                  <% place_name2.forEach (n => { %>
+                    <li>
+                      <a href="/board/<%=n.v%>"><p><%=n.t%></p></a>
+                    </li>
+                  <% }); %>
                 </ul>
               </ul>
             </li>
@@ -126,7 +107,7 @@
         </div>
         <% if (loggedIn) { %>
         <div class="action">
-          <a href="/mypage/recommend" class="btn_bookmark">
+          <a href="/mypage/recommend/all" class="btn_bookmark">
             <img src="/public/images/bookmark_icon.png" alt="bookmark_icon"/>
           </a>
           <a href="/notice" class="btn_alarm">
@@ -141,7 +122,7 @@
                     <a href="/mypage"><p>마이페이지</p></a>
                   </li>
                   <li>
-                    <a href="/"><p>개인정보 수정</p></a>
+                    <a href="/mypage/update"><p>개인정보 수정</p></a>
                   </li>
                   <li>
                     <a href="/mypage/qna"><p>1:1 문의</p></a>

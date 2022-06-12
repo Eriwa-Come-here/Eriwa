@@ -83,7 +83,7 @@ app.get("/notice", noticeController.showNotice);
 app.post("/notice/check/", noticeController.checkNotice);
 
 //postController 추가
-app.get("/board", homeController.board, homeController.showBoardBase);
+app.get("/board/all", homeController.board, homeController.showBoard);
 app.get("/board/post-writing",loginController.checkLogin, postController.showPostWriting);
 app.get("/board/post-view/:post_id", postController.showPost);
 app.post("/board/post-view/:post_id/delete", postController.deletePost);
@@ -92,7 +92,7 @@ app.post("/board/post-view/:post_id/edit", upload.single("image"),postController
 app.post("/board/post-writing", upload.single("image"), postController.createPost);
 //app.get("/post-view/:post_id/delete", postController.deletePost);
 
-app.get("/board/:place_name", homeController.board, homeController.showBoard);
+app.get("/board/:place_name", homeController.boardPlace, homeController.showBoard);
 
 //commentController 추가
 app.post("/comment/:post_id", commentController.createComment);
@@ -110,7 +110,7 @@ app.get("/admin/qna/response/:qna_id", adminController.showAdminQnaResponse);
 app.post("/admin/qna/response/:qna_id", adminController.qnaResponse);
 
 //mypageController 추가
-app.get("/mypage", mypageController.mypageGood);
+app.get("/mypage", loginController.checkLogin, mypageController.mypageGood);
 app.get("/mypage/qna", loginController.checkLogin, mypageController.qna, mypageController.showQna);
 app.get("/mypage/qna/write", mypageController.showQnaWrite);
 app.post("/mypage/qna/write", mypageController.qnaWrite, mypageController.redirectView);
@@ -120,13 +120,13 @@ app.post("/mypage/qna/:qna_id/edit", mypageController.qnaEdit, mypageController.
 app.post("/mypage/qna/:qna_id/delete", mypageController.qnaDelete, mypageController.redirectView);
 
 
-app.get("/mypage/recommend", mypageController.recommend, mypageController.showRecommend);
+app.get("/mypage/recommend/all", loginController.checkLogin, mypageController.recommend, mypageController.showRecommend);
+app.get("/mypage/recommend/:place_name", loginController.checkLogin, mypageController.recommendPlace, mypageController.showRecommend);
 app.get("/mypage/comment", mypageController.mypageReply);
 app.post("/mypage/comment/delete", mypageController.mypageCommentDelete);
 app.get("/mypage/post", mypageController.mypageWrite);
 app.post("/mypage/post/delete", mypageController.mypagePostDelete);
-// app.get("/mypage/repair", mypageController.mypageRepair);
-app.get("/mypage/passwordCheck", mypageController.showPasswordCheck);
+//app.get("/mypage/passwordCheck", mypageController.showPasswordCheck);
 app.get("/mypage/update", loginController.checkLogin, mypageController.showUpdate);
 app.post("/mypage/:id/edit", mypageController.edit, mypageController.redirectView);
 

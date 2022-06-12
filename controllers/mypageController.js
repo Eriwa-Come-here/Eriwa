@@ -16,8 +16,6 @@ const db = require("../models/index"),
     },
     getQnaParams = body => {
         return{
-            user_id:body.user_id,
-            qna_id:body.qna_id,
             question:body.question
         }
     };
@@ -105,17 +103,60 @@ module.exports={
       },
 
     showRecommend : (req, res) => {
+        res.locals.place_name = req.params.place_name;
         res.render("mypage-recommend");
     },
 
     recommend: async (req, res, next) => {
         try {
+            res.locals.place_name = "all";
+            let query1 = "SELECT `post`.*, COUNT(`recommend`.`user_id`) AS `recommend_count` FROM `post` LEFT JOIN `user` ON `user`.`user_id` = `post`.`user_id` LEFT JOIN `recommend` ON `post`.`post_id` = `recommend`.`post_id` GROUP BY `post`.`post_id` ORDER BY `written_date` DESC";
+            let query2 = "SELECT `post`.*, COUNT(`comment`.`post_id`) AS `comment_count` FROM `post` LEFT JOIN `comment` ON `post`.`post_id` = `comment`.`post_id` GROUP BY `post`.`post_id` ORDER BY `written_date` DESC";
+            
+            const posts = await sequelize.query(query1, {
+                type: Sequelize.SELECT
+            });
+
+            const comment = await sequelize.query(query2, {
+                type: Sequelize.SELECT
+            });
+        
             let recommends = await Recommend.findAll({
             });
-            res.locals.recommends = recommends;
-
             
-            let posts = await Post.findAll();
+            res.locals.comment = comment;
+            res.locals.recommends = recommends;
+            res.locals.posts = posts;
+
+            next();
+        } catch (error) {
+            console.log(`Error fetching: ${error.message}`);
+            next(error);
+        }
+
+    },
+
+    recommendPlace: async (req, res, next) => {
+        try {
+            let place = req.params.place_name;
+            let query1 = "SELECT `post`.*, COUNT(`recommend`.`user_id`) AS `recommend_count` FROM `post` LEFT JOIN `user` ON `user`.`user_id` = `post`.`user_id` LEFT JOIN `recommend` ON `post`.`post_id` = `recommend`.`post_id` WHERE `post`.`address1` = ? GROUP BY `post`.`post_id` ORDER BY `written_date` DESC";
+            let query2 = "SELECT `post`.*, COUNT(`comment`.`post_id`) AS `comment_count` FROM `post` LEFT JOIN `comment` ON `post`.`post_id` = `comment`.`post_id` WHERE `post`.`address1` = ? GROUP BY `post`.`post_id` ORDER BY `written_date` DESC";
+
+            const posts = await sequelize.query(query1, {
+                type: Sequelize.SELECT,
+                replacements: [place]
+            });
+
+            const comment = await sequelize.query(query2, {
+                type: Sequelize.SELECT,
+                replacements: [place]
+            });
+        
+            let recommends = await Recommend.findAll({
+            });
+            
+            res.locals.comment = comment;
+            res.locals.recommends = recommends;
             res.locals.posts = posts;
 
             next();
@@ -227,11 +268,12 @@ module.exports={
 
     qnaEdit : async (req, res, next) => {
         let qnaId = req.params.qna_id,
-        userId = res.locals.currentUser
         qnaParams = getQnaParams(req.body);
-        console.log(qnaParams);
         try {
-            let qna = await Qna.findByPkAndUpdate({qnaId, userId}, qnaParams);
+            let qna = await sequelize.query("UPDATE `qna` SET `question`=?  WHERE `qna_id` = ?", {
+                type: sequelize.QueryTypes.UPDATE,
+                replacements: [qnaParams.question, qnaId]
+            });
             res.locals.q = qna;
             res.locals.redirect = "/mypage/qna";
             next();
@@ -260,11 +302,12 @@ module.exports={
     },
 
     qnaDelete : async (req, res, next) => {
-        let qnaId = req.params.qna_id,
-        userId = res.locals.user_id;
+        let qnaId = req.params.qna_id;
         try {
-            let qna = await Qna.findByPkAndRemove({qnaId, userId});
-            res.locals.q = qna;
+            await sequelize.query("DELETE FROM `qna` WHERE qna_id = ?", {
+                type: Sequelize.DELETE,
+                replacements: [qnaId]
+            });
             res.locals.redirect = "/mypage/qna";
             next();
         } catch (error) {

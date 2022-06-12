@@ -1,101 +1,98 @@
-<div class="repairList-container">  
-    <div id="repairBig-container">
-        <div class="repair-wrapped">
-            <div class="user_container">
-                <div class="user_info">
-                    <img id="profile" src="/public/images/profile_icon.png" alt="profile_icon">
-                    <br>
-                    <p><%= currentUser.nickname %></p>
-                    <br>
-                    <div id="img_message">
-                        <a href="/chat">
-                            <img src="/public/images/message_icon.png" alt="message_icon">
-                            <p>쪽지함</p>
-                        </a>
-                    </div>
+<div id="container"> 
+    <div class="wrapped_qna">
+        <div class="user_container">
+            <div class="user_info">
+                <img id="profile" src="/public/images/profile_icon.png" alt="profile_icon">
+                <br>
+                <p><%= currentUser.nickname %></p>
+                <br>
+                <div id="img_message">
+                    <a href="/note">
+                        <img src="/public/images/message_icon.png" alt="message_icon">
+                        <p>쪽지함</p>
+                    </a>
                 </div>
-                <div class="user_detail">
-                    <div class="repair-detail_constant">
-                        <p>・ 작성한 글</p>
-                        <p>・ 작성한 댓글</p>
-                        <p>・ 추천한 글</p>
-                        <p>・ 개인정보</p>
-                    </div>
-                    <div class="repair-detail_variable">
-                        <a href=""><p>1건</p></a>
-                        <a href=""><p>56건</p></a>
-                        <a href=""><p>31건</p></a>
-                        <a href="<%=`/mypage/update`%>"><p>수정하기</p></a>
-                    </div>
+            </div>
+            <div class="user_detail">
+                <div class="repair-detail_constant">
+                    <p>・ 작성한 글</p>
+                    <p>・ 작성한 댓글</p>
+                    <p>・ 추천한 글</p>
+                    <p>・ 개인정보</p>
                 </div>
-                <div class="repair-empty">
-                    <form action="/users/<%=currentUser?.user_id%>/delete" method="post">
-                      <button type="submit"><p>탈퇴하기</p></button>
+                <div class="repair-detail_variable">
+                    <a href=""><p>1건</p></a>
+                    <a href=""><p>56건</p></a>
+                    <a href=""><p>31건</p></a>
+                    <a href="<%=`/mypage/update`%>"><p>수정하기</p></a>
+                </div>
+            </div>
+            <div class="repair-empty">
+                <form action="/users/<%=currentUser?.user_id%>/delete" method="post">
+                    <button type="submit"><p>탈퇴하기</p></button>
+                </form>
+            </div>
+        </div>
+        <div class="qna_container">
+            <h3>개인정보 수정</h3>
+            <div class="repair-detail">
+                <div id="repair-wrapper-detail">
+                    <h5>아이디: <%=currentUser?.user_id%></h3>
+                    <h5>이름: <%=currentUser?.name%></h3>
+                    <h5>이메일: <%=currentUser?.email%></h3>
+                    <h5>생년월일: <%=currentUser?.birthdate%></h3>
+                    <form action="/mypage/<%=currentUser?.user_id%>/edit" method="post">
+                    <!-- content-->
+                    <!--
+                    <div id="repair-content">
+                        <div>
+                            <h3 class="join_title"><label for="pswd1">변경할 비밀번호</label></h3>
+                            <span class="repair-box int_pass">
+                                <input type="password" name="password" id="password" class="repair-int" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$"
+                                maxlength="20" minlength="8" placeholder="영소문자와 숫자 1자 이상 반드시 포함, 8자 이상">
+                                <span class="step_ps_url"></span>
+                                <span id="alertTxt">사용불가</span>
+                            </span>
+                            <span class="error_next_box"></span>
+                        </div>
+            
+                        <div>
+                            <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
+                            <span class="repair-box int_pass_check">
+                                <input type="password" name="password2" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$"
+                                id="password2" class="repair-int" maxlength="20" minlength="8">
+                            </span>
+                            <span class="error_next_box"></span>
+                        </div>-->
+            
+                        <!-- NAME -->
+                        <div>
+                            <h3 class="join_title"><label for="phoneNo">닉네임</label></h3>
+                            <span class="repair-box int_mobile">
+                                <input type="text" name="nickname" id="nickname" class="repair-int" maxlength="16" placeholder="한글은 2자 이상, 영어는 4자 이상">
+                            </span>
+                            <span class="error_next_box"></span>    
+                        </div>
+                        <div>
+                            <h3 class="join_title"><label for="email">이메일<span class="optional"></span></label></h3>
+                            <span class="repair-box int_email">
+                                <input type="text" name="email" id="email" 
+                                pattern="([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                                class="repair-int" maxlength="100">
+                            </span>
+                            <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>    
+                        </div>
+            
+                        <!-- JOIN BTN-->
+                        <div class="repair-btn_area">
+                            <button type="submit" id="btnJoin">
+                                <span>수정</span>
+                            </button>
+                        </div>
+                    </div> 
+                    <!-- content-->
                     </form>
                 </div>
-            </div>
-            <div class="repair_container">
-                <h3>개인정보 수정</h3>
-                <div class="repair-detail">
-                    <div id="repair-wrapper-detail">
-                        <h5>아이디: <%=currentUser?.user_id%></h3>
-                        <h5>이름: <%=currentUser?.name%></h3>
-                        <h5>이메일: <%=currentUser?.email%></h3>
-                        <h5>생년월일: <%=currentUser?.birthdate%></h3>
-                        <form action="/mypage/<%=currentUser?.user_id%>/edit" method="post">
-                        <!-- content-->
-                        <!--
-                        <div id="repair-content">
-                            <div>
-                                <h3 class="join_title"><label for="pswd1">변경할 비밀번호</label></h3>
-                                <span class="repair-box int_pass">
-                                    <input type="password" name="password" id="password" class="repair-int" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$"
-                                    maxlength="20" minlength="8" placeholder="영소문자와 숫자 1자 이상 반드시 포함, 8자 이상">
-                                    <span class="step_ps_url"></span>
-                                    <span id="alertTxt">사용불가</span>
-                                </span>
-                                <span class="error_next_box"></span>
-                            </div>
-                
-                            <div>
-                                <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
-                                <span class="repair-box int_pass_check">
-                                    <input type="password" name="password2" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$"
-                                    id="password2" class="repair-int" maxlength="20" minlength="8">
-                                </span>
-                                <span class="error_next_box"></span>
-                            </div>-->
-                
-                            <!-- NAME -->
-                            <div>
-                                <h3 class="join_title"><label for="phoneNo">닉네임</label></h3>
-                                <span class="repair-box int_mobile">
-                                    <input type="text" name="nickname" id="nickname" class="repair-int" maxlength="16" placeholder="한글은 2자 이상, 영어는 4자 이상">
-                                </span>
-                                <span class="error_next_box"></span>    
-                            </div>
-                            <div>
-                                <h3 class="join_title"><label for="email">이메일<span class="optional"></span></label></h3>
-                                <span class="repair-box int_email">
-                                    <input type="text" name="email" id="email" 
-                                    pattern="([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
-                                    class="repair-int" maxlength="100">
-                                </span>
-                                <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>    
-                            </div>
-                
-                            <!-- JOIN BTN-->
-                            <div class="repair-btn_area">
-                                <button type="submit" id="btnJoin">
-                                    <span>수정</span>
-                                </button>
-                            </div>
-                        </div> 
-                        <!-- content-->
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
