@@ -11,14 +11,14 @@ module.exports = {
   noteList: async (req, res, next) => {
     try {
       if (req.params.type == "receive") {
-        const [result, metadata] = await sequelize.query("SELECT * FROM `note` WHERE `receive_user_id` = ? ORDER BY `written_date` DESC", {
+        const [result, metadata] = await sequelize.query("SELECT `n`.*, `u`.`nickname` AS `send_user_nickname` FROM `note` AS `n` LEFT JOIN `user` AS `u` ON `u`.`user_id` = `n`.`send_user_id` WHERE `n`.`receive_user_id` = ? ORDER BY `n`.`written_date` DESC", {
           type: Sequelize.SELECT,
           replacements: [res.locals.currentUser.dataValues.user_id]
           //replacements: ['qwerty1253']
       });
-      res.render("receive-note-list", {type: req.params.type,notes: result, getDate: datefunc.getDate});
+      res.render("receive-note-list", {type: req.params.type, notes: result, getDate: datefunc.getDate});
       } else if (req.params.type == "send") {
-        const [result, metadata] = await sequelize.query("SELECT * FROM `note` WHERE `send_user_id` = ? ORDER BY `written_date` DESC", {
+        const [result, metadata] = await sequelize.query("SELECT `n`.*, `u`.`nickname` AS `receive_user_nickname` FROM `note` AS `n` LEFT JOIN `user` AS `u` ON `u`.`user_id` = `n`.`receive_user_id` WHERE `n`.`send_user_id` = ? ORDER BY `n`.`written_date` DESC", {
           type: Sequelize.SELECT,
           replacements: [res.locals.currentUser.dataValues.user_id]
           //replacements: ['qwerty1253']

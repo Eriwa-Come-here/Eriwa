@@ -35,7 +35,7 @@
             <li class="note-list" onclick="javascript: openNote('<%= `note-modal-container-${note.note_id}` %>');" style="cursor:pointer;">
               <div class="send-user" style="display:inline-block; text-align: center;">
                 <img src="/public/images/usericon.png" alt="프로필 이미지" width="20px"><br/>
-                <span><%= note.send_user_id %></span>
+                <span><%= note.send_user_nickname %></span>
               </div>
               <div class="note-text">
                 <div class="note-content"><%= note.note_content %></div>
@@ -50,7 +50,7 @@
               <div class="note-modal">
                 <div class="note-modal-content">
                   <div class="note-modal-header">
-                    <div><span>보낸사람</span><span><%= note.send_user_id %></span></div>
+                    <div><span>보낸사람</span><span><%= note.send_user_nickname %></span></div>
                     <div><span>받은날짜</span><span><%= getDate(note.written_date) %></span></div>
                   </div>
                   <div class="note-modal-text">
@@ -85,7 +85,7 @@
             <div class="recipient-area-wrap">
               <div class="recipient-area">
                 <label for="recipient">받는사람</label>
-                <input type="text" name="recipient" id="recipient">
+                <input type="text" name="recipient" id="recipient" placeholder="닉네임">
               </div>
             </div>
             <div class="note-write-wrap">
