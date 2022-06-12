@@ -15,16 +15,23 @@
 
 .note-list-main {
   position: relative;
-  margin-left: 150px;
-  margin-right: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
   z-index: 5;
 }
 
-.note-list-category > h2 {
+.note-list-category {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.note-list-type > h2 {
   margin: 15px 5px 15px auto;
 }
 
-.note-list-category > h2 > span > a {
+.note-list-type > h2 > span > a {
   font-size: 18px;
   font-weight: normal;
   text-decoration: underline;
@@ -41,6 +48,16 @@
 #send-note > a {
   font-weight: bold;
   color: #000;
+}
+
+.note-write-button {
+  font-size: 15px;
+  background-color: #ffffff;
+  border: 1.5px solid darkgray;
+  border-radius: 8px;
+	cursor: pointer;
+	color: rgb(0, 0, 0);
+	padding: 6px 8px;
 }
 
 .note-list-header {
@@ -102,4 +119,77 @@
   border: 1px solid darkgray;
   border-radius: 5px;
   padding: 5px 10px;
+}
+
+.note-modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.note-modal-container .note-modal-bg {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.note-modal {
+  position: absolute;
+  background-color: #fff;
+  width: 400px;
+  height: 250px;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.note-modal-text > p {
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.note-modal-item, .note-modal-content {
+  padding: 20px 20px 20px 0px;
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.note-modal-header > div > span{
+  margin: 10px 10px 10px 0px;
+}
+
+.note-modal-content {
+  padding: 20px 20px 20px 20px;
+}
+
+.recipient-area, .note-write-area {
+  display: grid;
+  grid-template-columns: 2fr 7fr;
+  column-gap: 10px;
+  align-items: center;
+  text-align: center;
+
+}
+
+.note-write-area > textarea {
+  resize: none;
+}
+
+.note-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.note-modal-footer > button {
+  margin: 0px 3px;
+}
+
+.hide-note {
+  display: none;
 }

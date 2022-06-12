@@ -78,9 +78,9 @@
           <!-- 작성자에게만 보이게 -->
           <% if (post.user_id && post.user_id == currentUser?.dataValues.user_id) { %>
             <span class="article-footer-right">
-              <a href="<%= `/board/post-view/${post.post_id}/edit` %>">수정</a>
+              <a href="<%= `/board/post-view/${post.post_id}/edit` %>" class="post-edit-delete">수정</a>
               <form onsubmit="return confirm('정말 삭제하시겠습니까?');" action="<%= `/board/post-view/${post.post_id}/delete` %>" method="post">
-                <input type="submit" name="삭제" value="삭제" class="edit-delete">
+                <input type="submit" name="삭제" value="삭제" class="post-edit-delete">
               </form>
             </span>
           <% } %>
@@ -107,7 +107,7 @@
                     <% if (currentUser && comment.user_id == currentUser?.dataValues.user_id) { %>
                       <li class="drop-item"><a href="/mypage" class="drop-button">마이페이지</a></li>
                     <% } else { %>
-                      <li class="drop-item"><a href="" class="drop-button">쪽지 보내기</a></li>
+                      <li class="drop-item"><a onclick="javascript: openNote('note-write-modal-in-post', '<%= comment.nickname %>');" class="drop-button">쪽지 보내기</a></li>
                     <% } %>
                   </ul>
               </div>
@@ -120,10 +120,10 @@
                   <% if (comment.user_id && comment.user_id == currentUser?.dataValues.user_id) { %>
                     <span class="comment-buttons">
                       <!-- 클릭하면 수정 폼을 보여줌 -->
-                      <a onclick="showEdit('<%= `comment-content-${comment.comment_id}` %>', '<%= `comment-edit-${comment.comment_id}` %>');" href="javascript:void(0)" class="post-edit-delete">수정</a>
+                      <a onclick="showEdit('<%= `comment-content-${comment.comment_id}` %>', '<%= `comment-edit-${comment.comment_id}` %>');" href="javascript:void(0)" class="edit-delete">수정</a>
                       <form onsubmit="return confirm('정말 삭제하시겠습니까?');" action="<%= `/comment/${post.post_id}/delete` %>" method="post">
                         <input type="hidden" name="comment_id" value="<%= comment.comment_id %>">
-                        <input type="submit" name="삭제" value="삭제" class="post-edit-delete">
+                        <input type="submit" name="삭제" value="삭제" class="edit-delete">
                       </form>
                     </span>
                     <%}%>
@@ -137,9 +137,9 @@
               <form class="comment-textarea" onsubmit="return confirm('댓글을 수정하시겠습니까?');" action="<%= `/comment/${post.post_id}/edit` %>" method="post">
                 <input type="hidden" name="comment_author" value="<%= comment.user_id %>">
                 <input type="hidden" name="comment_id" value="<%= comment.comment_id %>">
-                <div><textarea placeholder="<%= comment.comment %>" name="comment_content" rows="8" cols="80" style="padding: 6px;"></textarea></div>
+                <div><textarea placeholder="<%= comment.comment %>" name="comment_content" id="<%= `edit-textarea-${comment.comment_id}` %>" rows="8" cols="80" style="padding: 6px;"></textarea></div>
                 <div class="comment-edit-buttons">
-                  <input type="button" onclick="hideEdit('<%= `comment-content-${comment.comment_id}` %>', '<%= `comment-edit-${comment.comment_id}` %>');" name="cancel_update" value="취소" class="post-view-myButton">
+                  <input type="button" onclick="hideEdit('<%= `comment-content-${comment.comment_id}` %>', '<%= `comment-edit-${comment.comment_id}` %>', '<%= `edit-textarea-${comment.comment_id}` %>');" name="cancel_update" value="취소" class="post-view-myButton">
                   <input type="submit" name="submit_update" value="수정" class="post-view-myButton comment-edit-button">
                 </div>
               </form>
@@ -155,6 +155,7 @@
         <form class="comment-textarea" onsubmit="return confirm('댓글을 등록하시겠습니까?');" action="<%= `/comment/${post.post_id}` %>" method="post">
           <input type="hidden" name="post_author" value="<%= post.user_id %>">
           <input type="hidden" name="comment_author" value="<%= currentUser?.dataValues.user_id %>">
+          <input type="hidden" name="comment_author_nickname" value="<%= currentUser?.dataValues.nickname %>">
           <input type="hidden" name="post_title" value="<%= post.title %> ">
           <div><textarea placeholder="내용을 입력해 주세요" name="comment_content" rows="8" cols="80" style="padding: 6px;"></textarea></div>
           <div><input type="submit" name="등록" value="등록" class="post-view-myButton"></div>
@@ -162,6 +163,36 @@
       </div>
     </div>
 
+    <!-- note-modal -->
+    <div class="note-modal-container hide-note" id="note-write-modal-in-post">
+      <div class="note-modal-bg"></div>
+      <div class="note-modal">
+        <form action="/note/write" onsubmit="return confirm('쪽지를 보내시겠습니까?');" method="post">
+          <input type="hidden" name="url" value="<%= `/board/post-view/${post.post_id}` %>">
+          <input type="hidden" name="note_author_id" value="<%= currentUser.dataValues.user_id %>">
+          <input type="hidden" name="note_author_nickname" value="<%= currentUser.dataValues.nickname %>">
+          <div class="note-modal-item">
+            <div class="recipient-area-wrap">
+              <div class="recipient-area">
+                <label for="recipient">받는사람</label>
+                <input type="text" name="recipient" id="recipient-in-post" readonly>
+              </div>
+            </div>
+            <div class="note-write-wrap">
+              <div class="note-write-area">
+                <label for="new-note-textarea">내용</label>
+                <textarea name="new_note_content" id="new-note-textarea-in-post" rows="8" style="padding: 6px;"></textarea>
+              </div>
+            </div>
+            <div class="note-modal-footer">
+              <button type="submit">보내기</button>
+              <button type="button" onclick="javascript: closeNote('note-write-modal-in-post', 'new-note-textarea-in-post');">취소</button>
+            </div>
+          </div>
+        </form>
+      </div>   
+    </div>
+    
     <div class="post-view-buttons">
       <a href="/board">목록</a>
       <a href="<%= `/board/post-view/${post.post_id}` %>">TOP</a>

@@ -88,9 +88,8 @@ app.get("/board/post-writing",loginController.checkLogin, postController.showPos
 app.get("/board/post-view/:post_id", postController.showPost);
 app.post("/board/post-view/:post_id/delete", postController.deletePost);
 app.get("/board/post-view/:post_id/edit",postController.showPostEdit);
-app.post("/board/post-view/:post_id/edit", upload.single("image"),postController.editPost);
+app.post("/board/post-view/:post_id/edit", upload.single("newimage"),postController.editPost);
 app.post("/board/post-writing", upload.single("image"), postController.createPost);
-//app.get("/post-view/:post_id/delete", postController.deletePost);
 
 app.get("/board/:place_name", homeController.boardPlace, homeController.showBoard);
 
@@ -104,7 +103,7 @@ app.get("/admin/member", adminController.showAdminMember);
 app.post("/admin/member/delete", adminController.memberDelete);
 app.get("/admin/post", adminController.showAdminPost);
 app.post("/admin/post/delete", adminController.postDelete);
-app.get("/admin/analysis", adminController.showAdminAnalysis);
+// app.get("/admin/analysis", adminController.showAdminAnalysis);
 app.get("/admin/qna", adminController.showAdminQna);
 app.get("/admin/qna/response/:qna_id", adminController.showAdminQnaResponse);
 app.post("/admin/qna/response/:qna_id", adminController.qnaResponse);
@@ -131,6 +130,7 @@ app.get("/mypage/update", loginController.checkLogin, mypageController.showUpdat
 app.post("/mypage/:id/edit", mypageController.edit, mypageController.redirectView);
 
 //noteController 추가
+app.post("/note/write", noteController.noteWrite);
 app.get("/note/:type", noteController.noteList);
 app.get("/chat/write", noteController.chatStory);
 

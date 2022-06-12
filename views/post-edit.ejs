@@ -1,4 +1,4 @@
-<script src="/public/js/post.js"></script>
+<script src="/public/js/post-edit.js"></script>
 <main class="post-main">
   <form action="<%= `/board/post-view/${post.post_id}/edit`%>" method="post" enctype="multipart/form-data">
   <input type="hidden" name="post_author" value="<%= currentUser.dataValues.user_id %>">
@@ -13,7 +13,12 @@
         </span>
         <span class="post_text_border">위치</span>
         <span>
-          <select id="address1" class="place-input1" onchange="loadsigungu();" name="address1"></select>
+          <script>
+            sido('<%= post.address1 %>');
+            loadsigungu('<%= post.address2 %>');
+          </script>
+          <select id="address1" class="place-input1" onchange="loadsigungu();" name="address1">
+          </select>
           <select id="address2" class="place-input1" name="address2"></select>
           <span class="post_input_border">
             <input type="text" class="place-input2" name="address3" value="<%= post.address3 %>"/>
@@ -21,34 +26,96 @@
         </span>
         <span class="post_text_border">장소종류</span>
         <span class="post_input_border">
-          <input type="radio" name="place_type" value="카페" /> 카페
+          <% if (post.place_type=="카페") { %>
+          <input type="radio" name="place_type" value="카페" checked/> 카페
           <input type="radio" name="place_type" value="식당" /> 식당
           <input type="radio" name="place_type" value="주점" /> 주점
           <input type="radio" name="place_type" value="관광" /> 관광
           <input type="radio" name="place_type" value="기타" /> 기타
+          <% } else if (post.place_type=="식당") { %>
+            <input type="radio" name="place_type" value="카페" /> 카페
+            <input type="radio" name="place_type" value="식당" checked/> 식당
+            <input type="radio" name="place_type" value="주점" /> 주점
+            <input type="radio" name="place_type" value="관광" /> 관광
+            <input type="radio" name="place_type" value="기타" /> 기타
+            <% } else if (post.place_type=="주점") { %>
+              <input type="radio" name="place_type" value="카페" /> 카페
+              <input type="radio" name="place_type" value="식당" /> 식당
+              <input type="radio" name="place_type" value="주점" checked/> 주점
+              <input type="radio" name="place_type" value="관광" /> 관광
+              <input type="radio" name="place_type" value="기타" /> 기타
+              <% } else if (post.place_type=="관광") { %>
+                <input type="radio" name="place_type" value="카페" /> 카페
+                <input type="radio" name="place_type" value="식당" /> 식당
+                <input type="radio" name="place_type" value="주점" /> 주점
+                <input type="radio" name="place_type" value="관광" checked/> 관광
+                <input type="radio" name="place_type" value="기타" /> 기타
+                <% } else { %>
+                <input type="radio" name="place_type" value="카페"   /> 카페
+                  <input type="radio" name="place_type" value="식당" /> 식당
+                  <input type="radio" name="place_type" value="주점" /> 주점
+                  <input type="radio" name="place_type" value="관광" /> 관광
+                  <input type="radio" name="place_type" value="기타" checked/> 기타
+                  <% } %>                   
         </span>
         <span class="post_text_border">주차장 이용</span>
         <span class="post_input_border">
-          <input type="radio" name="can_park" value="1" /> 가능
-          <input type="radio" name="can_park" value="0" /> 불가능
+          <% if (post.can_park==1) { %>
+            <input type="radio" name="can_park" value="1" checked/> 가능
+            <input type="radio" name="can_park" value="0" /> 불가능
+            <% } else { %>
+              <input type="radio" name="can_park" value="1" /> 가능
+              <input type="radio" name="can_park" value="0" checked/> 불가능
+              <% } %> 
         </span>
         <span class="post_text_border">반려동물 동반</span>
         <span class="post_input_border">
-          <input type="radio" name="can_pet" value="1" /> 가능
+          <% if (post.can_pet==1) { %>
+          <input type="radio" name="can_pet" value="1" checked/> 가능
           <input type="radio" name="can_pet" value="0" /> 불가능
+          <% } else { %>
+            <input type="radio" name="can_pet" value="1" /> 가능
+            <input type="radio" name="can_pet" value="0" checked/> 불가능
+            <% } %> 
         </span>
         <span class="post_text_border">평점</span>
         <span class="post_input_border">
-          <input type="radio" name="grade" value="1" /> 1
-          <input type="radio" name="grade" value="2" /> 2
-          <input type="radio" name="grade" value="3" /> 3
-          <input type="radio" name="grade" value="4" /> 4
-          <input type="radio" name="grade" value="5" /> 5
+          <% if (post.grade==1) { %>
+            <input type="radio" name="grade" value="1" checked/> 1
+            <input type="radio" name="grade" value="2" /> 2
+            <input type="radio" name="grade" value="3" /> 3
+            <input type="radio" name="grade" value="4" /> 4
+            <input type="radio" name="grade" value="5" /> 5
+            <% } else if (post.grade==2) { %>
+              <input type="radio" name="grade" value="1" /> 1
+              <input type="radio" name="grade" value="2" checked/> 2
+              <input type="radio" name="grade" value="3" /> 3
+              <input type="radio" name="grade" value="4" /> 4
+              <input type="radio" name="grade" value="5" /> 5
+              <% } else if (post.grade==3) { %>
+                <input type="radio" name="grade" value="1" /> 1
+                <input type="radio" name="grade" value="2" /> 2
+                <input type="radio" name="grade" value="3" checked/> 3
+                <input type="radio" name="grade" value="4" /> 4
+                <input type="radio" name="grade" value="5" /> 5
+                <% } else if (post.grade==4) { %>
+                  <input type="radio" name="grade" value="1" /> 1
+                  <input type="radio" name="grade" value="2" /> 2
+                  <input type="radio" name="grade" value="3" /> 3
+                  <input type="radio" name="grade" value="4" checked/> 4
+                  <input type="radio" name="grade" value="5" /> 5
+                  <% } else { %>
+                      <input type="radio" name="grade" value="1" /> 1
+                      <input type="radio" name="grade" value="2" /> 2
+                      <input type="radio" name="grade" value="3" /> 3
+                      <input type="radio" name="grade" value="4" /> 4
+                      <input type="radio" name="grade" value="5" checked/> 5
+                      <% } %> 
         </span>
         <span class="post_text_border">사진</span>
         <span class="post_input_border">
-          <input type="file" class="real-upload" accept="image/*" onchange="readURL(this)" name="image"/>
-          <img id="preview"/>
+          <input type="file" class="real-upload" accept="image/*" onchange="readURL(this)" name="newimage"/>
+          <img id="preview" src="<%= `/public/uploadFiles/${post.image}` %>"/>
         </span>
         <span class="post_text_border">방문후기</span>
         <span class="post_input_border">
