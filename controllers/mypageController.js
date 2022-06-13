@@ -13,6 +13,11 @@ const db = require("../models/index"),
             nickname: body.nickname,
             email: body.email
         };
+    },
+    getQnaParams = body => {
+        return{
+            question:body.question
+        }
     };
 const Sequelize = require("sequelize");
 const sequelize = db.sequelize;
@@ -97,35 +102,61 @@ module.exports={
         }
       },
 
-    qna : async (req, res, next) => {
-        try {
-            let qnas = await Qna.findAll({
-                where: {user_id : res.locals.currentUser.user_id}
-            });
-            res.locals.qnas = qnas;
-            next();
-        } catch (error) {
-            console.log(`Error fetching: ${error.message}`);
-            next(error);
-        }
-    },
-
-    showQna : (req, res) => {
-        res.render("mypage-qna");
-    },
-        
     showRecommend : (req, res) => {
+        res.locals.place_name = req.params.place_name;
         res.render("mypage-recommend");
     },
 
     recommend: async (req, res, next) => {
         try {
+            res.locals.place_name = "all";
+            let query1 = "SELECT `post`.*, COUNT(`recommend`.`user_id`) AS `recommend_count` FROM `post` LEFT JOIN `user` ON `user`.`user_id` = `post`.`user_id` LEFT JOIN `recommend` ON `post`.`post_id` = `recommend`.`post_id` GROUP BY `post`.`post_id` ORDER BY `written_date` DESC";
+            let query2 = "SELECT `post`.*, COUNT(`comment`.`post_id`) AS `comment_count` FROM `post` LEFT JOIN `comment` ON `post`.`post_id` = `comment`.`post_id` GROUP BY `post`.`post_id` ORDER BY `written_date` DESC";
+            
+            const posts = await sequelize.query(query1, {
+                type: Sequelize.SELECT
+            });
+
+            const comment = await sequelize.query(query2, {
+                type: Sequelize.SELECT
+            });
+        
             let recommends = await Recommend.findAll({
             });
-            res.locals.recommends = recommends;
-
             
-            let posts = await Post.findAll();
+            res.locals.comment = comment;
+            res.locals.recommends = recommends;
+            res.locals.posts = posts;
+
+            next();
+        } catch (error) {
+            console.log(`Error fetching: ${error.message}`);
+            next(error);
+        }
+
+    },
+
+    recommendPlace: async (req, res, next) => {
+        try {
+            let place = req.params.place_name;
+            let query1 = "SELECT `post`.*, COUNT(`recommend`.`user_id`) AS `recommend_count` FROM `post` LEFT JOIN `user` ON `user`.`user_id` = `post`.`user_id` LEFT JOIN `recommend` ON `post`.`post_id` = `recommend`.`post_id` WHERE `post`.`address1` = ? GROUP BY `post`.`post_id` ORDER BY `written_date` DESC";
+            let query2 = "SELECT `post`.*, COUNT(`comment`.`post_id`) AS `comment_count` FROM `post` LEFT JOIN `comment` ON `post`.`post_id` = `comment`.`post_id` WHERE `post`.`address1` = ? GROUP BY `post`.`post_id` ORDER BY `written_date` DESC";
+
+            const posts = await sequelize.query(query1, {
+                type: Sequelize.SELECT,
+                replacements: [place]
+            });
+
+            const comment = await sequelize.query(query2, {
+                type: Sequelize.SELECT,
+                replacements: [place]
+            });
+        
+            let recommends = await Recommend.findAll({
+            });
+            
+            res.locals.comment = comment;
+            res.locals.recommends = recommends;
             res.locals.posts = posts;
 
             next();
@@ -171,6 +202,118 @@ module.exports={
         successFlash:"Logged in!"
 
     }),
+
+
+    qna : async (req, res, next) => {
+        try {
+            let qnas = await Qna.findAll({
+                where: {user_id : res.locals.currentUser.user_id}
+            });
+            res.locals.qnas = qnas;
+            next();
+        } catch (error) {
+            console.log(`Error fetching: ${error.message}`);
+            next(error);
+        }
+    },
+
+    showQna : (req, res) => {
+        res.render("mypage-qna");
+    },
+        
+    qnaWrite : async (req, res, next) => {
+        let qnaParams = getQnaParams(req.body);
+        let max = await Qna.max('qna_id');
+
+        if(max==undefined) max=0;
+        max += 1;
+        qnaParams.user_id = res.locals.currentUser.user_id;
+        qnaParams.qna_id = max;
+
+        try {
+            let qna = await Qna.create(qnaParams);   
+            res.locals.q = qna;
+            res.locals.redirect = "/mypage/qna";
+            next();
+        } catch (error) {
+            console.log(`Error fetching: ${error.message}`);
+            next(error);
+        }
+    },
+
+
+    showQnaWrite : (req, res) => {
+        res.render("qna-write");
+    },
+
+
+    qnaView : async (req, res, next) => {
+        let qnaId = req.params.qna_id;
+        try {
+            let qna = await Qna.findOne({
+                where:{qna_id:qnaId}
+            });
+            res.locals.q = qna;
+            next();
+        } catch (error) {
+            console.log(`Error fetching: ${error.message}`);
+            next(error);
+        }
+    },
+
+
+    showQnaView : (req, res) => {
+        res.render("qna-view");
+    },
+
+    qnaEdit : async (req, res, next) => {
+        let qnaId = req.params.qna_id,
+        qnaParams = getQnaParams(req.body);
+        try {
+            let qna = await sequelize.query("UPDATE `qna` SET `question`=?  WHERE `qna_id` = ?", {
+                type: sequelize.QueryTypes.UPDATE,
+                replacements: [qnaParams.question, qnaId]
+            });
+            res.locals.q = qna;
+            res.locals.redirect = "/mypage/qna";
+            next();
+
+        } catch (error) {
+            next(error);
+        }
+    },
+
+    qnaEditView : async (req, res, next) => {
+        let qnaId = req.params.qna_id;
+        try {
+            let qna = await Qna.findOne({
+                where:{qna_id:qnaId}
+            });
+            res.locals.q = qna;
+            next();
+        } catch (error) {
+            console.log(`Error fetching: ${error.message}`);
+            next(error);
+        }
+    },
+
+    showQnaEdit : async (req, res) => {
+        res.render("qna-edit");
+    },
+
+    qnaDelete : async (req, res, next) => {
+        let qnaId = req.params.qna_id;
+        try {
+            await sequelize.query("DELETE FROM `qna` WHERE qna_id = ?", {
+                type: Sequelize.DELETE,
+                replacements: [qnaId]
+            });
+            res.locals.redirect = "/mypage/qna";
+            next();
+        } catch (error) {
+            next(error);
+        }
+    },
     
 
     logout: async (req, res, next)=>{

@@ -31,6 +31,11 @@ module.exports = {
         
         try { 
             let user = new User(userParams);
+            if(await User.findOne({ where: {nickname:userParams.nickname}})) {
+                req.flash("error", "중복 닉네임입니다");
+                res.locals.redirect="/users/signup";
+            }
+
             User.register(user, req.body.password, (error, user)=>{
                 if(user){
                     req.flash("success", `반가워요 ${user.nickname}님🥰 어서 로그인하여 이리와를 즐겨보세요!`);
@@ -40,14 +45,14 @@ module.exports = {
                 }else{
                     res.locals.redirect = "/users/signup";
                     console.log(`Error from signup : ${error.message}`);
-                    req.flash("error", "비밀번호가 틀렸습니다");
+                    req.flash("error", "중복 아이디입니다");
                     next(error);
                 }
             });
         } catch (error) {
             console.log(`Error from signup : ${error.message}`);
             res.locals.redirect="/users/signup";
-            req.flash("error", "Failed to login");
+            req.flash("error", "Failed to signup");
             next(error);
         };
     }, 
@@ -86,7 +91,7 @@ module.exports = {
 
     logout: (req, res, next)=>{
         req.logout((err)=>{
-            req.flash("success", "로그인 되었습니다! 다음에도 찾아주실거죠?🥹");
+            req.flash("success", "로그아웃 되었습니다! 다음에도 찾아주실거죠?🥹");
             res.locals.redirect="/"
             next();
         })

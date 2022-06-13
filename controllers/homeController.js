@@ -7,26 +7,33 @@ const db = require("../models/index"),
           place_address: body.address
       };
   };
+const Sequelize = require("sequelize");
+const sequelize = db.sequelize;
 
 module.exports={
     //function
     index : async (req, res, next) => {
         try {
             let max = await Post.max('view_count');
-            let post = await Post.findOne({
-                where: { view_count: max }
+            let query1 = "SELECT `post`.*, COUNT(`recommend`.`user_id`) AS `recommend_count` FROM `post` LEFT JOIN `user` ON `user`.`user_id` = `post`.`user_id` LEFT JOIN `recommend` ON `post`.`post_id` = `recommend`.`post_id` GROUP BY `post`.`post_id` ORDER BY `written_date` DESC";
+            let query2 = "SELECT `post`.*, COUNT(`comment`.`post_id`) AS `comment_count` FROM `post` LEFT JOIN `comment` ON `post`.`post_id` = `comment`.`post_id` GROUP BY `post`.`post_id` ORDER BY `written_date` DESC";
+            let query3 = "SELECT `post`.*, COUNT(`comment`.`post_id`) AS `comment_count`, COUNT(`recommend`.`user_id`) AS `recommend_count` FROM `post` LEFT JOIN `comment` ON `post`.`post_id` = `comment`.`post_id` LEFT JOIN `recommend` ON `post`.`post_id` = `recommend`.`post_id` WHERE `post`.`view_count` = (SELECT MAX(`view_count`) FROM `post` GROUP BY `post`.`post_id` LIMIT 1) GROUP BY `post`.`post_id` LIMIT 1";
+
+            const posts = await sequelize.query(query1, {
+                type: Sequelize.SELECT
             });
-            let posts = await Post.findAll({
-                order: [["written_date", "DESC"]]
-                /*
-                include : [{
-                    model: Comment,
-                    required: true
-                }]*/
+
+            const comment = await sequelize.query(query2, {
+                type: Sequelize.SELECT
+            });
+
+            const post = await sequelize.query(query3, {
+                type: Sequelize.SELECT
             });
 
             res.locals.post = post;
             res.locals.posts = posts;
+            res.locals.comment = comment;
             next();
         } catch (error) {
             console.log(`Error fetching: ${error.message}`);
@@ -45,11 +52,45 @@ module.exports={
     },
 
     board : async (req, res, next) => {
-        try {
-            let posts = await Post.findAll({
-                order: [["written_date", "DESC"]]
+        try {        
+            res.locals.place_name = "all";
+            let query1 = "SELECT `post`.*, COUNT(`recommend`.`user_id`) AS `recommend_count` FROM `post` LEFT JOIN `user` ON `user`.`user_id` = `post`.`user_id` LEFT JOIN `recommend` ON `post`.`post_id` = `recommend`.`post_id` GROUP BY `post`.`post_id` ORDER BY `written_date` DESC";
+            let query2 = "SELECT `post`.*, COUNT(`comment`.`post_id`) AS `comment_count` FROM `post` LEFT JOIN `comment` ON `post`.`post_id` = `comment`.`post_id` GROUP BY `post`.`post_id` ORDER BY `written_date` DESC";
+            
+            const posts = await sequelize.query(query1, {
+                type: Sequelize.SELECT
+            });
+
+            const comment = await sequelize.query(query2, {
+                type: Sequelize.SELECT
             });
             
+            res.locals.comment = comment;
+            res.locals.posts = posts;
+            next();
+        } catch (error) {
+            console.log(`Error fetching: ${error.message}`);
+            next(error);
+        }
+    },
+
+    boardPlace : async (req, res, next) => {
+        try {
+            let place = req.params.place_name;
+            let query1 = "SELECT `post`.*, COUNT(`recommend`.`user_id`) AS `recommend_count` FROM `post` LEFT JOIN `user` ON `user`.`user_id` = `post`.`user_id` LEFT JOIN `recommend` ON `post`.`post_id` = `recommend`.`post_id` WHERE `post`.`address1` = ? GROUP BY `post`.`post_id` ORDER BY `written_date` DESC";
+            let query2 = "SELECT `post`.*, COUNT(`comment`.`post_id`) AS `comment_count` FROM `post` LEFT JOIN `comment` ON `post`.`post_id` = `comment`.`post_id` WHERE `post`.`address1` = ? GROUP BY `post`.`post_id` ORDER BY `written_date` DESC";
+
+            const posts = await sequelize.query(query1, {
+                type: Sequelize.SELECT,
+                replacements: [place]
+            });
+
+            const comment = await sequelize.query(query2, {
+                type: Sequelize.SELECT,
+                replacements: [place]
+            });
+            
+            res.locals.comment = comment;
             res.locals.posts = posts;
             next();
         } catch (error) {
@@ -59,20 +100,14 @@ module.exports={
     },
     
     showBoard : (req, res) => {
-        res.locals.p = req.params.place_name;
+        res.locals.place_name = req.params.place_name;
 
         try{
-            res.render("board"),{
-                place_name: params.place_address
-            }
+            res.render("board");
         }
         catch(err){
             console.log(err);
         }
-    },
-
-    showBoardBase : (req, res) => {
-        res.render("board");
     },
     
     showDetailSearch : (req, res) => {

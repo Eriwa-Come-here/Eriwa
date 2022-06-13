@@ -5,7 +5,7 @@ module.exports = (sequelize, Sequelize) => {
     static async findByPkAndUpdate(id, params) {
       try {
         let user = await User.findByPk(id);
-        let oldPassword = user.password;
+        //let oldPassword = user.password;
         if (user) {
           user = await User.update(params, {
             where: { user_id: id },

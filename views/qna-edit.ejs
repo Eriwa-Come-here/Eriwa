@@ -1,0 +1,20 @@
+<div class="qna_write">
+    <form action="/mypage/qna/<%=q.qna_id%>/edit" method="post">
+        <div class="qna_container">
+            <h3>1:1 문의글 작성</h3>
+            <div class="qna_write_container">
+                <span class="qna_border">내용</span>
+                <span class="qna_input_border">
+                    <textarea cols="51" rows="15" name="question" class="textarea-style" ><%=q.question%></textarea>
+                </span>
+                <br>
+                <div>
+                    <span class="btn_qna">
+                    <button class="btn_write" type="submit">수정</button>
+                    </span>
+                </div>
+                
+            </div>
+        </div>
+    </form>
+</div>
