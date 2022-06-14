@@ -135,7 +135,7 @@ input {
     padding-left: 10px;
 }
 
-select {
+select.sign_selec {
     width: 100%;
     height: 29px;
     font-size: 15px;

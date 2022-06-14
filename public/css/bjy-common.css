@@ -135,3 +135,7 @@ div.listview_real_content{
     font-weight: bold;
     font-size: 13px;
 }
+
+button{
+    cursor: pointer;
+}

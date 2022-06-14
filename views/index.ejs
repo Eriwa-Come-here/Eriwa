@@ -41,10 +41,12 @@
             </div>
         </section>
     </div>
-    <div class="search">
-            <input type="text" placeholder="검색">
-            <a href="/search"><img src="/public/images/search_icon.png" alt="검색"></a>
-    </div>
+    <form action="/search" method="post">
+        <div class="search">
+            <input type="text" name="search_content" placeholder="검색창으로 이동하기" disabled>
+            <a href="/search"><button type="submit" style="cursor: pointer;"><img src="/public/images/search_icon.png" alt="검색"></button></a>
+        </div>
+    </form>
     <div id="all_contents">
         <div class="board_action" id="inx_board_action">
             <h2><a href="/board/all">전체</a></h2>

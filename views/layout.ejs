@@ -100,10 +100,8 @@
           </ul>
         </div>
         <div class="search">
-          <input type="text" placeholder="실시간 검색어" />
-          <a href="/search"
-            ><img src="/public/images/search_icon.png" alt="검색"
-          /></a>
+          <input type="text" disabled />
+          <a href="/search"><button type="submit" style="cursor: pointer;"><img src="/public/images/search_icon.png" alt="검색"/></button></a>
         </div>
         <% if (loggedIn) { %>
         <div class="action">

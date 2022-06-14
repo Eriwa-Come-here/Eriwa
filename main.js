@@ -75,7 +75,8 @@ app.use((req, res, next) => {
 
 //homeController 추가
 app.get("/", homeController.index, homeController.showIndex);
-app.get("/search", homeController.showDetailSearch);
+app.get("/search", homeController.detailSearch, homeController.showDetailSearch);
+app.post("/search", homeController.detailSearch, homeController.showDetailSearch);
 app.get("/service-intro", homeController.showServiceIntro);
 
 //noticeController 추가

@@ -5,7 +5,7 @@
         <div class="user_info">
           <a href=""><img id="profile" src="../public/images/profile_icon.png" alt="profile_icon"/></a>
           <br />
-          <p>Name</p>
+          <p><%= currentUser.nickname %></p>
           <br />
           <div id="img_message">
             <a href="/note/receive">
@@ -22,10 +22,10 @@
             <p>・ 개인정보</p>
           </div>
           <div class="write-detail_variable">
-            <a href=""><p>1건</p></a>
-            <a href=""><p>56건</p></a>
-            <a href=""><p>31건</p></a>
-            <a href=""><p>수정하기</p></a>
+            <a href="/mypage"><p>1건</p></a>
+            <a href="/mypage/comment"><p>56건</p></a>
+            <a href="/mypage/recommend"><p>31건</p></a>
+            <a href="/mypage/update"><p>수정하기</p></a>
           </div>
         </div>
         <div class="write-empty">
