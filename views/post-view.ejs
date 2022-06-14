@@ -79,7 +79,7 @@
           <span class="article-footer-center">
             <!-- 추천 기능 추가하기 -->
             <% if (is_pushed == 1) { %>
-              <a onclick="javascript:alert('이미 추천을 눌렀습니다.');" href=""><span id="post-view-recommend"><img src="/public/images/filled-heart.png" alt="추천" width="25"
+              <a onclick="javascript:alert('이미 추천을 눌렀습니다.');" style="cursor: pointer;"><span id="post-view-recommend"><img src="/public/images/filled-heart.png" alt="추천" width="25"
                 height="25">&nbsp;추천</span></a>
             <% } else { %>
               <form action="<%= `/recommend/${post.post_id}` %>" name="recommend_form" id="recommend_form" method="post">
