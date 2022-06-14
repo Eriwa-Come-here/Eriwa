@@ -16,15 +16,24 @@
                 <% if (currentUser && post.user_id == currentUser?.dataValues.user_id) { %>
                   <li class="drop-item"><a href="/mypage" class="drop-button">마이페이지</a></li>
                 <% } else { %>
-                  <li class="drop-item"><a href="#" class="drop-button">쪽지 보내기</a></li>
+                  <li class="drop-item"><a onclick="javascript: openNote('note-write-modal-in-post', '<%= post.nickname %>');" class="drop-button" style="cursor: pointer;">쪽지 보내기</a></li>
                 <% } %>
               </ul>
             <%= getDate(post.written_date) %>
           </div>
           <div class="post-info-right-content">
-            <a href="#comment"><img src="/public/images/comment-alt.png" alt="댓글수" width="25"
-                height="25">&nbsp;댓글 <%= comments.length %></a>&nbsp;&nbsp;&nbsp;<a href="#"><img src="/public/images/heart.png" alt="추천"
-                width="25" height="25">&nbsp;추천 <%= post.recommend_count %></a>
+            <a href="#comment">
+              <img src="/public/images/comment-alt.png" alt="댓글수" width="20"
+                height="20">&nbsp;댓글 <%= comments.length ? comments.length : 0 %>
+            </a>&nbsp;&nbsp;&nbsp;
+            <a href="">
+              <img src="/public/images/heart.png" alt="추천"
+                width="20" height="20">&nbsp;추천 <%= post.recommend_count %>
+            </a>&nbsp;&nbsp;&nbsp;
+            <a href="">
+              <img src="/public/images/eye.png" alt="조회수"
+                width="20" height="20">&nbsp;조회수 <%= post.view_count %>
+            </a>
           </div>
         </div>
       </header>
@@ -69,8 +78,16 @@
         <div class="post-buttons">
           <span class="article-footer-center">
             <!-- 추천 기능 추가하기 -->
-            <a href="#" onclick="javascript:pushRecommend()"><span id="post-view-recommend"><img src="/public/images/heart.png" alt="추천" width="25"
-                  height="25">&nbsp;추천</span></a>
+            <% if (is_pushed == 1) { %>
+              <a onclick="javascript:alert('이미 추천을 눌렀습니다.');" href=""><span id="post-view-recommend"><img src="/public/images/filled-heart.png" alt="추천" width="25"
+                height="25">&nbsp;추천</span></a>
+            <% } else { %>
+              <form action="<%= `/recommend/${post.post_id}` %>" name="recommend_form" id="recommend_form" method="post">
+                <input type="hidden" name="user_id" value="<%= currentUser?.dataValues.user_id %>">
+              </form>
+              <a onclick="javascript: pushRecommend();" style="cursor: pointer;"><span id="post-view-recommend"><img src="/public/images/empty-heart.png" alt="추천" width="25"
+                height="25">&nbsp;추천</span></a>
+            <% } %>
             &nbsp;
             <a href="#" onclick="javascript:copyUrl()"><span id="post-view-share"><img src="/public/images/share.png" alt="공유" width="25"
                   height="25">&nbsp;공유</span></a>
@@ -107,7 +124,7 @@
                     <% if (currentUser && comment.user_id == currentUser?.dataValues.user_id) { %>
                       <li class="drop-item"><a href="/mypage" class="drop-button">마이페이지</a></li>
                     <% } else { %>
-                      <li class="drop-item"><a onclick="javascript: openNote('note-write-modal-in-post', '<%= comment.nickname %>');" class="drop-button">쪽지 보내기</a></li>
+                      <li class="drop-item"><a onclick="javascript: openNote('note-write-modal-in-post', '<%= comment.nickname %>');" class="drop-button" style="cursor: pointer;">쪽지 보내기</a></li>
                     <% } %>
                   </ul>
               </div>
@@ -137,7 +154,7 @@
               <form class="comment-textarea" onsubmit="return confirm('댓글을 수정하시겠습니까?');" action="<%= `/comment/${post.post_id}/edit` %>" method="post">
                 <input type="hidden" name="comment_author" value="<%= comment.user_id %>">
                 <input type="hidden" name="comment_id" value="<%= comment.comment_id %>">
-                <div><textarea placeholder="<%= comment.comment %>" name="comment_content" id="<%= `edit-textarea-${comment.comment_id}` %>" rows="8" cols="80" style="padding: 6px;"></textarea></div>
+                <div><textarea placeholder="<%= comment.comment %>" name="comment_content" id="<%= `edit-textarea-${comment.comment_id}` %>" rows="8" cols="80" style="padding: 6px;" minlength="1" required></textarea></div>
                 <div class="comment-edit-buttons">
                   <input type="button" onclick="hideEdit('<%= `comment-content-${comment.comment_id}` %>', '<%= `comment-edit-${comment.comment_id}` %>', '<%= `edit-textarea-${comment.comment_id}` %>');" name="cancel_update" value="취소" class="post-view-myButton">
                   <input type="submit" name="submit_update" value="수정" class="post-view-myButton comment-edit-button">
@@ -157,7 +174,7 @@
           <input type="hidden" name="comment_author" value="<%= currentUser?.dataValues.user_id %>">
           <input type="hidden" name="comment_author_nickname" value="<%= currentUser?.dataValues.nickname %>">
           <input type="hidden" name="post_title" value="<%= post.title %> ">
-          <div><textarea placeholder="내용을 입력해 주세요" name="comment_content" rows="8" cols="80" style="padding: 6px;"></textarea></div>
+          <div><textarea placeholder="내용을 입력해 주세요" name="comment_content" rows="8" cols="80" style="padding: 6px;" minlength="1" required></textarea></div>
           <div><input type="submit" name="등록" value="등록" class="post-view-myButton"></div>
         </form>
       </div>
@@ -181,7 +198,7 @@
             <div class="note-write-wrap">
               <div class="note-write-area">
                 <label for="new-note-textarea">내용</label>
-                <textarea name="new_note_content" id="new-note-textarea-in-post" rows="8" style="padding: 6px;"></textarea>
+                <textarea name="new_note_content" id="new-note-textarea-in-post" rows="8" style="padding: 6px;" minlength="1" required></textarea>
               </div>
             </div>
             <div class="note-modal-footer">

@@ -15,6 +15,14 @@ function hideDrop(id) {
     }, 100);
 }
 
+function pushRecommend() {
+    if (confirm('추천은 취소할 수 없습니다. 정말 추천하시겠습니까?')) {
+        document.getElementById('recommend_form').submit();
+    } else {
+        return false;
+    }
+}
+
 // 현재 문서의 url 복사하기
 function copyUrl() {
     var url = '';

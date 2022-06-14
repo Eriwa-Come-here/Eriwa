@@ -16,24 +16,65 @@ module.exports = {
           replacements: [req.params.post_id],
         }
       );
-      if (post[0]) {
-        const [comments, comment_metadata] = await sequelize.query(
+      if (post[0]) { // 불러온 게시글이 있는 경우
+        const [comments, comment_metadata] = await sequelize.query( // 해당 글의 댓글을 가져옴
           "SELECT `c`.*, `u`.`nickname` FROM `comment` AS `c` LEFT JOIN `user` AS `u` ON `u`.`user_id` = `c`.`user_id` WHERE `post_id` = ?",
           {
             type: Sequelize.SELECT,
             replacements: [req.params.post_id],
           }
         );
+        const [recommend, recommend_metadata] = await sequelize.query( // 유저가 추천을 눌렀는지 여부
+          "SELECT * FROM `recommend` WHERE `post_id` = ? AND `user_id` = ?",
+          {
+            type: Sequelize.SELECT,
+            replacements: [req.params.post_id, res.locals.currentUser.dataValues.user_id],
+          }
+        );
+        let is_pushed;
+        if(recommend[0]) {
+          is_pushed = 1; // 추천을 이미 눌렀으면 is_pushed는 1
+        } else {
+          is_pushed = 0; // 추천을 누르지 않았으면 is_pushed는 0
+        }
+        await sequelize.query( // 조회수를 증가시킴
+          "UPDATE `post` SET `view_count` = `view_count` + 1 WHERE `post_id` = ?",
+          {
+            type: sequelize.QueryTypes.UPDATE,
+            replacements: [req.params.post_id],
+          }
+        );
         res.render("post-view", {
           post: post[0],
           comments: comments,
+          is_pushed: is_pushed,
           getDate: datefunc.getDate,
         });
-      } else {
+      } else { // 해당하는 게시글이 없는 경우
         next();
       }
     } catch (err) {
       console.log(`Error fetching Post by ID: ${err.message}`);
+      next(err);
+    }
+  },
+
+  // 게시글 추천
+  pushRecommend: async (req, res, next) => {
+    try {
+      await sequelize.query(
+        "INSERT INTO `recommend`(`post_id`, `user_id`) VALUES (?, ?)",
+        {
+          type: sequelize.QueryTypes.INSERT,
+          replacements: [
+            req.params.post_id,
+            req.body.user_id,
+          ],
+        }
+      );
+      res.redirect("/board/post-view/" + req.params.post_id);
+    } catch (err) {
+      console.log(`${err.message}`);
       next(err);
     }
   },

@@ -1,14 +1,4 @@
 <script src="/public/js/note.js"></script>
-<% if (flashMessages) { %>
-  <script>
-    if (flashMessages.success) {
-      alert(flashMessages.success);
-    } else if (flashMessages.error) {
-      alert(flashMessages.error);
-    }
-  </script>
-<% } %>
-
 <div class="note-list-container">
   <main class="note-list-main">
     <div class="note-list-category">
@@ -69,7 +59,7 @@
     <% } else { %>
       <div class="note-content"><p>받은 쪽지가 없습니다.</p></div>
     <% } %>
-    <div style="text-align: center; padding:10px;">쪽지는 30일 이후 삭제됩니다.</div>
+    <div style="text-align: center; padding:10px;">더이상 받은 쪽지가 없습니다.</div>
     <div class="note-list-top-button">
       <a href="<%= `/note/receive` %>">TOP</a>
     </div>
@@ -85,13 +75,13 @@
             <div class="recipient-area-wrap">
               <div class="recipient-area">
                 <label for="recipient">받는사람</label>
-                <input type="text" name="recipient" id="recipient" placeholder="닉네임">
+                <input type="text" name="recipient" id="recipient" placeholder="닉네임" pattern=".{1,}" required>
               </div>
             </div>
             <div class="note-write-wrap">
               <div class="note-write-area">
                 <label for="new-note-textarea">내용</label>
-                <textarea name="new_note_content" id="new-note-textarea" rows="8" style="padding: 6px;"></textarea>
+                <textarea name="new_note_content" id="new-note-textarea" rows="8" style="padding: 6px;" minlength="1" required></textarea>
               </div>
             </div>
             <div class="note-modal-footer">
