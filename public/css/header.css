@@ -146,6 +146,10 @@ div.search >a> img{
     border-radius: 20px;
     width: 20px;
 }
+div.search >a>button> img{
+    border-radius: 20px;
+    width: 20px;
+}
 
 /* action button */
 

@@ -8,6 +8,21 @@ const sequelize = db.sequelize;
 
 module.exports = {
   //회원관리
+  
+  checkPermission: async (req, res, next) => {
+    try {
+      if(res.locals.currentUser.user_id != "admin1234")
+      {
+        req.flash("error", "접근권한이 없습니다.");
+        res.redirect("/");
+      }
+      next();
+    } catch (error) {
+      console.log(`Error fetching User by ID: ${error.message}`);
+      next(error);
+    }
+  },
+  
   showAdminMember: async (req, res, next) => {
     try {
       const [memberData, metadata] = await sequelize.query(

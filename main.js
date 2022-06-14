@@ -75,7 +75,8 @@ app.use((req, res, next) => {
 
 //homeController 추가
 app.get("/", homeController.index, homeController.showIndex);
-app.get("/search", homeController.showDetailSearch);
+app.get("/search", homeController.detailSearch, homeController.showDetailSearch);
+app.post("/search", homeController.detailSearch, homeController.showDetailSearch);
 app.get("/service-intro", homeController.showServiceIntro);
 
 //noticeController 추가
@@ -99,14 +100,14 @@ app.post("/comment/:post_id/edit", commentController.updateComment);
 app.post("/comment/:post_id/delete", commentController.deleteComment);
 
 //adminController 추가
-app.get("/admin/member", adminController.showAdminMember);
-app.post("/admin/member/delete", adminController.memberDelete);
-app.get("/admin/post", adminController.showAdminPost);
-app.post("/admin/post/delete", adminController.postDelete);
+app.get("/admin/member",adminController.checkPermission,adminController.showAdminMember);
+app.post("/admin/member/delete",adminController.checkPermission, adminController.memberDelete);
+app.get("/admin/post",adminController.checkPermission, adminController.showAdminPost);
+app.post("/admin/post/delete", adminController.checkPermission,adminController.postDelete);
 // app.get("/admin/analysis", adminController.showAdminAnalysis);
-app.get("/admin/qna", adminController.showAdminQna);
-app.get("/admin/qna/response/:qna_id", adminController.showAdminQnaResponse);
-app.post("/admin/qna/response/:qna_id", adminController.qnaResponse);
+app.get("/admin/qna",adminController.checkPermission, adminController.showAdminQna);
+app.get("/admin/qna/response/:qna_id",adminController.checkPermission, adminController.showAdminQnaResponse);
+app.post("/admin/qna/response/:qna_id",adminController.checkPermission, adminController.qnaResponse);
 
 //mypageController 추가
 app.get("/mypage", loginController.checkLogin, mypageController.mypageGood);

@@ -1,34 +1,53 @@
 <div id="container">
-        <div class="search_container">
-            <div class="search">
-                <input type="text" placeholder="검색">
-                <a href="/search"><img src="/public/images/search_icon.png" alt="검색"></a>
-            </div>
-            <div class="btn_option">
-                <a href=#none id="show" 
-                onclick="if(search_option.style.display=='none')
-                {search_option.style.display='block'} else{search_option.style.display='none'}
-                "><img src="/public/images/search_detail_setting_icon.png" alt="search_detail_setting_icon">
-                </a>
-                <div id="search_option">
-                    <div class="search_text"><h2>검색 조건</h2></div>
-
+    <% const place_name = [
+    { v: "경기도", t: "경기도" },
+    { v: "강원도", t: "강원도" },
+    { v: "충청북도", t: "충청북도" },
+    { v: "충청남도", t: "충청남도" },
+    { v: "전라북도", t: "전라북도" },
+    { v: "전라남도", t: "전라남도" },
+    { v: "경상북도", t: "경상북도" },
+    { v: "경상남도", t: "경상남도" },
+    { v: "제주특별자치도", t: "제주특별자치도" },
+    { v: "서울특별시", t: "서울특별시" },
+    { v: "부산광역시", t: "부산광역시" },
+    { v: "대구광역시", t: "대구광역시" },
+    { v: "인천광역시", t: "인천광역시" },
+    { v: "대전광역시", t: "대전광역시" },
+    { v: "광주광역시", t: "광주광역시" },
+    { v: "울산광역시", t: "울산광역시" },
+    { v: "세종특별자치시", t: "세종특별자치시" },
+    ]; %>
+<form action="/search" method="post">
+    <div class="search_container">
+        <div class="search">
+            <input type="text" name="search_content" placeholder="검색">
+            <a href="/search"><button type="submit" style="cursor: pointer;"><img src="/public/images/search_icon.png" alt="검색"></button></a>
+        </div>
+        <div class="btn_option">
+            <a href=#none id="show" 
+            onclick="if(search_option.style.display=='none')
+            {search_option.style.display='block'} else{search_option.style.display='none'}
+            "><img src="/public/images/search_detail_setting_icon.png" alt="search_detail_setting_icon">
+            </a>
+            <div id="search_option">
+                <div class="search_text"><h2>검색 조건</h2></div>
                     <div class="search_first">
                         <div class="search_period">
                             <p>기간</p>
-                            <select class="selec_search">
-                                <option>전체</option>
-                                <option>1개월</option>
-                                <option>3개월</option>
-                                <option>6개월</option>
+                            <select class="selec_search" name="written_date">
+                                <option value="all">전체</option>
+                                <option value="1">1개월</option>
+                                <option value="3">3개월</option>
+                                <option value="6">6개월</option>
                             </select>
                         </div>
                         <div class="search_range">
                             <p>검색 범위</p>
-                            <select class="selec_search">
-                                <option>제목</option>
-                                <option>본문</option>
-                                <option>작성자</option>
+                            <select class="selec_search" name="range">
+                                <option value="title">제목</option>
+                                <option value="content">본문</option>
+                                <option value="nickname">작성자</option>
                             </select>
                         </div>
                     </div> 
@@ -36,35 +55,21 @@
                     <div class="search_second">
                         <div class="search_area">
                             <p>지역</p>
-                            <select class="selec_search">
-                                <option>전체</option>
-                                <option>강원도</option>
-                                <option>경기도</option>
-                                <option>경상북도</option>
-                                <option>경상남도</option>
-                                <option>전라북도</option>
-                                <option>전라남도</option>
-                                <option>충청북도</option>
-                                <option>충청남도</option>
-                                <option>제주도</option>
-                                <option>광주광역시</option>
-                                <option>대구광역시</option>
-                                <option>대전광역시</option>
-                                <option>부산광역시</option>
-                                <option>서울특별시</option>
-                                <option>울산광역시</option>
-                                <option>인천광역시</option>
-                                <option>세종특별자치시</option>
+                            <select class="selec_search" name="address1">
+                                <option value="all">전체</option>
+                                <% place_name.forEach (n => { %>
+                                <option value="<%= n.v%>"><%= n.t%></option>
+                                <% }); %>
                             </select>
                         </div>
                         <div class="search_kind">
                             <p>장소 종류</p>
-                            <select class="selec_search">
-                                <option>전체</option>
-                                <option>술집</option>
-                                <option>카페</option>
-                                <option>식당</option>
-                                <option>기타</option>
+                            <select class="selec_search" name="place_type">
+                                <option value="all">전체</option>
+                                <option value="술집">술집</option>
+                                <option value="카페">카페</option>
+                                <option value="식당">식당</option>
+                                <option value="기타">기타</option>
                             </select>
                         </div>
                     </div> 
@@ -72,28 +77,63 @@
                     <div class="search_third">
                         <div class="search_grade">
                             <p>별점</p>
-                            <select class="selec_search">
-                                <option>전체</option>
-                                <option>1점 이상</option>
-                                <option>2점 이상</option>
-                                <option>3점 이상</option>
-                                <option>4점 이상</option>
-                                <option>5점</option>
+                            <select class="selec_search" name="grade">
+                                <option value="all">전체</option>
+                                <option value="1">1점 이상</option>
+                                <option value="2">2점 이상</option>
+                                <option value="3">3점 이상</option>
+                                <option value="4">4점 이상</option>
+                                <option value="5">5점</option>
                             </select>
                         </div>
                         <div class="search_ect">
                             <p>기타</p>
-                            <select class="selec_search">
-                                <option>반려동물 동반 가능</option>
-                                <option>주차 가능</option>
+                            <select class="selec_search" name="etc">
+                                <option value="null">선택 안함</option>
+                                <option value="pet">반려동물 동반 가능</option>
+                                <option value="park">주차 가능</option>
                             </select>
                         </div>
                     </div> 
-                    <button id="btn_search">검색</button>
-                </div>        
-            </div>
+                <button type="submit" style="cursor: pointer;" id="btn_search">검색</button>
+            </div>        
         </div>
-        <div class="search_result">
-                검색 결과가 없습니다.
+    </div>
+</form>
+
+    <div class="search_result">
+        <% if (posts[0].length == undefined || posts[0].length == 0){%>
+        <p>검색 결과가 없습니다.</p>
+        <%} else {%>
+        <div class="search_list">
+        <p class="p_result" style="font-weight: bold;"><%= posts[0].length%>개의 글이 검색되었습니다.</p>
+        <br>
+            <table class="tbl_search">
+                <thead>
+                    <tr>
+                        <th>글번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>작성일</th>
+                        <th>조회수</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% posts[0].forEach(p => { %>   
+                    <a href="<%= `/board/post-view/${p.post_id}` %>">         
+                    <tr>
+                        <td align="center"><%=p.post_id%></td>
+                        <td align="center" onclick="location.href=`/board/post-view/<%=p.post_id%>`" style="cursor:pointer;"><%=p.title%></td>
+                        <td align="center"><%=p.nickname%></td>
+                        <td align="center"><%=getDate(p.written_date)%></td>
+                        <td align="center"><%=p.view_count%></td>
+                    </tr>
+                    </a>
+                    <%}); %>
+                </tbody>
+            </table>
         </div>
+        <% } %>
+    </div>
+    
 </div>
