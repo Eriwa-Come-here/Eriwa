@@ -1,10 +1,11 @@
 <script src="/public/js/post-view.js"></script>
+
 <div class="post-view-container">
   <main class="post-view-main">
     <!-- 본문 -->
     <article class="post-article">
       <header>
-        <a href="/board"><%= post.address1 %></a>
+        <a href="<%= `/board/${post.address1}` %>"><%= post.address1 %></a>
         <h1><%= post.title %> </h1>
         <div class="post-info">
           <div class="post-info-left-content">
@@ -22,17 +23,17 @@
             <%= getDate(post.written_date) %>
           </div>
           <div class="post-info-right-content">
+            <span>
+              <img src="/public/images/eye.png" alt="조회수"
+                width="20" height="20">&nbsp;조회수 <%= post.view_count %>
+            </span>&nbsp;&nbsp;&nbsp;
+            <span>
+              <img src="/public/images/heart.png" alt="추천"
+                width="20" height="20">&nbsp;추천 <%= post.recommend_count %>
+            </span>&nbsp;&nbsp;&nbsp;   
             <a href="#comment">
               <img src="/public/images/comment-alt.png" alt="댓글수" width="20"
                 height="20">&nbsp;댓글 <%= comments.length ? comments.length : 0 %>
-            </a>&nbsp;&nbsp;&nbsp;
-            <a href="">
-              <img src="/public/images/heart.png" alt="추천"
-                width="20" height="20">&nbsp;추천 <%= post.recommend_count %>
-            </a>&nbsp;&nbsp;&nbsp;
-            <a href="">
-              <img src="/public/images/eye.png" alt="조회수"
-                width="20" height="20">&nbsp;조회수 <%= post.view_count %>
             </a>
           </div>
         </div>
@@ -43,16 +44,16 @@
           <thead>
             <tr>
               <td rowspan="6" class="table-post-img"><img src="<%= `/public/uploadFiles/${post.image}` %>" alt="장소 사진"></td>
-              <td><span class="post-view-cell-title">이름</span>&nbsp;&nbsp;&nbsp;&nbsp;<%= post.place_name %></td>
+              <td><span class="post-view-cell-title">이름</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><%= post.place_name %></span></td>
             </tr>
             <tr>
-              <td><span class="post-view-cell-title">종류</span>&nbsp;&nbsp;&nbsp;&nbsp;<%= post.place_type %></td>
+              <td><span class="post-view-cell-title">종류</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><%= post.place_type %></span></td>
             </tr>
             <tr>
-              <td><span class="post-view-cell-title">위치</span>&nbsp;&nbsp;&nbsp;&nbsp;<%= post.address1 %> <%= post.address2 %> <%= post.address3 %></td>
+              <td><span class="post-view-cell-title">위치</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><%= post.address1 %> <%= post.address2 %> <%= post.address3 %></span></td>
             </tr>
             <tr>
-              <td><span class="post-view-cell-title">별점</span>&nbsp;&nbsp;&nbsp;&nbsp;<%= post.grade %>점</td>
+              <td><span class="post-view-cell-title">별점</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="post-star"><script>showStar("<%= post.grade %>");</script></span></td>
             </tr>
             <tr>
               <td><span class="post-view-cell-title">주차장</span>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -211,7 +212,7 @@
     </div>
     
     <div class="post-view-buttons">
-      <a href="/board">목록</a>
+      <a href="<%= `/board/${post.address1}` %>">목록</a>
       <a href="<%= `/board/post-view/${post.post_id}` %>">TOP</a>
     </div>
   </main>

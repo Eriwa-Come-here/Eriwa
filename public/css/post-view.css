@@ -50,6 +50,10 @@
   font-weight: bold;
 }
 
+#post-star > img {
+  padding: 0px 1px;
+}
+
 .post-content > p {
   white-space: normal;
   font-size: 16px;
@@ -57,7 +61,7 @@
 }
 
 .post-info-left-content, .post-info-left-content > button
-, .post-info-right-content, .post-info-right-content > a {
+, .post-info-right-content, .post-info-right-content > a, .post-info-right-content > span {
   display: flex;
   justify-content: space-between;
   align-items: center;
