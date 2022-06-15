@@ -15,8 +15,8 @@
 }
 
 .service-intro-main {
-  margin-left: 150px;
-  margin-right: 150px;
+  margin-left: 200px;
+  margin-right: 200px;
 }
 
 /* banner */
@@ -88,19 +88,19 @@
 }
 
 #card1 {
-  background-image: url("../images/totoro025.jpg");
+  background-image: url("../images/post-background.png");
 }
 
 #card2 {
-  background-image: url("../images/ponyo020.jpg");
+  background-image: url("../images/note-background.png");
 }
 
 #card3 {
-  background-image: url("../images/howl049.jpg");
+  background-image: url("../images/serarch-background.png");
 }
 
 #card4 {
-  background-image: url("../images/chihiro014.jpg");
+  background-image: url("../images/mypage-background.png");
 }
 
 .cards > section:hover .card-header  {
@@ -117,4 +117,12 @@
 .card-body > h2 {
   font-size: 18px;
   font-weight: bold;
+}
+
+
+.service-intro-detail-header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #dadada;
+  height: 80px;
 }

@@ -162,6 +162,9 @@
       <div>
         <a href=""><p>신고가이드</p></a>
       </div>
+      <form action="/users/<%=currentUser?.user_id%>/delete" method="post">
+        <button id="btn_layout_delete" type="submit">탈퇴하기</button>
+      </form>
       <br />
       <p>Copyright © 2022 Team Eriwa. All rights deserved</p>
     </footer>

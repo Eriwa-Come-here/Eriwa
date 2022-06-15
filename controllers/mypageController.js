@@ -3,7 +3,6 @@ const passport = require("passport");
 const db = require("../models/index"), 
     Qna = db.qna,
     Recommend = db.recommend,
-    Post = db.post,
     User = db.user,
     getUserParams = body => {
         return {
@@ -17,6 +16,11 @@ const db = require("../models/index"),
     getQnaParams = body => {
         return{
             question:body.question
+        }
+    },
+    getQnaSearchParams = body => {
+        return{
+            answer:body.answer
         }
     };
 const Sequelize = require("sequelize");
@@ -111,15 +115,17 @@ module.exports={
     recommend: async (req, res, next) => {
         try {
             res.locals.place_name = "all";
-            let query1 = "SELECT `post`.*, COUNT(`recommend`.`user_id`) AS `recommend_count` FROM `post` LEFT JOIN `user` ON `user`.`user_id` = `post`.`user_id` LEFT JOIN `recommend` ON `post`.`post_id` = `recommend`.`post_id` GROUP BY `post`.`post_id` ORDER BY `written_date` DESC";
-            let query2 = "SELECT `post`.*, COUNT(`comment`.`post_id`) AS `comment_count` FROM `post` LEFT JOIN `comment` ON `post`.`post_id` = `comment`.`post_id` GROUP BY `post`.`post_id` ORDER BY `written_date` DESC";
+            let query1 = "SELECT `post`.*, COUNT(`recommend`.`user_id` ) AS `recommend_count` FROM `recommend` LEFT JOIN `post` ON `recommend`.`post_id` = `post`.`post_id` WHERE `recommend`.`user_id`=? GROUP BY `recommend`.`user_id`, `recommend`.`post_id` ORDER BY `written_date` DESC";
+            let query2 = "SELECT `recommend`.*, COUNT(`comment`.`user_id`) AS `comment_count` FROM `recommend` LEFT JOIN `comment` ON `recommend`.`post_id` = `comment`.`post_id` LEFT JOIN `post` ON `recommend`.`post_id` = `post`.`post_id` WHERE `recommend`.`user_id`='sungshin2' GROUP BY `recommend`.`user_id`, `recommend`.`post_id` ORDER BY `post`.`written_date` DESC";
             
             const posts = await sequelize.query(query1, {
-                type: Sequelize.SELECT
+                type: Sequelize.SELECT,
+                replacements: [res.locals.currentUser.user_id]
             });
 
             const comment = await sequelize.query(query2, {
-                type: Sequelize.SELECT
+                type: Sequelize.SELECT,
+                replacements: [res.locals.currentUser.user_id]
             });
         
             let recommends = await Recommend.findAll({
@@ -140,17 +146,17 @@ module.exports={
     recommendPlace: async (req, res, next) => {
         try {
             let place = req.params.place_name;
-            let query1 = "SELECT `post`.*, COUNT(`recommend`.`user_id`) AS `recommend_count` FROM `post` LEFT JOIN `user` ON `user`.`user_id` = `post`.`user_id` LEFT JOIN `recommend` ON `post`.`post_id` = `recommend`.`post_id` WHERE `post`.`address1` = ? GROUP BY `post`.`post_id` ORDER BY `written_date` DESC";
-            let query2 = "SELECT `post`.*, COUNT(`comment`.`post_id`) AS `comment_count` FROM `post` LEFT JOIN `comment` ON `post`.`post_id` = `comment`.`post_id` WHERE `post`.`address1` = ? GROUP BY `post`.`post_id` ORDER BY `written_date` DESC";
-
+            let query1 = "SELECT `post`.*, COUNT(`recommend`.`user_id` ) AS `recommend_count` FROM `recommend` LEFT JOIN `post` ON `recommend`.`post_id` = `post`.`post_id` WHERE `recommend`.`user_id`=? AND `post`.`address1` = ? GROUP BY `recommend`.`user_id`, `recommend`.`post_id` ORDER BY `written_date` DESC";
+            let query2 = "SELECT `recommend`.*, COUNT(`comment`.`user_id`) AS `comment_count` FROM `recommend` LEFT JOIN `comment` ON `recommend`.`post_id` = `comment`.`post_id` LEFT JOIN `post` ON `recommend`.`post_id` = `post`.`post_id` WHERE `recommend`.`user_id`=? AND `post`.`address1` = ? GROUP BY `recommend`.`user_id`, `recommend`.`post_id` ORDER BY `post`.`written_date` DESC";
+           
             const posts = await sequelize.query(query1, {
                 type: Sequelize.SELECT,
-                replacements: [place]
+                replacements: [res.locals.currentUser.user_id, place]
             });
 
             const comment = await sequelize.query(query2, {
                 type: Sequelize.SELECT,
-                replacements: [place]
+                replacements: [res.locals.currentUser.user_id, place]
             });
         
             let recommends = await Recommend.findAll({
@@ -220,6 +226,38 @@ module.exports={
 
     showQna : (req, res) => {
         res.render("mypage-qna");
+    },
+
+    qnaSearch : async (req, res, next) => {
+        let qnaSearchParams = getQnaSearchParams(req.body);
+
+        for(let key in qnaSearchParams){
+            if(qnaSearchParams[key] == undefined){ 
+                delete qnaSearchParams[key];
+            }
+        }
+
+        if(qnaSearchParams.answer=="all") delete qnaSearchParams.answer;
+
+        try {
+            let query1 = "SELECT `qna`.* FROM `qna` WHERE `qna`.`user_id`=?"; 
+            let query2 = " ORDER BY `qna`.`qna_id`";
+
+            for(let key in qnaSearchParams){
+                if(key=="answer")
+                    query1 += " AND `qna`.`"+key+"` is "+qnaSearchParams[key];}
+
+            const qnas = await sequelize.query(query1+query2, {
+                type: Sequelize.SELECT,
+                replacements:[res.locals.currentUser.user_id]
+            });
+            res.locals.qnas = qnas;
+            next();
+
+        } catch (error) {
+            console.log(`Error fetching: ${error.message}`);
+            next(error);
+        }
     },
         
     qnaWrite : async (req, res, next) => {

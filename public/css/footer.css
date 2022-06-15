@@ -31,3 +31,16 @@ footer>p{
 footer>div>a{
     color: rgb(145, 145, 145);
 }
+
+button#btn_layout_delete{
+    background-color: transparent;
+    margin-top: 20px;
+    font-weight: bold;
+    color: rgb(145, 145, 145);
+    font-size: 16px;
+    border: 0;
+}
+
+footer>form{
+    display: inline;
+}

@@ -41,13 +41,13 @@
                         </div>
                     </div>
                     <% } %>
-                </div>
                 <% if(q.answer == null) { %>
                 <a href="/mypage/qna/<%=q.qna_id%>/edit" class="btn_pretty">수정</a>
                 <form action="/mypage/qna/<%=q.qna_id%>/delete" method="post">
-                    <button id="btn_write">삭제</button>
+                    <button id="btn_write" class="btn_pretty">삭제</button>
                 </form>
                 <% } %>
+                </div>
             </div>
         </div>
     </div>
