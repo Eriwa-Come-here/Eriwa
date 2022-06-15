@@ -1,7 +1,5 @@
 const db = require("../models/index"),
   Post = db.post,
-  Recommend = db.recommend,
-  Comment = db.comment,
   getSearchParams = body => {
       return {
         written_date: body.written_date,
@@ -26,9 +24,9 @@ module.exports={
     index : async (req, res, next) => {
         try {
             let max = await Post.max('view_count');
-            let query1 = "SELECT `post`.*, COUNT(`recommend`.`user_id`) AS `recommend_count` FROM `post` LEFT JOIN `user` ON `user`.`user_id` = `post`.`user_id` LEFT JOIN `recommend` ON `post`.`post_id` = `recommend`.`post_id` GROUP BY `post`.`post_id` ORDER BY `written_date` DESC";
+            let query1 = "SELECT `user`.*, `post`.*, COUNT(`recommend`.`user_id`) AS `recommend_count` FROM `post` LEFT JOIN `user` ON `user`.`user_id` = `post`.`user_id` LEFT JOIN `recommend` ON `post`.`post_id` = `recommend`.`post_id` GROUP BY `post`.`post_id` ORDER BY `written_date` DESC";
             let query2 = "SELECT `post`.*, COUNT(`comment`.`post_id`) AS `comment_count` FROM `post` LEFT JOIN `comment` ON `post`.`post_id` = `comment`.`post_id` GROUP BY `post`.`post_id` ORDER BY `written_date` DESC";
-            let query3 = "SELECT `post`.*, COUNT(`comment`.`post_id`) AS `comment_count`, COUNT(`recommend`.`user_id`) AS `recommend_count` FROM `post` LEFT JOIN `comment` ON `post`.`post_id` = `comment`.`post_id` LEFT JOIN `recommend` ON `post`.`post_id` = `recommend`.`post_id` WHERE `post`.`view_count` = (SELECT MAX(`view_count`) FROM `post` GROUP BY `post`.`post_id` LIMIT 1) GROUP BY `post`.`post_id` LIMIT 1";
+            let query3 = "SELECT `user`.*, `post`.*, COUNT(`comment`.`post_id`) AS `comment_count`, COUNT(`recommend`.`user_id`) AS `recommend_count` FROM `post` LEFT JOIN `comment` ON `post`.`post_id` = `comment`.`post_id` LEFT JOIN `recommend` ON `post`.`post_id` = `recommend`.`post_id` LEFT JOIN `user` ON `user`.`user_id` = `post`.`user_id` WHERE `post`.`view_count` = (SELECT MAX(`view_count`) FROM `post` GROUP BY `post`.`post_id` LIMIT 1) GROUP BY `post`.`post_id` LIMIT 1";
 
             const posts = await sequelize.query(query1, {
                 type: Sequelize.SELECT

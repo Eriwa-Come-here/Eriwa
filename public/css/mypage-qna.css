@@ -17,7 +17,7 @@ button#btn_write{
     font-size: 13px;
 }
 
-.qna_kind>select{
+.qna_kind>form>select{
     width: 70px;
     height: 30px;
     margin-left: 10px;
