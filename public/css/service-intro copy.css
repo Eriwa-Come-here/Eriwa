@@ -1,0 +1,25 @@
+.service-intro-container {
+  position: relative;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  min-width: 1000px;
+  max-width: 1300px;
+  white-space: nowrap;
+}
+
+.service-intro-container {
+  background: #fff;
+  font-size: 14px;
+  color: #000;
+}
+
+.service-intro-main {
+  margin-left: 150px;
+  margin-right: 150px;
+}
+
+.service-intro-detail-header {
+  border-bottom: 1px solid #dadada;
+  height: 80px;
+}
