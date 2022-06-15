@@ -223,5 +223,9 @@ module.exports={
     //service-intro
     showServiceIntro : (req, res) => {
         res.render("service-intro");
+    },
+
+    showServiceIntroDetail : (req, res) => {
+        res.render("service-intro-post");
     }
 };

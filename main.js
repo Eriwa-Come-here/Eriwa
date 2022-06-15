@@ -78,6 +78,7 @@ app.get("/", homeController.index, homeController.showIndex);
 app.get("/search", homeController.detailSearch, homeController.showDetailSearch);
 app.post("/search", homeController.detailSearch, homeController.showDetailSearch);
 app.get("/service-intro", homeController.showServiceIntro);
+app.get("/service-intro/:title", homeController.showServiceIntroDetail);
 
 //noticeController 추가
 app.get("/notice", noticeController.showNotice);
