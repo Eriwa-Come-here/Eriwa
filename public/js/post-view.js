@@ -15,6 +15,22 @@ function hideDrop(id) {
     }, 100);
 }
 
+// 별점 보여주기
+function showStar(grade) {
+    var stars = "";
+    for (let index = 0;  index < 5; index++) {
+        if (index < grade) {
+            //stars += "★";
+            stars += '<img src="/public/images/filled-star.png" width="15px"></img>';
+        } else {
+            //stars += "☆";
+            stars += '<img src="/public/images/empty-star.png" width="15px"></img>';
+        }
+    }
+    document.getElementById("post-star").innerHTML = stars;
+}
+
+// 추천 누르기
 function pushRecommend() {
     if (confirm('추천은 취소할 수 없습니다. 정말 추천하시겠습니까?')) {
         document.getElementById('recommend_form').submit();
@@ -62,7 +78,7 @@ function openNote(modal_id, user_nickname) {
     document.getElementById(modal_id).classList.remove('hide-note');
     const modal = document.getElementById("recipient-in-post");
     modal.value = user_nickname;
-  }
+}
 
 // 쪽지 작성창 닫기
 function closeNote(modal_id, textarea_id) {
