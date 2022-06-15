@@ -11,7 +11,7 @@ module.exports = {
   
   checkPermission: async (req, res, next) => {
     try {
-      if(res.locals.currentUser.user_id != "admin1234")
+      if(res.locals.currentUser.user_id != process.env.ADMIN_ID)
       {
         req.flash("error", "접근권한이 없습니다.");
         res.redirect("/");
