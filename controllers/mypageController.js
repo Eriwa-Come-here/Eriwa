@@ -24,6 +24,7 @@ const sequelize = db.sequelize;
 const datefunc = require('../public/js/datefunc.js');
 
 module.exports={
+
     mypageGood : async (req, res, next) => {
       try {
         const [goodData, metadata] = await sequelize.query(
