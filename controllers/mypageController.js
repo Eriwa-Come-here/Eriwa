@@ -26,8 +26,6 @@ const db = require("../models/index"),
 const Sequelize = require("sequelize");
 const sequelize = db.sequelize;
 const datefunc = require('../public/js/datefunc.js');
-const search = require("../public/js/search.js");
-const currentDate = require("../public/js/currentDate.js");
 
 module.exports={
 
@@ -232,7 +230,6 @@ module.exports={
 
     qnaSearch : async (req, res, next) => {
         let qnaSearchParams = getQnaSearchParams(req.body);
-        console.log(qnaSearchParams);
 
         for(let key in qnaSearchParams){
             if(qnaSearchParams[key] == undefined){ 
@@ -241,7 +238,6 @@ module.exports={
         }
 
         if(qnaSearchParams.answer=="all") delete qnaSearchParams.answer;
-        console.log(qnaSearchParams);
 
         try {
             let query1 = "SELECT `qna`.* FROM `qna` WHERE `qna`.`user_id`=?"; 
