@@ -16,40 +16,15 @@
                 </div>
                 <div class="user_detail">
                     <div class="detail_constant">
-                        <p>・ 작성한 글</p>
-                        <p>・ 작성한 댓글</p>
-                        <p>・ 추천한 글</p>
-                        <p>・ 개인정보</p>
-                    </div>
-                    <div class="reply-detail_variable">
-                        <a href="/mypage"><p>1건</p></a>
-                        <a href="/mypage/comment"><p>56건</p></a>
-                        <a href="/mypage/recommend"><p>31건</p></a>
-                        <a href="/mypage/update"><p>수정하기</p></a>
-                    </div>
-                </div>
-                <div class="reply-empty">
-                    <a href=""><p>탈퇴하기</p></a>
-                </div>
+                        <a href="<%=`/mypage/post`%>"><p>・ 작성한 글</p></a>
+                        <a href="<%=`/mypage/comment`%>"><p>・ 작성한 댓글</p></a>
+                        <a href="<%=`/mypage`%>"><p>・ 추천한 글</p></a>
+                        <a href="<%=`/mypage/update`%>"><p>・개인정보수정</p></a>
+                      </div>
+                  </div>
             </div>
             <div class="reply-container">
                 <div class="reply-detail">
-                    <!-- <div class="reply-menu_list">
-                        <div class="write_list">
-                            <span>내가 쓴 글</span>
-                        </div>
-                        <div class="reply_list">
-                            <span>내가 쓴 댓글</span>
-                        </div>
-                        <div class="good_list">
-                            <span>추천한 글</span>
-                        </div>
-                    </div>
-                    <div class= "reply-button-container">
-                        
-                        <button id="btn-all-select">전체선택</button>
-                        <button id="btn_delete">삭제</button>
-                    </div> -->
                     <div class="reply_kind">
                         <div class="mypage_nav">
                             <span class="mypage_nav_span"><a href="/mypage">추천한 글</a></span>

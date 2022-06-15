@@ -7,17 +7,6 @@
       <li>
         <a href="/admin/post" class="sidemenu-style"> 게시글관리</a>
       </li>
-      <!-- <li>
-        <a href="/admin/analysis" class="sidemenu-style"> 통계분석</a>
-        <ul class="smallmenu-ul">
-          <li>
-            <a href="/admin/analysis" class="smallmenu"> - 일일 게시글 분석</a>
-          </li>
-          <li>
-            <a href="/admin/analysis" class="smallmenu"> - 사용자 분석</a>
-          </li>
-        </ul>
-      </li> -->
       <li>
         <a href="/admin/qna" class="sidemenu-style"> 문의내역</a>
       </li>
@@ -29,6 +18,7 @@
       <table class="table-style">
         <thead>
           <tr>
+            <th scope="cols">글번호</th>
             <th scope="cols">회원아이디</th>
             <th scope="cols">제목</th>
             <th scope="cols"></th>
@@ -40,7 +30,8 @@
         <tbody>
           <% post.forEach(post => { %>
           <tr>
-            <td scope="row"><%= post.user_id %></td>
+            <td scope="row"><%= post.post_id %></td>
+            <td><%= post.user_id %></td>
             <td><a href="<%=`/board/post-view/${post.post_id}`%>"><%= post.title %></a></td>
             <!-- <td><%= post.title %></td> -->
             <td><img src="<%= `/public/uploadFiles/${post.image}` %>" width="50" height="50"/></td>
