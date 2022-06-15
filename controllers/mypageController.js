@@ -116,7 +116,7 @@ module.exports={
         try {
             res.locals.place_name = "all";
             let query1 = "SELECT `user`.*, `post`.*, COUNT(`recommend`.`user_id` ) AS `recommend_count` FROM `recommend` LEFT JOIN `post` ON `recommend`.`post_id` = `post`.`post_id` LEFT JOIN `user` ON `recommend`.`user_id` = `user`.`user_id` WHERE `recommend`.`user_id`=? GROUP BY `recommend`.`user_id`, `recommend`.`post_id` ORDER BY `written_date` DESC";
-            let query2 = "SELECT `recommend`.*, COUNT(`comment`.`user_id`) AS `comment_count` FROM `recommend` LEFT JOIN `comment` ON `recommend`.`post_id` = `comment`.`post_id` LEFT JOIN `post` ON `recommend`.`post_id` = `post`.`post_id` WHERE `recommend`.`user_id`='sungshin2' GROUP BY `recommend`.`user_id`, `recommend`.`post_id` ORDER BY `post`.`written_date` DESC";
+            let query2 = "SELECT `recommend`.*, COUNT(`comment`.`user_id`) AS `comment_count` FROM `recommend` LEFT JOIN `comment` ON `recommend`.`post_id` = `comment`.`post_id` LEFT JOIN `post` ON `recommend`.`post_id` = `post`.`post_id` WHERE `recommend`.`user_id`=? GROUP BY `recommend`.`user_id`, `recommend`.`post_id` ORDER BY `post`.`written_date` DESC";
             
             const posts = await sequelize.query(query1, {
                 type: Sequelize.SELECT,
