@@ -30,6 +30,7 @@ const search = require("../public/js/search.js");
 const currentDate = require("../public/js/currentDate.js");
 
 module.exports={
+
     mypageGood : async (req, res, next) => {
       try {
         const [goodData, metadata] = await sequelize.query(

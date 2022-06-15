@@ -16,39 +16,15 @@
         </div>
         <div class="user_detail">
           <div class="detail_constant">
-            <p>・ 작성한 글</p>
-            <p>・ 작성한 댓글</p>
-            <p>・ 추천한 글</p>
-            <p>・ 개인정보</p>
+            <a href="<%=`/mypage/post`%>"><p>・ 작성한 글</p></a>
+            <a href="<%=`/mypage/comment`%>"><p>・ 작성한 댓글</p></a>
+            <a href="<%=`/mypage`%>"><p>・ 추천한 글</p></a>
+            <a href="<%=`/mypage/update`%>"><p>・개인정보수정</p></a>
           </div>
-          <div class="write-detail_variable">
-            <a href="/mypage"><p>1건</p></a>
-            <a href="/mypage/comment"><p>56건</p></a>
-            <a href="/mypage/recommend"><p>31건</p></a>
-            <a href="/mypage/update"><p>수정하기</p></a>
-          </div>
-        </div>
-        <div class="write-empty">
-          <a href=""><p>탈퇴하기</p></a>
         </div>
       </div>
       <div class="write_container">
         <div class="write_detail">
-          <!-- <div class="write-menu_list">
-            <div class="write_list">
-              <span>내가 쓴 글</span>
-            </div>
-            <div class="reply_list">
-              <span>내가 쓴 댓글</span>
-            </div>
-            <div class="good_list">
-              <span>추천한 글</span>
-            </div>
-          </div> -->
-          <!-- <div class="button-container">
-            <button id="btn-all-select">전체선택</button>
-            <button id="btn_delete">삭제</button>
-          </div> -->
           <div class="write_kind">
             <div class="mypage_nav">
               <span class="mypage_nav_span"><a href="/mypage">추천한 글</a></span>
@@ -60,7 +36,8 @@
                 <table class="mypage_post_table">
                   <thead>
                     <tr>
-                      <th scope="cols">글 제목</th>
+                      <th scope="cols">글번호</th>
+                      <th scope="cols">글제목</th>
                       <th scope="cols">조회수</th>
                       <th scope="cols">댓글수</th>
                       <th scope="cols">작성일자</th>
@@ -70,6 +47,7 @@
                   <tbody>
                     <% post.forEach(post => { %>
                     <tr>
+                      <td><%= post.post_id %></td>
                       <td><a href="<%=`/board/post-view/${post.post_id}`%>"><%= post.title %></a></td>
                       <td><%= post.view_count %></td>
                       <td><%= post.commentCount %></td>
