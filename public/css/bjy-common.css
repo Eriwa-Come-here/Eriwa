@@ -139,3 +139,94 @@ div.listview_real_content{
 button{
     cursor: pointer;
 }
+
+div.error_page{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+img#img_cute1{
+    width: 500px;
+}
+
+table.qna_table{
+    width: 100%;
+    font-weight: bold;
+}
+
+table.qna_table, table.qna_table>thead>tr>th, table.qna_table>tbody>tr>td{
+    border: 1px solid #dadada;
+    border-collapse: collapse;
+    padding: 10px;
+}
+
+table.qna_table>thead>tr>th{
+    background-color: #8398d1;
+    color: white;
+}
+
+td.qna_p{
+    text-align: center;
+    font-weight: normal;
+}
+
+button.btn_qna_write{
+    display: block;
+    position: relative;
+    float: right;
+    width: 70px;
+    height: 30px;
+    margin-top: 20px;
+    margin-right: 10px;
+    border: 0;
+    border-radius: 7px;
+    background-color: #8398D1;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+
+div.qna_container>form>div.qna_detail{
+    background-color: white;
+    border: 0.5px solid #787878;
+    text-align: center;
+    padding: 15px 20px 15px 20px;
+}
+
+button.btn_pretty, a.btn_pretty{
+    display: block;
+    position: relative;
+    float: left;
+    width: 70px;
+    height: 30px;
+    margin-top: 20px;
+    margin-right: 10px;
+    border: 0;
+    border-radius: 7px;
+    background-color: #8398D1;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+div#repair-wrapper-detail{
+    text-align: left;
+}
+
+div#repair-wrapper-detail>h4{
+    margin-bottom: 10px;
+}
+button#btn_qnasearch{
+    display: inline-block;
+    position: relative;
+    width: 70px;
+    height: 30px;
+    margin-left: 10px;
+    border: 0;
+    border-radius: 7px;
+    background-color: #8398D1;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+}

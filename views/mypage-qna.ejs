@@ -37,16 +37,14 @@
             <h3>1:1 문의글</h3>
             <div class="qna_detail">
                 <div class="qna_kind">
-                    <select>
-                        <option>1개월</option>
-                        <option>3개월</option>
-                        <option>6개월</option>
-                    </select>
-                    <select>
-                        <option>전체</option>
-                        <option>답변</option>
-                        <option>미답변</option>
-                    </select>
+                    <form action="/mypage/qna" method="post">
+                        <select name="answer">
+                            <option value="all">전체</option>
+                            <option value="not null">답변</option>
+                            <option value="null">미답변</option>
+                        </select>
+                        <button type="submit" style="cursor: pointer;" id="btn_qnasearch">검색</button>
+                    </form>
                 </div>
                 <div class="qna_list">
                     <% if(qnas == null) { %>
@@ -64,7 +62,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <% qnas.forEach(q => { %>   
+                                <% for(let i=0;i<qnas[0].length; i++){ q = qnas[0][i];  %>
                                 <tr>
                                     <td>
                                         <%= q.qna_id %>
@@ -82,13 +80,13 @@
                                         <%} %>
                                     </td>
                                 </tr>
-                                <%}); %>
+                                <%} %>
                             </tbody>
                         </table>
                     </div>
                     <% } %>
+                <a href="/mypage/qna/write"><button id="btn_write" class="btn_qna_write">작성</button></a>
                 </div>
-                <a href="/mypage/qna/write"><button id="btn_write">작성</button></a>
             </div>
         </div>
     </div>

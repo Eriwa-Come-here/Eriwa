@@ -1,20 +1,54 @@
-<div class="qna_write">
-    <form action="/mypage/qna/<%=q.qna_id%>/edit" method="post">
-        <div class="qna_container">
+<div id="container">
+    <div class="wrapped_qna">
+        <div class="user_container">
+            <div class="user_info">
+                <img id="img_profile" src="/public/images/profile_icon.png" alt="profile_icon">
+                <br>
+                <p><%= currentUser.nickname %></p>
+                <br>
+                <div id="img_message">
+                    <a href="/note/receive">
+                        <img src="/public/images/message_icon.png" alt="message_icon">
+                        <p>쪽지함</p>
+                    </a>
+                </div>
+            </div>
+            <div class="user_detail">
+                <div class="detail_constant">
+                    <p>・ 작성한 글</p>
+                    <p>・ 작성한 댓글</p>
+                    <p>・ 추천한 글</p>
+                    <p>・ 개인정보</p>
+                </div>
+                <div class="detail_variable">
+                    <a href="/mypage"><p>1건</p></a>
+                    <a href="/mypage/comment"><p>56건</p></a>
+                    <a href="/mypage/recommend"><p>31건</p></a>
+                    <a href="/mypage/update"><p>수정하기</p></a>
+                </div>
+            </div>
+            <div class="good-empty">
+              <form action="/users/<%=currentUser?.user_id%>/delete" method="post">
+                <button type="submit"><p>탈퇴하기</p></button>
+              </form>
+            </div>
+        </div>
+        <div class="qna_container" id="">
+        <form action="/mypage/qna/<%=q.qna_id%>/edit" method="post">
             <h3>1:1 문의글 작성</h3>
-            <div class="qna_write_container">
-                <span class="qna_border">내용</span>
+            <br>
+            <div class="qna_detail">
                 <span class="qna_input_border">
                     <textarea cols="51" rows="15" name="question" class="textarea-style" ><%=q.question%></textarea>
                 </span>
                 <br>
                 <div>
                     <span class="btn_qna">
-                    <button class="btn_write" type="submit">수정</button>
+                    <button id="btn_write" type="submit">수정</button>
                     </span>
                 </div>
-                
             </div>
+        </form> 
         </div>
-    </form>
+    </div>
 </div>

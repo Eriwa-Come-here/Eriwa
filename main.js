@@ -111,7 +111,8 @@ app.post("/admin/qna/response/:qna_id",adminController.checkPermission, adminCon
 
 //mypageController 추가
 app.get("/mypage", loginController.checkLogin, mypageController.mypageGood);
-app.get("/mypage/qna", loginController.checkLogin, mypageController.qna, mypageController.showQna);
+app.get("/mypage/qna", loginController.checkLogin, mypageController.qnaSearch, mypageController.showQna);
+app.post("/mypage/qna", mypageController.qnaSearch, mypageController.showQna);
 app.get("/mypage/qna/write", mypageController.showQnaWrite);
 app.post("/mypage/qna/write", mypageController.qnaWrite, mypageController.redirectView);
 app.get("/mypage/qna/:qna_id", mypageController.qnaView, mypageController.showQnaView);
