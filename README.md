@@ -40,13 +40,15 @@
 - 데이터베이스
 
 ## 서비스 실행하는 법
+0. NodeJs를 미리 설치한다.
+
 1. https://github.com/Eriwa-Come-here/Eriwa 사이트에 접속한 뒤, Code 버튼을 눌러 https URL를 복사한다.
 
 2. 리포지토리를 복사할 폴더를 생성하고, 폴더 안에서 git bash, github desktop, vscode 등 git을 실행할 수 있는 어플리케이션을 열고 </br>
 ``` git clone https://github.com/Eriwa-Come-here/Eriwa.git ``` 
 </br> 을 입력하여 리포지토리를 복사한다.
 
-3. 작업 폴더 안에서 npm install을 입력하여 필요한 모듈들을 다운로드받는다.
+3. 작업 폴더 안의 Eriwa 폴더로 이동한 뒤 npm install을 입력하여 필요한 모듈들을 다운로드받는다.
 
 4. 작업 폴더 바로 밑에서 “.env”라는 이름을 가진 파일(/Eriwa/.env)을 생성하고 내용은 최종보고서와 같이 첨부한 파일(“dotenv 작성 내용”) 내용대로 작성한다.
 
