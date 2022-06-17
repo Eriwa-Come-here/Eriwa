@@ -16,7 +16,11 @@ const port = 80,
   flash = require("connect-flash"),
   cookieParser = require("cookie-parser"),
   session = require("express-session"),
-  passport = require("passport");
+  passport = require("passport"),
+  cron = require('node-cron');
+
+// 매일 새벽 3시에 30일 지난 알림을 삭제
+cron.schedule('00 03 * * *', noticeController.deleteNotice);
 
 const multer = require("multer");
 const storage = multer.diskStorage({
@@ -135,7 +139,6 @@ app.post("/mypage/:id/edit", mypageController.edit, mypageController.redirectVie
 //noteController 추가
 app.post("/note/write", noteController.noteWrite);
 app.get("/note/:type", loginController.checkLogin, noteController.noteList);
-//app.get("/chat/write", noteController.chatStory);
 
 //loginController 추가
 app.get("/users/login", loginController.login);
