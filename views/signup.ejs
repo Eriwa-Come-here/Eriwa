@@ -40,7 +40,18 @@
                 </span>
                 <span class="error_next_box"></span>
             </div>
+            <script type="text/javascript">
+                function checkPassword(){
+                    let p1 = document.getElementById("password").value;
+                    let p2 = document.getElementById("password2").value;
 
+                    if(p1 != p2 ){
+                        alert("비밀번호가 일치하지 않습니다");
+                        return false;
+                    }
+                    return true;
+                }
+            </script>
             <!-- NAME -->
             <div>
                 <h3 class="join_title"><label for="name">이름</label></h3>
@@ -52,7 +63,7 @@
             <div>
                 <h3 class="join_title"><label for="phoneNo">닉네임</label></h3>
                 <span class="signup-box int_mobile">
-                    <input type="text" name="nickname" id="nickname" class="signup-int" maxlength="16" placeholder="한글은 2자 이상, 영어는 4자 이상" required>
+                    <input type="text" name="nickname" id="nickname" class="signup-int" maxlength="16" minlength="4" placeholder="2자 이상" required>
                 </span>
                 <span class="error_next_box"></span>    
             </div>
@@ -94,7 +105,7 @@
 
             <!-- JOIN BTN-->
             <div class="btn_area">
-                <button type="submit" id="btnJoin">
+                <button onclick="checkPassword()" type="submit" id="btnJoin">
                     <span>가입하기</span>
                 </button>
             </div>
