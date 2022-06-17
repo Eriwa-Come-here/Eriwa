@@ -105,7 +105,6 @@ app.get("/admin/member",adminController.checkPermission,adminController.showAdmi
 app.post("/admin/member/delete",adminController.checkPermission, adminController.memberDelete);
 app.get("/admin/post",adminController.checkPermission, adminController.showAdminPost);
 app.post("/admin/post/delete", adminController.checkPermission,adminController.postDelete);
-// app.get("/admin/analysis", adminController.showAdminAnalysis);
 app.get("/admin/qna",adminController.checkPermission, adminController.showAdminQna);
 app.get("/admin/qna/response/:qna_id",adminController.checkPermission, adminController.showAdminQnaResponse);
 app.post("/admin/qna/response/:qna_id",adminController.checkPermission, adminController.qnaResponse);
