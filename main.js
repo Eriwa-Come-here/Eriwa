@@ -16,7 +16,11 @@ const port = 80,
   flash = require("connect-flash"),
   cookieParser = require("cookie-parser"),
   session = require("express-session"),
-  passport = require("passport");
+  passport = require("passport"),
+  cron = require('node-cron');
+
+// 매일 새벽 3시에 30일 지난 알림을 삭제
+cron.schedule('00 03 * * *', noticeController.deleteNotice);
 
 const multer = require("multer");
 const storage = multer.diskStorage({
@@ -105,7 +109,6 @@ app.get("/admin/member",adminController.checkPermission,adminController.showAdmi
 app.post("/admin/member/delete",adminController.checkPermission, adminController.memberDelete);
 app.get("/admin/post",adminController.checkPermission, adminController.showAdminPost);
 app.post("/admin/post/delete", adminController.checkPermission,adminController.postDelete);
-// app.get("/admin/analysis", adminController.showAdminAnalysis);
 app.get("/admin/qna",adminController.checkPermission, adminController.showAdminQna);
 app.get("/admin/qna/response/:qna_id",adminController.checkPermission, adminController.showAdminQnaResponse);
 app.post("/admin/qna/response/:qna_id",adminController.checkPermission, adminController.qnaResponse);
@@ -128,14 +131,12 @@ app.get("/mypage/comment", mypageController.mypageReply);
 app.post("/mypage/comment/delete", mypageController.mypageCommentDelete);
 app.get("/mypage/post", mypageController.mypageWrite);
 app.post("/mypage/post/delete", mypageController.mypagePostDelete);
-//app.get("/mypage/passwordCheck", mypageController.showPasswordCheck);
 app.get("/mypage/update", loginController.checkLogin, mypageController.showUpdate);
 app.post("/mypage/:id/edit", mypageController.edit, mypageController.redirectView);
 
 //noteController 추가
 app.post("/note/write", noteController.noteWrite);
 app.get("/note/:type", loginController.checkLogin, noteController.noteList);
-//app.get("/chat/write", noteController.chatStory);
 
 //loginController 추가
 app.get("/users/login", loginController.login);
