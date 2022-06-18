@@ -35,7 +35,7 @@ module.exports = {
         }     
     },
 
-    // 30일 지난 알림의 삭제
+    // 30일 지난 알림의 삭제(cron으로 실행할 함수)
     deleteNotice: async () => {
         try {
             await sequelize.query("DELETE FROM `event` WHERE `event_date` < DATE_ADD(now(), INTERVAL -30 DAY)", {
