@@ -7,7 +7,6 @@ const sequelize = db.sequelize;
 // const getAgefunc = require('../public/js/adminData.js');
 
 module.exports = {
-  //회원관리
   
   checkPermission: async (req, res, next) => {
     try {
@@ -22,7 +21,8 @@ module.exports = {
       next(error);
     }
   },
-  
+
+    //회원관리
   showAdminMember: async (req, res, next) => {
     try {
       const [memberData, metadata] = await sequelize.query(
@@ -83,22 +83,6 @@ module.exports = {
       next(error);
     }
   },
-
-  //통계분석
-  // showAdminAnalysis: async(req, res,next) => {
-  //   try {
-  //     const [analysisData, metadata]=await sequelize.query("SELECT `user`.`birthdate`,`user`.`gender`,`post`.`written_date` FROM `user` LEFT JOIN `post` ON `user`.`user_id`=`post`.`user_id`;",
-  //     {
-  //       type: Sequelize.SELECT,
-  //     }
-  //   );
-  //     console.log(analysisData);
-  //     res.render("admin-analysis",{analysis:analysisData ,getAgefunc: getAgefunc.getAge});
-  //   } catch (error) {
-  //     console.log(`Error fetching User by ID: ${error.message}`);
-  //     next(error);
-  //   }
-  // },
 
   //문의내역
   showAdminQna: async (req, res,next) => {

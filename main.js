@@ -131,7 +131,6 @@ app.get("/mypage/comment", mypageController.mypageReply);
 app.post("/mypage/comment/delete", mypageController.mypageCommentDelete);
 app.get("/mypage/post", mypageController.mypageWrite);
 app.post("/mypage/post/delete", mypageController.mypagePostDelete);
-//app.get("/mypage/passwordCheck", mypageController.showPasswordCheck);
 app.get("/mypage/update", loginController.checkLogin, mypageController.showUpdate);
 app.post("/mypage/:id/edit", mypageController.edit, mypageController.redirectView);
 
