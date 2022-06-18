@@ -101,37 +101,37 @@ module.exports = {
   
   createPost: async (req, res, next) => {
     try {
-      await sequelize.query(
-        "INSERT INTO `post`(`title`,`content`,`address1`,`address2`,`address3`,`place_name`,`place_type`,`image`,`grade`,`written_date`,`user_id`,`can_park`,`can_pet`,`view_count`) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
-        {
-          type: sequelize.QueryTypes.INSERT,
-          replacements: [
-            req.body.title,
-            req.body.content,
-            req.body.address1,
-            req.body.address2,
-            req.body.address3,
-            req.body.place_name,
-            req.body.place_type,
-            req.file.filename,
-            req.body.grade,
-            new Date(),
-            req.body.post_author,
-            req.body.can_park,
-            req.body.can_pet,
-            "0",
-          ],
-        }
-      );
-      res.redirect("/");
+       if(req.body.title=='' || req.body.content=='' || req.body.place_name==''||
+        req.body.address1==''|| req.body.grade==undefined ||req.body.place_type==undefined||
+        req.body.can_park==undefined || req.body.can_pet==undefined ||req.file == undefined){
+        req.flash("error","제목, 장소이름, 위치선택(시/도), 장소종류, 주차장이용가능여부, 반려동물동반가능여부, 사진, 방문후기는 필수작성란입니다.");
+        res.redirect("/board/post-writing");
+       }
+      else{
+          await sequelize.query(
+          "INSERT INTO `post`(`title`,`content`,`address1`,`address2`,`address3`,`place_name`,`place_type`,`image`,`grade`,`written_date`,`user_id`,`can_park`,`can_pet`,`view_count`) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+          {
+            type: Sequelize.INSERT,
+            replacements: [req.body.title, req.body.content, req.body.address1, req.body.address2, req.body.address3, req.body.place_name, req.body.place_type, req.file.filename, req.body.grade, new Date(), req.body.post_author, req.body.can_park, req.body.can_pet, "0",
+            ],
+          }
+        );
+        res.redirect("/");
+      }
     } catch (error) {
       console.log(`Error fetching Post by ID: ${error.message}`);
-      next(error);
+      next();
     }
   },
   
   editPost: async (req, res, next) => {
     try {
+      if(req.body.title=='' || req.body.content=='' || req.body.place_name==''||
+        req.body.address1==''|| req.body.grade==undefined ||req.body.place_type==undefined||
+        req.body.can_park==undefined || req.body.can_pet==undefined){
+        req.flash("error","제목, 장소이름, 위치선택(시/도), 장소종류, 주차장이용가능여부, 반려동물동반가능여부, 사진, 방문후기는 필수작성란입니다.");
+        res.redirect("/board/post-view/"+req.params.post_id+"/edit");
+       }
       if(req.file==undefined){
         await sequelize.query("UPDATE `post` SET `title`=?,`content`=?,`address1`=?,`address2`=?,`address3`=?,`place_name`=?,`place_type`=?,`grade`=?,`can_park`=?,`can_pet`=? WHERE `post_id` = ?;", {
           type: sequelize.QueryTypes.UPDATE,
