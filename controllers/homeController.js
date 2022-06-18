@@ -18,6 +18,7 @@ const Sequelize = require("sequelize");
 const sequelize = db.sequelize;
 const search = require("../public/js/search.js");
 const currentDate = require("../public/js/currentDate.js");
+const post = require("../models/post");
 
 module.exports={
     //function
@@ -229,7 +230,18 @@ module.exports={
         res.render("service-intro");
     },
 
-    showServiceIntroDetail : (req, res) => {
-        res.render("service-intro-post");
+    showServiceIntroDetail : (req, res, next) => {
+        const title = req.params.title;
+        if (title == 'post') {
+            res.render("service-intro-post");
+        } else if (title == 'note') {
+            res.render("service-intro-note")
+        } else if (title == 'search') {
+            res.render("service-intro-search")
+        } else if (title == 'mypage') {
+            res.render("service-intro-mypage")
+        } else {
+            next();
+        }
     }
 };
