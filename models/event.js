@@ -1,33 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
   const User = require("./user")(sequelize, Sequelize);
-  class Event extends Sequelize.Model {
-    static async findByPkAndUpdate(id, params) {
-      try {
-        let event = await Event.findByPk(id);
-        if (event) {
-          event = await Event.update(params, {
-            where: { id: id },
-          });
-        }
-        return event;
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    static async findByPkAndRemove(id) {
-      try {
-        let event = await Event.findByPk(id);
-        if (event) {
-          event = await Event.destroy(params, {
-            where: { id: id },
-          });
-        }
-        return event;
-      } catch (err) {
-        console.log(err);
-      }
-    }
-  }
+  class Event extends Sequelize.Model {}
   Event.init(
     {
       user_id: {

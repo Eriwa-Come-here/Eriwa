@@ -1,35 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
   const User = require("./user")(sequelize, Sequelize);
-  
-  class Post extends Sequelize.Model {
-    static async findByPkAndUpdate(id, params) {
-      try {
-        let post = await Post.findByPk(id);
-        if (post) {
-          post = await Post.update(params, {
-            where: { id: id },
-          });
-        }
-        return post;
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    static async findByPkAndRemove(id) {
-      try {
-        let post = await Post.findByPk(id);
-        if (post) {
-          post = await Post.destroy({
-            where: { id: id },
-          });
-        }
-        return post;
-      } catch (err) {
-        console.log(err);
-      }
-    }
-  }
-
+  class Post extends Sequelize.Model {}
   Post.init(
     {
       post_id: {
